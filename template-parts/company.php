@@ -5,18 +5,133 @@
  * @package Langit
  */
 
-$langit_icon_uri     = get_template_directory_uri() . '/assets/icons/';
-$langit_capabilities = array_values( array_filter( array_map( 'trim', preg_split( '/\r\n|\r|\n/', langit_theme_mod( 'company_capability_items' ) ) ) ) );
-$langit_missions     = langit_company_missions();
-$langit_values       = langit_company_card_rows( 'company_values', 'maintenance.svg' );
-$langit_industries   = langit_company_card_rows( 'company_industries', 'network.svg' );
-$langit_workflow     = langit_company_card_rows( 'company_workflow_items', 'document.svg' );
+$langit_icon_uri = get_template_directory_uri() . '/assets/icons/';
 
-$langit_legalities = array(
-	esc_html__( 'NIB', 'langit' ),
-	esc_html__( 'NPWP', 'langit' ),
-	esc_html__( 'Certifications', 'langit' ),
-	esc_html__( 'Company Documents', 'langit' ),
+$langit_missions = array(
+	esc_html__( 'Meningkatkan kualitas pelayanan kepada pelanggan, baik dalam pengadaan produk maupun layanan jasa secara profesional dan berkelanjutan.', 'langit' ),
+	esc_html__( 'Memberikan solusi yang tepat, efektif, dan inovatif guna membantu menyelesaikan permasalahan pelanggan melalui produk dan layanan yang kami tawarkan.', 'langit' ),
+	esc_html__( 'Melaksanakan pelatihan dan pengembangan kompetensi bagi teknisi maupun tenaga ahli agar memiliki kemampuan dan standar profesional sesuai bidangnya.', 'langit' ),
+	esc_html__( 'Memberikan layanan purna jual (after sales service) yang responsif, cepat, tepat waktu, dan terpercaya.', 'langit' ),
+);
+
+$langit_features = array(
+	array(
+		'title'       => esc_html__( 'Professional Installation', 'langit' ),
+		'description' => esc_html__( 'Pekerjaan instalasi dilakukan secara rapi, terukur, dan memperhatikan standar teknis agar sistem siap digunakan dalam operasional harian.', 'langit' ),
+		'icon'        => 'maintenance.svg',
+	),
+	array(
+		'title'       => esc_html__( 'Integrated System Approach', 'langit' ),
+		'description' => esc_html__( 'Solusi dirancang untuk menghubungkan kebutuhan security system, jaringan, electrical, alarm, audio, instalasi, dan maintenance dalam satu pendekatan kerja yang terstruktur.', 'langit' ),
+		'icon'        => 'network.svg',
+	),
+	array(
+		'title'       => esc_html__( 'Reliable Maintenance Support', 'langit' ),
+		'description' => esc_html__( 'Dukungan pemeliharaan membantu menjaga performa sistem tetap stabil, terdokumentasi, dan mudah ditindaklanjuti saat terjadi kebutuhan teknis.', 'langit' ),
+		'icon'        => 'time.svg',
+	),
+	array(
+		'title'       => esc_html__( 'Scalable Infrastructure', 'langit' ),
+		'description' => esc_html__( 'Infrastruktur disiapkan agar dapat berkembang mengikuti kebutuhan gedung, fasilitas, area kerja, dan skala operasional client.', 'langit' ),
+		'icon'        => 'electrical.svg',
+	),
+	array(
+		'title'       => esc_html__( 'Technical Consultation', 'langit' ),
+		'description' => esc_html__( 'Tim membantu proses konsultasi, survey, perencanaan teknis, serta rekomendasi solusi agar kebutuhan proyek lebih jelas sejak awal.', 'langit' ),
+		'icon'        => 'contact.svg',
+	),
+	array(
+		'title'       => esc_html__( 'Operational Reliability', 'langit' ),
+		'description' => esc_html__( 'Setiap solusi diarahkan untuk mendukung keamanan, efisiensi, koordinasi, dan keandalan operasional jangka panjang.', 'langit' ),
+		'icon'        => 'document.svg',
+	),
+);
+
+$langit_industries = array(
+	array(
+		'title'       => esc_html__( 'Commercial Building', 'langit' ),
+		'description' => esc_html__( 'Dukungan sistem keamanan, jaringan, audio, fire alarm, dan maintenance untuk gedung komersial dengan kebutuhan operasional yang dinamis.', 'langit' ),
+	),
+	array(
+		'title'       => esc_html__( 'Industrial Facility', 'langit' ),
+		'description' => esc_html__( 'Solusi teknologi untuk area produksi, utilitas, gudang, dan fasilitas industri yang membutuhkan stabilitas sistem dan dokumentasi kerja.', 'langit' ),
+	),
+	array(
+		'title'       => esc_html__( 'Office Infrastructure', 'langit' ),
+		'description' => esc_html__( 'Implementasi konektivitas, keamanan, elektrikal, dan sistem pendukung kantor agar lingkungan kerja lebih aman dan efisien.', 'langit' ),
+	),
+	array(
+		'title'       => esc_html__( 'Warehouse & Logistics', 'langit' ),
+		'description' => esc_html__( 'Dukungan CCTV, jaringan, alarm, audio, dan maintenance untuk area penyimpanan, distribusi, serta aktivitas logistik.', 'langit' ),
+	),
+	array(
+		'title'       => esc_html__( 'Retail & Public Area', 'langit' ),
+		'description' => esc_html__( 'Sistem pendukung untuk area publik, retail, dan fasilitas layanan yang membutuhkan pemantauan, komunikasi, dan operasional yang konsisten.', 'langit' ),
+	),
+	array(
+		'title'       => esc_html__( 'Educational & Institutional Facilities', 'langit' ),
+		'description' => esc_html__( 'Solusi keamanan, jaringan, audio, alarm, instalasi, dan pemeliharaan untuk lingkungan pendidikan serta fasilitas institusional.', 'langit' ),
+	),
+);
+
+$langit_values = array(
+	array(
+		'title'       => esc_html__( 'Integrity', 'langit' ),
+		'description' => esc_html__( 'Menjaga kepercayaan melalui komunikasi yang jelas, dokumentasi pekerjaan yang rapi, dan tanggung jawab terhadap hasil layanan.', 'langit' ),
+		'icon'        => 'document.svg',
+	),
+	array(
+		'title'       => esc_html__( 'Reliability', 'langit' ),
+		'description' => esc_html__( 'Mengutamakan sistem yang stabil, mudah dirawat, dan mampu mendukung kebutuhan operasional client secara berkelanjutan.', 'langit' ),
+		'icon'        => 'maintenance.svg',
+	),
+	array(
+		'title'       => esc_html__( 'Professionalism', 'langit' ),
+		'description' => esc_html__( 'Menjalankan setiap tahapan pekerjaan dengan standar kerja, koordinasi, dan pendekatan teknis yang profesional.', 'langit' ),
+		'icon'        => 'team.svg',
+	),
+	array(
+		'title'       => esc_html__( 'Safety', 'langit' ),
+		'description' => esc_html__( 'Memperhatikan keselamatan instalasi, kerapian jalur kerja, serta kesiapan sistem untuk lingkungan industri dan komersial.', 'langit' ),
+		'icon'        => 'fire.svg',
+	),
+	array(
+		'title'       => esc_html__( 'Efficiency', 'langit' ),
+		'description' => esc_html__( 'Membantu client membangun sistem yang lebih terstruktur, mudah dipantau, dan mendukung efisiensi operasional.', 'langit' ),
+		'icon'        => 'network.svg',
+	),
+	array(
+		'title'       => esc_html__( 'Innovation', 'langit' ),
+		'description' => esc_html__( 'Menerapkan solusi teknologi yang scalable dan relevan dengan kebutuhan modern tanpa mengabaikan keandalan implementasi.', 'langit' ),
+		'icon'        => 'electrical.svg',
+	),
+);
+
+$langit_workflow = array(
+	array(
+		'title'       => esc_html__( 'Consultation', 'langit' ),
+		'description' => esc_html__( 'Tim memahami kebutuhan awal, prioritas operasional, dan ruang lingkup sistem yang ingin dikembangkan.', 'langit' ),
+	),
+	array(
+		'title'       => esc_html__( 'Site Survey', 'langit' ),
+		'description' => esc_html__( 'Kondisi lokasi ditinjau untuk menentukan titik instalasi, jalur kerja, perangkat, dan potensi kebutuhan teknis.', 'langit' ),
+	),
+	array(
+		'title'       => esc_html__( 'Planning', 'langit' ),
+		'description' => esc_html__( 'Rencana solusi disusun agar pekerjaan berjalan lebih terarah, efisien, dan sesuai kebutuhan operasional client.', 'langit' ),
+	),
+	array(
+		'title'       => esc_html__( 'Installation', 'langit' ),
+		'description' => esc_html__( 'Pekerjaan pemasangan dilakukan dengan memperhatikan kualitas instalasi, kerapian, keselamatan, dan dokumentasi.', 'langit' ),
+	),
+	array(
+		'title'       => esc_html__( 'Testing & Integration', 'langit' ),
+		'description' => esc_html__( 'Sistem diuji untuk memastikan fungsi perangkat, koneksi, integrasi, dan kesiapan penggunaan berjalan sesuai kebutuhan.', 'langit' ),
+	),
+	array(
+		'title'       => esc_html__( 'Maintenance Support', 'langit' ),
+		'description' => esc_html__( 'Dukungan pemeliharaan membantu menjaga performa sistem agar tetap stabil dan siap mendukung operasional jangka panjang.', 'langit' ),
+	),
 );
 ?>
 
@@ -24,8 +139,8 @@ $langit_legalities = array(
 langit_page_hero(
 	array(
 		'eyebrow' => esc_html__( 'Company', 'langit' ),
-		'title'   => langit_theme_mod( 'company_page_hero_title' ),
-		'text'    => langit_theme_mod( 'company_page_hero_description' ),
+		'title'   => esc_html__( 'About PT Global Teknindo', 'langit' ),
+		'text'    => esc_html__( 'Profil perusahaan, kapabilitas layanan, nilai kerja, dan alur operasional PT Global Teknindo dalam mendukung kebutuhan teknologi bangunan modern.', 'langit' ),
 	)
 );
 ?>
@@ -33,18 +148,19 @@ langit_page_hero(
 <section id="company-overview" class="section">
 	<div class="container company-overview">
 		<div class="stack">
-			<p class="section-eyebrow"><?php echo esc_html( langit_theme_mod( 'company_about_eyebrow' ) ); ?></p>
-			<h2><?php echo esc_html( langit_theme_mod( 'company_about_title' ) ); ?></h2>
-			<p><?php echo esc_html( langit_theme_mod( 'company_about_description' ) ); ?></p>
+			<p class="section-eyebrow"><?php esc_html_e( 'About Company', 'langit' ); ?></p>
+			<h2><?php esc_html_e( 'About PT Global Teknindo', 'langit' ); ?></h2>
+			<p><?php esc_html_e( 'PT Global Teknindo menyediakan solusi terintegrasi di bidang teknologi, security system, mechanical electrical, networking, installation service, serta maintenance service yang profesional dan terpercaya.', 'langit' ); ?></p>
+			<p><?php esc_html_e( 'Kami membantu perusahaan, fasilitas industri, bangunan komersial, dan berbagai infrastruktur modern membangun sistem yang lebih aman, efisien, terstruktur, dan andal melalui pendekatan kerja profesional serta teknologi yang scalable.', 'langit' ); ?></p>
 		</div>
 
-		<?php if ( ! empty( $langit_capabilities ) ) : ?>
-			<div class="capability-list">
-				<?php foreach ( $langit_capabilities as $langit_capability ) : ?>
-					<div class="capability-item"><?php echo esc_html( $langit_capability ); ?></div>
-				<?php endforeach; ?>
-			</div>
-		<?php endif; ?>
+		<div class="capability-list">
+			<div class="capability-item"><?php esc_html_e( 'Security System', 'langit' ); ?></div>
+			<div class="capability-item"><?php esc_html_e( 'Mechanical Electrical', 'langit' ); ?></div>
+			<div class="capability-item"><?php esc_html_e( 'Networking', 'langit' ); ?></div>
+			<div class="capability-item"><?php esc_html_e( 'Installation Service', 'langit' ); ?></div>
+			<div class="capability-item"><?php esc_html_e( 'Maintenance Service', 'langit' ); ?></div>
+		</div>
 	</div>
 </section>
 
@@ -54,7 +170,7 @@ langit_page_hero(
 		langit_section_heading(
 			array(
 				'eyebrow' => esc_html__( 'Vision & Mission', 'langit' ),
-				'title'   => langit_theme_mod( 'company_vision_title' ),
+				'title'   => esc_html__( 'Clear direction for modern infrastructure delivery.', 'langit' ),
 				'center'  => true,
 			)
 		);
@@ -63,17 +179,70 @@ langit_page_hero(
 		<div class="vision-mission-grid">
 			<article class="card statement-card statement-card--vision">
 				<p class="card__meta"><?php esc_html_e( 'Vision', 'langit' ); ?></p>
-				<p><?php echo esc_html( langit_theme_mod( 'company_vision_text' ) ); ?></p>
+				<p><?php esc_html_e( 'Menjadi perusahaan profesional dan terpercaya yang mampu menjadi mitra usaha dalam memenuhi kebutuhan Mechanical Electrical, Elektronik, Audio System, CCTV, IT System, serta berbagai kebutuhan industri dan gedung lainnya.', 'langit' ); ?></p>
 			</article>
 
 			<article class="card statement-card">
 				<p class="card__meta"><?php esc_html_e( 'Mission', 'langit' ); ?></p>
-				<ol class="mission-list">
+				<ul class="mission-list">
 					<?php foreach ( $langit_missions as $langit_mission ) : ?>
 						<li><?php echo esc_html( $langit_mission ); ?></li>
 					<?php endforeach; ?>
-				</ol>
+				</ul>
 			</article>
+		</div>
+	</div>
+</section>
+
+<section id="why-choose-us" class="section">
+	<div class="container stack">
+		<?php
+		langit_section_heading(
+			array(
+				'eyebrow' => esc_html__( 'Why Choose Us', 'langit' ),
+				'title'   => esc_html__( 'Practical strengths for demanding operational environments.', 'langit' ),
+				'center'  => true,
+			)
+		);
+		?>
+
+		<div class="feature-grid">
+			<?php foreach ( $langit_features as $langit_feature ) : ?>
+				<?php
+				langit_card(
+					array(
+						'title'      => $langit_feature['title'],
+						'text'       => $langit_feature['description'],
+						'class'      => 'feature-card',
+						'icon_class' => 'service-card__icon',
+						'icon_url'   => $langit_icon_uri . $langit_feature['icon'],
+					)
+				);
+				?>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</section>
+
+<section id="industry-coverage" class="section section--surface">
+	<div class="container stack">
+		<?php
+		langit_section_heading(
+			array(
+				'eyebrow' => esc_html__( 'Industries We Serve', 'langit' ),
+				'title'   => esc_html__( 'Technology support for enterprise facilities and operational spaces.', 'langit' ),
+				'center'  => true,
+			)
+		);
+		?>
+
+		<div class="coverage-grid">
+			<?php foreach ( $langit_industries as $langit_industry ) : ?>
+				<article class="coverage-card solution-card">
+					<h3><?php echo esc_html( $langit_industry['title'] ); ?></h3>
+					<p><?php echo esc_html( $langit_industry['description'] ); ?></p>
+				</article>
+			<?php endforeach; ?>
 		</div>
 	</div>
 </section>
@@ -84,7 +253,7 @@ langit_page_hero(
 		langit_section_heading(
 			array(
 				'eyebrow' => esc_html__( 'Company Values', 'langit' ),
-				'title'   => langit_theme_mod( 'company_value_title' ),
+				'title'   => esc_html__( 'Values that guide every project and partnership.', 'langit' ),
 				'center'  => true,
 			)
 		);
@@ -108,36 +277,13 @@ langit_page_hero(
 	</div>
 </section>
 
-<section id="industry-coverage" class="section section--surface">
-	<div class="container stack">
-		<?php
-		langit_section_heading(
-			array(
-				'eyebrow' => esc_html__( 'Industry Coverage', 'langit' ),
-				'title'   => langit_theme_mod( 'company_industry_title' ),
-				'center'  => true,
-			)
-		);
-		?>
-
-		<div class="coverage-grid">
-			<?php foreach ( $langit_industries as $langit_industry ) : ?>
-				<article class="coverage-card solution-card">
-					<h3><?php echo esc_html( $langit_industry['title'] ); ?></h3>
-					<p><?php echo esc_html( $langit_industry['description'] ); ?></p>
-				</article>
-			<?php endforeach; ?>
-		</div>
-	</div>
-</section>
-
-<section id="operational-workflow" class="section">
+<section id="operational-workflow" class="section section--surface">
 	<div class="container stack">
 		<?php
 		langit_section_heading(
 			array(
 				'eyebrow' => esc_html__( 'Operational Workflow', 'langit' ),
-				'title'   => langit_theme_mod( 'company_workflow_title' ),
+				'title'   => esc_html__( 'Structured process from consultation to long-term support.', 'langit' ),
 				'center'  => true,
 			)
 		);
@@ -155,65 +301,25 @@ langit_page_hero(
 	</div>
 </section>
 
-<section id="company-legality" class="section section--surface">
-	<div class="container stack">
-		<?php
-		langit_section_heading(
-			array(
-				'eyebrow' => esc_html__( 'Company Legality', 'langit' ),
-				'title'   => esc_html__( 'Prepared documentation for professional collaboration.', 'langit' ),
-				'center'  => true,
-			)
-		);
-		?>
-
-		<div class="legality-grid">
-			<?php foreach ( $langit_legalities as $langit_legality ) : ?>
-				<article class="legality-card">
-					<img src="<?php echo esc_url( $langit_icon_uri . 'document.svg' ); ?>" width="48" height="48" alt="" loading="lazy" decoding="async" aria-hidden="true">
-					<h3><?php echo esc_html( $langit_legality ); ?></h3>
-				</article>
-			<?php endforeach; ?>
-		</div>
-	</div>
-</section>
-
-<section class="section">
-	<div class="container stack">
-		<?php
-		langit_section_heading(
-			array(
-				'eyebrow' => esc_html__( 'Why Choose Us', 'langit' ),
-				'title'   => langit_theme_mod( 'company_why_title' ),
-				'center'  => true,
-			)
-		);
-		?>
-
-		<div class="feature-grid">
-			<?php foreach ( array_slice( $langit_values, 0, 4 ) as $langit_value ) : ?>
-				<?php
-				langit_card(
-					array(
-						'title'      => $langit_value['title'],
-						'text'       => $langit_value['description'],
-						'class'      => 'feature-card',
-						'icon_class' => 'service-card__icon',
-						'icon_url'   => $langit_icon_uri . $langit_value['icon'],
-					)
-				);
-				?>
-			<?php endforeach; ?>
-		</div>
-	</div>
-</section>
-
 <?php
+$langit_services_url = get_post_type_archive_link( 'services' );
+
 langit_cta(
 	array(
-		'title'   => langit_theme_mod( 'company_cta_title' ),
-		'text'    => langit_theme_mod( 'company_cta_description' ),
-		'actions' => langit_cta_actions_from_settings( 'company_cta' ),
+		'title'   => esc_html__( 'Ready to Build Reliable Technology Infrastructure?', 'langit' ),
+		'text'    => esc_html__( 'Hubungi PT Global Teknindo untuk konsultasi, survey, instalasi, maupun pengembangan sistem teknologi bangunan yang profesional dan terpercaya.', 'langit' ),
+		'variant' => 'split',
+		'actions' => array(
+			array(
+				'url'   => home_url( '/contact/' ),
+				'label' => esc_html__( 'Contact Us', 'langit' ),
+			),
+			array(
+				'url'     => $langit_services_url ? $langit_services_url : home_url( '/services/' ),
+				'label'   => esc_html__( 'Our Services', 'langit' ),
+				'variant' => 'ghost',
+			),
+		),
 	)
 );
 ?>
