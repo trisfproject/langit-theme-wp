@@ -34,11 +34,11 @@ $langit_terms       = get_the_terms( get_the_ID(), 'service_category' );
 			<?php endif; ?>
 			<?php
 			langit_button(
-				array(
-					'url'   => $langit_service_cta,
-					'label' => langit_theme_mod( 'inquiry_primary_text' ),
-				)
-			);
+					array(
+						'url'   => $langit_service_cta,
+						'label' => langit_get_service_cta_label( get_the_ID() ),
+					)
+				);
 			?>
 		</div>
 	</header>

@@ -78,6 +78,20 @@ function langit_register_services() {
 			},
 		)
 	);
+
+	register_post_meta(
+		'service',
+		'langit_service_cta_label',
+		array(
+			'type'              => 'string',
+			'single'            => true,
+			'sanitize_callback' => 'sanitize_text_field',
+			'show_in_rest'      => true,
+			'auth_callback'     => function() {
+				return current_user_can( 'edit_posts' );
+			},
+		)
+	);
 }
 add_action( 'init', 'langit_register_services' );
 
@@ -111,7 +125,8 @@ add_action( 'add_meta_boxes_service', 'langit_add_service_meta_boxes' );
  * @param WP_Post $post Current post.
  */
 function langit_service_details_meta_box( $post ) {
-	$cta_url = get_post_meta( $post->ID, 'langit_service_cta_url', true );
+	$cta_url   = get_post_meta( $post->ID, 'langit_service_cta_url', true );
+	$cta_label = get_post_meta( $post->ID, 'langit_service_cta_label', true );
 	wp_nonce_field( 'langit_save_service_details', 'langit_service_details_nonce' );
 	?>
 	<p>
@@ -123,6 +138,17 @@ function langit_service_details_meta_box( $post ) {
 			value="<?php echo esc_attr( $cta_url ); ?>"
 			class="widefat"
 			placeholder="<?php echo esc_attr( home_url( '/contact/' ) ); ?>"
+		>
+	</p>
+	<p>
+		<label for="langit_service_cta_label"><?php esc_html_e( 'CTA Label', 'langit' ); ?></label>
+		<input
+			type="text"
+			id="langit_service_cta_label"
+			name="langit_service_cta_label"
+			value="<?php echo esc_attr( $cta_label ); ?>"
+			class="widefat"
+			placeholder="<?php esc_attr_e( 'Request Info', 'langit' ); ?>"
 		>
 	</p>
 	<p class="description"><?php esc_html_e( 'Optional. Leave empty to link to the service detail page.', 'langit' ); ?></p>
@@ -153,6 +179,15 @@ function langit_save_service_details( $post_id ) {
 			delete_post_meta( $post_id, 'langit_service_cta_url' );
 		} else {
 			update_post_meta( $post_id, 'langit_service_cta_url', $cta_url );
+		}
+	}
+
+	if ( isset( $_POST['langit_service_cta_label'] ) ) {
+		$cta_label = sanitize_text_field( wp_unslash( $_POST['langit_service_cta_label'] ) );
+		if ( empty( $cta_label ) ) {
+			delete_post_meta( $post_id, 'langit_service_cta_label' );
+		} else {
+			update_post_meta( $post_id, 'langit_service_cta_label', $cta_label );
 		}
 	}
 }
@@ -201,6 +236,201 @@ function langit_default_services() {
 }
 
 /**
+ * Return production service entries used by the initial content seeder.
+ *
+ * @return array<int,array<string,string|int>>
+ */
+function langit_seed_service_entries() {
+	return array(
+		array(
+			'title'       => 'CCTV & Security System',
+			'slug'        => 'cctv-security-system',
+			'category'    => 'Security System',
+			'image'       => 'cctv-security-system.webp',
+			'menu_order'  => 10,
+			'excerpt'     => 'Solusi CCTV dan sistem keamanan untuk pemantauan area, kontrol akses, serta perlindungan fasilitas secara lebih terukur dan mudah dikelola.',
+			'description' => '<p>PT Global Teknindo menyediakan layanan konsultasi, perencanaan, instalasi, dan integrasi CCTV serta security system untuk gedung komersial, fasilitas industri, area operasional, kantor, dan lingkungan kerja yang membutuhkan pemantauan andal.</p><p>Setiap sistem dirancang dengan mempertimbangkan titik pengawasan, kebutuhan penyimpanan rekaman, kualitas gambar, akses pemantauan, serta kemudahan pemeliharaan. Pendekatan ini membantu pelanggan membangun sistem keamanan yang rapi, terdokumentasi, dan siap mendukung operasional harian.</p><p>Layanan dapat mencakup pemasangan kamera, penarikan kabel, konfigurasi perangkat perekam, integrasi jaringan, pengujian fungsi, serta dukungan maintenance berkala agar sistem tetap bekerja optimal.</p>',
+		),
+		array(
+			'title'       => 'Networking Infrastructure',
+			'slug'        => 'networking-infrastructure',
+			'category'    => 'Network Infrastructure',
+			'image'       => 'networking-infrastructure.webp',
+			'menu_order'  => 20,
+			'excerpt'     => 'Pembangunan infrastruktur jaringan data yang stabil, rapi, dan scalable untuk mendukung konektivitas kantor, gedung, dan area industri.',
+			'description' => '<p>Layanan Networking Infrastructure mencakup perencanaan, instalasi, penataan, dan pengujian jaringan data untuk kebutuhan bisnis modern. Solusi disiapkan untuk mendukung konektivitas perangkat kerja, sistem keamanan, server, akses internet, serta integrasi antar area operasional.</p><p>PT Global Teknindo memperhatikan struktur kabel, jalur distribusi, titik akses, perangkat aktif, dokumentasi jaringan, dan kemudahan perawatan agar infrastruktur dapat berkembang mengikuti kebutuhan perusahaan.</p><p>Implementasi dilakukan dengan standar kerja yang rapi, mulai dari survei kebutuhan, penarikan kabel, terminasi, labeling, pengujian koneksi, hingga pendampingan teknis setelah pekerjaan selesai.</p>',
+		),
+		array(
+			'title'       => 'Mechanical Electrical',
+			'slug'        => 'mechanical-electrical',
+			'category'    => 'Mechanical Electrical',
+			'image'       => 'mechanical-electrical.webp',
+			'menu_order'  => 30,
+			'excerpt'     => 'Dukungan sistem mekanikal elektrikal untuk bangunan dan fasilitas operasional dengan instalasi yang aman, terstruktur, dan mudah dirawat.',
+			'description' => '<p>Mechanical Electrical merupakan bagian penting dari keandalan operasional bangunan dan fasilitas industri. PT Global Teknindo membantu pelanggan dalam pekerjaan konsultasi, instalasi, integrasi, dan pemeliharaan sistem pendukung elektrikal sesuai kebutuhan area kerja.</p><p>Ruang lingkup layanan dapat disesuaikan dengan kondisi proyek, mulai dari distribusi daya, panel pendukung, jalur kabel, perangkat operasional, hingga koordinasi dengan sistem teknologi gedung lainnya.</p><p>Setiap pekerjaan diarahkan untuk menghasilkan instalasi yang aman, tertata, terdokumentasi, serta mudah diperiksa ketika dilakukan pengembangan atau maintenance di kemudian hari.</p>',
+		),
+		array(
+			'title'       => 'Fire Alarm System',
+			'slug'        => 'fire-alarm-system',
+			'category'    => 'Safety System',
+			'image'       => 'fire-alarm-system.webp',
+			'menu_order'  => 40,
+			'excerpt'     => 'Instalasi fire alarm system untuk mendukung deteksi dini, keselamatan penghuni, dan kesiapan fasilitas dalam kondisi darurat.',
+			'description' => '<p>PT Global Teknindo menyediakan layanan Fire Alarm System untuk membantu bangunan dan fasilitas operasional memiliki sistem deteksi serta peringatan dini yang lebih siap digunakan. Solusi disiapkan berdasarkan kebutuhan area, fungsi ruangan, jalur evakuasi, dan prioritas keselamatan.</p><p>Pekerjaan dapat mencakup perencanaan titik perangkat, instalasi kabel, pemasangan detector, manual call point, bell atau sounder, panel kontrol, pengujian fungsi, serta dokumentasi hasil pekerjaan.</p><p>Dengan instalasi yang terstruktur dan pemeriksaan berkala, sistem fire alarm dapat mendukung kesiapsiagaan fasilitas sekaligus membantu pengelola menjaga standar keselamatan operasional.</p>',
+		),
+		array(
+			'title'       => 'Audio & Public Address',
+			'slug'        => 'audio-public-address',
+			'category'    => 'Audio System',
+			'image'       => 'audio-public-address.webp',
+			'menu_order'  => 50,
+			'excerpt'     => 'Solusi audio, paging, dan public address untuk kebutuhan komunikasi internal, pengumuman, serta informasi operasional di berbagai area.',
+			'description' => '<p>Audio & Public Address mendukung komunikasi yang jelas di gedung, area produksi, fasilitas umum, ruang kerja, dan lingkungan operasional yang membutuhkan sistem pengumuman terpusat. PT Global Teknindo membantu merancang dan mengimplementasikan sistem audio sesuai karakter area serta kebutuhan penggunaan.</p><p>Layanan dapat mencakup pemilihan perangkat, perencanaan zona, instalasi speaker, amplifier, microphone, paging system, jalur kabel, konfigurasi dasar, hingga pengujian distribusi suara.</p><p>Solusi disiapkan agar komunikasi internal menjadi lebih efektif, mudah dioperasikan, dan dapat dirawat secara berkelanjutan sesuai kebutuhan fasilitas.</p>',
+		),
+		array(
+			'title'       => 'Installation & Maintenance',
+			'slug'        => 'installation-maintenance',
+			'category'    => 'Maintenance Service',
+			'image'       => 'installation-maintenance.webp',
+			'menu_order'  => 60,
+			'excerpt'     => 'Layanan instalasi dan maintenance untuk menjaga sistem teknologi gedung tetap rapi, stabil, dan siap mendukung operasional jangka panjang.',
+			'description' => '<p>Installation & Maintenance Service membantu pelanggan memastikan sistem yang terpasang dapat berjalan stabil setelah implementasi. Layanan ini mencakup pekerjaan instalasi perangkat, pengecekan fungsi, perapihan jalur, dokumentasi, perawatan berkala, serta dukungan teknis ketika dibutuhkan.</p><p>PT Global Teknindo menempatkan maintenance sebagai bagian penting dari keandalan sistem. Pemeriksaan berkala membantu mendeteksi potensi gangguan lebih awal, menjaga performa perangkat, dan mendukung kontinuitas operasional fasilitas.</p><p>Layanan dapat diterapkan untuk CCTV, jaringan, elektrikal, fire alarm, audio, serta sistem pendukung lain yang membutuhkan penanganan teknis profesional dan responsif.</p>',
+		),
+	);
+}
+
+/**
+ * Create or update a seeded service image attachment.
+ *
+ * @param string $slug     Service slug.
+ * @param string $filename Theme image filename.
+ * @param string $title    Attachment title.
+ * @return int Attachment ID.
+ */
+function langit_seed_service_image_attachment( $slug, $filename, $title ) {
+	$existing = get_posts(
+		array(
+			'post_type'      => 'attachment',
+			'post_status'    => 'inherit',
+			'posts_per_page' => 1,
+			'fields'         => 'ids',
+			'meta_key'       => '_langit_seed_service_image',
+			'meta_value'     => $slug,
+		)
+	);
+
+	if ( ! empty( $existing ) ) {
+		return absint( $existing[0] );
+	}
+
+	$source = trailingslashit( get_template_directory() ) . 'assets/images/services/' . $filename;
+
+	if ( ! file_exists( $source ) ) {
+		return 0;
+	}
+
+	$uploads = wp_upload_dir();
+
+	if ( ! empty( $uploads['error'] ) ) {
+		return 0;
+	}
+
+	$target_dir = trailingslashit( $uploads['basedir'] ) . 'langit-services';
+	wp_mkdir_p( $target_dir );
+
+	$target = trailingslashit( $target_dir ) . $filename;
+
+	if ( ! file_exists( $target ) ) {
+		copy( $source, $target );
+	}
+
+	$filetype      = wp_check_filetype( $target, null );
+	$attachment_id = wp_insert_attachment(
+		array(
+			'post_mime_type' => $filetype['type'],
+			'post_title'     => $title,
+			'post_content'   => '',
+			'post_status'    => 'inherit',
+		),
+		$target
+	);
+
+	if ( is_wp_error( $attachment_id ) || ! $attachment_id ) {
+		return 0;
+	}
+
+	update_post_meta( $attachment_id, '_langit_seed_service_image', $slug );
+
+	if ( file_exists( ABSPATH . 'wp-admin/includes/image.php' ) ) {
+		require_once ABSPATH . 'wp-admin/includes/image.php';
+		$metadata = wp_generate_attachment_metadata( $attachment_id, $target );
+
+		if ( ! is_wp_error( $metadata ) && ! empty( $metadata ) ) {
+			wp_update_attachment_metadata( $attachment_id, $metadata );
+		}
+	}
+
+	return absint( $attachment_id );
+}
+
+/**
+ * Seed production service entries into the Services CPT.
+ */
+function langit_seed_services_content() {
+	$seed_version = '2026-05-17';
+
+	if ( get_option( 'langit_service_seed_version' ) === $seed_version ) {
+		return;
+	}
+
+	foreach ( langit_seed_service_entries() as $service ) {
+		$post = get_page_by_path( $service['slug'], OBJECT, 'service' );
+		$args = array(
+			'post_title'   => $service['title'],
+			'post_name'    => $service['slug'],
+			'post_type'    => 'service',
+			'post_status'  => 'publish',
+			'post_excerpt' => $service['excerpt'],
+			'post_content' => $service['description'],
+			'menu_order'   => absint( $service['menu_order'] ),
+		);
+
+		if ( $post instanceof WP_Post ) {
+			$args['ID'] = $post->ID;
+			$post_id   = wp_update_post( wp_slash( $args ), true );
+		} else {
+			$post_id = wp_insert_post( wp_slash( $args ), true );
+		}
+
+		if ( is_wp_error( $post_id ) || ! $post_id ) {
+			continue;
+		}
+
+		$term = term_exists( $service['category'], 'service_category' );
+
+		if ( 0 === $term || null === $term ) {
+			$term = wp_insert_term( $service['category'], 'service_category' );
+		}
+
+		if ( ! is_wp_error( $term ) ) {
+			wp_set_object_terms( $post_id, array( absint( is_array( $term ) ? $term['term_id'] : $term ) ), 'service_category', false );
+		}
+
+		update_post_meta( $post_id, 'langit_service_cta_url', home_url( '/contact/' ) );
+		update_post_meta( $post_id, 'langit_service_cta_label', esc_html__( 'Request Consultation', 'langit' ) );
+
+		$attachment_id = langit_seed_service_image_attachment( $service['slug'], $service['image'], $service['title'] );
+
+		if ( $attachment_id ) {
+			set_post_thumbnail( $post_id, $attachment_id );
+		}
+	}
+
+	update_option( 'langit_service_seed_version', $seed_version );
+}
+add_action( 'admin_init', 'langit_seed_services_content' );
+
+/**
  * Get a service CTA URL.
  *
  * @param int $post_id Service post ID.
@@ -218,6 +448,22 @@ function langit_get_service_cta_url( $post_id, $fallback = 'permalink' ) {
 	}
 
 	return get_permalink( $post_id );
+}
+
+/**
+ * Get a service CTA label.
+ *
+ * @param int $post_id Service post ID.
+ * @return string
+ */
+function langit_get_service_cta_label( $post_id ) {
+	$cta_label = get_post_meta( $post_id, 'langit_service_cta_label', true );
+
+	if ( ! empty( $cta_label ) ) {
+		return $cta_label;
+	}
+
+	return esc_html__( 'Request Info', 'langit' );
 }
 
 /**
@@ -273,7 +519,7 @@ function langit_service_card( $service ) {
 	<article id="<?php echo esc_attr( get_post_field( 'post_name', $post_id ) ); ?>" <?php post_class( 'card product-card', $post_id ); ?>>
 		<div class="product-card__visual" aria-hidden="true">
 			<?php if ( has_post_thumbnail( $post_id ) ) : ?>
-				<?php echo get_the_post_thumbnail( $post_id, 'thumbnail', array( 'loading' => 'lazy', 'decoding' => 'async' ) ); ?>
+				<?php echo get_the_post_thumbnail( $post_id, 'langit-card', array( 'loading' => 'lazy', 'decoding' => 'async' ) ); ?>
 			<?php else : ?>
 				<span></span>
 			<?php endif; ?>
@@ -287,7 +533,7 @@ function langit_service_card( $service ) {
 		langit_button(
 			array(
 				'url'     => langit_get_service_cta_url( $post_id ),
-				'label'   => esc_html__( 'Request Info', 'langit' ),
+				'label'   => langit_get_service_cta_label( $post_id ),
 				'variant' => 'ghost',
 			)
 		);
