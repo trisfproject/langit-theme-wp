@@ -467,6 +467,28 @@ function langit_get_service_cta_label( $post_id ) {
 }
 
 /**
+ * Get the original icon URL for a service title or slug.
+ *
+ * @param int|string $service Service post ID, title, or slug.
+ * @return string
+ */
+function langit_get_service_icon_url( $service ) {
+	$icon_uri = get_template_directory_uri() . '/assets/icons/';
+	$key      = is_numeric( $service ) ? get_post_field( 'post_name', absint( $service ) ) : sanitize_title( $service );
+	$icons    = array(
+		'cctv-security-system'       => 'cctv.svg',
+		'networking-infrastructure'  => 'network.svg',
+		'mechanical-electrical'      => 'electrical.svg',
+		'fire-alarm-system'          => 'fire.svg',
+		'audio-public-address'       => 'audio.svg',
+		'installation-maintenance'   => 'maintenance.svg',
+		'installation-maintenance-service' => 'maintenance.svg',
+	);
+
+	return $icon_uri . ( isset( $icons[ $key ] ) ? $icons[ $key ] : 'maintenance.svg' );
+}
+
+/**
  * Get a service excerpt.
  *
  * @param int $post_id Service post ID.
@@ -515,14 +537,11 @@ function langit_service_card( $service ) {
 	$post_id = absint( $service );
 	$terms   = get_the_terms( $post_id, 'service_category' );
 	$meta    = ( ! is_wp_error( $terms ) && ! empty( $terms ) ) ? $terms[0]->name : esc_html__( 'Service', 'langit' );
+	$icon    = langit_get_service_icon_url( $post_id );
 	?>
 	<article id="<?php echo esc_attr( get_post_field( 'post_name', $post_id ) ); ?>" <?php post_class( 'card product-card', $post_id ); ?>>
 		<div class="product-card__visual" aria-hidden="true">
-			<?php if ( has_post_thumbnail( $post_id ) ) : ?>
-				<?php echo get_the_post_thumbnail( $post_id, 'langit-card', array( 'loading' => 'lazy', 'decoding' => 'async' ) ); ?>
-			<?php else : ?>
-				<span></span>
-			<?php endif; ?>
+			<img src="<?php echo esc_url( $icon ); ?>" width="48" height="48" alt="" loading="lazy" decoding="async">
 		</div>
 		<div class="product-card__body">
 			<p class="card__meta"><?php echo esc_html( $meta ); ?></p>
@@ -562,7 +581,7 @@ function langit_service_summary_card( $service ) {
 	}
 
 	$post_id  = absint( $service );
-	$icon_url = has_post_thumbnail( $post_id ) ? get_the_post_thumbnail_url( $post_id, 'thumbnail' ) : '';
+	$icon_url = langit_get_service_icon_url( $post_id );
 
 	langit_card(
 		array(
