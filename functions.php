@@ -30,3 +30,4 @@ require_once LANGIT_DIR . '/inc/testimonials.php';
 require_once LANGIT_DIR . '/inc/team.php';
 require_once LANGIT_DIR . '/inc/faq.php';
 require_once LANGIT_DIR . '/inc/downloads.php';
+require_once LANGIT_DIR . '/inc/certifications.php';

@@ -12,6 +12,7 @@ $langit_testimonials_query = null;
 $langit_team_query = null;
 $langit_faq_query = null;
 $langit_downloads_query = null;
+$langit_certifications_query = null;
 $langit_industries     = langit_theme_mod_enabled( 'show_industry_section' ) ? langit_homepage_industries() : array();
 
 if ( langit_theme_mod_enabled( 'show_services_section' ) ) {
@@ -150,6 +151,29 @@ if ( langit_theme_mod_enabled( 'show_downloads_section' ) ) {
 	}
 
 	$langit_downloads_query = new WP_Query( $langit_download_args );
+}
+
+if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
+	$langit_featured_certification = langit_theme_mod_id_list( 'featured_certification_ids' );
+	$langit_certification_args     = array(
+		'post_type'              => 'certification',
+		'post_status'            => 'publish',
+		'posts_per_page'         => absint( langit_theme_mod( 'featured_certification_count' ) ),
+		'orderby'                => array(
+			'menu_order' => 'ASC',
+			'date'       => 'DESC',
+		),
+		'no_found_rows'          => true,
+		'update_post_meta_cache' => true,
+		'update_post_term_cache' => true,
+	);
+
+	if ( ! empty( $langit_featured_certification ) ) {
+		$langit_certification_args['post__in'] = $langit_featured_certification;
+		$langit_certification_args['orderby']  = 'post__in';
+	}
+
+	$langit_certifications_query = new WP_Query( $langit_certification_args );
 }
 ?>
 
@@ -469,6 +493,33 @@ if ( langit_theme_mod_enabled( 'show_downloads_section' ) ) {
 				while ( $langit_downloads_query->have_posts() ) :
 					$langit_downloads_query->the_post();
 					langit_download_card( get_the_ID() );
+				endwhile;
+				wp_reset_postdata();
+				?>
+			</div>
+		</div>
+	</section>
+<?php endif; ?>
+
+<?php if ( $langit_certifications_query instanceof WP_Query && $langit_certifications_query->have_posts() ) : ?>
+	<section class="section section--surface">
+		<div class="container stack">
+			<?php
+			langit_section_heading(
+				array(
+					'eyebrow' => langit_theme_mod( 'certifications_section_eyebrow' ),
+					'title'   => langit_theme_mod( 'certifications_section_title' ),
+					'text'    => langit_theme_mod( 'certifications_section_description' ),
+					'center'  => true,
+				)
+			);
+			?>
+
+			<div class="certification-grid">
+				<?php
+				while ( $langit_certifications_query->have_posts() ) :
+					$langit_certifications_query->the_post();
+					langit_certification_card( get_the_ID() );
 				endwhile;
 				wp_reset_postdata();
 				?>
