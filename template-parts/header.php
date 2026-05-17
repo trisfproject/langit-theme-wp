@@ -11,13 +11,7 @@ $langit_description = get_bloginfo( 'description', 'display' );
 <header id="masthead" class="site-header">
 	<div class="site-header__inner">
 		<div class="site-branding">
-			<?php if ( has_custom_logo() ) : ?>
-				<?php the_custom_logo(); ?>
-			<?php else : ?>
-				<a class="custom-logo-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-					<img class="custom-logo" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/langit-icon.svg' ); ?>" width="64" height="64" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-				</a>
-			<?php endif; ?>
+			<?php langit_site_logo(); ?>
 			<div class="site-branding__text">
 				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
 

@@ -9,6 +9,47 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+if ( ! function_exists( 'langit_site_logo' ) ) {
+	/**
+	 * Render the global site logo from the native Custom Logo source.
+	 *
+	 * @param string $class Link class.
+	 * @param string $image_class Image class.
+	 */
+	function langit_site_logo( $class = 'custom-logo-link', $image_class = 'custom-logo' ) {
+		$logo_id   = get_theme_mod( 'custom_logo' );
+		$site_name = get_bloginfo( 'name' );
+
+		if ( $logo_id ) {
+			$logo = wp_get_attachment_image(
+				$logo_id,
+				'full',
+				false,
+				array(
+					'class'    => $image_class,
+					'alt'      => $site_name,
+					'decoding' => 'async',
+				)
+			);
+		} else {
+			$logo = sprintf(
+				'<img class="%1$s" src="%2$s" width="64" height="64" alt="%3$s" decoding="async">',
+				esc_attr( $image_class ),
+				esc_url( get_template_directory_uri() . '/assets/images/langit-icon.svg' ),
+				esc_attr( $site_name )
+			);
+		}
+
+		printf(
+			'<a class="%1$s" href="%2$s" rel="home" aria-label="%3$s">%4$s</a>',
+			esc_attr( $class ),
+			esc_url( home_url( '/' ) ),
+			esc_attr( $site_name ),
+			$logo // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		);
+	}
+}
+
 if ( ! function_exists( 'langit_posted_on' ) ) {
 	/**
 	 * Print a compact post date.

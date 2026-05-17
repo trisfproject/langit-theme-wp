@@ -1653,7 +1653,8 @@ input[type="submit"]:focus {
 	margin-bottom: 0.75rem;
 }
 
-.site-footer__logo img {
+.site-footer__logo img,
+.site-footer__logo-image {
 	width: 100%;
 	height: auto;
 	aspect-ratio: 1;

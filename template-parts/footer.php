@@ -56,9 +56,7 @@ $footer_copyright = str_replace(
 <footer id="colophon" class="site-footer">
 	<div class="site-footer__inner">
 		<div class="site-footer__brand">
-			<a class="site-footer__logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/footer-logo.png' ); ?>" width="256" height="256" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-			</a>
+			<?php langit_site_logo( 'site-footer__logo', 'site-footer__logo-image' ); ?>
 			<p class="site-footer__company"><?php echo esc_html( langit_theme_mod( 'company_name' ) ); ?></p>
 			<p><?php echo esc_html( langit_theme_mod( 'company_short_description' ) ); ?></p>
 		</div>
