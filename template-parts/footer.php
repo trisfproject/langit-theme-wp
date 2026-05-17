@@ -43,6 +43,7 @@ $footer_copyright = str_replace(
 <section class="footer-cta">
 	<div class="container footer-cta__inner">
 		<h2><?php echo esc_html( langit_theme_mod( 'footer_cta_title' ) ); ?></h2>
+		<p><?php echo esc_html( langit_theme_mod( 'footer_cta_description' ) ); ?></p>
 		<?php
 		langit_button(
 			array(

@@ -2386,6 +2386,12 @@ input[type="submit"]:focus {
 	margin-bottom: 0;
 }
 
+.footer-cta p {
+	max-width: 760px;
+	margin-bottom: 0;
+	color: var(--langit-muted);
+}
+
 .site-footer {
 	background: var(--langit-secondary);
 	color: rgba(255, 255, 255, 0.76);
