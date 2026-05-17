@@ -9,7 +9,7 @@ $langit_service_cta = langit_get_service_cta_url( get_the_ID(), 'contact' );
 $langit_terms       = get_the_terms( get_the_ID(), 'service_category' );
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope itemtype="https://schema.org/Service">
 	<header class="single-hero">
 		<div class="single-hero__content stack">
 			<p class="section-eyebrow"><?php esc_html_e( 'Service Detail', 'langit' ); ?></p>
@@ -28,9 +28,9 @@ $langit_terms       = get_the_terms( get_the_ID(), 'service_category' );
 					?>
 				</div>
 			<?php endif; ?>
-			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+			<?php the_title( '<h1 class="entry-title" itemprop="name">', '</h1>' ); ?>
 			<?php if ( has_excerpt() ) : ?>
-				<p class="lede"><?php echo esc_html( get_the_excerpt() ); ?></p>
+				<p class="lede" itemprop="description"><?php echo esc_html( get_the_excerpt() ); ?></p>
 			<?php endif; ?>
 			<?php
 			langit_button(
@@ -45,11 +45,11 @@ $langit_terms       = get_the_terms( get_the_ID(), 'service_category' );
 
 	<?php if ( has_post_thumbnail() ) : ?>
 		<figure class="single-featured-image">
-			<?php the_post_thumbnail( 'langit-social' ); ?>
+			<?php the_post_thumbnail( 'langit-social', array_merge( langit_featured_image_attrs( true ), array( 'itemprop' => 'image' ) ) ); ?>
 		</figure>
 	<?php endif; ?>
 
-	<div class="container single-content">
+	<div class="container single-content" itemprop="description">
 		<?php
 		the_content();
 

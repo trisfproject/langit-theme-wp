@@ -22,7 +22,7 @@ $langit_description = get_bloginfo( 'description', 'display' );
 		</div>
 
 		<nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Primary menu', 'langit' ); ?>">
-			<button class="menu-toggle" type="button" aria-controls="primary-menu" aria-expanded="false" data-nav-toggle>
+			<button class="menu-toggle" type="button" aria-controls="primary-menu" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle primary menu', 'langit' ); ?>" data-nav-toggle>
 				<span class="screen-reader-text"><?php esc_html_e( 'Toggle menu', 'langit' ); ?></span>
 				<span class="menu-toggle__bar" aria-hidden="true"></span>
 			</button>

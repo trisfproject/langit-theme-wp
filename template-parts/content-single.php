@@ -23,7 +23,7 @@
 
 	<?php if ( has_post_thumbnail() ) : ?>
 		<figure class="single-featured-image">
-			<?php the_post_thumbnail( 'langit-social', array( 'itemprop' => 'image' ) ); ?>
+			<?php the_post_thumbnail( 'langit-social', array_merge( langit_featured_image_attrs( true ), array( 'itemprop' => 'image' ) ) ); ?>
 		</figure>
 	<?php endif; ?>
 

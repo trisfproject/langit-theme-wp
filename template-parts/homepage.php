@@ -114,7 +114,7 @@ if ( langit_theme_mod_enabled( 'show_testimonials_section' ) || langit_theme_mod
 						srcset="<?php echo esc_url( $langit_image_uri . 'langit-project-720.webp' ); ?> 720w, <?php echo esc_url( $langit_image_uri . 'langit-project-1200.webp' ); ?> 1200w"
 						sizes="(min-width: 901px) 42vw, calc(100vw - 2.5rem)"
 					>
-					<img src="<?php echo esc_url( $langit_image_uri . 'langit-project-1200.jpg' ); ?>" width="1200" height="676" alt="">
+					<img src="<?php echo esc_url( $langit_image_uri . 'langit-project-1200.jpg' ); ?>" width="1200" height="676" alt="" loading="eager" decoding="async" fetchpriority="high">
 				</picture>
 				<div class="hero-panel__badge">
 					<span></span>

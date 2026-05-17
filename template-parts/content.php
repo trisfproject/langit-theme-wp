@@ -9,7 +9,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'card post-card' ); ?> itemscope itemtype="https://schema.org/BlogPosting">
 	<a class="post-card__media" href="<?php the_permalink(); ?>" aria-label="<?php the_title_attribute(); ?>">
 		<?php if ( has_post_thumbnail() ) : ?>
-			<?php the_post_thumbnail( 'langit-card', array( 'itemprop' => 'image' ) ); ?>
+			<?php the_post_thumbnail( 'langit-card', array_merge( langit_featured_image_attrs(), array( 'itemprop' => 'image' ) ) ); ?>
 		<?php else : ?>
 			<span></span>
 		<?php endif; ?>

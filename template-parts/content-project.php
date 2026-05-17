@@ -9,7 +9,7 @@ $langit_project_terms   = get_the_terms( get_the_ID(), 'project_category' );
 $langit_project_details = langit_get_project_details( get_the_ID() );
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope itemtype="https://schema.org/CreativeWork">
 	<header class="single-hero">
 		<div class="single-hero__content stack">
 			<p class="section-eyebrow"><?php esc_html_e( 'Project Detail', 'langit' ); ?></p>
@@ -28,16 +28,16 @@ $langit_project_details = langit_get_project_details( get_the_ID() );
 					?>
 				</div>
 			<?php endif; ?>
-			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+			<?php the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' ); ?>
 			<?php if ( has_excerpt() ) : ?>
-				<p class="lede"><?php echo esc_html( get_the_excerpt() ); ?></p>
+				<p class="lede" itemprop="description"><?php echo esc_html( get_the_excerpt() ); ?></p>
 			<?php endif; ?>
 		</div>
 	</header>
 
 	<?php if ( has_post_thumbnail() ) : ?>
 		<figure class="single-featured-image">
-			<?php the_post_thumbnail( 'langit-social' ); ?>
+			<?php the_post_thumbnail( 'langit-social', array_merge( langit_featured_image_attrs( true ), array( 'itemprop' => 'image' ) ) ); ?>
 		</figure>
 	<?php endif; ?>
 
