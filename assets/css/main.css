@@ -1413,13 +1413,15 @@ input[type="submit"]:focus {
 
 .site-footer__logo {
 	display: inline-flex;
-	max-width: 11rem;
+	width: clamp(4rem, 3.5rem + 2vw, 5.25rem);
 	margin-bottom: 0.75rem;
 }
 
 .site-footer__logo img {
 	width: 100%;
 	height: auto;
+	aspect-ratio: 1;
+	object-fit: contain;
 }
 
 .site-footer__brand h2 {
@@ -1437,18 +1439,6 @@ input[type="submit"]:focus {
 	display: grid;
 	gap: var(--langit-space-md);
 	grid-template-columns: 1fr;
-}
-
-.site-footer__widgets {
-	display: grid;
-	gap: var(--langit-space-md);
-	padding-top: var(--langit-space-md);
-	border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.footer-widget__title {
-	margin-bottom: 0.75rem;
-	font-size: 1rem;
 }
 
 .footer-column h3 {
@@ -1653,10 +1643,6 @@ textarea {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
-	.site-footer__widgets {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-	}
-
 	.form-placeholder__fields {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
@@ -1819,11 +1805,6 @@ textarea {
 	}
 
 	.site-footer__grid {
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-	}
-
-	.site-footer__widgets {
-		grid-column: 1 / -1;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 
@@ -1854,7 +1835,6 @@ textarea {
 	.process-grid,
 	.contact-info-grid,
 	.site-footer__grid,
-	.site-footer__widgets,
 	.card-grid--3,
 	.card-grid--4 {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1869,9 +1849,6 @@ textarea {
 		grid-template-columns: 1fr;
 	}
 
-	.site-footer__widgets {
-		grid-column: auto;
-	}
 }
 
 @media (prefers-reduced-motion: reduce) {

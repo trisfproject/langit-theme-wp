@@ -79,18 +79,6 @@ function langit_widgets_init() {
 			'after_title'   => '</h3>',
 		)
 	);
-
-	register_sidebar(
-		array(
-			'name'          => esc_html__( 'Footer Widgets', 'langit' ),
-			'id'            => 'footer-widgets',
-			'description'   => esc_html__( 'Optional footer widgets displayed below the primary footer columns.', 'langit' ),
-			'before_widget' => '<section id="%1$s" class="footer-widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h3 class="footer-widget__title">',
-			'after_title'   => '</h3>',
-		)
-	);
 }
 add_action( 'widgets_init', 'langit_widgets_init' );
 

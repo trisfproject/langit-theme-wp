@@ -21,16 +21,17 @@ $footer_products = array(
 	esc_html__( 'Installation & Maintenance', 'langit' ) => home_url( '/products/#installation-maintenance' ),
 );
 
-$footer_blog = array(
-	esc_html__( 'Latest Articles', 'langit' ) => home_url( '/blog/' ),
-	esc_html__( 'Categories', 'langit' )      => home_url( '/category/news/' ),
+$footer_contact = array(
+	langit_theme_mod( 'footer_whatsapp' )      => langit_whatsapp_url( langit_theme_mod( 'footer_whatsapp' ) ),
+	langit_theme_mod( 'footer_email' )         => 'mailto:' . langit_theme_mod( 'footer_email' ),
+	langit_theme_mod( 'footer_address' )       => home_url( '/contact/#map' ),
+	langit_theme_mod( 'footer_working_hours' ) => home_url( '/contact/#contact-information' ),
 );
 
-$footer_contact = array(
-	esc_html__( 'WhatsApp', 'langit' )      => 'https://wa.me/6281200000000',
-	esc_html__( 'Email', 'langit' )         => 'mailto:info@globalteknindo.co.id',
-	esc_html__( 'Address', 'langit' )       => home_url( '/contact/#map' ),
-	esc_html__( 'Working Hours', 'langit' ) => home_url( '/contact/#contact-information' ),
+$footer_copyright = str_replace(
+	array( '{year}', '{site_name}' ),
+	array( date_i18n( 'Y' ), get_bloginfo( 'name' ) ),
+	langit_theme_mod( 'footer_copyright_text' )
 );
 ?>
 
@@ -45,10 +46,10 @@ $footer_contact = array(
 	<div class="site-footer__inner">
 		<div class="site-footer__brand">
 			<a class="site-footer__logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/langit-logo-light.svg' ); ?>" width="220" height="64" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/footer-logo.png' ); ?>" width="256" height="256" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 			</a>
 			<p class="site-footer__company"><?php esc_html_e( 'PT Global Teknindo', 'langit' ); ?></p>
-			<p><?php esc_html_e( 'Perusahaan teknologi gedung yang menyediakan solusi Mechanical Electrical, CCTV, jaringan, fire alarm, audio, instalasi, dan pemeliharaan dengan pendekatan profesional serta terstruktur.', 'langit' ); ?></p>
+			<p><?php echo esc_html( langit_theme_mod( 'footer_company_description' ) ); ?></p>
 		</div>
 
 		<div class="site-footer__grid">
@@ -62,34 +63,17 @@ $footer_contact = array(
 				<?php langit_footer_link_list( $footer_products ); ?>
 			</nav>
 
-			<nav class="footer-column" aria-label="<?php esc_attr_e( 'Blog footer links', 'langit' ); ?>">
-				<h3><?php esc_html_e( 'Blog', 'langit' ); ?></h3>
-				<?php langit_footer_link_list( $footer_blog ); ?>
-			</nav>
-
 			<nav class="footer-column" aria-label="<?php esc_attr_e( 'Contact footer links', 'langit' ); ?>">
 				<h3><?php esc_html_e( 'Contact', 'langit' ); ?></h3>
 				<?php langit_footer_link_list( $footer_contact ); ?>
 			</nav>
 		</div>
-
-		<?php if ( is_active_sidebar( 'footer-widgets' ) ) : ?>
-			<div class="site-footer__widgets">
-				<?php dynamic_sidebar( 'footer-widgets' ); ?>
-			</div>
-		<?php endif; ?>
 	</div>
 
 	<div class="site-footer__bottom">
 		<div class="site-footer__bottom-inner">
 			<p>
-				<?php
-				printf(
-					esc_html__( 'Copyright %1$s %2$s. All rights reserved.', 'langit' ),
-					esc_html( date_i18n( 'Y' ) ),
-					esc_html( get_bloginfo( 'name' ) )
-				);
-				?>
+				<?php echo esc_html( $footer_copyright ); ?>
 			</p>
 			<nav aria-label="<?php esc_attr_e( 'Footer secondary menu', 'langit' ); ?>">
 				<?php

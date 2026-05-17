@@ -46,21 +46,21 @@ $langit_industries = array(
 <section class="hero hero--home">
 	<div class="container hero-grid">
 		<div class="hero__content stack">
-			<p class="section-eyebrow"><?php esc_html_e( 'Langit Industrial Technology', 'langit' ); ?></p>
-			<h1><?php esc_html_e( 'Reliable Building Technology Systems', 'langit' ); ?></h1>
-			<p class="lede"><?php esc_html_e( 'PT Global Teknindo membantu perusahaan, fasilitas industri, dan bangunan komersial membangun sistem keamanan, jaringan, elektrikal, alarm, audio, instalasi, dan pemeliharaan yang rapi serta andal.', 'langit' ); ?></p>
+			<p class="section-eyebrow"><?php echo esc_html( langit_theme_mod( 'hero_eyebrow' ) ); ?></p>
+			<h1><?php echo esc_html( langit_theme_mod( 'hero_title' ) ); ?></h1>
+			<p class="lede"><?php echo esc_html( langit_theme_mod( 'hero_description' ) ); ?></p>
 			<div class="cluster">
 				<?php
 				langit_button(
 					array(
-						'url'   => home_url( '/products/' ),
-						'label' => esc_html__( 'Our Services', 'langit' ),
+						'url'   => langit_theme_mod( 'hero_primary_button_url' ),
+						'label' => langit_theme_mod( 'hero_primary_button_text' ),
 					)
 				);
 				langit_button(
 					array(
-						'url'     => home_url( '/contact/' ),
-						'label'   => esc_html__( 'Contact Us', 'langit' ),
+						'url'     => langit_theme_mod( 'hero_secondary_button_url' ),
+						'label'   => langit_theme_mod( 'hero_secondary_button_text' ),
 						'variant' => 'ghost',
 					)
 				);
@@ -90,9 +90,9 @@ $langit_industries = array(
 		<?php
 		langit_section_heading(
 			array(
-				'eyebrow' => esc_html__( 'Company Introduction', 'langit' ),
+				'eyebrow' => langit_theme_mod( 'company_short_intro' ),
 				'title'   => esc_html__( 'Technology Partner for Modern Facilities', 'langit' ),
-				'text'    => esc_html__( 'PT Global Teknindo berfokus pada perencanaan, instalasi, integrasi, dan pemeliharaan sistem teknologi gedung. Setiap pekerjaan dijalankan dengan standar kerja terukur, dokumentasi yang jelas, serta hasil instalasi yang mudah dioperasikan dan dirawat dalam jangka panjang.', 'langit' ),
+				'text'    => langit_theme_mod( 'company_description' ),
 				'class'   => 'stack',
 			)
 		);

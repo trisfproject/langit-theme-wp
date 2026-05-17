@@ -85,7 +85,6 @@ if ( ! function_exists( 'langit_footer_menu_fallback' ) ) {
 			esc_html__( 'Home', 'langit' )     => home_url( '/' ),
 			esc_html__( 'Company', 'langit' )  => home_url( '/company/' ),
 			esc_html__( 'Products', 'langit' ) => home_url( '/products/' ),
-			esc_html__( 'Blog', 'langit' )     => home_url( '/blog/' ),
 			esc_html__( 'Contact', 'langit' )  => home_url( '/contact/' ),
 		);
 
