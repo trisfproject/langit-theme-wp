@@ -1238,11 +1238,26 @@ input[type="submit"]:focus {
 	display: grid;
 	align-content: start;
 	gap: 0.75rem;
+	min-width: 0;
+	padding: clamp(1rem, 2vw, 1.35rem);
 }
 
 .contact-card h3,
 .contact-card p {
 	margin-bottom: 0;
+}
+
+.contact-card h3 {
+	font-size: clamp(1rem, 0.94rem + 0.3vw, 1.22rem);
+	line-height: 1.25;
+	word-break: normal;
+	overflow-wrap: break-word;
+	hyphens: manual;
+}
+
+.contact-card p {
+	line-height: 1.65;
+	overflow-wrap: normal;
 }
 
 .contact-form-layout {
@@ -1251,13 +1266,20 @@ input[type="submit"]:focus {
 	align-items: start;
 }
 
+.contact-page-grid {
+	display: grid;
+	gap: var(--langit-space-lg);
+	align-items: start;
+}
+
 .contact-form-stack {
 	display: grid;
 	gap: var(--langit-space-md);
+	min-width: 0;
 }
 
 .form-placeholder {
-	padding: var(--langit-space-md);
+	padding: clamp(1.15rem, 2.4vw, var(--langit-space-lg));
 	border: 1px solid var(--langit-border);
 	border-radius: var(--langit-radius);
 	background: var(--langit-surface);
@@ -1299,6 +1321,21 @@ input[type="submit"]:focus {
 	min-width: 0;
 }
 
+.contact-form-panel .fluentform form,
+.contact-form-panel .fluentform .frm-fluent-form {
+	gap: 1rem;
+}
+
+.contact-form-panel .ff-el-group {
+	margin-bottom: 0;
+}
+
+.contact-form-panel input,
+.contact-form-panel textarea,
+.contact-form-panel select {
+	min-height: 3.05rem;
+}
+
 .quick-contact-card {
 	display: grid;
 	gap: 0.75rem;
@@ -1308,6 +1345,14 @@ input[type="submit"]:focus {
 	background:
 		linear-gradient(135deg, rgba(88, 175, 255, 0.16), rgba(255, 255, 255, 0.9)),
 		var(--langit-surface);
+}
+
+.contact-info-grid--enterprise {
+	gap: clamp(0.9rem, 1.6vw, var(--langit-space-md));
+}
+
+.contact-card--wide {
+	grid-column: 1 / -1;
 }
 
 .quick-contact-card h3,
@@ -1414,46 +1459,6 @@ input[type="submit"]:focus {
 
 .quote-form-placeholder .form-placeholder__message {
 	grid-column: 1 / -1;
-}
-
-.map-placeholder {
-	display: grid;
-	min-height: clamp(18rem, 48vw, 28rem);
-	place-items: center;
-	border: 1px solid var(--langit-border);
-	border-radius: var(--langit-radius);
-	background:
-		linear-gradient(135deg, rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.7)),
-		linear-gradient(90deg, rgba(88, 175, 255, 0.2) 1px, transparent 1px),
-		linear-gradient(rgba(88, 175, 255, 0.2) 1px, transparent 1px);
-	background-size: auto, 34px 34px, 34px 34px;
-	color: #ffffff;
-	font-weight: 850;
-	text-align: center;
-}
-
-.map-placeholder span,
-.map-placeholder a {
-	max-width: min(100% - 2rem, 36rem);
-}
-
-.map-placeholder a {
-	color: #ffffff;
-	text-decoration: none;
-}
-
-.map-embed {
-	overflow: hidden;
-	border: 1px solid var(--langit-border);
-	border-radius: var(--langit-radius);
-	background: var(--langit-surface);
-}
-
-.map-embed iframe {
-	display: block;
-	width: 100%;
-	min-height: clamp(18rem, 48vw, 28rem);
-	border: 0;
 }
 
 .support-cta__actions {
@@ -3059,6 +3064,7 @@ textarea {
 	.hero-grid,
 	.split-layout,
 	.company-overview,
+	.contact-page-grid,
 	.contact-form-layout {
 		grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.78fr);
 	}
@@ -3233,6 +3239,7 @@ textarea {
 	.hero-grid,
 	.split-layout,
 	.company-overview,
+	.contact-page-grid,
 	.contact-form-layout,
 	.blog-layout,
 	.download-detail-grid,
@@ -3271,6 +3278,32 @@ textarea {
 		grid-template-columns: 1fr;
 	}
 
+}
+
+@media (min-width: 901px) {
+	.contact-info-grid--enterprise {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (min-width: 960px) {
+	.contact-page-grid {
+		grid-template-columns: minmax(0, 1.05fr) minmax(22rem, 0.95fr);
+	}
+}
+
+@media (max-width: 640px) {
+	.contact-info-grid--enterprise {
+		grid-template-columns: 1fr;
+	}
+
+	.contact-card--wide {
+		grid-column: auto;
+	}
+
+	.contact-page-actions .button {
+		width: 100%;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {

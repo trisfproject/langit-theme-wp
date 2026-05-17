@@ -18,7 +18,7 @@ $footer_products = langit_get_core_service_links();
 $footer_contact = array(
 	langit_theme_mod( 'contact_whatsapp_number' ) => langit_contact_whatsapp_url(),
 	langit_theme_mod( 'contact_email_address' )   => 'mailto:' . langit_theme_mod( 'contact_email_address' ),
-	langit_theme_mod( 'company_address' )         => langit_theme_mod( 'contact_google_maps_url' ),
+	langit_theme_mod( 'company_address' )         => home_url( '/contact/#contact-information' ),
 	langit_theme_mod( 'company_working_hours' )   => home_url( '/contact/#contact-information' ),
 );
 

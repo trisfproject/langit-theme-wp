@@ -162,9 +162,7 @@ function langit_customizer_defaults() {
 		'contact_whatsapp_number'     => '+62 812 0000 0000',
 		'contact_whatsapp_url'        => '',
 		'contact_email_address'       => 'info@globalteknindo.co.id',
-		'contact_google_maps_url'     => home_url( '/contact/#map' ),
-		'contact_google_maps_embed_url' => '',
-		'contact_hero_description'    => __( 'Hubungi {company_name} untuk konsultasi kebutuhan Mechanical Electrical, CCTV, jaringan, fire alarm, audio, instalasi, dan layanan pemeliharaan.', 'langit' ),
+		'contact_hero_description'    => __( 'Tim Global Teknindo siap membantu kebutuhan keamanan, jaringan, elektrikal, audio, instalasi, dan maintenance untuk fasilitas maupun industri Anda.', 'langit' ),
 		'contact_info_eyebrow'        => __( 'Contact Information', 'langit' ),
 		'contact_info_title'          => __( 'Reach our team through the right channel.', 'langit' ),
 		'contact_form_eyebrow'        => __( 'Contact Form', 'langit' ),
@@ -175,9 +173,6 @@ function langit_customizer_defaults() {
 		'contact_quick_title'         => __( 'Need a faster response?', 'langit' ),
 		'contact_quick_description'   => __( 'Hubungi tim kami melalui WhatsApp untuk konsultasi awal, kebutuhan maintenance, atau diskusi proyek yang membutuhkan respons lebih cepat.', 'langit' ),
 		'contact_quick_button_text'   => __( 'Chat via WhatsApp', 'langit' ),
-		'contact_map_eyebrow'         => __( 'Google Maps', 'langit' ),
-		'contact_map_title'           => __( 'Office and Project Coverage', 'langit' ),
-		'contact_map_description'     => __( 'Gunakan tautan lokasi untuk melihat area layanan dan referensi alamat operasional perusahaan.', 'langit' ),
 		'show_quote_intro_section'    => '1',
 		'show_quote_services_section' => '1',
 		'show_quote_form_section'     => '1',
@@ -1592,19 +1587,6 @@ function langit_customize_register( $wp_customize ) {
 			'type'     => 'email',
 			'sanitize' => 'sanitize_email',
 		),
-		'contact_google_maps_url' => array(
-			'label'    => esc_html__( 'Google Maps URL', 'langit' ),
-			'section'  => 'langit_contact_information',
-			'type'     => 'url',
-			'sanitize' => 'esc_url_raw',
-		),
-		'contact_google_maps_embed_url' => array(
-			'label'       => esc_html__( 'Google Maps Embed URL', 'langit' ),
-			'description' => esc_html__( 'Optional iframe src URL. Leave empty to show the existing map link fallback.', 'langit' ),
-			'section'     => 'langit_contact_information',
-			'type'        => 'url',
-			'sanitize'    => 'esc_url_raw',
-		),
 		'contact_hero_description' => array(
 			'label'       => esc_html__( 'Contact Hero Description', 'langit' ),
 			'description' => esc_html__( 'Use {company_name} as an optional placeholder.', 'langit' ),
@@ -1656,20 +1638,6 @@ function langit_customize_register( $wp_customize ) {
 		'contact_quick_button_text' => array(
 			'label'   => esc_html__( 'Quick Contact Button Text', 'langit' ),
 			'section' => 'langit_contact_information',
-		),
-		'contact_map_eyebrow' => array(
-			'label'   => esc_html__( 'Map Section Eyebrow', 'langit' ),
-			'section' => 'langit_contact_information',
-		),
-		'contact_map_title' => array(
-			'label'   => esc_html__( 'Map Section Title', 'langit' ),
-			'section' => 'langit_contact_information',
-		),
-		'contact_map_description' => array(
-			'label'    => esc_html__( 'Map Section Description', 'langit' ),
-			'section'  => 'langit_contact_information',
-			'type'     => 'textarea',
-			'sanitize' => 'langit_sanitize_textarea',
 		),
 		'social_instagram_url' => array(
 			'label'    => esc_html__( 'Instagram URL', 'langit' ),
