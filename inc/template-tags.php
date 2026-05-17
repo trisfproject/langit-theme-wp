@@ -94,16 +94,12 @@ if ( ! function_exists( 'langit_primary_menu_fallback' ) ) {
 	 * Output starter navigation before a menu is assigned.
 	 */
 	function langit_primary_menu_fallback() {
-		$products = langit_get_core_service_links();
-
 		echo '<ul id="primary-menu" class="primary-menu" data-primary-menu>';
 		printf( '<li><a href="%1$s">%2$s</a></li>', esc_url( home_url( '/' ) ), esc_html__( 'Home', 'langit' ) );
 		printf( '<li><a href="%1$s">%2$s</a></li>', esc_url( home_url( '/company/' ) ), esc_html__( 'Company', 'langit' ) );
-		printf( '<li class="menu-item-has-children"><a href="%1$s">%2$s</a><ul class="sub-menu">', esc_url( home_url( '/products/' ) ), esc_html__( 'Products', 'langit' ) );
-		foreach ( $products as $label => $url ) {
-			printf( '<li><a href="%1$s">%2$s</a></li>', esc_url( $url ), esc_html( $label ) );
-		}
-		echo '</ul></li>';
+		printf( '<li class="menu-item-has-children langit-mega-menu langit-menu-products"><a href="%1$s" aria-haspopup="true">%2$s</a>', esc_url( home_url( '/products/' ) ), esc_html__( 'Products', 'langit' ) );
+		langit_render_products_mega_menu();
+		echo '</li>';
 		printf( '<li><a href="%1$s">%2$s</a></li>', esc_url( langit_get_services_archive_url() ), esc_html__( 'Services', 'langit' ) );
 		printf( '<li><a href="%1$s">%2$s</a></li>', esc_url( langit_get_projects_archive_url() ), esc_html__( 'Projects', 'langit' ) );
 		printf( '<li><a href="%1$s">%2$s</a></li>', esc_url( home_url( '/blog/' ) ), esc_html__( 'Blog', 'langit' ) );

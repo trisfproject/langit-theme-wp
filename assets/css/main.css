@@ -329,6 +329,13 @@ input[type="submit"]:focus {
 	z-index: 50;
 	background: rgba(248, 250, 252, 0.98);
 	border-bottom: 1px solid rgba(219, 228, 238, 0.82);
+	transition: background-color 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.site-header.is-scrolled {
+	border-bottom-color: rgba(203, 213, 225, 0.95);
+	background: rgba(248, 250, 252, 0.96);
+	box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
 }
 
 .site-header__inner {
@@ -516,6 +523,38 @@ input[type="submit"]:focus {
 	position: relative;
 }
 
+.primary-menu .menu-item-has-children > a {
+	padding-right: 3.15rem;
+}
+
+.submenu-toggle {
+	position: absolute;
+	top: 0.38rem;
+	right: 0.35rem;
+	display: inline-grid;
+	width: 2rem;
+	height: 2rem;
+	min-height: 2rem;
+	padding: 0;
+	place-items: center;
+	border: 1px solid rgba(88, 175, 255, 0.28);
+	background: rgba(88, 175, 255, 0.12);
+	color: var(--langit-secondary);
+}
+
+.submenu-toggle span {
+	width: 0.45rem;
+	height: 0.45rem;
+	border-right: 2px solid currentColor;
+	border-bottom: 2px solid currentColor;
+	transform: translateY(-12%) rotate(45deg);
+	transition: transform 160ms ease;
+}
+
+.submenu-toggle[aria-expanded="true"] span {
+	transform: translateY(12%) rotate(225deg);
+}
+
 .primary-menu .sub-menu {
 	display: grid;
 	gap: 0.15rem;
@@ -532,6 +571,49 @@ input[type="submit"]:focus {
 	padding: 0.62rem 0.75rem;
 	color: var(--langit-muted);
 	font-size: 0.94rem;
+}
+
+.langit-mega-panel {
+	gap: var(--langit-space-sm);
+}
+
+.langit-mega-group,
+.langit-mega-cta {
+	display: grid;
+	gap: 0.35rem;
+	min-width: 0;
+}
+
+.langit-mega-group__title {
+	padding: 0.25rem 0.75rem;
+	color: var(--langit-secondary);
+	font-size: 0.78rem;
+	font-weight: 850;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.langit-mega-list {
+	display: grid;
+	gap: 0.15rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.langit-mega-cta a {
+	display: grid;
+	gap: 0.25rem;
+	border: 1px solid rgba(88, 175, 255, 0.28);
+	background: rgba(88, 175, 255, 0.12);
+	color: var(--langit-secondary);
+}
+
+.langit-mega-cta span {
+	color: var(--langit-muted);
+	font-size: 0.84rem;
+	font-weight: 500;
+	line-height: 1.45;
 }
 
 .site-main {
@@ -2438,6 +2520,10 @@ textarea {
 		padding-right: 1.8rem;
 	}
 
+	.submenu-toggle {
+		display: none;
+	}
+
 	.primary-menu .menu-item-has-children > a::after {
 		position: absolute;
 		top: 50%;
@@ -2464,6 +2550,24 @@ textarea {
 		pointer-events: none;
 		transform: translateY(-0.35rem);
 		transition: opacity 160ms ease, transform 160ms ease;
+	}
+
+	.primary-menu .langit-mega-menu > .sub-menu {
+		right: 0;
+		left: auto;
+		width: min(42rem, calc(100vw - 2rem));
+		padding: var(--langit-space-sm);
+	}
+
+	.primary-menu .langit-mega-menu > .langit-mega-panel {
+		grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(13rem, 0.9fr);
+		align-items: stretch;
+	}
+
+	.primary-menu .langit-mega-cta a {
+		height: 100%;
+		align-content: center;
+		padding: var(--langit-space-sm);
 	}
 
 	.primary-menu .menu-item-has-children:hover > .sub-menu,
