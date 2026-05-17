@@ -238,6 +238,13 @@ function langit_customizer_defaults() {
 		'footer_cta_button_text'      => __( 'Contact Us', 'langit' ),
 		'footer_cta_button_url'       => home_url( '/contact/' ),
 		'footer_copyright_text'       => __( 'Copyright {year} {site_name}. All rights reserved.', 'langit' ),
+		'tracking_ga_id'              => '',
+		'tracking_gtm_id'             => '',
+		'tracking_meta_pixel_id'      => '',
+		'tracking_clarity_id'         => '',
+		'tracking_custom_head_scripts' => '',
+		'tracking_custom_footer_scripts' => '',
+		'tracking_schema_enabled'     => '0',
 	);
 }
 
@@ -427,6 +434,14 @@ function langit_customize_register( $wp_customize ) {
 		'langit_footer_settings',
 		array(
 			'title' => esc_html__( 'Footer Settings', 'langit' ),
+			'panel' => 'langit_theme_settings',
+		)
+	);
+
+	$wp_customize->add_section(
+		'langit_tracking_settings',
+		array(
+			'title' => esc_html__( 'Analytics & Tracking', 'langit' ),
 			'panel' => 'langit_theme_settings',
 		)
 	);
@@ -1605,6 +1620,51 @@ function langit_customize_register( $wp_customize ) {
 			'label'       => esc_html__( 'Footer Copyright Text', 'langit' ),
 			'description' => esc_html__( 'Use {year} and {site_name} as optional placeholders.', 'langit' ),
 			'section'     => 'langit_footer_settings',
+		),
+		'tracking_ga_id' => array(
+			'label'       => esc_html__( 'Google Analytics ID', 'langit' ),
+			'description' => esc_html__( 'Example: G-XXXXXXXXXX. Leave empty to disable.', 'langit' ),
+			'section'     => 'langit_tracking_settings',
+			'sanitize'    => 'langit_sanitize_tracking_id',
+		),
+		'tracking_gtm_id' => array(
+			'label'       => esc_html__( 'Google Tag Manager ID', 'langit' ),
+			'description' => esc_html__( 'Example: GTM-XXXXXXX. Leave empty to disable.', 'langit' ),
+			'section'     => 'langit_tracking_settings',
+			'sanitize'    => 'langit_sanitize_tracking_id',
+		),
+		'tracking_meta_pixel_id' => array(
+			'label'       => esc_html__( 'Meta Pixel ID', 'langit' ),
+			'description' => esc_html__( 'Numeric Pixel ID only. Leave empty to disable.', 'langit' ),
+			'section'     => 'langit_tracking_settings',
+			'sanitize'    => 'langit_sanitize_pixel_id',
+		),
+		'tracking_clarity_id' => array(
+			'label'       => esc_html__( 'Microsoft Clarity ID', 'langit' ),
+			'description' => esc_html__( 'Leave empty to disable.', 'langit' ),
+			'section'     => 'langit_tracking_settings',
+			'sanitize'    => 'langit_sanitize_tracking_id',
+		),
+		'tracking_custom_head_scripts' => array(
+			'label'       => esc_html__( 'Custom Head Scripts', 'langit' ),
+			'description' => esc_html__( 'Optional trusted tracking snippets for wp_head. Requires administrator script permissions.', 'langit' ),
+			'section'     => 'langit_tracking_settings',
+			'type'        => 'textarea',
+			'sanitize'    => 'langit_sanitize_tracking_snippet',
+		),
+		'tracking_custom_footer_scripts' => array(
+			'label'       => esc_html__( 'Custom Footer Scripts', 'langit' ),
+			'description' => esc_html__( 'Optional trusted tracking snippets for wp_footer. Requires administrator script permissions.', 'langit' ),
+			'section'     => 'langit_tracking_settings',
+			'type'        => 'textarea',
+			'sanitize'    => 'langit_sanitize_tracking_snippet',
+		),
+		'tracking_schema_enabled' => array(
+			'label'       => esc_html__( 'Enable Theme Organization Schema', 'langit' ),
+			'description' => esc_html__( 'Keep disabled when Rank Math or Yoast handles schema output.', 'langit' ),
+			'section'     => 'langit_tracking_settings',
+			'type'        => 'checkbox',
+			'sanitize'    => 'langit_sanitize_checkbox',
 		),
 	);
 

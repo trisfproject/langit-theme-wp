@@ -20,6 +20,11 @@ if ( empty( $args['url'] ) || empty( $args['label'] ) ) {
 	return;
 }
 
+if ( function_exists( 'langit_button_tracking_attributes' ) ) {
+	$args['attrs'] = array_merge( langit_button_tracking_attributes( $args ), (array) $args['attrs'] );
+	$args['class'] = trim( $args['class'] . ' langit-trackable-cta' );
+}
+
 $classes = array( 'button', 'button--' . $args['variant'], $args['class'] );
 $attrs   = '';
 

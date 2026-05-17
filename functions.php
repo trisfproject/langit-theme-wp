@@ -21,6 +21,7 @@ require_once LANGIT_DIR . '/inc/performance.php';
 require_once LANGIT_DIR . '/inc/seo.php';
 require_once LANGIT_DIR . '/inc/components.php';
 require_once LANGIT_DIR . '/inc/customizer.php';
+require_once LANGIT_DIR . '/inc/analytics.php';
 require_once LANGIT_DIR . '/inc/cta.php';
 require_once LANGIT_DIR . '/inc/contact.php';
 require_once LANGIT_DIR . '/inc/quote.php';
