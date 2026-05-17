@@ -256,33 +256,58 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 <?php endif; ?>
 
 <?php if ( langit_theme_mod_enabled( 'show_company_section' ) ) : ?>
+	<?php
+	$langit_company_page       = get_page_by_path( 'company' );
+	$langit_company_url        = langit_theme_mod( 'company_intro_button_url' );
+	$langit_company_url        = $langit_company_url ? $langit_company_url : ( $langit_company_page ? get_permalink( $langit_company_page ) : home_url( '/company/' ) );
+	$langit_company_image      = langit_theme_mod( 'company_intro_image' );
+	$langit_company_image      = $langit_company_image ? $langit_company_image : $langit_image_uri . 'langit-project-1200.jpg';
+	$langit_company_image_args = array(
+		'src'    => $langit_company_image,
+		'sizes'  => '(min-width: 901px) 38vw, calc(100vw - 2.5rem)',
+		'width'  => '1200',
+		'height' => '676',
+		'alt'    => esc_attr__( 'Teknisi Langit mengerjakan instalasi CCTV, jaringan, fire alarm, dan audio gedung.', 'langit' ),
+	);
+
+	if ( $langit_company_image === $langit_image_uri . 'langit-project-1200.jpg' ) {
+		$langit_company_image_args['sources'] = array(
+			array(
+				'type'   => 'image/webp',
+				'srcset' => esc_url( $langit_image_uri . 'langit-project-720.webp' ) . ' 720w, ' . esc_url( $langit_image_uri . 'langit-project-1200.webp' ) . ' 1200w',
+			),
+		);
+	}
+	?>
+
 	<section class="section section--surface">
 		<div class="container split-layout">
-			<?php
-			langit_section_heading(
-				array(
-					'eyebrow' => langit_theme_mod( 'company_short_intro' ),
-					'title'   => langit_theme_mod( 'company_section_title' ),
-					'text'    => langit_theme_mod( 'company_description' ),
-					'class'   => 'stack',
-				)
-			);
+			<div class="stack">
+				<?php
+				langit_section_heading(
+					array(
+						'eyebrow' => langit_theme_mod( 'company_short_intro' ),
+						'title'   => langit_theme_mod( 'company_section_title' ),
+						'text'    => langit_theme_mod( 'company_description' ),
+					)
+				);
+				?>
 
-			langit_responsive_image(
-				array(
-					'src'     => $langit_image_uri . 'langit-project-1200.jpg',
-					'sources' => array(
-						array(
-							'type'   => 'image/webp',
-							'srcset' => esc_url( $langit_image_uri . 'langit-project-720.webp' ) . ' 720w, ' . esc_url( $langit_image_uri . 'langit-project-1200.webp' ) . ' 1200w',
-						),
-					),
-					'sizes'   => '(min-width: 901px) 38vw, calc(100vw - 2.5rem)',
-					'width'   => '1200',
-					'height'  => '676',
-					'alt'     => esc_attr__( 'Teknisi Langit mengerjakan instalasi CCTV, jaringan, fire alarm, dan audio gedung.', 'langit' ),
-				)
-			);
+				<?php if ( langit_theme_mod( 'company_intro_closing_text' ) ) : ?>
+					<p><?php echo esc_html( langit_theme_mod( 'company_intro_closing_text' ) ); ?></p>
+				<?php endif; ?>
+				<?php
+				langit_button(
+					array(
+						'url'   => $langit_company_url,
+						'label' => langit_theme_mod( 'company_intro_button_text' ),
+					)
+				);
+				?>
+			</div>
+
+			<?php
+			langit_responsive_image( $langit_company_image_args );
 			?>
 		</div>
 	</section>
