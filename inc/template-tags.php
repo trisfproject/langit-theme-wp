@@ -94,14 +94,7 @@ if ( ! function_exists( 'langit_primary_menu_fallback' ) ) {
 	 * Output starter navigation before a menu is assigned.
 	 */
 	function langit_primary_menu_fallback() {
-		$products = array(
-			esc_html__( 'CCTV & Security System', 'langit' )       => home_url( '/products/#cctv-security-system' ),
-			esc_html__( 'Networking Infrastructure', 'langit' )    => home_url( '/products/#networking-infrastructure' ),
-			esc_html__( 'Mechanical Electrical', 'langit' )        => home_url( '/products/#mechanical-electrical' ),
-			esc_html__( 'Fire Alarm System', 'langit' )            => home_url( '/products/#fire-alarm-system' ),
-			esc_html__( 'Audio & Public Address', 'langit' )       => home_url( '/products/#audio-public-address' ),
-			esc_html__( 'Installation & Maintenance', 'langit' )   => home_url( '/products/#installation-maintenance' ),
-		);
+		$products = langit_get_core_service_links();
 
 		echo '<ul id="primary-menu" class="primary-menu" data-primary-menu>';
 		printf( '<li><a href="%1$s">%2$s</a></li>', esc_url( home_url( '/' ) ), esc_html__( 'Home', 'langit' ) );
@@ -111,6 +104,7 @@ if ( ! function_exists( 'langit_primary_menu_fallback' ) ) {
 			printf( '<li><a href="%1$s">%2$s</a></li>', esc_url( $url ), esc_html( $label ) );
 		}
 		echo '</ul></li>';
+		printf( '<li><a href="%1$s">%2$s</a></li>', esc_url( langit_get_services_archive_url() ), esc_html__( 'Services', 'langit' ) );
 		printf( '<li><a href="%1$s">%2$s</a></li>', esc_url( langit_get_projects_archive_url() ), esc_html__( 'Projects', 'langit' ) );
 		printf( '<li><a href="%1$s">%2$s</a></li>', esc_url( home_url( '/blog/' ) ), esc_html__( 'Blog', 'langit' ) );
 		printf( '<li><a href="%1$s">%2$s</a></li>', esc_url( home_url( '/contact/' ) ), esc_html__( 'Contact', 'langit' ) );
@@ -127,6 +121,7 @@ if ( ! function_exists( 'langit_footer_menu_fallback' ) ) {
 			esc_html__( 'Home', 'langit' )     => home_url( '/' ),
 			esc_html__( 'Company', 'langit' )  => home_url( '/company/' ),
 			esc_html__( 'Products', 'langit' ) => home_url( '/products/' ),
+			esc_html__( 'Services', 'langit' ) => langit_get_services_archive_url(),
 			esc_html__( 'Projects', 'langit' ) => langit_get_projects_archive_url(),
 			esc_html__( 'Contact', 'langit' )  => home_url( '/contact/' ),
 		);
@@ -170,6 +165,7 @@ if ( ! function_exists( 'langit_footer_bottom_menu_fallback' ) ) {
 		$items = array(
 			esc_html__( 'Company', 'langit' ) => home_url( '/company/' ),
 			esc_html__( 'Products', 'langit' ) => home_url( '/products/' ),
+			esc_html__( 'Services', 'langit' ) => langit_get_services_archive_url(),
 			esc_html__( 'Projects', 'langit' ) => langit_get_projects_archive_url(),
 			esc_html__( 'Contact', 'langit' ) => home_url( '/contact/' ),
 		);

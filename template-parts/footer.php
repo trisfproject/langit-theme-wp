@@ -12,14 +12,7 @@ $footer_company = array(
 	esc_html__( 'Contact', 'langit' )          => home_url( '/contact/' ),
 );
 
-$footer_products = array(
-	esc_html__( 'CCTV & Security System', 'langit' )     => home_url( '/products/#cctv-security-system' ),
-	esc_html__( 'Networking Infrastructure', 'langit' )  => home_url( '/products/#networking-infrastructure' ),
-	esc_html__( 'Mechanical Electrical', 'langit' )      => home_url( '/products/#mechanical-electrical' ),
-	esc_html__( 'Fire Alarm System', 'langit' )          => home_url( '/products/#fire-alarm-system' ),
-	esc_html__( 'Audio & Public Address', 'langit' )     => home_url( '/products/#audio-public-address' ),
-	esc_html__( 'Installation & Maintenance', 'langit' ) => home_url( '/products/#installation-maintenance' ),
-);
+$footer_products = langit_get_core_service_links();
 
 $footer_contact = array(
 	langit_theme_mod( 'contact_whatsapp_number' ) => langit_contact_whatsapp_url(),

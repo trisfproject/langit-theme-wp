@@ -105,6 +105,65 @@ function langit_flush_service_rewrites() {
 add_action( 'after_switch_theme', 'langit_flush_service_rewrites' );
 
 /**
+ * Flush service rewrite rules once after service route updates.
+ */
+function langit_maybe_flush_service_rewrites() {
+	$rewrite_version = '2026-05-17-services-route';
+
+	if ( get_option( 'langit_service_rewrite_version' ) === $rewrite_version ) {
+		return;
+	}
+
+	langit_register_services();
+	flush_rewrite_rules();
+	update_option( 'langit_service_rewrite_version', $rewrite_version );
+}
+add_action( 'admin_init', 'langit_maybe_flush_service_rewrites' );
+
+/**
+ * Return the public Services archive URL.
+ *
+ * @return string
+ */
+function langit_get_services_archive_url() {
+	$archive_url = get_post_type_archive_link( 'service' );
+
+	return $archive_url ? $archive_url : home_url( '/services/' );
+}
+
+/**
+ * Return a service permalink by slug with a stable fallback.
+ *
+ * @param string $slug Service slug.
+ * @return string
+ */
+function langit_get_service_url_by_slug( $slug ) {
+	$service = get_page_by_path( $slug, OBJECT, 'service' );
+
+	if ( $service instanceof WP_Post && 'publish' === get_post_status( $service ) ) {
+		return get_permalink( $service );
+	}
+
+	return langit_get_services_archive_url() . '#' . sanitize_title( $slug );
+}
+
+/**
+ * Return core service links for navigation and footer usage.
+ *
+ * @return array<string,string>
+ */
+function langit_get_core_service_links() {
+	return array(
+		esc_html__( 'CCTV & Security System', 'langit' )     => langit_get_service_url_by_slug( 'cctv-security-system' ),
+		esc_html__( 'Networking Infrastructure', 'langit' )  => langit_get_service_url_by_slug( 'networking-infrastructure' ),
+		esc_html__( 'Mechanical Electrical', 'langit' )      => langit_get_service_url_by_slug( 'mechanical-electrical' ),
+		esc_html__( 'Fire Alarm System', 'langit' )          => langit_get_service_url_by_slug( 'fire-alarm-system' ),
+		esc_html__( 'Audio & Public Address', 'langit' )     => langit_get_service_url_by_slug( 'audio-public-address' ),
+		esc_html__( 'Installation & Maintenance', 'langit' ) => langit_get_service_url_by_slug( 'installation-maintenance' ),
+	);
+}
+
+/**
  * Add service CTA metabox.
  */
 function langit_add_service_meta_boxes() {
@@ -538,21 +597,22 @@ function langit_service_card( $service ) {
 	$terms   = get_the_terms( $post_id, 'service_category' );
 	$meta    = ( ! is_wp_error( $terms ) && ! empty( $terms ) ) ? $terms[0]->name : esc_html__( 'Service', 'langit' );
 	$icon    = langit_get_service_icon_url( $post_id );
+	$link    = get_permalink( $post_id );
 	?>
 	<article id="<?php echo esc_attr( get_post_field( 'post_name', $post_id ) ); ?>" <?php post_class( 'card product-card', $post_id ); ?>>
-		<div class="product-card__visual" aria-hidden="true">
+		<a class="product-card__visual" href="<?php echo esc_url( $link ); ?>" aria-label="<?php echo esc_attr( get_the_title( $post_id ) ); ?>">
 			<img src="<?php echo esc_url( $icon ); ?>" width="48" height="48" alt="" loading="lazy" decoding="async">
-		</div>
+		</a>
 		<div class="product-card__body">
 			<p class="card__meta"><?php echo esc_html( $meta ); ?></p>
-			<h3><?php echo esc_html( get_the_title( $post_id ) ); ?></h3>
+			<h3><a href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( get_the_title( $post_id ) ); ?></a></h3>
 			<p><?php echo esc_html( langit_get_service_excerpt( $post_id ) ); ?></p>
 		</div>
 		<?php
 		langit_button(
 			array(
-				'url'     => langit_get_service_cta_url( $post_id ),
-				'label'   => langit_get_service_cta_label( $post_id ),
+				'url'     => $link,
+				'label'   => esc_html__( 'View Service', 'langit' ),
 				'variant' => 'ghost',
 			)
 		);
@@ -590,6 +650,11 @@ function langit_service_summary_card( $service ) {
 			'class'      => 'service-card',
 			'icon_class' => 'service-card__icon',
 			'icon_url'   => $icon_url,
+			'action'     => array(
+				'url'     => get_permalink( $post_id ),
+				'label'   => esc_html__( 'View Service', 'langit' ),
+				'variant' => 'ghost',
+			),
 		)
 	);
 }
