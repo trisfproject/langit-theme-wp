@@ -653,7 +653,7 @@ input[type="submit"]:focus {
 
 .hero--home::before {
 	background:
-		linear-gradient(90deg, rgba(6, 17, 31, 0.92) 0%, rgba(6, 17, 31, 0.78) 42%, rgba(6, 17, 31, 0.38) 100%),
+		linear-gradient(90deg, rgba(6, 17, 31, var(--langit-hero-overlay-opacity, 0.82)) 0%, rgba(6, 17, 31, 0.78) 42%, rgba(6, 17, 31, 0.44) 100%),
 		linear-gradient(180deg, rgba(6, 17, 31, 0.34), rgba(6, 17, 31, 0.82));
 }
 
@@ -2498,6 +2498,12 @@ textarea {
 @media (max-width: 430px) {
 	.hero--home {
 		padding-block: calc(var(--langit-header-height) + 1.75rem) 2.5rem;
+	}
+
+	.hero--home::before {
+		background:
+			linear-gradient(90deg, rgba(6, 17, 31, 0.9) 0%, rgba(6, 17, 31, 0.82) 52%, rgba(6, 17, 31, 0.68) 100%),
+			linear-gradient(180deg, rgba(6, 17, 31, 0.52), rgba(6, 17, 31, 0.86));
 	}
 
 	.hero--home .hero-grid {

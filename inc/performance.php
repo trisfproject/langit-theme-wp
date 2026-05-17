@@ -54,11 +54,15 @@ function langit_preload_lcp_image() {
 			return;
 		}
 
+		$hero_image = function_exists( 'langit_theme_mod' ) ? langit_theme_mod( 'hero_background_1' ) : get_template_directory_uri() . '/assets/images/services/cctv-security-system.webp';
+
+		if ( empty( $hero_image ) ) {
+			$hero_image = get_template_directory_uri() . '/assets/images/services/cctv-security-system.webp';
+		}
+
 		printf(
-			'<link rel="preload" as="image" href="%1$s" imagesrcset="%2$s 720w, %3$s 1200w" imagesizes="(min-width: 901px) 42vw, calc(100vw - 2.5rem)" type="image/webp" fetchpriority="high">' . "\n",
-			esc_url( get_template_directory_uri() . '/assets/images/langit-project-1200.webp' ),
-			esc_url( get_template_directory_uri() . '/assets/images/langit-project-720.webp' ),
-			esc_url( get_template_directory_uri() . '/assets/images/langit-project-1200.webp' )
+			'<link rel="preload" as="image" href="%1$s" fetchpriority="high">' . "\n",
+			esc_url( $hero_image )
 		);
 		return;
 	}

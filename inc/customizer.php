@@ -20,9 +20,14 @@ function langit_customizer_defaults() {
 		'hero_title'                  => __( 'Reliable Building Technology Systems', 'langit' ),
 		'hero_description'            => __( 'PT Global Teknindo menghadirkan solusi terintegrasi untuk keamanan, jaringan, elektrikal, fire alarm, audio, instalasi, dan pemeliharaan melalui konsultasi, implementasi, serta dukungan teknis yang menjaga operasional fasilitas tetap andal.', 'langit' ),
 		'hero_primary_button_text'    => __( 'Our Services', 'langit' ),
-		'hero_primary_button_url'     => home_url( '/products/' ),
+		'hero_primary_button_url'     => '#services',
 		'hero_secondary_button_text'  => __( 'Contact Us', 'langit' ),
 		'hero_secondary_button_url'   => home_url( '/contact/' ),
+		'hero_background_1'           => get_template_directory_uri() . '/assets/images/services/cctv-security-system.webp',
+		'hero_background_2'           => get_template_directory_uri() . '/assets/images/projects/network-infrastructure-deployment.webp',
+		'hero_background_3'           => get_template_directory_uri() . '/assets/images/projects/fire-alarm-integration.webp',
+		'hero_background_4'           => get_template_directory_uri() . '/assets/images/projects/audio-public-address-installation.webp',
+		'hero_overlay_opacity'        => '0.82',
 		'show_hero_section'           => '1',
 		'show_company_section'        => '1',
 		'show_services_section'       => '1',
@@ -297,6 +302,26 @@ function langit_sanitize_positive_int( $value ) {
 }
 
 /**
+ * Sanitize hero overlay opacity.
+ *
+ * @param mixed $value Opacity value.
+ * @return string
+ */
+function langit_sanitize_overlay_opacity( $value ) {
+	$opacity = (float) $value;
+
+	if ( $opacity < 0.35 ) {
+		$opacity = 0.35;
+	}
+
+	if ( $opacity > 0.95 ) {
+		$opacity = 0.95;
+	}
+
+	return (string) round( $opacity, 2 );
+}
+
+/**
  * Sanitize a comma-separated list of post IDs.
  *
  * @param string $value Input value.
@@ -480,6 +505,46 @@ function langit_customize_register( $wp_customize ) {
 			'section'  => 'langit_homepage_sections',
 			'type'     => 'checkbox',
 			'sanitize' => 'langit_sanitize_checkbox',
+		),
+		'hero_background_1' => array(
+			'label'       => esc_html__( 'Hero Background 1', 'langit' ),
+			'description' => esc_html__( 'Recommended topic: CCTV & Security System. Suggested size: 1920x1080 WebP.', 'langit' ),
+			'section'     => 'langit_hero_settings',
+			'type'        => 'image',
+			'sanitize'    => 'esc_url_raw',
+		),
+		'hero_background_2' => array(
+			'label'       => esc_html__( 'Hero Background 2', 'langit' ),
+			'description' => esc_html__( 'Recommended topic: Networking Infrastructure & Mechanical Electrical.', 'langit' ),
+			'section'     => 'langit_hero_settings',
+			'type'        => 'image',
+			'sanitize'    => 'esc_url_raw',
+		),
+		'hero_background_3' => array(
+			'label'       => esc_html__( 'Hero Background 3', 'langit' ),
+			'description' => esc_html__( 'Recommended topic: Fire Alarm System.', 'langit' ),
+			'section'     => 'langit_hero_settings',
+			'type'        => 'image',
+			'sanitize'    => 'esc_url_raw',
+		),
+		'hero_background_4' => array(
+			'label'       => esc_html__( 'Hero Background 4', 'langit' ),
+			'description' => esc_html__( 'Recommended topic: Audio & Public Address.', 'langit' ),
+			'section'     => 'langit_hero_settings',
+			'type'        => 'image',
+			'sanitize'    => 'esc_url_raw',
+		),
+		'hero_overlay_opacity' => array(
+			'label'       => esc_html__( 'Hero Overlay Opacity', 'langit' ),
+			'description' => esc_html__( 'Adjust darkness for text readability. Recommended range: 0.70 - 0.88.', 'langit' ),
+			'section'     => 'langit_hero_settings',
+			'type'        => 'number',
+			'sanitize'    => 'langit_sanitize_overlay_opacity',
+			'input_attrs' => array(
+				'min'  => '0.35',
+				'max'  => '0.95',
+				'step' => '0.01',
+			),
 		),
 		'show_company_section' => array(
 			'label'    => esc_html__( 'Show Company Introduction', 'langit' ),
@@ -1695,7 +1760,12 @@ function langit_customize_register( $wp_customize ) {
 			$control_args['input_attrs'] = $field['input_attrs'];
 		}
 
-		$wp_customize->add_control( 'langit_' . $key, $control_args );
+		if ( isset( $field['type'] ) && 'image' === $field['type'] ) {
+			unset( $control_args['type'] );
+			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'langit_' . $key, $control_args ) );
+		} else {
+			$wp_customize->add_control( 'langit_' . $key, $control_args );
+		}
 	}
 }
 add_action( 'customize_register', 'langit_customize_register' );

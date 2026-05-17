@@ -202,28 +202,22 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 ?>
 
 <?php if ( langit_theme_mod_enabled( 'show_hero_section' ) ) : ?>
-	<section class="hero hero--home">
+	<section class="hero hero--home" style="--langit-hero-overlay-opacity: <?php echo esc_attr( langit_theme_mod( 'hero_overlay_opacity' ) ); ?>;">
 		<div class="hero-backgrounds" aria-hidden="true" data-hero-backgrounds>
 			<?php
-			$langit_hero_backgrounds = array(
+			$langit_hero_backgrounds = array_filter(
 				array(
-					'src' => $langit_image_uri . 'services/cctv-security-system.webp',
-				),
-				array(
-					'src' => $langit_image_uri . 'projects/network-infrastructure-deployment.webp',
-				),
-				array(
-					'src' => $langit_image_uri . 'projects/fire-alarm-integration.webp',
-				),
-				array(
-					'src' => $langit_image_uri . 'projects/audio-public-address-installation.webp',
-				),
+					langit_theme_mod( 'hero_background_1' ),
+					langit_theme_mod( 'hero_background_2' ),
+					langit_theme_mod( 'hero_background_3' ),
+					langit_theme_mod( 'hero_background_4' ),
+				)
 			);
 			?>
-			<?php foreach ( $langit_hero_backgrounds as $langit_index => $langit_background ) : ?>
+			<?php foreach ( array_values( $langit_hero_backgrounds ) as $langit_index => $langit_background ) : ?>
 				<img
 					class="hero-backgrounds__image<?php echo 0 === $langit_index ? ' is-active' : ''; ?>"
-					src="<?php echo esc_url( $langit_background['src'] ); ?>"
+					src="<?php echo esc_url( $langit_background ); ?>"
 					width="1200"
 					height="676"
 					alt=""
