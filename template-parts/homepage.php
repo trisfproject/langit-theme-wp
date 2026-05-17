@@ -8,6 +8,7 @@
 $langit_image_uri      = get_template_directory_uri() . '/assets/images/';
 $langit_services_query = null;
 $langit_projects_query = null;
+$langit_testimonials_query = null;
 $langit_industries     = langit_theme_mod_enabled( 'show_industry_section' ) ? langit_homepage_industries() : array();
 
 if ( langit_theme_mod_enabled( 'show_services_section' ) ) {
@@ -54,6 +55,29 @@ if ( langit_theme_mod_enabled( 'show_projects_section' ) ) {
 	}
 
 	$langit_projects_query = new WP_Query( $langit_project_args );
+}
+
+if ( langit_theme_mod_enabled( 'show_testimonials_section' ) || langit_theme_mod_enabled( 'show_client_logo_section' ) ) {
+	$langit_featured_testimonial = langit_theme_mod_id_list( 'featured_testimonial_ids' );
+	$langit_testimonial_args     = array(
+		'post_type'              => 'testimonial',
+		'post_status'            => 'publish',
+		'posts_per_page'         => absint( langit_theme_mod( 'featured_testimonial_count' ) ),
+		'orderby'                => array(
+			'menu_order' => 'ASC',
+			'date'       => 'DESC',
+		),
+		'no_found_rows'          => true,
+		'update_post_meta_cache' => true,
+		'update_post_term_cache' => true,
+	);
+
+	if ( ! empty( $langit_featured_testimonial ) ) {
+		$langit_testimonial_args['post__in'] = $langit_featured_testimonial;
+		$langit_testimonial_args['orderby']  = 'post__in';
+	}
+
+	$langit_testimonials_query = new WP_Query( $langit_testimonial_args );
 }
 ?>
 
@@ -215,6 +239,87 @@ if ( langit_theme_mod_enabled( 'show_projects_section' ) ) {
 			</div>
 		</div>
 	</section>
+<?php endif; ?>
+
+<?php if ( langit_theme_mod_enabled( 'show_trust_section' ) ) : ?>
+	<section class="section section--surface">
+		<div class="container stack">
+			<?php
+			langit_section_heading(
+				array(
+					'eyebrow' => langit_theme_mod( 'trust_section_eyebrow' ),
+					'title'   => langit_theme_mod( 'trust_section_title' ),
+					'text'    => langit_theme_mod( 'trust_section_description' ),
+					'center'  => true,
+				)
+			);
+			?>
+
+			<div class="trust-grid">
+				<?php foreach ( langit_trust_stats() as $langit_stat ) : ?>
+					<article class="card trust-card">
+						<strong><?php echo esc_html( $langit_stat['value'] ); ?></strong>
+						<h3><?php echo esc_html( $langit_stat['label'] ); ?></h3>
+						<p><?php echo esc_html( $langit_stat['description'] ); ?></p>
+					</article>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
+<?php endif; ?>
+
+<?php if ( $langit_testimonials_query instanceof WP_Query && $langit_testimonials_query->have_posts() ) : ?>
+	<?php if ( langit_theme_mod_enabled( 'show_testimonials_section' ) ) : ?>
+		<section class="section">
+			<div class="container stack">
+				<?php
+				langit_section_heading(
+					array(
+						'eyebrow' => langit_theme_mod( 'testimonials_section_eyebrow' ),
+						'title'   => langit_theme_mod( 'testimonials_section_title' ),
+						'text'    => langit_theme_mod( 'testimonials_section_description' ),
+						'center'  => true,
+					)
+				);
+				?>
+
+				<div class="testimonial-grid">
+					<?php
+					while ( $langit_testimonials_query->have_posts() ) :
+						$langit_testimonials_query->the_post();
+						langit_testimonial_card( get_the_ID() );
+					endwhile;
+					wp_reset_postdata();
+					?>
+				</div>
+			</div>
+		</section>
+	<?php endif; ?>
+
+	<?php if ( langit_theme_mod_enabled( 'show_client_logo_section' ) ) : ?>
+		<section class="section section--compact">
+			<div class="container stack">
+				<h2 class="client-logo-title"><?php echo esc_html( langit_theme_mod( 'client_logo_section_title' ) ); ?></h2>
+				<div class="client-logo-grid">
+					<?php
+					$langit_testimonials_query->rewind_posts();
+					while ( $langit_testimonials_query->have_posts() ) :
+						$langit_testimonials_query->the_post();
+						if ( ! has_post_thumbnail() ) {
+							continue;
+						}
+						?>
+						<div class="client-logo-item">
+							<?php the_post_thumbnail( 'thumbnail', array( 'loading' => 'lazy', 'decoding' => 'async' ) ); ?>
+						</div>
+						<?php
+					endwhile;
+					wp_reset_postdata();
+					?>
+				</div>
+			</div>
+		</section>
+	<?php endif; ?>
 <?php endif; ?>
 
 <?php if ( langit_theme_mod_enabled( 'show_cta_section' ) ) : ?>
