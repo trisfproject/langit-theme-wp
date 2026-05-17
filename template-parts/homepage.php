@@ -21,6 +21,21 @@ $langit_services_query = new WP_Query(
 	)
 );
 
+$langit_projects_query = new WP_Query(
+	array(
+		'post_type'              => 'project',
+		'post_status'            => 'publish',
+		'posts_per_page'         => 3,
+		'orderby'                => array(
+			'menu_order' => 'ASC',
+			'date'       => 'DESC',
+		),
+		'no_found_rows'          => true,
+		'update_post_meta_cache' => true,
+		'update_post_term_cache' => true,
+	)
+);
+
 $langit_industries = array(
 	esc_html__( 'Industrial', 'langit' ),
 	esc_html__( 'Commercial Building', 'langit' ),
@@ -154,6 +169,32 @@ $langit_industries = array(
 		</div>
 	</div>
 </section>
+
+<?php if ( $langit_projects_query->have_posts() ) : ?>
+	<section class="section">
+		<div class="container stack">
+			<?php
+			langit_section_heading(
+				array(
+					'eyebrow' => esc_html__( 'Featured Projects', 'langit' ),
+					'title'   => esc_html__( 'Selected work for industrial and commercial facilities.', 'langit' ),
+					'center'  => true,
+				)
+			);
+			?>
+
+			<div class="blog-grid project-grid">
+				<?php
+				while ( $langit_projects_query->have_posts() ) :
+					$langit_projects_query->the_post();
+					langit_project_card( get_the_ID() );
+				endwhile;
+				wp_reset_postdata();
+				?>
+			</div>
+		</div>
+	</section>
+<?php endif; ?>
 
 <?php
 langit_cta(

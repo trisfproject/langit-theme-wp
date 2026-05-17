@@ -20,3 +20,4 @@ require_once LANGIT_DIR . '/inc/components.php';
 require_once LANGIT_DIR . '/inc/customizer.php';
 require_once LANGIT_DIR . '/inc/patterns.php';
 require_once LANGIT_DIR . '/inc/services.php';
+require_once LANGIT_DIR . '/inc/projects.php';
