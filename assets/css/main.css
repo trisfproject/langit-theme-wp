@@ -1068,7 +1068,8 @@ input[type="submit"]:focus {
 	max-width: 100%;
 }
 
-.quote-process-card {
+.quote-process-card,
+.maintenance-flow-card {
 	align-content: start;
 }
 
@@ -1087,7 +1088,10 @@ input[type="submit"]:focus {
 }
 
 .quote-service-grid,
-.quote-support-grid {
+.quote-support-grid,
+.maintenance-plan-grid,
+.maintenance-coverage-grid,
+.maintenance-sla-grid {
 	display: grid;
 	gap: var(--langit-space-md);
 	grid-template-columns: 1fr;
@@ -1110,7 +1114,10 @@ input[type="submit"]:focus {
 }
 
 .quote-service-option strong,
-.quote-support-card h3 {
+.quote-support-card h3,
+.maintenance-plan-card h3,
+.maintenance-coverage-card h3,
+.maintenance-sla-card h3 {
 	display: block;
 	margin-bottom: 0.35rem;
 	color: var(--langit-secondary);
@@ -1118,21 +1125,39 @@ input[type="submit"]:focus {
 }
 
 .quote-service-option small,
-.quote-support-card p {
+.quote-support-card p,
+.maintenance-plan-card p,
+.maintenance-coverage-card p,
+.maintenance-sla-card p {
 	color: var(--langit-muted);
 	font-size: 0.95rem;
 	line-height: 1.6;
 }
 
-.quote-support-card {
+.quote-support-card,
+.maintenance-plan-card,
+.maintenance-coverage-card,
+.maintenance-sla-card {
 	display: grid;
 	align-content: start;
 	gap: 0.4rem;
 }
 
 .quote-support-card h3,
-.quote-support-card p {
+.quote-support-card p,
+.maintenance-plan-card h3,
+.maintenance-plan-card p,
+.maintenance-coverage-card h3,
+.maintenance-coverage-card p,
+.maintenance-sla-card h3,
+.maintenance-sla-card p {
 	margin-bottom: 0;
+}
+
+.maintenance-sla-card strong {
+	color: var(--langit-primary);
+	font-size: clamp(1.45rem, 4vw, 2.35rem);
+	line-height: 1;
 }
 
 .quote-form-placeholder .form-placeholder__message {
@@ -2199,7 +2224,10 @@ textarea {
 	}
 
 	.quote-service-grid,
-	.quote-support-grid {
+	.quote-support-grid,
+	.maintenance-plan-grid,
+	.maintenance-coverage-grid,
+	.maintenance-sla-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
@@ -2374,6 +2402,15 @@ textarea {
 		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
 
+	.maintenance-plan-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.maintenance-coverage-grid,
+	.maintenance-sla-grid {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
 	.trust-grid {
 		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
@@ -2475,7 +2512,10 @@ textarea {
 	.download-grid,
 	.certification-grid,
 	.quote-service-grid,
-	.quote-support-grid {
+	.quote-support-grid,
+	.maintenance-plan-grid,
+	.maintenance-coverage-grid,
+	.maintenance-sla-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 

@@ -198,6 +198,34 @@ function langit_customizer_defaults() {
 		'quote_cta_primary_text'      => __( 'Start Quote Request', 'langit' ),
 		'quote_cta_primary_url'       => '#quote-form',
 		'quote_cta_secondary_text'    => __( 'WhatsApp Consultation', 'langit' ),
+		'show_maintenance_overview_section' => '1',
+		'show_maintenance_plans_section' => '1',
+		'show_maintenance_coverage_section' => '1',
+		'show_maintenance_sla_section' => '1',
+		'maintenance_hero_eyebrow'    => __( 'Maintenance & Support', 'langit' ),
+		'maintenance_hero_title'      => __( 'Reliable Maintenance Support for Building Technology Systems', 'langit' ),
+		'maintenance_hero_description' => __( 'Layanan maintenance membantu menjaga performa CCTV, jaringan, fire alarm, mechanical electrical, audio, dan sistem pendukung operasional agar tetap stabil, terdokumentasi, serta siap digunakan.', 'langit' ),
+		'maintenance_overview_eyebrow' => __( 'Service Overview', 'langit' ),
+		'maintenance_overview_title'  => __( 'Structured support for long-term system reliability.', 'langit' ),
+		'maintenance_overview_description' => __( 'Program maintenance disiapkan untuk membantu inspeksi berkala, penanganan gangguan, pemeriksaan perangkat, dokumentasi kondisi sistem, dan rekomendasi perbaikan sesuai kebutuhan operasional pelanggan.', 'langit' ),
+		'maintenance_plans_eyebrow'   => __( 'Maintenance Plans', 'langit' ),
+		'maintenance_plans_title'     => __( 'Support options for different operational needs.', 'langit' ),
+		'maintenance_plans_description' => __( 'Pilih model dukungan yang sesuai dengan prioritas operasional, tingkat urgensi, dan kebutuhan pemeliharaan sistem di lapangan.', 'langit' ),
+		'maintenance_plan_items'      => __( "Preventive Maintenance | Pemeriksaan berkala untuk menjaga fungsi perangkat, koneksi, dan integrasi sistem tetap stabil sebelum gangguan terjadi. | Planned Support\nCorrective Maintenance | Penanganan gangguan teknis, troubleshooting, penggantian komponen, dan pemulihan fungsi sistem sesuai kondisi lapangan. | Repair Support\nEmergency Support | Dukungan prioritas untuk kebutuhan mendesak yang memerlukan respons teknis lebih cepat pada sistem penting. | Priority Response\nRoutine Inspection | Inspeksi perangkat, panel, jaringan, alarm, dan area instalasi untuk memastikan kondisi sistem tetap terpantau. | Inspection\nAnnual Service Contract | Kontrak dukungan tahunan untuk maintenance berkala, dokumentasi layanan, dan koordinasi teknis yang lebih terstruktur. | Contract", 'langit' ),
+		'maintenance_coverage_eyebrow' => __( 'Support Coverage', 'langit' ),
+		'maintenance_coverage_title'  => __( 'Coverage for core building technology systems.', 'langit' ),
+		'maintenance_coverage_description' => __( 'Dukungan maintenance dapat diterapkan pada berbagai sistem utama yang menunjang keamanan, konektivitas, komunikasi, dan operasional fasilitas.', 'langit' ),
+		'maintenance_coverage_items'  => __( "CCTV | Pemeriksaan kamera, rekaman, koneksi, storage, dan kualitas pemantauan sistem keamanan.\nNetworking | Pemeriksaan koneksi, perangkat jaringan, titik distribusi, konfigurasi dasar, dan stabilitas konektivitas.\nFire Alarm | Pemeriksaan panel, detector, alarm, jalur instalasi, dan fungsi notifikasi sesuai kebutuhan sistem.\nMechanical Electrical | Pemeriksaan panel, jalur elektrikal, perangkat pendukung, dan kondisi instalasi operasional.\nAudio & Public Address | Pemeriksaan amplifier, speaker, jalur audio, kualitas suara, dan fungsi komunikasi area.", 'langit' ),
+		'maintenance_sla_eyebrow'     => __( 'SLA & Response', 'langit' ),
+		'maintenance_sla_title'       => __( 'Clear support information for operational confidence.', 'langit' ),
+		'maintenance_sla_description' => __( 'Informasi SLA membantu pelanggan memahami alur respons, prioritas dukungan, ketersediaan teknis, dan eskalasi pekerjaan secara lebih transparan.', 'langit' ),
+		'maintenance_sla_items'       => __( "Response Time | Respons awal disesuaikan dengan prioritas gangguan, lokasi, dan jenis kontrak dukungan yang disepakati. | Priority Based\nSupport Availability | Dukungan teknis dapat disiapkan untuk jam kerja, kunjungan berkala, atau kebutuhan khusus sesuai perjanjian layanan. | Scheduled\nOperational Coverage | Layanan mendukung fasilitas komersial, industri, kantor, gudang, dan area operasional lain yang membutuhkan sistem stabil. | Multi-Site\nTechnical Escalation | Kendala teknis ditangani melalui identifikasi masalah, tindakan perbaikan, dokumentasi, dan rekomendasi tindak lanjut. | Structured", 'langit' ),
+		'maintenance_cta_eyebrow'     => __( 'Maintenance Consultation', 'langit' ),
+		'maintenance_cta_title'       => __( 'Need maintenance support for your facility?', 'langit' ),
+		'maintenance_cta_description' => __( 'Konsultasikan kondisi sistem, kebutuhan inspeksi, atau rencana kontrak pemeliharaan agar tim kami dapat menyiapkan rekomendasi dukungan yang tepat.', 'langit' ),
+		'maintenance_cta_primary_text' => __( 'Request Maintenance Quote', 'langit' ),
+		'maintenance_cta_primary_url' => home_url( '/quote/' ),
+		'maintenance_cta_secondary_text' => __( 'WhatsApp Support', 'langit' ),
 		'social_instagram_url'        => '',
 		'social_facebook_url'         => '',
 		'social_linkedin_url'         => '',
@@ -411,6 +439,14 @@ function langit_customize_register( $wp_customize ) {
 		'langit_quote_settings',
 		array(
 			'title' => esc_html__( 'Quote Request Settings', 'langit' ),
+			'panel' => 'langit_theme_settings',
+		)
+	);
+
+	$wp_customize->add_section(
+		'langit_maintenance_settings',
+		array(
+			'title' => esc_html__( 'Maintenance & Support', 'langit' ),
 			'panel' => 'langit_theme_settings',
 		)
 	);
@@ -1241,6 +1277,149 @@ function langit_customize_register( $wp_customize ) {
 		'quote_cta_secondary_text' => array(
 			'label'   => esc_html__( 'Quote CTA Secondary Button Text', 'langit' ),
 			'section' => 'langit_quote_settings',
+		),
+		'show_maintenance_overview_section' => array(
+			'label'    => esc_html__( 'Show Maintenance Overview', 'langit' ),
+			'section'  => 'langit_maintenance_settings',
+			'type'     => 'checkbox',
+			'sanitize' => 'langit_sanitize_checkbox',
+		),
+		'show_maintenance_plans_section' => array(
+			'label'    => esc_html__( 'Show Maintenance Plans', 'langit' ),
+			'section'  => 'langit_maintenance_settings',
+			'type'     => 'checkbox',
+			'sanitize' => 'langit_sanitize_checkbox',
+		),
+		'show_maintenance_coverage_section' => array(
+			'label'    => esc_html__( 'Show Support Coverage', 'langit' ),
+			'section'  => 'langit_maintenance_settings',
+			'type'     => 'checkbox',
+			'sanitize' => 'langit_sanitize_checkbox',
+		),
+		'show_maintenance_sla_section' => array(
+			'label'    => esc_html__( 'Show SLA Section', 'langit' ),
+			'section'  => 'langit_maintenance_settings',
+			'type'     => 'checkbox',
+			'sanitize' => 'langit_sanitize_checkbox',
+		),
+		'maintenance_hero_eyebrow' => array(
+			'label'   => esc_html__( 'Maintenance Hero Eyebrow', 'langit' ),
+			'section' => 'langit_maintenance_settings',
+		),
+		'maintenance_hero_title' => array(
+			'label'   => esc_html__( 'Maintenance Hero Title', 'langit' ),
+			'section' => 'langit_maintenance_settings',
+		),
+		'maintenance_hero_description' => array(
+			'label'    => esc_html__( 'Maintenance Hero Description', 'langit' ),
+			'section'  => 'langit_maintenance_settings',
+			'type'     => 'textarea',
+			'sanitize' => 'langit_sanitize_textarea',
+		),
+		'maintenance_overview_eyebrow' => array(
+			'label'   => esc_html__( 'Overview Eyebrow', 'langit' ),
+			'section' => 'langit_maintenance_settings',
+		),
+		'maintenance_overview_title' => array(
+			'label'   => esc_html__( 'Overview Title', 'langit' ),
+			'section' => 'langit_maintenance_settings',
+		),
+		'maintenance_overview_description' => array(
+			'label'    => esc_html__( 'Overview Description', 'langit' ),
+			'section'  => 'langit_maintenance_settings',
+			'type'     => 'textarea',
+			'sanitize' => 'langit_sanitize_textarea',
+		),
+		'maintenance_plans_eyebrow' => array(
+			'label'   => esc_html__( 'Plans Eyebrow', 'langit' ),
+			'section' => 'langit_maintenance_settings',
+		),
+		'maintenance_plans_title' => array(
+			'label'   => esc_html__( 'Plans Title', 'langit' ),
+			'section' => 'langit_maintenance_settings',
+		),
+		'maintenance_plans_description' => array(
+			'label'    => esc_html__( 'Plans Description', 'langit' ),
+			'section'  => 'langit_maintenance_settings',
+			'type'     => 'textarea',
+			'sanitize' => 'langit_sanitize_textarea',
+		),
+		'maintenance_plan_items' => array(
+			'label'       => esc_html__( 'Maintenance Plan Cards', 'langit' ),
+			'description' => esc_html__( 'One item per line. Format: Title | Indonesian description | Meta label.', 'langit' ),
+			'section'     => 'langit_maintenance_settings',
+			'type'        => 'textarea',
+			'sanitize'    => 'langit_sanitize_textarea',
+		),
+		'maintenance_coverage_eyebrow' => array(
+			'label'   => esc_html__( 'Coverage Eyebrow', 'langit' ),
+			'section' => 'langit_maintenance_settings',
+		),
+		'maintenance_coverage_title' => array(
+			'label'   => esc_html__( 'Coverage Title', 'langit' ),
+			'section' => 'langit_maintenance_settings',
+		),
+		'maintenance_coverage_description' => array(
+			'label'    => esc_html__( 'Coverage Description', 'langit' ),
+			'section'  => 'langit_maintenance_settings',
+			'type'     => 'textarea',
+			'sanitize' => 'langit_sanitize_textarea',
+		),
+		'maintenance_coverage_items' => array(
+			'label'       => esc_html__( 'Coverage Cards', 'langit' ),
+			'description' => esc_html__( 'One item per line. Format: Title | Indonesian description.', 'langit' ),
+			'section'     => 'langit_maintenance_settings',
+			'type'        => 'textarea',
+			'sanitize'    => 'langit_sanitize_textarea',
+		),
+		'maintenance_sla_eyebrow' => array(
+			'label'   => esc_html__( 'SLA Eyebrow', 'langit' ),
+			'section' => 'langit_maintenance_settings',
+		),
+		'maintenance_sla_title' => array(
+			'label'   => esc_html__( 'SLA Title', 'langit' ),
+			'section' => 'langit_maintenance_settings',
+		),
+		'maintenance_sla_description' => array(
+			'label'    => esc_html__( 'SLA Description', 'langit' ),
+			'section'  => 'langit_maintenance_settings',
+			'type'     => 'textarea',
+			'sanitize' => 'langit_sanitize_textarea',
+		),
+		'maintenance_sla_items' => array(
+			'label'       => esc_html__( 'SLA Cards', 'langit' ),
+			'description' => esc_html__( 'One item per line. Format: Title | Indonesian description | Value/label.', 'langit' ),
+			'section'     => 'langit_maintenance_settings',
+			'type'        => 'textarea',
+			'sanitize'    => 'langit_sanitize_textarea',
+		),
+		'maintenance_cta_eyebrow' => array(
+			'label'   => esc_html__( 'Maintenance CTA Eyebrow', 'langit' ),
+			'section' => 'langit_maintenance_settings',
+		),
+		'maintenance_cta_title' => array(
+			'label'   => esc_html__( 'Maintenance CTA Title', 'langit' ),
+			'section' => 'langit_maintenance_settings',
+		),
+		'maintenance_cta_description' => array(
+			'label'    => esc_html__( 'Maintenance CTA Description', 'langit' ),
+			'section'  => 'langit_maintenance_settings',
+			'type'     => 'textarea',
+			'sanitize' => 'langit_sanitize_textarea',
+		),
+		'maintenance_cta_primary_text' => array(
+			'label'   => esc_html__( 'Maintenance CTA Primary Button Text', 'langit' ),
+			'section' => 'langit_maintenance_settings',
+		),
+		'maintenance_cta_primary_url' => array(
+			'label'    => esc_html__( 'Maintenance CTA Primary Button URL', 'langit' ),
+			'section'  => 'langit_maintenance_settings',
+			'type'     => 'url',
+			'sanitize' => 'esc_url_raw',
+		),
+		'maintenance_cta_secondary_text' => array(
+			'label'   => esc_html__( 'Maintenance CTA Secondary Button Text', 'langit' ),
+			'section' => 'langit_maintenance_settings',
 		),
 		'company_name' => array(
 			'label'   => esc_html__( 'Company Name', 'langit' ),
