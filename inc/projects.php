@@ -187,6 +187,227 @@ function langit_save_project_details( $post_id ) {
 add_action( 'save_post_project', 'langit_save_project_details' );
 
 /**
+ * Return production project entries used by the initial content seeder.
+ *
+ * @return array<int,array<string,string|int>>
+ */
+function langit_seed_project_entries() {
+	return array(
+		array(
+			'title'        => 'CCTV Installation for Commercial Building',
+			'slug'         => 'cctv-installation-commercial-building',
+			'category'     => 'CCTV Projects',
+			'image'        => 'cctv-commercial-building.webp',
+			'menu_order'   => 10,
+			'client'       => 'Commercial Building',
+			'location'     => 'Jakarta, Indonesia',
+			'year'         => '2026',
+			'service_type' => 'CCTV & Security System',
+			'excerpt'      => 'Implementasi CCTV untuk area gedung komersial dengan perencanaan titik kamera, integrasi jaringan, dan pengujian sistem pemantauan.',
+			'description'  => '<p>Proyek ini mencakup pekerjaan konsultasi, survei area, penentuan titik kamera, instalasi perangkat CCTV, integrasi jaringan, serta pengujian sistem pemantauan untuk kebutuhan gedung komersial.</p><p>Tim teknis memastikan jalur instalasi dibuat rapi, perangkat mudah diakses untuk pemeliharaan, dan area prioritas mendapatkan cakupan visual yang sesuai dengan kebutuhan operasional gedung.</p><p>Hasil pekerjaan diarahkan untuk membantu pengelola fasilitas meningkatkan keamanan area, memperkuat dokumentasi kejadian, dan menjaga sistem pemantauan tetap andal dalam penggunaan harian.</p>',
+		),
+		array(
+			'title'        => 'Network Infrastructure Deployment',
+			'slug'         => 'network-infrastructure-deployment',
+			'category'     => 'Networking Projects',
+			'image'        => 'network-infrastructure-deployment.webp',
+			'menu_order'   => 20,
+			'client'       => 'Corporate Office',
+			'location'     => 'Bekasi, Indonesia',
+			'year'         => '2026',
+			'service_type' => 'Networking Infrastructure',
+			'excerpt'      => 'Pembangunan jaringan data untuk kantor operasional dengan struktur kabel, terminasi, labeling, dan pengujian konektivitas.',
+			'description'  => '<p>Network Infrastructure Deployment dilakukan untuk mendukung konektivitas data pada area kantor dan fasilitas operasional. Pekerjaan meliputi perencanaan jalur, penarikan kabel, terminasi, penataan perangkat, serta pengujian koneksi.</p><p>Setiap titik jaringan diberi dokumentasi dan labeling agar mudah ditelusuri saat terjadi pengembangan, perubahan layout, atau pekerjaan maintenance di kemudian hari.</p><p>Implementasi ini membantu pelanggan memperoleh jaringan yang lebih stabil, tertata, dan siap mendukung kebutuhan sistem keamanan, perangkat kerja, akses internet, serta integrasi operasional lainnya.</p>',
+		),
+		array(
+			'title'        => 'Mechanical Electrical Panel Installation',
+			'slug'         => 'mechanical-electrical-panel-installation',
+			'category'     => 'Mechanical Electrical',
+			'image'        => 'mechanical-electrical-panel.webp',
+			'menu_order'   => 30,
+			'client'       => 'Industrial Facility',
+			'location'     => 'Tangerang, Indonesia',
+			'year'         => '2025',
+			'service_type' => 'Mechanical Electrical',
+			'excerpt'      => 'Pekerjaan panel dan instalasi elektrikal pendukung fasilitas industri dengan fokus pada kerapian, keamanan, dan kemudahan pemeriksaan.',
+			'description'  => '<p>Proyek Mechanical Electrical Panel Installation mencakup dukungan instalasi panel dan sistem elektrikal pendukung untuk kebutuhan fasilitas industri. Pekerjaan dilakukan dengan memperhatikan keamanan instalasi, keteraturan jalur, dan kemudahan inspeksi.</p><p>Tim melakukan koordinasi teknis mulai dari peninjauan kebutuhan daya, persiapan area kerja, instalasi perangkat pendukung, hingga pemeriksaan fungsi sebelum sistem digunakan secara operasional.</p><p>Dengan dokumentasi yang jelas dan pekerjaan yang terstruktur, pelanggan dapat memiliki instalasi elektrikal yang lebih mudah dirawat dan lebih siap mengikuti kebutuhan pengembangan fasilitas.</p>',
+		),
+		array(
+			'title'        => 'Fire Alarm System Integration',
+			'slug'         => 'fire-alarm-system-integration',
+			'category'     => 'Fire Alarm Projects',
+			'image'        => 'fire-alarm-integration.webp',
+			'menu_order'   => 40,
+			'client'       => 'Warehouse Facility',
+			'location'     => 'Karawang, Indonesia',
+			'year'         => '2025',
+			'service_type' => 'Fire Alarm System',
+			'excerpt'      => 'Integrasi fire alarm untuk area gudang dan fasilitas kerja dengan pemasangan perangkat deteksi, panel, serta pengujian fungsi.',
+			'description'  => '<p>Fire Alarm System Integration disiapkan untuk meningkatkan kesiapan fasilitas dalam menghadapi kondisi darurat. Ruang lingkup pekerjaan meliputi penentuan titik perangkat, instalasi detector, manual call point, alarm output, panel, dan pengujian fungsi sistem.</p><p>Proses implementasi dilakukan secara terarah agar sistem peringatan dini dapat bekerja sesuai kebutuhan area dan membantu pengelola fasilitas merespons kondisi darurat dengan lebih cepat.</p><p>Selain instalasi, pekerjaan juga menekankan dokumentasi dan pemeriksaan fungsi sehingga sistem lebih mudah dipantau serta dirawat secara berkala.</p>',
+		),
+		array(
+			'title'        => 'Audio & Public Address Installation',
+			'slug'         => 'audio-public-address-installation',
+			'category'     => 'Audio System Projects',
+			'image'        => 'audio-public-address-installation.webp',
+			'menu_order'   => 50,
+			'client'       => 'Public Facility',
+			'location'     => 'Bandung, Indonesia',
+			'year'         => '2025',
+			'service_type' => 'Audio & Public Address',
+			'excerpt'      => 'Instalasi sistem audio dan public address untuk pengumuman area, komunikasi internal, dan distribusi informasi operasional.',
+			'description'  => '<p>Proyek Audio & Public Address Installation mencakup pemasangan sistem audio, perangkat paging, speaker area, dan konfigurasi dasar untuk mendukung komunikasi internal fasilitas.</p><p>Perencanaan dilakukan dengan memperhatikan karakter ruang, pembagian zona, kebutuhan volume, dan kemudahan pengoperasian oleh tim pengelola gedung atau fasilitas.</p><p>Sistem yang terpasang membantu penyampaian informasi menjadi lebih jelas, terpusat, dan siap digunakan untuk kebutuhan pengumuman harian maupun komunikasi operasional.</p>',
+		),
+		array(
+			'title'        => 'Preventive Maintenance Services',
+			'slug'         => 'preventive-maintenance-services',
+			'category'     => 'Maintenance Projects',
+			'image'        => 'preventive-maintenance-services.webp',
+			'menu_order'   => 60,
+			'client'       => 'Operational Facility',
+			'location'     => 'Surabaya, Indonesia',
+			'year'         => '2026',
+			'service_type' => 'Installation & Maintenance',
+			'excerpt'      => 'Program maintenance berkala untuk menjaga performa sistem keamanan, jaringan, elektrikal, alarm, dan perangkat pendukung operasional.',
+			'description'  => '<p>Preventive Maintenance Services dilakukan untuk membantu pelanggan menjaga sistem tetap stabil dan siap digunakan. Pekerjaan dapat mencakup pemeriksaan perangkat, pengecekan koneksi, pembersihan area instalasi, pengujian fungsi, dan rekomendasi tindak lanjut.</p><p>Pendekatan maintenance berkala membantu mendeteksi potensi gangguan lebih awal, mengurangi risiko downtime, dan memperpanjang usia penggunaan perangkat yang mendukung operasional fasilitas.</p><p>Tim menyusun hasil pemeriksaan secara terstruktur sehingga pelanggan dapat memahami kondisi sistem dan menentukan prioritas perbaikan atau pengembangan berikutnya.</p>',
+		),
+	);
+}
+
+/**
+ * Create or update a seeded project image attachment.
+ *
+ * @param string $slug     Project slug.
+ * @param string $filename Theme image filename.
+ * @param string $title    Attachment title.
+ * @return int Attachment ID.
+ */
+function langit_seed_project_image_attachment( $slug, $filename, $title ) {
+	$existing = get_posts(
+		array(
+			'post_type'      => 'attachment',
+			'post_status'    => 'inherit',
+			'posts_per_page' => 1,
+			'fields'         => 'ids',
+			'meta_key'       => '_langit_seed_project_image',
+			'meta_value'     => $slug,
+		)
+	);
+
+	if ( ! empty( $existing ) ) {
+		return absint( $existing[0] );
+	}
+
+	$source = trailingslashit( get_template_directory() ) . 'assets/images/projects/' . $filename;
+
+	if ( ! file_exists( $source ) ) {
+		return 0;
+	}
+
+	$uploads = wp_upload_dir();
+
+	if ( ! empty( $uploads['error'] ) ) {
+		return 0;
+	}
+
+	$target_dir = trailingslashit( $uploads['basedir'] ) . 'langit-projects';
+	wp_mkdir_p( $target_dir );
+
+	$target = trailingslashit( $target_dir ) . $filename;
+
+	if ( ! file_exists( $target ) ) {
+		copy( $source, $target );
+	}
+
+	$filetype      = wp_check_filetype( $target, null );
+	$attachment_id = wp_insert_attachment(
+		array(
+			'post_mime_type' => $filetype['type'],
+			'post_title'     => $title,
+			'post_content'   => '',
+			'post_status'    => 'inherit',
+		),
+		$target
+	);
+
+	if ( is_wp_error( $attachment_id ) || ! $attachment_id ) {
+		return 0;
+	}
+
+	update_post_meta( $attachment_id, '_langit_seed_project_image', $slug );
+
+	if ( file_exists( ABSPATH . 'wp-admin/includes/image.php' ) ) {
+		require_once ABSPATH . 'wp-admin/includes/image.php';
+		$metadata = wp_generate_attachment_metadata( $attachment_id, $target );
+
+		if ( ! is_wp_error( $metadata ) && ! empty( $metadata ) ) {
+			wp_update_attachment_metadata( $attachment_id, $metadata );
+		}
+	}
+
+	return absint( $attachment_id );
+}
+
+/**
+ * Seed production project entries into the Projects CPT.
+ */
+function langit_seed_projects_content() {
+	$seed_version = '2026-05-17';
+
+	if ( get_option( 'langit_project_seed_version' ) === $seed_version ) {
+		return;
+	}
+
+	foreach ( langit_seed_project_entries() as $project ) {
+		$post = get_page_by_path( $project['slug'], OBJECT, 'project' );
+		$args = array(
+			'post_title'   => $project['title'],
+			'post_name'    => $project['slug'],
+			'post_type'    => 'project',
+			'post_status'  => 'publish',
+			'post_excerpt' => $project['excerpt'],
+			'post_content' => $project['description'],
+			'menu_order'   => absint( $project['menu_order'] ),
+		);
+
+		if ( $post instanceof WP_Post ) {
+			$args['ID'] = $post->ID;
+			$post_id   = wp_update_post( wp_slash( $args ), true );
+		} else {
+			$post_id = wp_insert_post( wp_slash( $args ), true );
+		}
+
+		if ( is_wp_error( $post_id ) || ! $post_id ) {
+			continue;
+		}
+
+		$term = term_exists( $project['category'], 'project_category' );
+
+		if ( 0 === $term || null === $term ) {
+			$term = wp_insert_term( $project['category'], 'project_category' );
+		}
+
+		if ( ! is_wp_error( $term ) ) {
+			wp_set_object_terms( $post_id, array( absint( is_array( $term ) ? $term['term_id'] : $term ) ), 'project_category', false );
+		}
+
+		update_post_meta( $post_id, 'langit_project_client', $project['client'] );
+		update_post_meta( $post_id, 'langit_project_location', $project['location'] );
+		update_post_meta( $post_id, 'langit_project_year', $project['year'] );
+		update_post_meta( $post_id, 'langit_project_service_type', $project['service_type'] );
+
+		$attachment_id = langit_seed_project_image_attachment( $project['slug'], $project['image'], $project['title'] );
+
+		if ( $attachment_id ) {
+			set_post_thumbnail( $post_id, $attachment_id );
+		}
+	}
+
+	update_option( 'langit_project_seed_version', $seed_version );
+}
+add_action( 'admin_init', 'langit_seed_projects_content' );
+
+/**
  * Get a project excerpt.
  *
  * @param int $post_id Project post ID.
