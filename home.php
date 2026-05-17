@@ -35,8 +35,6 @@ get_header();
 			<?php the_posts_pagination(); ?>
 		</div>
 	</div>
-
-	<?php get_template_part( 'template-parts/blog-cta' ); ?>
 </main>
 
 <?php

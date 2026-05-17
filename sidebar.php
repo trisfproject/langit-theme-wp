@@ -39,11 +39,5 @@
 				<?php wp_tag_cloud( array( 'smallest' => 0.86, 'largest' => 0.86, 'unit' => 'rem' ) ); ?>
 			</div>
 		</section>
-
-		<section class="blog-widget blog-widget--cta">
-			<h3 class="blog-widget__title"><?php echo esc_html( langit_theme_mod( 'global_cta_title' ) ); ?></h3>
-			<p><?php echo esc_html( langit_theme_mod( 'global_cta_description' ) ); ?></p>
-			<a class="button" href="<?php echo esc_url( langit_theme_mod( 'global_cta_primary_url' ) ); ?>"><?php echo esc_html( langit_theme_mod( 'global_cta_primary_text' ) ); ?></a>
-		</section>
 	<?php endif; ?>
 </aside>

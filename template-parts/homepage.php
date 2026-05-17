@@ -587,22 +587,3 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 		</div>
 	</section>
 <?php endif; ?>
-
-<?php if ( langit_theme_mod_enabled( 'show_cta_section' ) ) : ?>
-	<?php
-	langit_cta(
-		array(
-			'eyebrow' => langit_theme_mod( 'cta_eyebrow' ),
-			'title'   => langit_theme_mod( 'cta_title' ),
-			'text'    => langit_theme_mod( 'cta_description' ),
-			'variant' => langit_cta_variant( langit_theme_mod( 'global_cta_variant' ) ),
-			'actions' => array(
-				array(
-					'url'   => langit_theme_mod( 'cta_button_url' ),
-					'label' => langit_theme_mod( 'cta_button_text' ),
-				),
-			),
-		)
-	);
-	?>
-<?php endif; ?>

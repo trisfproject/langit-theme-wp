@@ -13,11 +13,11 @@
 <!-- wp:group {"className":"section","layout":{"type":"constrained"}} -->
 <div class="wp-block-group section"><!-- wp:group {"className":"container cta-section","layout":{"type":"constrained","contentSize":"780px"}} -->
 <div class="wp-block-group container cta-section"><!-- wp:paragraph {"align":"center","className":"section-eyebrow"} -->
-<p class="has-text-align-center section-eyebrow">Start a Project</p>
+<p class="has-text-align-center section-eyebrow">Contact</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"textAlign":"center"} -->
-<h2 class="wp-block-heading has-text-align-center">Discuss Your Building Technology Requirements</h2>
+<h2 class="wp-block-heading has-text-align-center">Ready to build a reliable building technology system?</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"align":"center"} -->
