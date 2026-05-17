@@ -224,6 +224,7 @@ if ( langit_theme_mod_enabled( 'show_projects_section' ) ) {
 			'eyebrow' => langit_theme_mod( 'cta_eyebrow' ),
 			'title'   => langit_theme_mod( 'cta_title' ),
 			'text'    => langit_theme_mod( 'cta_description' ),
+			'variant' => langit_cta_variant( langit_theme_mod( 'global_cta_variant' ) ),
 			'actions' => array(
 				array(
 					'url'   => langit_theme_mod( 'cta_button_url' ),

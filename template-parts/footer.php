@@ -48,8 +48,8 @@ $footer_copyright = str_replace(
 
 <section class="footer-cta">
 	<div class="container footer-cta__inner">
-		<h2><?php esc_html_e( 'Ready to build a reliable building technology system?', 'langit' ); ?></h2>
-		<a class="button" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Contact Us', 'langit' ); ?></a>
+		<h2><?php echo esc_html( langit_theme_mod( 'footer_cta_title' ) ); ?></h2>
+		<a class="button" href="<?php echo esc_url( langit_theme_mod( 'footer_cta_button_url' ) ); ?>"><?php echo esc_html( langit_theme_mod( 'footer_cta_button_text' ) ); ?></a>
 	</div>
 </section>
 

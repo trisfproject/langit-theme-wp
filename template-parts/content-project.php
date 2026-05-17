@@ -115,17 +115,10 @@ $langit_project_details = langit_get_project_details( get_the_ID() );
 	</section>
 
 	<?php
-	langit_cta(
+	langit_inquiry(
+		'project',
 		array(
-			'title'       => esc_html__( 'Need support for a similar project?', 'langit' ),
-			'text'        => esc_html__( 'Tim kami siap membantu meninjau kebutuhan proyek, menentukan ruang lingkup teknis, dan menyiapkan langkah kerja berikutnya.', 'langit' ),
 			'panel_class' => 'support-cta',
-			'actions'     => array(
-				array(
-					'url'   => home_url( '/contact/' ),
-					'label' => esc_html__( 'Contact Us', 'langit' ),
-				),
-			),
 		)
 	);
 	?>

@@ -138,15 +138,5 @@ langit_page_hero(
 </section>
 
 <?php
-langit_cta(
-	array(
-		'title'   => esc_html__( 'Need the right system for your project?', 'langit' ),
-		'actions' => array(
-			array(
-				'url'   => home_url( '/contact/' ),
-				'label' => esc_html__( 'Contact Us', 'langit' ),
-			),
-		),
-	)
-);
+langit_inquiry( 'service' );
 ?>

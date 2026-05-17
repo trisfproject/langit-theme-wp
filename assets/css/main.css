@@ -1037,6 +1037,9 @@ input[type="submit"]:focus {
 }
 
 .cta-section {
+	display: grid;
+	gap: var(--langit-space-md);
+	justify-items: center;
 	padding: var(--langit-space-lg);
 	border: 1px solid rgba(88, 175, 255, 0.42);
 	border-radius: var(--langit-radius);
@@ -1046,12 +1049,33 @@ input[type="submit"]:focus {
 	text-align: center;
 }
 
-.cta-section > * {
+.cta-section__content,
+.cta-section__actions {
 	margin-inline: auto;
 }
 
 .cta-section p {
 	max-width: 60ch;
+}
+
+.cta-section__actions {
+	display: grid;
+	justify-items: center;
+	gap: var(--langit-space-sm);
+}
+
+.cta-section--contact,
+.cta-section--consultation {
+	border-color: rgba(88, 175, 255, 0.5);
+}
+
+.inquiry-section__form {
+	width: min(100%, 34rem);
+	padding: var(--langit-space-sm);
+	border: 1px solid var(--langit-border);
+	border-radius: var(--langit-radius);
+	background: var(--langit-background);
+	text-align: left;
 }
 
 .entry-header {
@@ -1800,6 +1824,18 @@ textarea {
 	.company-overview,
 	.contact-form-layout {
 		grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.78fr);
+	}
+
+	.cta-section--split {
+		grid-template-columns: minmax(0, 1.2fr) auto;
+		align-items: center;
+		justify-items: start;
+		text-align: left;
+	}
+
+	.cta-section--split .cta-section__content,
+	.cta-section--split .cta-section__actions {
+		margin-inline: 0;
 	}
 
 	.service-grid {

@@ -36,7 +36,7 @@ $langit_terms       = get_the_terms( get_the_ID(), 'service_category' );
 			langit_button(
 				array(
 					'url'   => $langit_service_cta,
-					'label' => esc_html__( 'Request Consultation', 'langit' ),
+					'label' => langit_theme_mod( 'inquiry_primary_text' ),
 				)
 			);
 			?>

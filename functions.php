@@ -18,6 +18,7 @@ require_once LANGIT_DIR . '/inc/enqueue.php';
 require_once LANGIT_DIR . '/inc/template-tags.php';
 require_once LANGIT_DIR . '/inc/components.php';
 require_once LANGIT_DIR . '/inc/customizer.php';
+require_once LANGIT_DIR . '/inc/cta.php';
 require_once LANGIT_DIR . '/inc/patterns.php';
 require_once LANGIT_DIR . '/inc/services.php';
 require_once LANGIT_DIR . '/inc/projects.php';

@@ -184,16 +184,5 @@ langit_page_hero(
 </section>
 
 <?php
-langit_cta(
-	array(
-		'title'   => esc_html__( 'Ready to discuss your company requirements?', 'langit' ),
-		'text'    => esc_html__( 'Tim kami siap membantu meninjau kebutuhan teknis dan menyiapkan rekomendasi solusi yang sesuai dengan kondisi proyek.', 'langit' ),
-		'actions' => array(
-			array(
-				'url'   => home_url( '/contact/' ),
-				'label' => esc_html__( 'Contact Us', 'langit' ),
-			),
-		),
-	)
-);
+langit_global_cta( 'company' );
 ?>

@@ -41,9 +41,9 @@
 		</section>
 
 		<section class="blog-widget blog-widget--cta">
-			<h3 class="blog-widget__title"><?php esc_html_e( 'Need a System Partner?', 'langit' ); ?></h3>
-			<p><?php esc_html_e( 'Diskusikan kebutuhan teknologi gedung dan fasilitas Anda bersama Langit.', 'langit' ); ?></p>
-			<a class="button" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Contact Us', 'langit' ); ?></a>
+			<h3 class="blog-widget__title"><?php echo esc_html( langit_theme_mod( 'global_cta_title' ) ); ?></h3>
+			<p><?php echo esc_html( langit_theme_mod( 'global_cta_description' ) ); ?></p>
+			<a class="button" href="<?php echo esc_url( langit_theme_mod( 'global_cta_primary_url' ) ); ?>"><?php echo esc_html( langit_theme_mod( 'global_cta_primary_text' ) ); ?></a>
 		</section>
 	<?php endif; ?>
 </aside>

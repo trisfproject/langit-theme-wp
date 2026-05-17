@@ -126,22 +126,10 @@ langit_page_hero(
 </section>
 
 <?php
-langit_cta(
+langit_global_cta(
+	'contact',
 	array(
-		'title'       => esc_html__( 'Need technical consultation for your project?', 'langit' ),
-		'text'        => esc_html__( 'Tim Langit siap membantu meninjau kebutuhan sistem, menentukan solusi yang sesuai, dan menyiapkan langkah kerja berikutnya.', 'langit' ),
 		'panel_class' => 'support-cta',
-		'actions'     => array(
-			array(
-				'url'   => home_url( '/contact/' ),
-				'label' => esc_html__( 'Contact Us', 'langit' ),
-			),
-			array(
-				'url'     => langit_contact_whatsapp_url(),
-				'label'   => esc_html__( 'WhatsApp', 'langit' ),
-				'variant' => 'ghost',
-			),
-		),
 	)
 );
 ?>

@@ -48,6 +48,30 @@ function langit_customizer_defaults() {
 		'cta_description'             => __( 'Sampaikan kebutuhan proyek Anda kepada tim kami untuk mendapatkan arahan solusi, estimasi ruang lingkup, dan langkah kerja yang tepat.', 'langit' ),
 		'cta_button_text'             => __( 'Contact Us', 'langit' ),
 		'cta_button_url'              => home_url( '/contact/' ),
+		'global_cta_eyebrow'          => __( 'Start a Project', 'langit' ),
+		'global_cta_title'            => __( 'Discuss Your Building Technology Requirements', 'langit' ),
+		'global_cta_description'      => __( 'Sampaikan kebutuhan proyek Anda kepada tim kami untuk mendapatkan arahan solusi, estimasi ruang lingkup, dan langkah kerja yang tepat.', 'langit' ),
+		'global_cta_primary_text'     => __( 'Contact Us', 'langit' ),
+		'global_cta_primary_url'      => home_url( '/contact/' ),
+		'global_cta_secondary_text'   => '',
+		'global_cta_secondary_url'    => '',
+		'global_cta_variant'          => 'centered',
+		'contact_cta_eyebrow'         => __( 'Consultation', 'langit' ),
+		'contact_cta_title'           => __( 'Need technical consultation for your project?', 'langit' ),
+		'contact_cta_description'     => __( 'Tim kami siap membantu meninjau kebutuhan sistem, menentukan solusi yang sesuai, dan menyiapkan langkah kerja berikutnya.', 'langit' ),
+		'contact_cta_primary_text'    => __( 'Contact Us', 'langit' ),
+		'contact_cta_primary_url'     => home_url( '/contact/' ),
+		'contact_cta_secondary_text'  => __( 'WhatsApp', 'langit' ),
+		'contact_cta_secondary_url'   => '',
+		'contact_cta_variant'         => 'contact',
+		'inquiry_title'               => __( 'Need support for your next project?', 'langit' ),
+		'inquiry_description'         => __( 'Konsultasikan kebutuhan layanan, diskusi proyek, atau dukungan pemeliharaan agar tim kami dapat menyiapkan langkah teknis yang tepat.', 'langit' ),
+		'inquiry_primary_text'        => __( 'Request Consultation', 'langit' ),
+		'inquiry_primary_url'         => home_url( '/contact/' ),
+		'inquiry_secondary_text'      => __( 'WhatsApp', 'langit' ),
+		'inquiry_secondary_url'       => '',
+		'inquiry_variant'             => 'consultation',
+		'inquiry_form_shortcode'      => '[fluentform id="1"]',
 		'company_name'                => __( 'PT Global Teknindo', 'langit' ),
 		'company_short_description'   => __( 'PT Global Teknindo menyediakan solusi terintegrasi di bidang teknologi, security system, mechanical electrical, networking, installation service, serta maintenance service yang profesional dan terpercaya.', 'langit' ),
 		'company_address'             => __( 'Indonesia', 'langit' ),
@@ -60,6 +84,9 @@ function langit_customizer_defaults() {
 		'social_facebook_url'         => '',
 		'social_linkedin_url'         => '',
 		'social_youtube_url'          => '',
+		'footer_cta_title'            => __( 'Ready to build a reliable building technology system?', 'langit' ),
+		'footer_cta_button_text'      => __( 'Contact Us', 'langit' ),
+		'footer_cta_button_url'       => home_url( '/contact/' ),
 		'footer_copyright_text'       => __( 'Copyright {year} {site_name}. All rights reserved.', 'langit' ),
 	);
 }
@@ -122,6 +149,18 @@ function langit_sanitize_id_list( $value ) {
 	$ids = array_filter( array_map( 'absint', explode( ',', (string) $value ) ) );
 
 	return implode( ',', array_unique( $ids ) );
+}
+
+/**
+ * Sanitize CTA variant values.
+ *
+ * @param string $value Input value.
+ * @return string
+ */
+function langit_sanitize_cta_variant( $value ) {
+	$allowed = array( 'centered', 'split', 'contact', 'consultation' );
+
+	return in_array( $value, $allowed, true ) ? $value : 'centered';
 }
 
 /**
@@ -238,6 +277,14 @@ function langit_customize_register( $wp_customize ) {
 		'langit_footer_settings',
 		array(
 			'title' => esc_html__( 'Footer Settings', 'langit' ),
+			'panel' => 'langit_theme_settings',
+		)
+	);
+
+	$wp_customize->add_section(
+		'langit_global_cta_settings',
+		array(
+			'title' => esc_html__( 'Global CTA & Inquiry', 'langit' ),
 			'panel' => 'langit_theme_settings',
 		)
 	);
@@ -406,6 +453,147 @@ function langit_customize_register( $wp_customize ) {
 			'type'     => 'url',
 			'sanitize' => 'esc_url_raw',
 		),
+		'global_cta_eyebrow' => array(
+			'label'   => esc_html__( 'Global CTA Eyebrow', 'langit' ),
+			'section' => 'langit_global_cta_settings',
+		),
+		'global_cta_title' => array(
+			'label'   => esc_html__( 'Global CTA Title', 'langit' ),
+			'section' => 'langit_global_cta_settings',
+		),
+		'global_cta_description' => array(
+			'label'    => esc_html__( 'Global CTA Description', 'langit' ),
+			'section'  => 'langit_global_cta_settings',
+			'type'     => 'textarea',
+			'sanitize' => 'langit_sanitize_textarea',
+		),
+		'global_cta_primary_text' => array(
+			'label'   => esc_html__( 'Global CTA Primary Button Text', 'langit' ),
+			'section' => 'langit_global_cta_settings',
+		),
+		'global_cta_primary_url' => array(
+			'label'    => esc_html__( 'Global CTA Primary Button URL', 'langit' ),
+			'section'  => 'langit_global_cta_settings',
+			'type'     => 'url',
+			'sanitize' => 'esc_url_raw',
+		),
+		'global_cta_secondary_text' => array(
+			'label'   => esc_html__( 'Global CTA Secondary Button Text', 'langit' ),
+			'section' => 'langit_global_cta_settings',
+		),
+		'global_cta_secondary_url' => array(
+			'label'    => esc_html__( 'Global CTA Secondary Button URL', 'langit' ),
+			'section'  => 'langit_global_cta_settings',
+			'type'     => 'url',
+			'sanitize' => 'esc_url_raw',
+		),
+		'global_cta_variant' => array(
+			'label'    => esc_html__( 'Global CTA Variant', 'langit' ),
+			'section'  => 'langit_global_cta_settings',
+			'type'     => 'select',
+			'sanitize' => 'langit_sanitize_cta_variant',
+			'choices'  => array(
+				'centered'     => esc_html__( 'Centered', 'langit' ),
+				'split'        => esc_html__( 'Split Layout', 'langit' ),
+				'contact'      => esc_html__( 'Contact Focused', 'langit' ),
+				'consultation' => esc_html__( 'Consultation', 'langit' ),
+			),
+		),
+		'contact_cta_eyebrow' => array(
+			'label'   => esc_html__( 'Contact CTA Eyebrow', 'langit' ),
+			'section' => 'langit_global_cta_settings',
+		),
+		'contact_cta_title' => array(
+			'label'   => esc_html__( 'Contact CTA Title', 'langit' ),
+			'section' => 'langit_global_cta_settings',
+		),
+		'contact_cta_description' => array(
+			'label'    => esc_html__( 'Contact CTA Description', 'langit' ),
+			'section'  => 'langit_global_cta_settings',
+			'type'     => 'textarea',
+			'sanitize' => 'langit_sanitize_textarea',
+		),
+		'contact_cta_primary_text' => array(
+			'label'   => esc_html__( 'Contact CTA Primary Button Text', 'langit' ),
+			'section' => 'langit_global_cta_settings',
+		),
+		'contact_cta_primary_url' => array(
+			'label'    => esc_html__( 'Contact CTA Primary Button URL', 'langit' ),
+			'section'  => 'langit_global_cta_settings',
+			'type'     => 'url',
+			'sanitize' => 'esc_url_raw',
+		),
+		'contact_cta_secondary_text' => array(
+			'label'   => esc_html__( 'Contact CTA Secondary Button Text', 'langit' ),
+			'section' => 'langit_global_cta_settings',
+		),
+		'contact_cta_secondary_url' => array(
+			'label'       => esc_html__( 'Contact CTA Secondary Button URL', 'langit' ),
+			'description' => esc_html__( 'Leave empty to use the configured WhatsApp URL.', 'langit' ),
+			'section'     => 'langit_global_cta_settings',
+			'type'        => 'url',
+			'sanitize'    => 'esc_url_raw',
+		),
+		'contact_cta_variant' => array(
+			'label'    => esc_html__( 'Contact CTA Variant', 'langit' ),
+			'section'  => 'langit_global_cta_settings',
+			'type'     => 'select',
+			'sanitize' => 'langit_sanitize_cta_variant',
+			'choices'  => array(
+				'centered'     => esc_html__( 'Centered', 'langit' ),
+				'split'        => esc_html__( 'Split Layout', 'langit' ),
+				'contact'      => esc_html__( 'Contact Focused', 'langit' ),
+				'consultation' => esc_html__( 'Consultation', 'langit' ),
+			),
+		),
+		'inquiry_title' => array(
+			'label'   => esc_html__( 'Inquiry Title', 'langit' ),
+			'section' => 'langit_global_cta_settings',
+		),
+		'inquiry_description' => array(
+			'label'    => esc_html__( 'Inquiry Description', 'langit' ),
+			'section'  => 'langit_global_cta_settings',
+			'type'     => 'textarea',
+			'sanitize' => 'langit_sanitize_textarea',
+		),
+		'inquiry_primary_text' => array(
+			'label'   => esc_html__( 'Inquiry Primary Button Text', 'langit' ),
+			'section' => 'langit_global_cta_settings',
+		),
+		'inquiry_primary_url' => array(
+			'label'    => esc_html__( 'Inquiry Primary Button URL', 'langit' ),
+			'section'  => 'langit_global_cta_settings',
+			'type'     => 'url',
+			'sanitize' => 'esc_url_raw',
+		),
+		'inquiry_secondary_text' => array(
+			'label'   => esc_html__( 'Inquiry Secondary Button Text', 'langit' ),
+			'section' => 'langit_global_cta_settings',
+		),
+		'inquiry_secondary_url' => array(
+			'label'       => esc_html__( 'Inquiry Secondary Button URL', 'langit' ),
+			'description' => esc_html__( 'Leave empty to use the configured WhatsApp URL.', 'langit' ),
+			'section'     => 'langit_global_cta_settings',
+			'type'        => 'url',
+			'sanitize'    => 'esc_url_raw',
+		),
+		'inquiry_variant' => array(
+			'label'    => esc_html__( 'Inquiry CTA Variant', 'langit' ),
+			'section'  => 'langit_global_cta_settings',
+			'type'     => 'select',
+			'sanitize' => 'langit_sanitize_cta_variant',
+			'choices'  => array(
+				'centered'     => esc_html__( 'Centered', 'langit' ),
+				'split'        => esc_html__( 'Split Layout', 'langit' ),
+				'contact'      => esc_html__( 'Contact Focused', 'langit' ),
+				'consultation' => esc_html__( 'Consultation', 'langit' ),
+			),
+		),
+		'inquiry_form_shortcode' => array(
+			'label'       => esc_html__( 'Inquiry Form Shortcode', 'langit' ),
+			'description' => esc_html__( 'Prepared for Fluent Forms, for example: [fluentform id="1"].', 'langit' ),
+			'section'     => 'langit_global_cta_settings',
+		),
 		'company_name' => array(
 			'label'   => esc_html__( 'Company Name', 'langit' ),
 			'section' => 'langit_company_information',
@@ -473,6 +661,20 @@ function langit_customize_register( $wp_customize ) {
 			'type'     => 'url',
 			'sanitize' => 'esc_url_raw',
 		),
+		'footer_cta_title' => array(
+			'label'   => esc_html__( 'Footer CTA Title', 'langit' ),
+			'section' => 'langit_footer_settings',
+		),
+		'footer_cta_button_text' => array(
+			'label'   => esc_html__( 'Footer CTA Button Text', 'langit' ),
+			'section' => 'langit_footer_settings',
+		),
+		'footer_cta_button_url' => array(
+			'label'    => esc_html__( 'Footer CTA Button URL', 'langit' ),
+			'section'  => 'langit_footer_settings',
+			'type'     => 'url',
+			'sanitize' => 'esc_url_raw',
+		),
 		'footer_copyright_text' => array(
 			'label'       => esc_html__( 'Footer Copyright Text', 'langit' ),
 			'description' => esc_html__( 'Use {year} and {site_name} as optional placeholders.', 'langit' ),
@@ -492,15 +694,22 @@ function langit_customize_register( $wp_customize ) {
 			)
 		);
 
-		$wp_customize->add_control(
-			'langit_' . $key,
-			array(
-				'label'       => $field['label'],
-				'description' => isset( $field['description'] ) ? $field['description'] : '',
-				'section'     => $field['section'],
-				'type'        => isset( $field['type'] ) ? $field['type'] : 'text',
-			)
+		$control_args = array(
+			'label'       => $field['label'],
+			'description' => isset( $field['description'] ) ? $field['description'] : '',
+			'section'     => $field['section'],
+			'type'        => isset( $field['type'] ) ? $field['type'] : 'text',
 		);
+
+		if ( isset( $field['choices'] ) ) {
+			$control_args['choices'] = $field['choices'];
+		}
+
+		if ( isset( $field['input_attrs'] ) ) {
+			$control_args['input_attrs'] = $field['input_attrs'];
+		}
+
+		$wp_customize->add_control( 'langit_' . $key, $control_args );
 	}
 }
 add_action( 'customize_register', 'langit_customize_register' );
