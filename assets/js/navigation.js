@@ -31,12 +31,7 @@
 
 		item.classList.toggle('is-submenu-open', shouldOpen);
 		button.setAttribute('aria-expanded', String(shouldOpen));
-
-		if (isDesktop()) {
-			submenu.hidden = false;
-		} else {
-			submenu.hidden = !shouldOpen;
-		}
+		submenu.hidden = false;
 	};
 
 	const closeMenu = function () {
@@ -70,7 +65,7 @@
 		link.insertAdjacentElement('afterend', button);
 		setSubmenuState(item, false);
 
-		button.addEventListener('click', function () {
+		const toggleSubmenu = function () {
 			const shouldOpen = button.getAttribute('aria-expanded') !== 'true';
 
 			submenuItems.forEach(function (currentItem) {
@@ -80,6 +75,21 @@
 			});
 
 			setSubmenuState(item, shouldOpen);
+		};
+
+		button.addEventListener('click', function (event) {
+			event.stopPropagation();
+			toggleSubmenu();
+		});
+
+		link.addEventListener('click', function (event) {
+			if (isDesktop()) {
+				return;
+			}
+
+			event.preventDefault();
+			event.stopPropagation();
+			toggleSubmenu();
 		});
 	});
 
@@ -108,6 +118,10 @@
 	});
 
 	menu.addEventListener('click', function (event) {
+		if (event.defaultPrevented) {
+			return;
+		}
+
 		if (event.target.closest('a')) {
 			closeMenu();
 		}

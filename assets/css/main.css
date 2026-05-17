@@ -559,12 +559,27 @@ input[type="submit"]:focus {
 .primary-menu .sub-menu {
 	display: grid;
 	gap: 0.15rem;
-	margin: 0.2rem 0 0;
-	padding: 0.35rem;
+	max-height: 0;
+	margin: 0;
+	padding: 0 0.35rem;
+	overflow: hidden;
 	border: 1px solid var(--langit-border);
 	border-radius: var(--langit-radius);
 	background: var(--langit-background);
 	list-style: none;
+	opacity: 0;
+	pointer-events: none;
+	visibility: hidden;
+	transition: max-height 220ms ease, margin-top 180ms ease, padding-block 180ms ease, opacity 180ms ease, visibility 180ms ease;
+}
+
+.primary-menu .is-submenu-open > .sub-menu {
+	max-height: 42rem;
+	margin-top: 0.2rem;
+	padding-block: 0.35rem;
+	opacity: 1;
+	pointer-events: auto;
+	visibility: visible;
 }
 
 .primary-menu .sub-menu a {
@@ -2673,6 +2688,27 @@ textarea {
 	}
 }
 
+@media (min-width: 641px) and (max-width: 900px) {
+	.primary-menu .langit-menu-products > .sub-menu {
+		width: min(17rem, 100%);
+		min-width: 0;
+		max-width: 17rem;
+		margin-inline-left: auto;
+		padding-inline: 0.3rem;
+	}
+
+	.primary-menu .langit-menu-products .sub-menu a {
+		min-height: 2.25rem;
+		padding: 0.5rem 0.6rem;
+		font-size: 0.88rem;
+	}
+
+	.primary-menu .langit-menu-products.is-submenu-open > .sub-menu {
+		margin-top: 0.15rem;
+		padding-block: 0.3rem;
+	}
+}
+
 @media (min-width: 641px) {
 	:root {
 		--langit-gutter: 2rem;
@@ -2870,20 +2906,42 @@ textarea {
 		transform: translateY(-65%) rotate(45deg);
 	}
 
+	.primary-menu .menu-item-has-children::after {
+		position: absolute;
+		top: 100%;
+		right: 0;
+		left: 0;
+		display: block;
+		height: 0.75rem;
+		content: "";
+	}
+
 	.primary-menu .sub-menu {
 		position: absolute;
-		top: calc(100% + 0.45rem);
+		top: calc(100% + 0.55rem);
 		left: 0;
 		z-index: 60;
 		width: min(18rem, calc(100vw - 2rem));
+		max-height: none;
 		margin: 0;
 		padding: 0.55rem;
-		background: #ffffff;
-		box-shadow: var(--langit-shadow);
+		overflow: visible;
+		border: 1px solid rgba(203, 213, 225, 0.74);
+		border-radius: 1rem;
+		background: rgba(255, 255, 255, 0.96);
+		box-shadow: 0 22px 55px rgba(15, 23, 42, 0.14), 0 1px 0 rgba(255, 255, 255, 0.86) inset;
 		opacity: 0;
 		pointer-events: none;
-		transform: translateY(-0.35rem);
-		transition: opacity 160ms ease, transform 160ms ease;
+		transform: translateY(-0.25rem) scale(0.985);
+		transform-origin: top left;
+		visibility: hidden;
+		transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+	}
+
+	@supports (backdrop-filter: blur(12px)) {
+		.primary-menu .sub-menu {
+			backdrop-filter: blur(14px);
+		}
 	}
 
 	.primary-menu .langit-mega-menu > .sub-menu {
@@ -2898,17 +2956,78 @@ textarea {
 		align-items: stretch;
 	}
 
+	.primary-menu > .langit-menu-products.menu-item-has-children > .sub-menu {
+		right: auto;
+		left: 0;
+		width: fit-content;
+		min-width: 16.25rem;
+		max-width: min(20rem, calc(100vw - 2rem));
+		box-sizing: border-box;
+		padding: 0.5rem;
+		gap: 0.18rem;
+		grid-template-columns: 1fr;
+	}
+
+	.primary-menu .langit-menu-products .langit-mega-group {
+		display: contents;
+	}
+
+	.primary-menu .langit-menu-products .langit-mega-group__title {
+		padding: 0.36rem 0.58rem 0.14rem;
+		color: var(--langit-muted);
+		font-size: 0.66rem;
+		letter-spacing: 0.08em;
+	}
+
+	.primary-menu .langit-menu-products .langit-mega-list {
+		gap: 0.08rem;
+	}
+
+	.primary-menu .langit-menu-products .sub-menu a {
+		min-height: 2.22rem;
+		padding: 0.5rem 0.58rem;
+		border-radius: 0.78rem;
+		color: var(--langit-secondary);
+		font-size: 0.87rem;
+		font-weight: 780;
+		line-height: 1.25;
+		white-space: nowrap;
+		transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+	}
+
+	.primary-menu .langit-menu-products .sub-menu a:hover,
+	.primary-menu .langit-menu-products .sub-menu a:focus {
+		background: linear-gradient(135deg, rgba(88, 175, 255, 0.16), rgba(56, 189, 248, 0.08));
+		color: var(--langit-secondary);
+		transform: translateX(2px);
+	}
+
 	.primary-menu .langit-mega-cta a {
 		height: 100%;
 		align-content: center;
 		padding: var(--langit-space-sm);
 	}
 
+	.primary-menu .langit-menu-products .langit-mega-cta a {
+		min-height: auto;
+		margin-top: 0.28rem;
+		padding: 0.62rem 0.68rem;
+		border: 1px solid rgba(88, 175, 255, 0.24);
+		background: linear-gradient(135deg, rgba(88, 175, 255, 0.15), rgba(56, 189, 248, 0.07));
+		white-space: normal;
+	}
+
+	.primary-menu .langit-menu-products .langit-mega-cta span {
+		font-size: 0.78rem;
+		line-height: 1.35;
+	}
+
 	.primary-menu .menu-item-has-children:hover > .sub-menu,
 	.primary-menu .menu-item-has-children:focus-within > .sub-menu {
 		opacity: 1;
 		pointer-events: auto;
-		transform: translateY(0);
+		transform: translateY(0) scale(1);
+		visibility: visible;
 	}
 
 	.grid--3 {
