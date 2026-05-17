@@ -739,6 +739,7 @@ input[type="submit"]:focus {
 	.contact-info-grid,
 	.trust-grid,
 	.testimonial-grid,
+	.client-grid,
 	.client-logo-grid,
 	.card-grid {
 	display: grid;
@@ -1690,12 +1691,145 @@ input[type="submit"]:focus {
 .client-logo-item {
 	min-height: 5rem;
 	padding: var(--langit-space-sm);
+	color: var(--langit-secondary);
+	font-weight: 850;
+	text-align: center;
+	text-decoration: none;
 }
 
 .client-logo-item img {
 	max-width: 100%;
 	max-height: 3.25rem;
 	object-fit: contain;
+}
+
+.client-logo-item span {
+	overflow-wrap: anywhere;
+}
+
+.client-logo-item--link {
+	transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.client-logo-item--link:hover,
+.client-logo-item--link:focus-visible {
+	border-color: rgba(88, 175, 255, 0.48);
+	box-shadow: var(--langit-shadow);
+	transform: translateY(-2px);
+}
+
+.client-card {
+	display: grid;
+	gap: var(--langit-space-sm);
+	padding: var(--langit-space-sm);
+}
+
+.client-card__logo,
+.client-profile-card__logo {
+	display: grid;
+	place-items: center;
+	overflow: hidden;
+	border: 1px solid var(--langit-border);
+	border-radius: var(--langit-radius);
+	background: var(--langit-background);
+	color: var(--langit-secondary);
+	font-weight: 850;
+	text-align: center;
+	text-decoration: none;
+}
+
+.client-card__logo {
+	min-height: 8rem;
+	padding: var(--langit-space-md);
+}
+
+.client-card__logo img,
+.client-profile-card__logo img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.client-card__logo span,
+.client-profile-card__logo span {
+	overflow-wrap: anywhere;
+}
+
+.client-card__body,
+.client-panel {
+	display: grid;
+	align-content: start;
+	gap: 0.85rem;
+}
+
+.client-card h3,
+.client-card p {
+	margin-bottom: 0;
+}
+
+.client-card h3 a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.client-card__meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	align-items: center;
+}
+
+.client-card__meta span,
+.client-card__meta a,
+.client-meta-list dd {
+	width: max-content;
+	max-width: 100%;
+	padding: 0.35rem 0.65rem;
+	border-radius: 999px;
+	background: rgba(88, 175, 255, 0.14);
+	color: var(--langit-secondary);
+	font-size: 0.82rem;
+	font-weight: 800;
+}
+
+.client-card__meta a {
+	text-decoration: none;
+}
+
+.client-detail-grid {
+	display: grid;
+	gap: var(--langit-space-lg);
+	align-items: start;
+}
+
+.client-profile-card {
+	padding: var(--langit-space-sm);
+}
+
+.client-profile-card__logo {
+	min-height: 13rem;
+	padding: var(--langit-space-lg);
+}
+
+.client-meta-list {
+	display: grid;
+	gap: 0.85rem;
+	margin: 0;
+}
+
+.client-meta-list div {
+	display: grid;
+	gap: 0.35rem;
+}
+
+.client-meta-list dt {
+	color: var(--langit-muted);
+	font-size: 0.82rem;
+	font-weight: 750;
+}
+
+.client-meta-list dd {
+	margin: 0;
 }
 
 .search-form {
@@ -2239,6 +2373,7 @@ textarea {
 	.contact-info-grid,
 	.trust-grid,
 	.testimonial-grid,
+	.client-grid,
 	.site-footer__grid,
 	.card-grid--2,
 	.card-grid--3,
@@ -2369,6 +2504,10 @@ textarea {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 
+	.client-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
 	.card-grid--3 {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
@@ -2464,6 +2603,10 @@ textarea {
 		grid-template-columns: minmax(16rem, 0.8fr) minmax(0, 1.4fr);
 	}
 
+	.client-detail-grid {
+		grid-template-columns: minmax(16rem, 0.72fr) minmax(0, 1.28fr);
+	}
+
 	.site-footer__inner {
 		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr);
 	}
@@ -2491,6 +2634,7 @@ textarea {
 	.blog-layout,
 	.download-detail-grid,
 	.certification-detail-grid,
+	.client-detail-grid,
 	.project-detail-grid,
 	.site-footer__inner {
 		grid-template-columns: 1fr;
@@ -2509,6 +2653,7 @@ textarea {
 
 	.service-grid,
 	.team-grid,
+	.client-grid,
 	.download-grid,
 	.certification-grid,
 	.quote-service-grid,

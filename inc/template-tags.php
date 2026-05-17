@@ -123,6 +123,7 @@ if ( ! function_exists( 'langit_footer_menu_fallback' ) ) {
 			esc_html__( 'Products', 'langit' ) => home_url( '/products/' ),
 			esc_html__( 'Services', 'langit' ) => langit_get_services_archive_url(),
 			esc_html__( 'Projects', 'langit' ) => langit_get_projects_archive_url(),
+			esc_html__( 'Clients', 'langit' )  => langit_get_clients_archive_url(),
 			esc_html__( 'Contact', 'langit' )  => home_url( '/contact/' ),
 		);
 
@@ -167,6 +168,7 @@ if ( ! function_exists( 'langit_footer_bottom_menu_fallback' ) ) {
 			esc_html__( 'Products', 'langit' ) => home_url( '/products/' ),
 			esc_html__( 'Services', 'langit' ) => langit_get_services_archive_url(),
 			esc_html__( 'Projects', 'langit' ) => langit_get_projects_archive_url(),
+			esc_html__( 'Clients', 'langit' ) => langit_get_clients_archive_url(),
 			esc_html__( 'Contact', 'langit' ) => home_url( '/contact/' ),
 		);
 
@@ -194,6 +196,7 @@ function langit_normalize_navigation_labels( $items, $args ) {
 		'services'     => esc_html__( 'Services', 'langit' ),
 		'projects'     => esc_html__( 'Projects', 'langit' ),
 		'testimonials' => esc_html__( 'Testimonials', 'langit' ),
+		'clients'      => esc_html__( 'Clients', 'langit' ),
 	);
 
 	foreach ( $items as $item ) {

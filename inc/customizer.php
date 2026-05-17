@@ -97,7 +97,11 @@ function langit_customizer_defaults() {
 		'testimonials_section_description' => __( 'Testimoni pelanggan membantu menunjukkan kualitas koordinasi, ketepatan implementasi, dan dukungan teknis yang diberikan oleh tim kami.', 'langit' ),
 		'featured_testimonial_ids'    => '',
 		'featured_testimonial_count'  => '3',
+		'client_logo_section_eyebrow' => __( 'Trusted By', 'langit' ),
 		'client_logo_section_title'   => __( 'Clients & Partners', 'langit' ),
+		'client_logo_section_description' => __( 'Logo klien dan partner ditampilkan sebagai referensi kepercayaan untuk kebutuhan proyek industri, komersial, dan fasilitas operasional lainnya.', 'langit' ),
+		'featured_client_ids'         => '',
+		'featured_client_count'       => '8',
 		'faq_section_eyebrow'         => __( 'Frequently Asked Questions', 'langit' ),
 		'faq_section_title'           => __( 'Helpful answers for planning your building technology project.', 'langit' ),
 		'faq_section_description'     => __( 'Temukan jawaban ringkas seputar konsultasi, instalasi, integrasi, dan maintenance agar kebutuhan proyek lebih mudah dipahami sebelum berdiskusi dengan tim kami.', 'langit' ),
@@ -870,9 +874,31 @@ function langit_customize_register( $wp_customize ) {
 			'type'     => 'number',
 			'sanitize' => 'langit_sanitize_positive_int',
 		),
-		'client_logo_section_title' => array(
-			'label'   => esc_html__( 'Client Logo Showcase Title', 'langit' ),
+		'client_logo_section_eyebrow' => array(
+			'label'   => esc_html__( 'Client Showcase Eyebrow', 'langit' ),
 			'section' => 'langit_homepage_sections',
+		),
+		'client_logo_section_title' => array(
+			'label'   => esc_html__( 'Client Showcase Title', 'langit' ),
+			'section' => 'langit_homepage_sections',
+		),
+		'client_logo_section_description' => array(
+			'label'    => esc_html__( 'Client Showcase Description', 'langit' ),
+			'section'  => 'langit_homepage_sections',
+			'type'     => 'textarea',
+			'sanitize' => 'langit_sanitize_textarea',
+		),
+		'featured_client_ids' => array(
+			'label'       => esc_html__( 'Featured Client IDs', 'langit' ),
+			'description' => esc_html__( 'Optional comma-separated client post IDs. Order follows this list.', 'langit' ),
+			'section'     => 'langit_homepage_sections',
+			'sanitize'    => 'langit_sanitize_id_list',
+		),
+		'featured_client_count' => array(
+			'label'    => esc_html__( 'Client Logo Item Limit', 'langit' ),
+			'section'  => 'langit_homepage_sections',
+			'type'     => 'number',
+			'sanitize' => 'langit_sanitize_positive_int',
 		),
 		'faq_section_eyebrow' => array(
 			'label'   => esc_html__( 'FAQ Section Eyebrow', 'langit' ),

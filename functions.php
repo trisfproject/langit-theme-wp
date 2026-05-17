@@ -29,6 +29,7 @@ require_once LANGIT_DIR . '/inc/patterns.php';
 require_once LANGIT_DIR . '/inc/services.php';
 require_once LANGIT_DIR . '/inc/projects.php';
 require_once LANGIT_DIR . '/inc/testimonials.php';
+require_once LANGIT_DIR . '/inc/clients.php';
 require_once LANGIT_DIR . '/inc/team.php';
 require_once LANGIT_DIR . '/inc/faq.php';
 require_once LANGIT_DIR . '/inc/downloads.php';
