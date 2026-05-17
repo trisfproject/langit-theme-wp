@@ -25,7 +25,7 @@ function langit_customizer_defaults() {
 		'hero_secondary_button_url'   => home_url( '/contact/' ),
 		'company_short_intro'         => __( 'Company Introduction', 'langit' ),
 		'company_description'         => __( 'PT Global Teknindo berfokus pada perencanaan, instalasi, integrasi, dan pemeliharaan sistem teknologi gedung. Setiap pekerjaan dijalankan dengan standar kerja terukur, dokumentasi yang jelas, serta hasil instalasi yang mudah dioperasikan dan dirawat dalam jangka panjang.', 'langit' ),
-		'footer_company_description'  => __( 'Menyediakan solusi teknologi gedung terintegrasi melalui konsultasi, instalasi, integrasi, dan pemeliharaan yang mendukung keandalan operasional fasilitas industri maupun komersial.', 'langit' ),
+		'footer_company_description'  => __( 'PT Global Teknindo menyediakan solusi terintegrasi di bidang teknologi, security system, mechanical electrical, networking, installation service, serta maintenance service yang profesional dan terpercaya.', 'langit' ),
 		'footer_copyright_text'       => __( 'Copyright {year} {site_name}. All rights reserved.', 'langit' ),
 		'footer_whatsapp'             => '+62 812 0000 0000',
 		'footer_email'                => 'info@globalteknindo.co.id',
