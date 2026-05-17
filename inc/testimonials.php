@@ -25,7 +25,7 @@ function langit_register_testimonials() {
 				'view_item'             => esc_html__( 'View Testimonial', 'langit' ),
 				'search_items'          => esc_html__( 'Search Testimonials', 'langit' ),
 				'not_found'             => esc_html__( 'No testimonials found', 'langit' ),
-				'all_items'             => esc_html__( 'All Testimonials', 'langit' ),
+				'all_items'             => esc_html__( 'Testimonials', 'langit' ),
 				'menu_name'             => esc_html__( 'Testimonials', 'langit' ),
 				'featured_image'        => esc_html__( 'Client Logo or Image', 'langit' ),
 				'set_featured_image'    => esc_html__( 'Set client logo or image', 'langit' ),

@@ -181,3 +181,29 @@ if ( ! function_exists( 'langit_footer_bottom_menu_fallback' ) ) {
 		echo '</ul>';
 	}
 }
+
+/**
+ * Normalize archive menu labels for a cleaner frontend navigation.
+ *
+ * @param array    $items Menu item objects.
+ * @param stdClass $args  Menu arguments.
+ * @return array
+ */
+function langit_normalize_navigation_labels( $items, $args ) {
+	$labels = array(
+		'services'     => esc_html__( 'Services', 'langit' ),
+		'projects'     => esc_html__( 'Projects', 'langit' ),
+		'testimonials' => esc_html__( 'Testimonials', 'langit' ),
+	);
+
+	foreach ( $items as $item ) {
+		$key = sanitize_title( preg_replace( '/^all\s+/i', '', $item->title ) );
+
+		if ( isset( $labels[ $key ] ) ) {
+			$item->title = $labels[ $key ];
+		}
+	}
+
+	return $items;
+}
+add_filter( 'wp_nav_menu_objects', 'langit_normalize_navigation_labels', 10, 2 );

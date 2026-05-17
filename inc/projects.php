@@ -25,7 +25,7 @@ function langit_register_projects() {
 				'view_item'             => esc_html__( 'View Project', 'langit' ),
 				'search_items'          => esc_html__( 'Search Projects', 'langit' ),
 				'not_found'             => esc_html__( 'No projects found', 'langit' ),
-				'all_items'             => esc_html__( 'All Projects', 'langit' ),
+				'all_items'             => esc_html__( 'Projects', 'langit' ),
 				'menu_name'             => esc_html__( 'Projects', 'langit' ),
 				'featured_image'        => esc_html__( 'Project Featured Image', 'langit' ),
 				'set_featured_image'    => esc_html__( 'Set project featured image', 'langit' ),

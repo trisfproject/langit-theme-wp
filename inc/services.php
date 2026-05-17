@@ -25,7 +25,7 @@ function langit_register_services() {
 				'view_item'             => esc_html__( 'View Service', 'langit' ),
 				'search_items'          => esc_html__( 'Search Services', 'langit' ),
 				'not_found'             => esc_html__( 'No services found', 'langit' ),
-				'all_items'             => esc_html__( 'All Services', 'langit' ),
+				'all_items'             => esc_html__( 'Services', 'langit' ),
 				'menu_name'             => esc_html__( 'Services', 'langit' ),
 				'featured_image'        => esc_html__( 'Service Image or Icon', 'langit' ),
 				'set_featured_image'    => esc_html__( 'Set service image or icon', 'langit' ),
