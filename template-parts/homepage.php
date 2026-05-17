@@ -10,6 +10,7 @@ $langit_services_query = null;
 $langit_projects_query = null;
 $langit_testimonials_query = null;
 $langit_team_query = null;
+$langit_faq_query = null;
 $langit_industries     = langit_theme_mod_enabled( 'show_industry_section' ) ? langit_homepage_industries() : array();
 
 if ( langit_theme_mod_enabled( 'show_services_section' ) ) {
@@ -102,6 +103,29 @@ if ( langit_theme_mod_enabled( 'show_team_section' ) ) {
 	}
 
 	$langit_team_query = new WP_Query( $langit_team_args );
+}
+
+if ( langit_theme_mod_enabled( 'show_faq_section' ) ) {
+	$langit_featured_faq = langit_theme_mod_id_list( 'featured_faq_ids' );
+	$langit_faq_args     = array(
+		'post_type'              => 'faq',
+		'post_status'            => 'publish',
+		'posts_per_page'         => absint( langit_theme_mod( 'featured_faq_count' ) ),
+		'orderby'                => array(
+			'menu_order' => 'ASC',
+			'title'      => 'ASC',
+		),
+		'no_found_rows'          => true,
+		'update_post_meta_cache' => true,
+		'update_post_term_cache' => true,
+	);
+
+	if ( ! empty( $langit_featured_faq ) ) {
+		$langit_faq_args['post__in'] = $langit_featured_faq;
+		$langit_faq_args['orderby']  = 'post__in';
+	}
+
+	$langit_faq_query = new WP_Query( $langit_faq_args );
 }
 ?>
 
@@ -371,6 +395,35 @@ if ( langit_theme_mod_enabled( 'show_team_section' ) ) {
 			</div>
 		</section>
 	<?php endif; ?>
+<?php endif; ?>
+
+<?php if ( $langit_faq_query instanceof WP_Query && $langit_faq_query->have_posts() ) : ?>
+	<section class="section section--surface">
+		<div class="container stack">
+			<?php
+			langit_section_heading(
+				array(
+					'eyebrow' => langit_theme_mod( 'faq_section_eyebrow' ),
+					'title'   => langit_theme_mod( 'faq_section_title' ),
+					'text'    => langit_theme_mod( 'faq_section_description' ),
+					'center'  => true,
+				)
+			);
+			?>
+
+			<div class="faq-list">
+				<?php
+				$langit_faq_index = 0;
+				while ( $langit_faq_query->have_posts() ) :
+					$langit_faq_query->the_post();
+					langit_faq_item( get_the_ID(), 0 === $langit_faq_index );
+					++$langit_faq_index;
+				endwhile;
+				wp_reset_postdata();
+				?>
+			</div>
+		</div>
+	</section>
 <?php endif; ?>
 
 <?php if ( langit_theme_mod_enabled( 'show_cta_section' ) ) : ?>

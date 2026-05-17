@@ -32,6 +32,7 @@ function langit_customizer_defaults() {
 		'show_team_section'           => '1',
 		'show_testimonials_section'   => '1',
 		'show_client_logo_section'    => '1',
+		'show_faq_section'            => '1',
 		'show_cta_section'            => '1',
 		'company_short_intro'         => __( 'Company Introduction', 'langit' ),
 		'company_section_title'       => __( 'Technology Partner for Modern Facilities', 'langit' ),
@@ -95,6 +96,11 @@ function langit_customizer_defaults() {
 		'featured_testimonial_ids'    => '',
 		'featured_testimonial_count'  => '3',
 		'client_logo_section_title'   => __( 'Clients & Partners', 'langit' ),
+		'faq_section_eyebrow'         => __( 'Frequently Asked Questions', 'langit' ),
+		'faq_section_title'           => __( 'Helpful answers for planning your building technology project.', 'langit' ),
+		'faq_section_description'     => __( 'Temukan jawaban ringkas seputar konsultasi, instalasi, integrasi, dan maintenance agar kebutuhan proyek lebih mudah dipahami sebelum berdiskusi dengan tim kami.', 'langit' ),
+		'featured_faq_ids'            => '',
+		'featured_faq_count'          => '5',
 		'cta_eyebrow'                 => __( 'Start a Project', 'langit' ),
 		'cta_title'                   => __( 'Discuss Your Building Technology Requirements', 'langit' ),
 		'cta_description'             => __( 'Sampaikan kebutuhan proyek Anda kepada tim kami untuk mendapatkan arahan solusi, estimasi ruang lingkup, dan langkah kerja yang tepat.', 'langit' ),
@@ -411,6 +417,12 @@ function langit_customize_register( $wp_customize ) {
 		),
 		'show_client_logo_section' => array(
 			'label'    => esc_html__( 'Show Client Logo Showcase', 'langit' ),
+			'section'  => 'langit_homepage_sections',
+			'type'     => 'checkbox',
+			'sanitize' => 'langit_sanitize_checkbox',
+		),
+		'show_faq_section' => array(
+			'label'    => esc_html__( 'Show FAQ Section', 'langit' ),
 			'section'  => 'langit_homepage_sections',
 			'type'     => 'checkbox',
 			'sanitize' => 'langit_sanitize_checkbox',
@@ -760,6 +772,32 @@ function langit_customize_register( $wp_customize ) {
 		'client_logo_section_title' => array(
 			'label'   => esc_html__( 'Client Logo Showcase Title', 'langit' ),
 			'section' => 'langit_homepage_sections',
+		),
+		'faq_section_eyebrow' => array(
+			'label'   => esc_html__( 'FAQ Section Eyebrow', 'langit' ),
+			'section' => 'langit_homepage_sections',
+		),
+		'faq_section_title' => array(
+			'label'   => esc_html__( 'FAQ Section Title', 'langit' ),
+			'section' => 'langit_homepage_sections',
+		),
+		'faq_section_description' => array(
+			'label'    => esc_html__( 'FAQ Section Description', 'langit' ),
+			'section'  => 'langit_homepage_sections',
+			'type'     => 'textarea',
+			'sanitize' => 'langit_sanitize_textarea',
+		),
+		'featured_faq_ids' => array(
+			'label'       => esc_html__( 'Featured FAQ IDs', 'langit' ),
+			'description' => esc_html__( 'Optional comma-separated FAQ post IDs. Order follows this list.', 'langit' ),
+			'section'     => 'langit_homepage_sections',
+			'sanitize'    => 'langit_sanitize_id_list',
+		),
+		'featured_faq_count' => array(
+			'label'    => esc_html__( 'FAQ Item Limit', 'langit' ),
+			'section'  => 'langit_homepage_sections',
+			'type'     => 'number',
+			'sanitize' => 'langit_sanitize_positive_int',
 		),
 		'cta_eyebrow' => array(
 			'label'   => esc_html__( 'CTA Eyebrow', 'langit' ),

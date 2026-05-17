@@ -28,3 +28,4 @@ require_once LANGIT_DIR . '/inc/services.php';
 require_once LANGIT_DIR . '/inc/projects.php';
 require_once LANGIT_DIR . '/inc/testimonials.php';
 require_once LANGIT_DIR . '/inc/team.php';
+require_once LANGIT_DIR . '/inc/faq.php';
