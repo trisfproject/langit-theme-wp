@@ -52,19 +52,6 @@ function langit_content_width() {
 add_action( 'after_setup_theme', 'langit_content_width', 0 );
 
 /**
- * Register pattern categories.
- */
-function langit_register_pattern_categories() {
-	if ( function_exists( 'register_block_pattern_category' ) ) {
-		register_block_pattern_category(
-			'langit',
-			array( 'label' => esc_html__( 'Langit', 'langit' ) )
-		);
-	}
-}
-add_action( 'init', 'langit_register_pattern_categories' );
-
-/**
  * Register widget areas.
  */
 function langit_widgets_init() {
