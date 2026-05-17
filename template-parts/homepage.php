@@ -230,7 +230,8 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 		<div class="container hero-grid">
 			<div class="hero__content stack">
 				<p class="section-eyebrow"><?php echo esc_html( langit_theme_mod( 'hero_eyebrow' ) ); ?></p>
-				<h1><?php echo esc_html( langit_theme_mod( 'hero_title' ) ); ?></h1>
+				<?php $langit_hero_title = langit_theme_mod( 'hero_title' ); ?>
+				<h1 class="hero-title"><?php echo esc_html( $langit_hero_title ); ?></h1>
 				<p class="lede"><?php echo esc_html( langit_theme_mod( 'hero_description' ) ); ?></p>
 				<div class="cluster">
 					<?php
