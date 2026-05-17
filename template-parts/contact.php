@@ -7,6 +7,7 @@
 
 $langit_icon_uri = get_template_directory_uri() . '/assets/icons/';
 $langit_company  = langit_theme_mod( 'company_name' );
+$langit_hero_text = str_replace( '{company_name}', $langit_company, langit_theme_mod( 'contact_hero_description' ) );
 
 $langit_contacts = array(
 	array(
@@ -41,11 +42,7 @@ langit_page_hero(
 	array(
 		'eyebrow' => esc_html__( 'Contact', 'langit' ),
 		'title'   => get_the_title(),
-		'text'    => sprintf(
-			/* translators: %s: Company name. */
-			esc_html__( 'Hubungi %s untuk konsultasi kebutuhan Mechanical Electrical, CCTV, jaringan, fire alarm, audio, instalasi, dan layanan pemeliharaan.', 'langit' ),
-			$langit_company
-		),
+		'text'    => $langit_hero_text,
 	)
 );
 ?>
@@ -55,8 +52,8 @@ langit_page_hero(
 		<?php
 		langit_section_heading(
 			array(
-				'eyebrow' => esc_html__( 'Contact Information', 'langit' ),
-				'title'   => esc_html__( 'Reach our team through the right channel.', 'langit' ),
+				'eyebrow' => langit_theme_mod( 'contact_info_eyebrow' ),
+				'title'   => langit_theme_mod( 'contact_info_title' ),
 			)
 		);
 		?>
@@ -85,24 +82,17 @@ langit_page_hero(
 		<?php
 		langit_section_heading(
 			array(
-				'eyebrow' => esc_html__( 'Contact Form', 'langit' ),
-				'title'   => esc_html__( 'Send your project inquiry.', 'langit' ),
-				'text'    => esc_html__( 'Kirimkan informasi proyek, lokasi pekerjaan, layanan yang dibutuhkan, dan jadwal yang diharapkan agar tim kami dapat menindaklanjuti dengan tepat.', 'langit' ),
+				'eyebrow' => langit_theme_mod( 'contact_form_eyebrow' ),
+				'title'   => langit_theme_mod( 'contact_form_title' ),
+				'text'    => langit_theme_mod( 'contact_form_description' ),
 				'class'   => 'stack',
 			)
 		);
 		?>
 
-		<div class="form-placeholder">
-			<div class="form-placeholder__fields" aria-hidden="true">
-				<span><?php esc_html_e( 'Full Name', 'langit' ); ?></span>
-				<span><?php esc_html_e( 'Company Name', 'langit' ); ?></span>
-				<span><?php esc_html_e( 'Email Address', 'langit' ); ?></span>
-				<span><?php esc_html_e( 'WhatsApp Number', 'langit' ); ?></span>
-				<span><?php esc_html_e( 'Service Needed', 'langit' ); ?></span>
-				<span class="form-placeholder__message"><?php esc_html_e( 'Message', 'langit' ); ?></span>
-			</div>
-			<div class="shortcode-placeholder">[fluentform id="1"]</div>
+		<div class="contact-form-stack">
+			<?php langit_contact_form_area(); ?>
+			<?php langit_whatsapp_quick_contact(); ?>
 		</div>
 	</div>
 </section>
@@ -112,16 +102,13 @@ langit_page_hero(
 		<?php
 		langit_section_heading(
 			array(
-				'eyebrow' => esc_html__( 'Google Maps', 'langit' ),
-				'title'   => esc_html__( 'Office and Project Coverage', 'langit' ),
+				'eyebrow' => langit_theme_mod( 'contact_map_eyebrow' ),
+				'title'   => langit_theme_mod( 'contact_map_title' ),
+				'text'    => langit_theme_mod( 'contact_map_description' ),
 			)
 		);
 		?>
-		<div class="map-placeholder" role="img" aria-label="<?php esc_attr_e( 'Service area map', 'langit' ); ?>">
-			<a href="<?php echo esc_url( langit_theme_mod( 'contact_google_maps_url' ) ); ?>" target="_blank" rel="noopener noreferrer">
-				<?php echo esc_html( langit_theme_mod( 'company_address' ) ); ?>
-			</a>
-		</div>
+		<?php langit_contact_map(); ?>
 	</div>
 </section>
 
