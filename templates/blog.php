@@ -18,15 +18,19 @@ get_header();
 		</div>
 	</section>
 
-	<div class="container blog-layout">
+	<div class="container blog-layout blog-layout--listing">
 		<div class="blog-content">
-			<?php get_template_part( 'template-parts/blog-featured' ); ?>
 			<div class="blog-grid">
 				<?php
+				$langit_paged = max( 1, (int) get_query_var( 'paged' ), (int) get_query_var( 'page' ) );
+
 				$langit_blog_query = new WP_Query(
 					array(
 						'post_type'           => 'post',
-						'posts_per_page'      => 6,
+						'posts_per_page'      => get_option( 'posts_per_page' ),
+						'paged'               => $langit_paged,
+						'orderby'             => 'date',
+						'order'               => 'DESC',
 						'ignore_sticky_posts' => true,
 					)
 				);
@@ -34,9 +38,6 @@ get_header();
 				if ( $langit_blog_query->have_posts() ) :
 					while ( $langit_blog_query->have_posts() ) :
 						$langit_blog_query->the_post();
-						if ( isset( $GLOBALS['langit_featured_post_id'] ) && get_the_ID() === (int) $GLOBALS['langit_featured_post_id'] ) {
-							continue;
-						}
 						get_template_part( 'template-parts/content', get_post_type() );
 					endwhile;
 					wp_reset_postdata();
@@ -45,9 +46,26 @@ get_header();
 				endif;
 				?>
 			</div>
-		</div>
 
-		<?php get_sidebar(); ?>
+			<?php
+			if ( $langit_blog_query->max_num_pages > 1 ) :
+				$langit_pagination = paginate_links(
+					array(
+						'base'      => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
+						'format'    => '?paged=%#%',
+						'current'   => $langit_paged,
+						'total'     => $langit_blog_query->max_num_pages,
+						'prev_text' => esc_html__( 'Previous', 'langit' ),
+						'next_text' => esc_html__( 'Next', 'langit' ),
+						'type'      => 'list',
+					)
+				);
+				?>
+				<nav class="pagination" aria-label="<?php esc_attr_e( 'Blog pagination', 'langit' ); ?>">
+					<?php echo wp_kses_post( $langit_pagination ); ?>
+				</nav>
+			<?php endif; ?>
+		</div>
 	</div>
 
 	<?php get_template_part( 'template-parts/blog-cta' ); ?>

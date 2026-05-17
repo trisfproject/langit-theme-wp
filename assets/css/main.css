@@ -1524,6 +1524,10 @@ input[type="submit"]:focus {
 	padding-top: var(--langit-space-lg);
 }
 
+.blog-layout--listing {
+	display: block;
+}
+
 .blog-content {
 	min-width: 0;
 }
@@ -2115,6 +2119,39 @@ input[type="submit"]:focus {
 	border-radius: var(--langit-radius);
 	background: var(--langit-surface);
 	text-decoration: none;
+}
+
+.page-numbers {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.page-numbers a,
+.page-numbers span {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 2.75rem;
+	min-height: 2.75rem;
+	padding: 0.65rem 0.85rem;
+	border: 1px solid var(--langit-border);
+	border-radius: var(--langit-radius-sm);
+	background: var(--langit-surface);
+	color: var(--langit-ink);
+	font-weight: 800;
+	text-decoration: none;
+}
+
+.page-numbers .current,
+.page-numbers a:hover,
+.page-numbers a:focus {
+	border-color: rgba(88, 175, 255, 0.45);
+	background: var(--langit-primary);
+	color: #ffffff;
 }
 
 .nav-subtitle {
@@ -2989,6 +3026,10 @@ textarea {
 
 	.blog-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.blog-layout--listing .blog-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 
 	.download-grid,

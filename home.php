@@ -17,17 +17,13 @@ get_header();
 		</div>
 	</section>
 
-	<div class="container blog-layout">
+	<div class="container blog-layout blog-layout--listing">
 		<div class="blog-content">
-			<?php get_template_part( 'template-parts/blog-featured' ); ?>
 			<div class="blog-grid">
 				<?php
 				if ( have_posts() ) :
 					while ( have_posts() ) :
 						the_post();
-						if ( isset( $GLOBALS['langit_featured_post_id'] ) && get_the_ID() === (int) $GLOBALS['langit_featured_post_id'] ) {
-							continue;
-						}
 						get_template_part( 'template-parts/content', get_post_type() );
 					endwhile;
 				else :
@@ -36,10 +32,8 @@ get_header();
 				?>
 			</div>
 
-			<?php the_posts_navigation(); ?>
+			<?php the_posts_pagination(); ?>
 		</div>
-
-		<?php get_sidebar(); ?>
 	</div>
 
 	<?php get_template_part( 'template-parts/blog-cta' ); ?>
