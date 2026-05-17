@@ -9,6 +9,7 @@ $langit_image_uri      = get_template_directory_uri() . '/assets/images/';
 $langit_services_query = null;
 $langit_projects_query = null;
 $langit_testimonials_query = null;
+$langit_team_query = null;
 $langit_industries     = langit_theme_mod_enabled( 'show_industry_section' ) ? langit_homepage_industries() : array();
 
 if ( langit_theme_mod_enabled( 'show_services_section' ) ) {
@@ -78,6 +79,29 @@ if ( langit_theme_mod_enabled( 'show_testimonials_section' ) || langit_theme_mod
 	}
 
 	$langit_testimonials_query = new WP_Query( $langit_testimonial_args );
+}
+
+if ( langit_theme_mod_enabled( 'show_team_section' ) ) {
+	$langit_featured_team = langit_theme_mod_id_list( 'featured_team_ids' );
+	$langit_team_args     = array(
+		'post_type'              => 'team',
+		'post_status'            => 'publish',
+		'posts_per_page'         => absint( langit_theme_mod( 'featured_team_count' ) ),
+		'orderby'                => array(
+			'menu_order' => 'ASC',
+			'title'      => 'ASC',
+		),
+		'no_found_rows'          => true,
+		'update_post_meta_cache' => true,
+		'update_post_term_cache' => true,
+	);
+
+	if ( ! empty( $langit_featured_team ) ) {
+		$langit_team_args['post__in'] = $langit_featured_team;
+		$langit_team_args['orderby']  = 'post__in';
+	}
+
+	$langit_team_query = new WP_Query( $langit_team_args );
 }
 ?>
 
@@ -263,6 +287,33 @@ if ( langit_theme_mod_enabled( 'show_testimonials_section' ) || langit_theme_mod
 						<p><?php echo esc_html( $langit_stat['description'] ); ?></p>
 					</article>
 				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
+<?php endif; ?>
+
+<?php if ( $langit_team_query instanceof WP_Query && $langit_team_query->have_posts() ) : ?>
+	<section class="section">
+		<div class="container stack">
+			<?php
+			langit_section_heading(
+				array(
+					'eyebrow' => langit_theme_mod( 'team_section_eyebrow' ),
+					'title'   => langit_theme_mod( 'team_section_title' ),
+					'text'    => langit_theme_mod( 'team_section_description' ),
+					'center'  => true,
+				)
+			);
+			?>
+
+			<div class="team-grid">
+				<?php
+				while ( $langit_team_query->have_posts() ) :
+					$langit_team_query->the_post();
+					langit_team_card( get_the_ID() );
+				endwhile;
+				wp_reset_postdata();
+				?>
 			</div>
 		</div>
 	</section>
