@@ -203,6 +203,36 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 
 <?php if ( langit_theme_mod_enabled( 'show_hero_section' ) ) : ?>
 	<section class="hero hero--home">
+		<div class="hero-backgrounds" aria-hidden="true" data-hero-backgrounds>
+			<?php
+			$langit_hero_backgrounds = array(
+				array(
+					'src' => $langit_image_uri . 'services/cctv-security-system.webp',
+				),
+				array(
+					'src' => $langit_image_uri . 'projects/network-infrastructure-deployment.webp',
+				),
+				array(
+					'src' => $langit_image_uri . 'projects/fire-alarm-integration.webp',
+				),
+				array(
+					'src' => $langit_image_uri . 'projects/audio-public-address-installation.webp',
+				),
+			);
+			?>
+			<?php foreach ( $langit_hero_backgrounds as $langit_index => $langit_background ) : ?>
+				<img
+					class="hero-backgrounds__image<?php echo 0 === $langit_index ? ' is-active' : ''; ?>"
+					src="<?php echo esc_url( $langit_background['src'] ); ?>"
+					width="1200"
+					height="676"
+					alt=""
+					loading="<?php echo 0 === $langit_index ? 'eager' : 'lazy'; ?>"
+					decoding="async"
+					<?php echo 0 === $langit_index ? 'fetchpriority="high"' : ''; ?>
+				>
+			<?php endforeach; ?>
+		</div>
 		<div class="container hero-grid">
 			<div class="hero__content stack">
 				<p class="section-eyebrow"><?php echo esc_html( langit_theme_mod( 'hero_eyebrow' ) ); ?></p>
@@ -212,7 +242,7 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 					<?php
 					langit_button(
 						array(
-							'url'   => langit_theme_mod( 'hero_primary_button_url' ),
+							'url'   => '#services',
 							'label' => langit_theme_mod( 'hero_primary_button_text' ),
 						)
 					);
@@ -224,21 +254,6 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 						)
 					);
 					?>
-				</div>
-			</div>
-
-			<div class="hero-panel hero-panel--image" aria-hidden="true">
-				<picture>
-					<source
-						type="image/webp"
-						srcset="<?php echo esc_url( $langit_image_uri . 'langit-project-720.webp' ); ?> 720w, <?php echo esc_url( $langit_image_uri . 'langit-project-1200.webp' ); ?> 1200w"
-						sizes="(min-width: 901px) 42vw, calc(100vw - 2.5rem)"
-					>
-					<img src="<?php echo esc_url( $langit_image_uri . 'langit-project-1200.jpg' ); ?>" width="1200" height="676" alt="" loading="eager" decoding="async" fetchpriority="high">
-				</picture>
-				<div class="hero-panel__badge">
-					<span></span>
-					<span></span>
 				</div>
 			</div>
 		</div>
@@ -279,7 +294,7 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 <?php endif; ?>
 
 <?php if ( langit_theme_mod_enabled( 'show_services_section' ) ) : ?>
-	<section class="section">
+	<section id="services" class="section">
 		<div class="container stack">
 			<?php
 			langit_section_heading(

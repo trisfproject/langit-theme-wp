@@ -2,6 +2,7 @@
 	const header = document.querySelector('.site-header');
 	const toggle = document.querySelector('[data-nav-toggle]');
 	const menu = document.querySelector('[data-primary-menu]');
+	const heroBackgrounds = Array.from(document.querySelectorAll('[data-hero-backgrounds] .hero-backgrounds__image'));
 
 	if (!toggle || !menu) {
 		return;
@@ -124,4 +125,14 @@
 
 	window.addEventListener('scroll', setHeaderState, { passive: true });
 	setHeaderState();
+
+	if (heroBackgrounds.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+		let activeHeroBackground = 0;
+
+		window.setInterval(function () {
+			heroBackgrounds[activeHeroBackground].classList.remove('is-active');
+			activeHeroBackground = (activeHeroBackground + 1) % heroBackgrounds.length;
+			heroBackgrounds[activeHeroBackground].classList.add('is-active');
+		}, 5200);
+	}
 })();
