@@ -165,6 +165,39 @@ function langit_customizer_defaults() {
 		'contact_map_eyebrow'         => __( 'Google Maps', 'langit' ),
 		'contact_map_title'           => __( 'Office and Project Coverage', 'langit' ),
 		'contact_map_description'     => __( 'Gunakan tautan lokasi untuk melihat area layanan dan referensi alamat operasional perusahaan.', 'langit' ),
+		'show_quote_intro_section'    => '1',
+		'show_quote_services_section' => '1',
+		'show_quote_form_section'     => '1',
+		'show_quote_support_section'  => '1',
+		'quote_hero_eyebrow'          => __( 'Quote Request', 'langit' ),
+		'quote_hero_title'            => __( 'Request a Project Consultation', 'langit' ),
+		'quote_hero_description'      => __( 'Sampaikan kebutuhan proyek, layanan yang dibutuhkan, lokasi pekerjaan, dan jadwal yang diharapkan agar tim kami dapat menyiapkan arahan teknis serta estimasi penawaran yang lebih tepat.', 'langit' ),
+		'quote_intro_eyebrow'         => __( 'Consultation Introduction', 'langit' ),
+		'quote_intro_title'           => __( 'Structured consultation for reliable project planning.', 'langit' ),
+		'quote_intro_description'     => __( 'Proses konsultasi membantu memahami kebutuhan sistem, kondisi lapangan, prioritas operasional, dan ruang lingkup pekerjaan sebelum penawaran disusun secara profesional.', 'langit' ),
+		'quote_services_eyebrow'      => __( 'Service Selection', 'langit' ),
+		'quote_services_title'        => __( 'Choose the services you want to discuss.', 'langit' ),
+		'quote_services_description'  => __( 'Pilih layanan yang paling sesuai dengan kebutuhan proyek agar diskusi teknis dapat diarahkan sejak awal.', 'langit' ),
+		'quote_service_count'         => '6',
+		'quote_service_button_text'   => __( 'Continue to Request Form', 'langit' ),
+		'quote_form_eyebrow'          => __( 'Request Form', 'langit' ),
+		'quote_form_title'            => __( 'Send your quotation request.', 'langit' ),
+		'quote_form_description'      => __( 'Lengkapi informasi kontak, jenis layanan, deskripsi proyek, estimasi waktu, dan lokasi pekerjaan untuk membantu tim kami meninjau kebutuhan Anda.', 'langit' ),
+		'quote_form_shortcode'        => '[fluentform id="1"]',
+		'quote_whatsapp_eyebrow'      => __( 'Quick Consultation', 'langit' ),
+		'quote_whatsapp_title'        => __( 'Prefer to discuss first?', 'langit' ),
+		'quote_whatsapp_description'  => __( 'Hubungi tim kami melalui WhatsApp untuk konsultasi awal, permintaan survei teknis, atau diskusi kebutuhan maintenance.', 'langit' ),
+		'quote_whatsapp_button_text'  => __( 'Consult via WhatsApp', 'langit' ),
+		'quote_whatsapp_url'          => '',
+		'quote_support_eyebrow'       => __( 'Consultation Support', 'langit' ),
+		'quote_support_title'         => __( 'Support options for every project stage.', 'langit' ),
+		'quote_support_description'   => __( 'Tim kami dapat membantu dari konsultasi awal, diskusi proyek, survei teknis, hingga dukungan pemeliharaan setelah implementasi.', 'langit' ),
+		'quote_cta_eyebrow'           => __( 'Need Assistance?', 'langit' ),
+		'quote_cta_title'             => __( 'Ready to prepare your project quotation?', 'langit' ),
+		'quote_cta_description'       => __( 'Kirimkan kebutuhan proyek atau hubungi tim kami untuk mendapatkan arahan konsultasi yang sesuai dengan kondisi lapangan.', 'langit' ),
+		'quote_cta_primary_text'      => __( 'Start Quote Request', 'langit' ),
+		'quote_cta_primary_url'       => '#quote-form',
+		'quote_cta_secondary_text'    => __( 'WhatsApp Consultation', 'langit' ),
 		'social_instagram_url'        => '',
 		'social_facebook_url'         => '',
 		'social_linkedin_url'         => '',
@@ -370,6 +403,14 @@ function langit_customize_register( $wp_customize ) {
 		'langit_global_cta_settings',
 		array(
 			'title' => esc_html__( 'Global CTA & Inquiry', 'langit' ),
+			'panel' => 'langit_theme_settings',
+		)
+	);
+
+	$wp_customize->add_section(
+		'langit_quote_settings',
+		array(
+			'title' => esc_html__( 'Quote Request Settings', 'langit' ),
 			'panel' => 'langit_theme_settings',
 		)
 	);
@@ -1039,6 +1080,167 @@ function langit_customize_register( $wp_customize ) {
 			'label'       => esc_html__( 'Inquiry Form Shortcode', 'langit' ),
 			'description' => esc_html__( 'Prepared for Fluent Forms, for example: [fluentform id="1"].', 'langit' ),
 			'section'     => 'langit_global_cta_settings',
+		),
+		'show_quote_intro_section' => array(
+			'label'    => esc_html__( 'Show Quote Introduction', 'langit' ),
+			'section'  => 'langit_quote_settings',
+			'type'     => 'checkbox',
+			'sanitize' => 'langit_sanitize_checkbox',
+		),
+		'show_quote_services_section' => array(
+			'label'    => esc_html__( 'Show Service Selection', 'langit' ),
+			'section'  => 'langit_quote_settings',
+			'type'     => 'checkbox',
+			'sanitize' => 'langit_sanitize_checkbox',
+		),
+		'show_quote_form_section' => array(
+			'label'    => esc_html__( 'Show Quote Form', 'langit' ),
+			'section'  => 'langit_quote_settings',
+			'type'     => 'checkbox',
+			'sanitize' => 'langit_sanitize_checkbox',
+		),
+		'show_quote_support_section' => array(
+			'label'    => esc_html__( 'Show Consultation Support', 'langit' ),
+			'section'  => 'langit_quote_settings',
+			'type'     => 'checkbox',
+			'sanitize' => 'langit_sanitize_checkbox',
+		),
+		'quote_hero_eyebrow' => array(
+			'label'   => esc_html__( 'Quote Hero Eyebrow', 'langit' ),
+			'section' => 'langit_quote_settings',
+		),
+		'quote_hero_title' => array(
+			'label'   => esc_html__( 'Quote Hero Title', 'langit' ),
+			'section' => 'langit_quote_settings',
+		),
+		'quote_hero_description' => array(
+			'label'    => esc_html__( 'Quote Hero Description', 'langit' ),
+			'section'  => 'langit_quote_settings',
+			'type'     => 'textarea',
+			'sanitize' => 'langit_sanitize_textarea',
+		),
+		'quote_intro_eyebrow' => array(
+			'label'   => esc_html__( 'Quote Introduction Eyebrow', 'langit' ),
+			'section' => 'langit_quote_settings',
+		),
+		'quote_intro_title' => array(
+			'label'   => esc_html__( 'Quote Introduction Title', 'langit' ),
+			'section' => 'langit_quote_settings',
+		),
+		'quote_intro_description' => array(
+			'label'    => esc_html__( 'Quote Introduction Description', 'langit' ),
+			'section'  => 'langit_quote_settings',
+			'type'     => 'textarea',
+			'sanitize' => 'langit_sanitize_textarea',
+		),
+		'quote_services_eyebrow' => array(
+			'label'   => esc_html__( 'Service Selection Eyebrow', 'langit' ),
+			'section' => 'langit_quote_settings',
+		),
+		'quote_services_title' => array(
+			'label'   => esc_html__( 'Service Selection Title', 'langit' ),
+			'section' => 'langit_quote_settings',
+		),
+		'quote_services_description' => array(
+			'label'    => esc_html__( 'Service Selection Description', 'langit' ),
+			'section'  => 'langit_quote_settings',
+			'type'     => 'textarea',
+			'sanitize' => 'langit_sanitize_textarea',
+		),
+		'quote_service_count' => array(
+			'label'    => esc_html__( 'Service Selection Limit', 'langit' ),
+			'section'  => 'langit_quote_settings',
+			'type'     => 'number',
+			'sanitize' => 'langit_sanitize_positive_int',
+		),
+		'quote_service_button_text' => array(
+			'label'   => esc_html__( 'Service Selection Button Text', 'langit' ),
+			'section' => 'langit_quote_settings',
+		),
+		'quote_form_eyebrow' => array(
+			'label'   => esc_html__( 'Quote Form Eyebrow', 'langit' ),
+			'section' => 'langit_quote_settings',
+		),
+		'quote_form_title' => array(
+			'label'   => esc_html__( 'Quote Form Title', 'langit' ),
+			'section' => 'langit_quote_settings',
+		),
+		'quote_form_description' => array(
+			'label'    => esc_html__( 'Quote Form Description', 'langit' ),
+			'section'  => 'langit_quote_settings',
+			'type'     => 'textarea',
+			'sanitize' => 'langit_sanitize_textarea',
+		),
+		'quote_form_shortcode' => array(
+			'label'       => esc_html__( 'Quote Form Shortcode', 'langit' ),
+			'description' => esc_html__( 'Prepared for Fluent Forms or Contact Form 7 shortcodes.', 'langit' ),
+			'section'     => 'langit_quote_settings',
+		),
+		'quote_whatsapp_eyebrow' => array(
+			'label'   => esc_html__( 'WhatsApp CTA Eyebrow', 'langit' ),
+			'section' => 'langit_quote_settings',
+		),
+		'quote_whatsapp_title' => array(
+			'label'   => esc_html__( 'WhatsApp CTA Title', 'langit' ),
+			'section' => 'langit_quote_settings',
+		),
+		'quote_whatsapp_description' => array(
+			'label'    => esc_html__( 'WhatsApp CTA Description', 'langit' ),
+			'section'  => 'langit_quote_settings',
+			'type'     => 'textarea',
+			'sanitize' => 'langit_sanitize_textarea',
+		),
+		'quote_whatsapp_button_text' => array(
+			'label'   => esc_html__( 'WhatsApp Button Text', 'langit' ),
+			'section' => 'langit_quote_settings',
+		),
+		'quote_whatsapp_url' => array(
+			'label'       => esc_html__( 'WhatsApp Consultation URL', 'langit' ),
+			'description' => esc_html__( 'Leave empty to use the global WhatsApp URL.', 'langit' ),
+			'section'     => 'langit_quote_settings',
+			'type'        => 'url',
+			'sanitize'    => 'esc_url_raw',
+		),
+		'quote_support_eyebrow' => array(
+			'label'   => esc_html__( 'Support Section Eyebrow', 'langit' ),
+			'section' => 'langit_quote_settings',
+		),
+		'quote_support_title' => array(
+			'label'   => esc_html__( 'Support Section Title', 'langit' ),
+			'section' => 'langit_quote_settings',
+		),
+		'quote_support_description' => array(
+			'label'    => esc_html__( 'Support Section Description', 'langit' ),
+			'section'  => 'langit_quote_settings',
+			'type'     => 'textarea',
+			'sanitize' => 'langit_sanitize_textarea',
+		),
+		'quote_cta_eyebrow' => array(
+			'label'   => esc_html__( 'Quote CTA Eyebrow', 'langit' ),
+			'section' => 'langit_quote_settings',
+		),
+		'quote_cta_title' => array(
+			'label'   => esc_html__( 'Quote CTA Title', 'langit' ),
+			'section' => 'langit_quote_settings',
+		),
+		'quote_cta_description' => array(
+			'label'    => esc_html__( 'Quote CTA Description', 'langit' ),
+			'section'  => 'langit_quote_settings',
+			'type'     => 'textarea',
+			'sanitize' => 'langit_sanitize_textarea',
+		),
+		'quote_cta_primary_text' => array(
+			'label'   => esc_html__( 'Quote CTA Primary Button Text', 'langit' ),
+			'section' => 'langit_quote_settings',
+		),
+		'quote_cta_primary_url' => array(
+			'label'    => esc_html__( 'Quote CTA Primary Button URL', 'langit' ),
+			'section'  => 'langit_quote_settings',
+			'sanitize' => 'esc_url_raw',
+		),
+		'quote_cta_secondary_text' => array(
+			'label'   => esc_html__( 'Quote CTA Secondary Button Text', 'langit' ),
+			'section' => 'langit_quote_settings',
 		),
 		'company_name' => array(
 			'label'   => esc_html__( 'Company Name', 'langit' ),

@@ -22,6 +22,7 @@ require_once LANGIT_DIR . '/inc/components.php';
 require_once LANGIT_DIR . '/inc/customizer.php';
 require_once LANGIT_DIR . '/inc/cta.php';
 require_once LANGIT_DIR . '/inc/contact.php';
+require_once LANGIT_DIR . '/inc/quote.php';
 require_once LANGIT_DIR . '/inc/company.php';
 require_once LANGIT_DIR . '/inc/patterns.php';
 require_once LANGIT_DIR . '/inc/services.php';

@@ -1068,6 +1068,77 @@ input[type="submit"]:focus {
 	max-width: 100%;
 }
 
+.quote-process-card {
+	align-content: start;
+}
+
+.quote-process-list {
+	display: grid;
+	gap: 0.8rem;
+	margin: 0;
+	padding-left: 1.25rem;
+	color: var(--langit-muted);
+}
+
+.quote-service-selector {
+	display: grid;
+	justify-items: center;
+	gap: var(--langit-space-md);
+}
+
+.quote-service-grid,
+.quote-support-grid {
+	display: grid;
+	gap: var(--langit-space-md);
+	grid-template-columns: 1fr;
+	width: 100%;
+}
+
+.quote-service-option {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	align-items: start;
+	gap: 0.85rem;
+	cursor: pointer;
+}
+
+.quote-service-option input {
+	width: 1.15rem;
+	height: 1.15rem;
+	margin-top: 0.2rem;
+	accent-color: var(--langit-primary);
+}
+
+.quote-service-option strong,
+.quote-support-card h3 {
+	display: block;
+	margin-bottom: 0.35rem;
+	color: var(--langit-secondary);
+	line-height: 1.25;
+}
+
+.quote-service-option small,
+.quote-support-card p {
+	color: var(--langit-muted);
+	font-size: 0.95rem;
+	line-height: 1.6;
+}
+
+.quote-support-card {
+	display: grid;
+	align-content: start;
+	gap: 0.4rem;
+}
+
+.quote-support-card h3,
+.quote-support-card p {
+	margin-bottom: 0;
+}
+
+.quote-form-placeholder .form-placeholder__message {
+	grid-column: 1 / -1;
+}
+
 .map-placeholder {
 	display: grid;
 	min-height: clamp(18rem, 48vw, 28rem);
@@ -2018,6 +2089,12 @@ select {
 	font: inherit;
 }
 
+.quote-service-option input[type="checkbox"] {
+	width: 1.15rem;
+	min-height: auto;
+	padding: 0;
+}
+
 label,
 .fluentform label {
 	display: grid;
@@ -2118,6 +2195,11 @@ textarea {
 	}
 
 	.service-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.quote-service-grid,
+	.quote-support-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
@@ -2284,6 +2366,14 @@ textarea {
 		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
 
+	.quote-service-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.quote-support-grid {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
 	.trust-grid {
 		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
@@ -2383,7 +2473,9 @@ textarea {
 	.service-grid,
 	.team-grid,
 	.download-grid,
-	.certification-grid {
+	.certification-grid,
+	.quote-service-grid,
+	.quote-support-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
