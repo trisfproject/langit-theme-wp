@@ -22,11 +22,22 @@ $footer_products = array(
 );
 
 $footer_contact = array(
-	langit_theme_mod( 'footer_whatsapp' )      => langit_whatsapp_url( langit_theme_mod( 'footer_whatsapp' ) ),
-	langit_theme_mod( 'footer_email' )         => 'mailto:' . langit_theme_mod( 'footer_email' ),
-	langit_theme_mod( 'footer_address' )       => home_url( '/contact/#map' ),
-	langit_theme_mod( 'footer_working_hours' ) => home_url( '/contact/#contact-information' ),
+	langit_theme_mod( 'contact_whatsapp_number' ) => langit_contact_whatsapp_url(),
+	langit_theme_mod( 'contact_email_address' )   => 'mailto:' . langit_theme_mod( 'contact_email_address' ),
+	langit_theme_mod( 'company_address' )         => langit_theme_mod( 'contact_google_maps_url' ),
+	langit_theme_mod( 'company_working_hours' )   => home_url( '/contact/#contact-information' ),
 );
+
+$footer_social = array_filter(
+	array(
+		esc_html__( 'Instagram', 'langit' ) => langit_theme_mod( 'social_instagram_url' ),
+		esc_html__( 'Facebook', 'langit' )  => langit_theme_mod( 'social_facebook_url' ),
+		esc_html__( 'LinkedIn', 'langit' )  => langit_theme_mod( 'social_linkedin_url' ),
+		esc_html__( 'YouTube', 'langit' )   => langit_theme_mod( 'social_youtube_url' ),
+	)
+);
+
+$footer_contact = array_merge( $footer_contact, $footer_social );
 
 $footer_copyright = str_replace(
 	array( '{year}', '{site_name}' ),
@@ -48,8 +59,8 @@ $footer_copyright = str_replace(
 			<a class="site-footer__logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/footer-logo.png' ); ?>" width="256" height="256" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 			</a>
-			<p class="site-footer__company"><?php esc_html_e( 'PT Global Teknindo', 'langit' ); ?></p>
-			<p><?php echo esc_html( langit_theme_mod( 'footer_company_description' ) ); ?></p>
+			<p class="site-footer__company"><?php echo esc_html( langit_theme_mod( 'company_name' ) ); ?></p>
+			<p><?php echo esc_html( langit_theme_mod( 'company_short_description' ) ); ?></p>
 		</div>
 
 		<div class="site-footer__grid">

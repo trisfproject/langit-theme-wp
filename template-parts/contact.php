@@ -6,29 +6,30 @@
  */
 
 $langit_icon_uri = get_template_directory_uri() . '/assets/icons/';
+$langit_company  = langit_theme_mod( 'company_name' );
 
 $langit_contacts = array(
 	array(
 		'label' => esc_html__( 'WhatsApp', 'langit' ),
-		'value' => esc_html__( '+62 812 0000 0000', 'langit' ),
+		'value' => langit_theme_mod( 'contact_whatsapp_number' ),
 		'text'  => esc_html__( 'Hubungi tim kami untuk konsultasi awal terkait kebutuhan proyek, survei lokasi, atau dukungan teknis.', 'langit' ),
 		'icon'  => $langit_icon_uri . 'contact.svg',
 	),
 	array(
 		'label' => esc_html__( 'Email', 'langit' ),
-		'value' => esc_html__( 'info@globalteknindo.co.id', 'langit' ),
+		'value' => langit_theme_mod( 'contact_email_address' ),
 		'text'  => esc_html__( 'Kirimkan kebutuhan, dokumen proyek, atau permintaan penawaran melalui email resmi.', 'langit' ),
 		'icon'  => $langit_icon_uri . 'contact.svg',
 	),
 	array(
 		'label' => esc_html__( 'Office Address', 'langit' ),
-		'value' => esc_html__( 'Indonesia', 'langit' ),
+		'value' => langit_theme_mod( 'company_address' ),
 		'text'  => esc_html__( 'Tim kami melayani kebutuhan proyek untuk gedung komersial, industri, pemerintahan, dan fasilitas operasional lainnya.', 'langit' ),
 		'icon'  => $langit_icon_uri . 'location.svg',
 	),
 	array(
 		'label' => esc_html__( 'Working Hours', 'langit' ),
-		'value' => esc_html__( 'Monday - Friday', 'langit' ),
+		'value' => langit_theme_mod( 'company_working_hours' ),
 		'text'  => esc_html__( 'Tim kami siap membantu pada jam kerja dan merespons kebutuhan prioritas proyek.', 'langit' ),
 		'icon'  => $langit_icon_uri . 'time.svg',
 	),
@@ -40,7 +41,11 @@ langit_page_hero(
 	array(
 		'eyebrow' => esc_html__( 'Contact', 'langit' ),
 		'title'   => get_the_title(),
-		'text'    => esc_html__( 'Hubungi PT Global Teknindo untuk konsultasi kebutuhan Mechanical Electrical, CCTV, jaringan, fire alarm, audio, instalasi, dan layanan pemeliharaan.', 'langit' ),
+		'text'    => sprintf(
+			/* translators: %s: Company name. */
+			esc_html__( 'Hubungi %s untuk konsultasi kebutuhan Mechanical Electrical, CCTV, jaringan, fire alarm, audio, instalasi, dan layanan pemeliharaan.', 'langit' ),
+			$langit_company
+		),
 	)
 );
 ?>
@@ -113,7 +118,9 @@ langit_page_hero(
 		);
 		?>
 		<div class="map-placeholder" role="img" aria-label="<?php esc_attr_e( 'Service area map', 'langit' ); ?>">
-			<span><?php esc_html_e( 'Area layanan dan lokasi kantor dapat ditampilkan melalui integrasi Google Maps.', 'langit' ); ?></span>
+			<a href="<?php echo esc_url( langit_theme_mod( 'contact_google_maps_url' ) ); ?>" target="_blank" rel="noopener noreferrer">
+				<?php echo esc_html( langit_theme_mod( 'company_address' ) ); ?>
+			</a>
 		</div>
 	</div>
 </section>
@@ -130,7 +137,7 @@ langit_cta(
 				'label' => esc_html__( 'Contact Us', 'langit' ),
 			),
 			array(
-				'url'     => 'https://wa.me/6281200000000',
+				'url'     => langit_contact_whatsapp_url(),
 				'label'   => esc_html__( 'WhatsApp', 'langit' ),
 				'variant' => 'ghost',
 			),

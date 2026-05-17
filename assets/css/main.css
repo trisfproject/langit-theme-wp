@@ -1022,8 +1022,14 @@ input[type="submit"]:focus {
 	text-align: center;
 }
 
-.map-placeholder span {
+.map-placeholder span,
+.map-placeholder a {
 	max-width: min(100% - 2rem, 36rem);
+}
+
+.map-placeholder a {
+	color: #ffffff;
+	text-decoration: none;
 }
 
 .support-cta__actions {
