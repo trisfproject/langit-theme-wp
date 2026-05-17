@@ -5,34 +5,20 @@
  * @package Langit
  */
 
-$langit_image_uri = get_template_directory_uri() . '/assets/images/';
-$langit_icon_uri  = get_template_directory_uri() . '/assets/icons/';
-
-$langit_services = array(
+$langit_image_uri      = get_template_directory_uri() . '/assets/images/';
+$langit_services_query = new WP_Query(
 	array(
-		'title' => esc_html__( 'CCTV & Security System', 'langit' ),
-		'icon'  => $langit_icon_uri . 'cctv.svg',
-	),
-	array(
-		'title' => esc_html__( 'Networking Infrastructure', 'langit' ),
-		'icon'  => $langit_icon_uri . 'network.svg',
-	),
-	array(
-		'title' => esc_html__( 'Mechanical Electrical', 'langit' ),
-		'icon'  => $langit_icon_uri . 'electrical.svg',
-	),
-	array(
-		'title' => esc_html__( 'Fire Alarm System', 'langit' ),
-		'icon'  => $langit_icon_uri . 'fire.svg',
-	),
-	array(
-		'title' => esc_html__( 'Audio & Public Address', 'langit' ),
-		'icon'  => $langit_icon_uri . 'audio.svg',
-	),
-	array(
-		'title' => esc_html__( 'Installation & Maintenance', 'langit' ),
-		'icon'  => $langit_icon_uri . 'maintenance.svg',
-	),
+		'post_type'              => 'service',
+		'post_status'            => 'publish',
+		'posts_per_page'         => 6,
+		'orderby'                => array(
+			'menu_order' => 'ASC',
+			'title'      => 'ASC',
+		),
+		'no_found_rows'          => true,
+		'update_post_meta_cache' => true,
+		'update_post_term_cache' => true,
+	)
 );
 
 $langit_industries = array(
@@ -128,19 +114,21 @@ $langit_industries = array(
 		?>
 
 		<div class="service-grid">
-			<?php foreach ( $langit_services as $langit_service ) : ?>
+			<?php if ( $langit_services_query->have_posts() ) : ?>
 				<?php
-				langit_card(
-					array(
-						'title'      => $langit_service['title'],
-						'text'       => esc_html__( 'Solusi dirancang sesuai kebutuhan area, standar operasional, dan target keandalan sistem agar proyek berjalan efektif sejak tahap perencanaan hingga dukungan purna jual.', 'langit' ),
-						'class'      => 'service-card',
-						'icon_class' => 'service-card__icon',
-						'icon_url'   => $langit_service['icon'],
-					)
-				);
+				while ( $langit_services_query->have_posts() ) :
+					$langit_services_query->the_post();
+					langit_service_summary_card( get_the_ID() );
+				endwhile;
+				wp_reset_postdata();
 				?>
-			<?php endforeach; ?>
+			<?php else : ?>
+				<?php
+				foreach ( langit_default_services() as $langit_service ) {
+					langit_service_summary_card( $langit_service );
+				}
+				?>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>

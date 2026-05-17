@@ -5,41 +5,6 @@
  * @package Langit
  */
 
-$langit_icon_uri = get_template_directory_uri() . '/assets/icons/';
-
-$langit_products = array(
-	array(
-		'title'       => esc_html__( 'CCTV & Security System', 'langit' ),
-		'description' => esc_html__( 'Perencanaan dan instalasi sistem kamera pengawas, perangkat keamanan, dan pemantauan area untuk meningkatkan perlindungan fasilitas secara terukur.', 'langit' ),
-		'icon'        => $langit_icon_uri . 'cctv.svg',
-	),
-	array(
-		'title'       => esc_html__( 'Networking Infrastructure', 'langit' ),
-		'description' => esc_html__( 'Pembangunan infrastruktur jaringan data untuk kantor, gedung, dan area operasional yang membutuhkan konektivitas stabil, rapi, dan mudah dikembangkan.', 'langit' ),
-		'icon'        => $langit_icon_uri . 'network.svg',
-	),
-	array(
-		'title'       => esc_html__( 'Mechanical Electrical', 'langit' ),
-		'description' => esc_html__( 'Dukungan sistem mekanikal elektrikal untuk bangunan dan fasilitas industri, termasuk integrasi perangkat pendukung operasional yang aman dan efisien.', 'langit' ),
-		'icon'        => $langit_icon_uri . 'electrical.svg',
-	),
-	array(
-		'title'       => esc_html__( 'Fire Alarm System', 'langit' ),
-		'description' => esc_html__( 'Instalasi sistem deteksi dan alarm kebakaran untuk mendukung kesiapsiagaan, keselamatan penghuni, dan kepatuhan area bangunan.', 'langit' ),
-		'icon'        => $langit_icon_uri . 'fire.svg',
-	),
-	array(
-		'title'       => esc_html__( 'Audio & Public Address', 'langit' ),
-		'description' => esc_html__( 'Solusi audio, paging, dan public address untuk komunikasi internal gedung, fasilitas umum, area produksi, dan kebutuhan pengumuman operasional.', 'langit' ),
-		'icon'        => $langit_icon_uri . 'audio.svg',
-	),
-	array(
-		'title'       => esc_html__( 'Installation & Maintenance', 'langit' ),
-		'description' => esc_html__( 'Layanan instalasi, pemeriksaan, perawatan, dan dukungan teknis berkala untuk menjaga sistem tetap optimal dan siap digunakan.', 'langit' ),
-		'icon'        => $langit_icon_uri . 'maintenance.svg',
-	),
-);
-
 $langit_solutions = array(
 	esc_html__( 'Industrial Solutions', 'langit' ),
 	esc_html__( 'Commercial Building Solutions', 'langit' ),
@@ -52,6 +17,21 @@ $langit_process = array(
 	esc_html__( 'Planning', 'langit' ),
 	esc_html__( 'Installation', 'langit' ),
 	esc_html__( 'Maintenance', 'langit' ),
+);
+
+$langit_services_query = new WP_Query(
+	array(
+		'post_type'              => 'service',
+		'post_status'            => 'publish',
+		'posts_per_page'         => -1,
+		'orderby'                => array(
+			'menu_order' => 'ASC',
+			'title'      => 'ASC',
+		),
+		'no_found_rows'          => true,
+		'update_post_meta_cache' => true,
+		'update_post_term_cache' => true,
+	)
 );
 ?>
 
@@ -91,26 +71,21 @@ langit_page_hero(
 		?>
 
 		<div class="service-grid">
-			<?php foreach ( $langit_products as $langit_product ) : ?>
-				<article id="<?php echo esc_attr( sanitize_title( $langit_product['title'] ) ); ?>" class="card product-card">
-					<div class="product-card__visual" aria-hidden="true">
-						<img src="<?php echo esc_url( $langit_product['icon'] ); ?>" width="48" height="48" alt="" loading="lazy" decoding="async">
-					</div>
-					<div class="product-card__body">
-						<h3><?php echo esc_html( $langit_product['title'] ); ?></h3>
-						<p><?php echo esc_html( $langit_product['description'] ); ?></p>
-					</div>
-					<?php
-					langit_button(
-						array(
-							'url'     => home_url( '/contact/' ),
-							'label'   => esc_html__( 'Request Info', 'langit' ),
-							'variant' => 'ghost',
-						)
-					);
-					?>
-				</article>
-			<?php endforeach; ?>
+			<?php if ( $langit_services_query->have_posts() ) : ?>
+				<?php
+				while ( $langit_services_query->have_posts() ) :
+					$langit_services_query->the_post();
+					langit_service_card( get_the_ID() );
+				endwhile;
+				wp_reset_postdata();
+				?>
+			<?php else : ?>
+				<?php
+				foreach ( langit_default_services() as $langit_service ) {
+					langit_service_card( $langit_service );
+				}
+				?>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>
