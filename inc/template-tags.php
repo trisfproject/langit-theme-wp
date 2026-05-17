@@ -111,6 +111,7 @@ if ( ! function_exists( 'langit_primary_menu_fallback' ) ) {
 			printf( '<li><a href="%1$s">%2$s</a></li>', esc_url( $url ), esc_html( $label ) );
 		}
 		echo '</ul></li>';
+		printf( '<li><a href="%1$s">%2$s</a></li>', esc_url( langit_get_projects_archive_url() ), esc_html__( 'Projects', 'langit' ) );
 		printf( '<li><a href="%1$s">%2$s</a></li>', esc_url( home_url( '/blog/' ) ), esc_html__( 'Blog', 'langit' ) );
 		printf( '<li><a href="%1$s">%2$s</a></li>', esc_url( home_url( '/contact/' ) ), esc_html__( 'Contact', 'langit' ) );
 		echo '</ul>';
@@ -126,6 +127,7 @@ if ( ! function_exists( 'langit_footer_menu_fallback' ) ) {
 			esc_html__( 'Home', 'langit' )     => home_url( '/' ),
 			esc_html__( 'Company', 'langit' )  => home_url( '/company/' ),
 			esc_html__( 'Products', 'langit' ) => home_url( '/products/' ),
+			esc_html__( 'Projects', 'langit' ) => langit_get_projects_archive_url(),
 			esc_html__( 'Contact', 'langit' )  => home_url( '/contact/' ),
 		);
 
@@ -168,6 +170,7 @@ if ( ! function_exists( 'langit_footer_bottom_menu_fallback' ) ) {
 		$items = array(
 			esc_html__( 'Company', 'langit' ) => home_url( '/company/' ),
 			esc_html__( 'Products', 'langit' ) => home_url( '/products/' ),
+			esc_html__( 'Projects', 'langit' ) => langit_get_projects_archive_url(),
 			esc_html__( 'Contact', 'langit' ) => home_url( '/contact/' ),
 		);
 

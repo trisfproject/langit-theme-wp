@@ -100,6 +100,33 @@ function langit_flush_project_rewrites() {
 add_action( 'after_switch_theme', 'langit_flush_project_rewrites' );
 
 /**
+ * Flush project rewrite rules once after project route updates.
+ */
+function langit_maybe_flush_project_rewrites() {
+	$rewrite_version = '2026-05-17-projects-route';
+
+	if ( get_option( 'langit_project_rewrite_version' ) === $rewrite_version ) {
+		return;
+	}
+
+	langit_register_projects();
+	flush_rewrite_rules();
+	update_option( 'langit_project_rewrite_version', $rewrite_version );
+}
+add_action( 'admin_init', 'langit_maybe_flush_project_rewrites' );
+
+/**
+ * Return the public Projects archive URL.
+ *
+ * @return string
+ */
+function langit_get_projects_archive_url() {
+	$archive_url = get_post_type_archive_link( 'project' );
+
+	return $archive_url ? $archive_url : home_url( '/projects/' );
+}
+
+/**
  * Add project details metabox.
  */
 function langit_add_project_meta_boxes() {
