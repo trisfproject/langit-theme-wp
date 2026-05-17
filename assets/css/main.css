@@ -2739,6 +2739,20 @@ textarea {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 
+	.hero--home .hero-grid {
+		width: min(100% - (var(--langit-gutter) * 2), 1180px);
+		grid-template-columns: minmax(0, 680px) minmax(8rem, 1fr);
+		padding-inline: clamp(2rem, 5vw, 5.5rem);
+	}
+
+	.hero--home .hero__content {
+		max-width: 660px;
+	}
+
+	.hero--home .lede {
+		max-width: 58ch;
+	}
+
 	.hero-grid,
 	.split-layout,
 	.company-overview,
