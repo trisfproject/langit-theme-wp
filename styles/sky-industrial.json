@@ -1,0 +1,11 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 2,
+	"title": "Sky Industrial",
+	"styles": {
+		"color": {
+			"background": "#F8FAFC",
+			"text": "#0B1120"
+		}
+	}
+}
