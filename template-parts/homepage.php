@@ -280,7 +280,7 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 	}
 	?>
 
-	<section class="section section--surface">
+	<section class="section home-section home-section--company">
 		<div class="container split-layout">
 			<div class="stack">
 				<?php
@@ -314,7 +314,7 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 <?php endif; ?>
 
 <?php if ( langit_theme_mod_enabled( 'show_services_section' ) ) : ?>
-	<section id="services" class="section">
+	<section id="services" class="section home-section home-section--services">
 		<div class="container stack">
 			<?php
 			langit_section_heading(
@@ -347,7 +347,7 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 <?php endif; ?>
 
 <?php if ( langit_theme_mod_enabled( 'show_industry_section' ) && ! empty( $langit_industries ) ) : ?>
-	<section class="section section--surface">
+	<section class="section home-section home-section--industry">
 		<div class="container stack">
 			<?php
 			langit_section_heading(
@@ -371,7 +371,7 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 <?php endif; ?>
 
 <?php if ( $langit_projects_query instanceof WP_Query && $langit_projects_query->have_posts() ) : ?>
-	<section class="section">
+	<section class="section home-section home-section--projects">
 		<div class="container stack">
 			<?php
 			langit_section_heading(
@@ -397,7 +397,7 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 <?php endif; ?>
 
 <?php if ( langit_theme_mod_enabled( 'show_trust_section' ) ) : ?>
-	<section class="section section--surface">
+	<section class="section home-section home-section--trust">
 		<div class="container stack">
 			<?php
 			langit_section_heading(
@@ -424,7 +424,7 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 <?php endif; ?>
 
 <?php if ( $langit_team_query instanceof WP_Query && $langit_team_query->have_posts() ) : ?>
-	<section class="section">
+	<section class="section home-section home-section--team">
 		<div class="container stack">
 			<?php
 			langit_section_heading(
@@ -452,7 +452,7 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 
 <?php if ( $langit_testimonials_query instanceof WP_Query && $langit_testimonials_query->have_posts() ) : ?>
 	<?php if ( langit_theme_mod_enabled( 'show_testimonials_section' ) ) : ?>
-		<section class="section">
+		<section class="section home-section home-section--testimonials">
 			<div class="container stack">
 				<?php
 				langit_section_heading(
@@ -486,7 +486,7 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 	$langit_has_testimonial_logos = $langit_testimonials_query instanceof WP_Query && $langit_testimonials_query->have_posts();
 	?>
 	<?php if ( $langit_has_client_logos || $langit_has_testimonial_logos ) : ?>
-		<section class="section section--compact">
+		<section class="section section--compact home-section home-section--clients">
 			<div class="container stack">
 				<?php
 				langit_section_heading(
@@ -531,7 +531,7 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 <?php endif; ?>
 
 <?php if ( $langit_faq_query instanceof WP_Query && $langit_faq_query->have_posts() ) : ?>
-	<section class="section section--surface">
+	<section class="section home-section home-section--faq">
 		<div class="container stack">
 			<?php
 			langit_section_heading(
@@ -560,7 +560,7 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 <?php endif; ?>
 
 <?php if ( $langit_downloads_query instanceof WP_Query && $langit_downloads_query->have_posts() ) : ?>
-	<section class="section">
+	<section class="section home-section home-section--downloads">
 		<div class="container stack">
 			<?php
 			langit_section_heading(
@@ -587,7 +587,7 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 <?php endif; ?>
 
 <?php if ( $langit_certifications_query instanceof WP_Query && $langit_certifications_query->have_posts() ) : ?>
-	<section class="section section--surface">
+	<section class="section home-section home-section--certifications">
 		<div class="container stack">
 			<?php
 			langit_section_heading(
