@@ -16,6 +16,7 @@ function langit_contact_form_area() {
 	$shortcode          = trim( langit_theme_mod( 'contact_form_shortcode' ) );
 	$rendered_shortcode = '';
 	$shortcode_ready    = false;
+	$status             = isset( $_GET['langit_contact_status'] ) ? sanitize_key( wp_unslash( $_GET['langit_contact_status'] ) ) : '';
 
 	if ( ! empty( $shortcode ) ) {
 		$rendered_shortcode = do_shortcode( $shortcode );
@@ -31,44 +32,62 @@ function langit_contact_form_area() {
 				?>
 			</div>
 		<?php else : ?>
-			<form class="form-placeholder__fields contact-fallback-form" method="post" action="<?php echo esc_url( 'mailto:' . sanitize_email( langit_theme_mod( 'contact_email_address' ) ) ); ?>" enctype="text/plain">
+			<?php if ( 'success' === $status ) : ?>
+				<div class="contact-form-message contact-form-message--success" role="status">
+					<?php echo esc_html( langit_theme_mod( 'contact_form_success_message' ) ); ?>
+				</div>
+			<?php elseif ( 'error' === $status ) : ?>
+				<div class="contact-form-message contact-form-message--error" role="alert">
+					<?php echo esc_html( langit_theme_mod( 'contact_form_error_message' ) ); ?>
+				</div>
+			<?php endif; ?>
+
+			<form class="form-placeholder__fields contact-fallback-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+				<input type="hidden" name="action" value="langit_contact_form_submit">
+				<?php wp_nonce_field( 'langit_contact_form', 'langit_contact_nonce' ); ?>
+				<label class="contact-form-honeypot" aria-hidden="true">
+					<span><?php esc_html_e( 'Website', 'langit' ); ?></span>
+					<input type="text" name="langit_contact_website" tabindex="-1" autocomplete="off">
+				</label>
 				<label>
 					<span><?php esc_html_e( 'Nama', 'langit' ); ?></span>
-					<input type="text" name="Nama" autocomplete="name" required>
+					<input type="text" name="langit_contact_name" autocomplete="name" required>
 				</label>
 				<label>
 					<span><?php esc_html_e( 'Perusahaan', 'langit' ); ?></span>
-					<input type="text" name="Perusahaan" autocomplete="organization">
+					<input type="text" name="langit_contact_company" autocomplete="organization">
 				</label>
 				<label>
 					<span><?php esc_html_e( 'Email', 'langit' ); ?></span>
-					<input type="email" name="Email" autocomplete="email" required>
+					<input type="email" name="langit_contact_email" autocomplete="email" required>
 				</label>
 				<label>
 					<span><?php esc_html_e( 'Nomor Telepon', 'langit' ); ?></span>
-					<input type="tel" name="Nomor Telepon" autocomplete="tel">
+					<input type="tel" name="langit_contact_phone" autocomplete="tel">
 				</label>
 				<label>
 					<span><?php esc_html_e( 'Jenis Kebutuhan', 'langit' ); ?></span>
-					<select name="Jenis Kebutuhan">
+					<select name="langit_contact_inquiry_type" required>
 						<option value=""><?php esc_html_e( 'Pilih kebutuhan', 'langit' ); ?></option>
-						<option value="cctv"><?php esc_html_e( 'CCTV & Security System', 'langit' ); ?></option>
-						<option value="networking"><?php esc_html_e( 'Networking Infrastructure', 'langit' ); ?></option>
-						<option value="mechanical-electrical"><?php esc_html_e( 'Mechanical Electrical', 'langit' ); ?></option>
-						<option value="fire-alarm"><?php esc_html_e( 'Fire Alarm System', 'langit' ); ?></option>
-						<option value="audio-public-address"><?php esc_html_e( 'Audio & Public Address', 'langit' ); ?></option>
-						<option value="maintenance"><?php esc_html_e( 'Installation & Maintenance', 'langit' ); ?></option>
+						<option value="<?php echo esc_attr__( 'CCTV & Security System', 'langit' ); ?>"><?php esc_html_e( 'CCTV & Security System', 'langit' ); ?></option>
+						<option value="<?php echo esc_attr__( 'Networking Infrastructure', 'langit' ); ?>"><?php esc_html_e( 'Networking Infrastructure', 'langit' ); ?></option>
+						<option value="<?php echo esc_attr__( 'Mechanical Electrical', 'langit' ); ?>"><?php esc_html_e( 'Mechanical Electrical', 'langit' ); ?></option>
+						<option value="<?php echo esc_attr__( 'Fire Alarm System', 'langit' ); ?>"><?php esc_html_e( 'Fire Alarm System', 'langit' ); ?></option>
+						<option value="<?php echo esc_attr__( 'Audio & Public Address', 'langit' ); ?>"><?php esc_html_e( 'Audio & Public Address', 'langit' ); ?></option>
+						<option value="<?php echo esc_attr__( 'Installation & Maintenance', 'langit' ); ?>"><?php esc_html_e( 'Installation & Maintenance', 'langit' ); ?></option>
 					</select>
 				</label>
 				<label class="form-placeholder__message">
 					<span><?php esc_html_e( 'Pesan', 'langit' ); ?></span>
-					<textarea name="Pesan" rows="8" required></textarea>
+					<textarea name="langit_contact_message" rows="8" required></textarea>
 				</label>
 				<button type="submit"><?php esc_html_e( 'Send Inquiry', 'langit' ); ?></button>
 			</form>
-			<div class="shortcode-placeholder">
-				<?php esc_html_e( 'Add or activate a form shortcode in Appearance > Customize.', 'langit' ); ?>
-			</div>
+			<?php if ( ! empty( $shortcode ) && current_user_can( 'customize' ) ) : ?>
+				<div class="shortcode-placeholder">
+					<?php esc_html_e( 'Please configure the contact form shortcode in Theme Customize settings.', 'langit' ); ?>
+				</div>
+			<?php endif; ?>
 		<?php endif; ?>
 	</div>
 	<?php

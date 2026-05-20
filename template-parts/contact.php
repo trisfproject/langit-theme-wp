@@ -14,35 +14,35 @@ $langit_contacts = array(
 	array(
 		'label' => esc_html__( 'WhatsApp', 'langit' ),
 		'value' => langit_theme_mod( 'contact_whatsapp_number' ),
-		'text'  => esc_html__( 'Hubungi tim kami untuk konsultasi awal terkait kebutuhan proyek, survei lokasi, atau dukungan teknis.', 'langit' ),
+		'text'  => '',
 		'icon'  => $langit_icon_uri . 'contact.svg',
 		'class' => '',
 	),
 	array(
 		'label' => esc_html__( 'Phone', 'langit' ),
 		'value' => $langit_phone_number,
-		'text'  => esc_html__( 'Gunakan panggilan telepon untuk koordinasi cepat terkait jadwal survey, instalasi, atau support operasional.', 'langit' ),
+		'text'  => '',
 		'icon'  => $langit_icon_uri . 'time.svg',
 		'class' => '',
 	),
 	array(
 		'label' => esc_html__( 'Email', 'langit' ),
 		'value' => langit_theme_mod( 'contact_email_address' ),
-		'text'  => esc_html__( 'Kirimkan kebutuhan, dokumen proyek, atau permintaan penawaran melalui email resmi.', 'langit' ),
+		'text'  => '',
 		'icon'  => $langit_icon_uri . 'contact.svg',
 		'class' => '',
 	),
 	array(
 		'label' => esc_html__( 'Office Address', 'langit' ),
 		'value' => langit_theme_mod( 'company_address' ),
-		'text'  => esc_html__( 'Tim kami melayani kebutuhan proyek untuk gedung komersial, industri, pemerintahan, dan fasilitas operasional lainnya.', 'langit' ),
+		'text'  => '',
 		'icon'  => $langit_icon_uri . 'location.svg',
 		'class' => '',
 	),
 	array(
 		'label' => esc_html__( 'Working Hours', 'langit' ),
 		'value' => langit_theme_mod( 'company_working_hours' ),
-		'text'  => esc_html__( 'Tim kami siap membantu pada jam kerja dan merespons kebutuhan prioritas proyek.', 'langit' ),
+		'text'  => esc_html__( 'Respons konsultasi mengikuti jam operasional.', 'langit' ),
 		'icon'  => $langit_icon_uri . 'time.svg',
 		'class' => 'contact-card--wide',
 	),
@@ -51,6 +51,20 @@ $langit_contacts = array(
 
 <section id="contact-information" class="section section--surface">
 	<div class="container contact-page-grid">
+		<div class="contact-panel contact-panel--form contact-form-stack">
+			<?php
+			langit_section_heading(
+				array(
+					'eyebrow' => langit_theme_mod( 'contact_form_eyebrow' ),
+					'title'   => langit_theme_mod( 'contact_form_title' ),
+					'text'    => langit_theme_mod( 'contact_form_description' ),
+					'class'   => 'stack',
+				)
+			);
+			?>
+			<?php langit_contact_form_area(); ?>
+		</div>
+
 		<div class="contact-panel contact-panel--info stack">
 			<?php
 			langit_section_heading(
@@ -99,20 +113,6 @@ $langit_contacts = array(
 				}
 				?>
 			</div>
-		</div>
-
-		<div class="contact-panel contact-panel--form contact-form-stack">
-			<?php
-			langit_section_heading(
-				array(
-					'eyebrow' => langit_theme_mod( 'contact_form_eyebrow' ),
-					'title'   => langit_theme_mod( 'contact_form_title' ),
-					'text'    => langit_theme_mod( 'contact_form_description' ),
-					'class'   => 'stack',
-				)
-			);
-			?>
-			<?php langit_contact_form_area(); ?>
 		</div>
 	</div>
 </section>

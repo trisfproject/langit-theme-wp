@@ -168,7 +168,12 @@ function langit_customizer_defaults() {
 		'contact_form_eyebrow'        => __( 'Contact Form', 'langit' ),
 		'contact_form_title'          => __( 'Send your project inquiry.', 'langit' ),
 		'contact_form_description'    => __( 'Kirimkan informasi proyek, lokasi pekerjaan, layanan yang dibutuhkan, dan jadwal yang diharapkan agar tim kami dapat menindaklanjuti dengan tepat.', 'langit' ),
-		'contact_form_shortcode'      => '[fluentform id="1"]',
+		'contact_form_shortcode'      => '',
+		'contact_form_recipient_email' => get_option( 'admin_email' ),
+		'contact_form_cc_email'       => '',
+		'contact_form_subject_prefix' => __( '[Langit Inquiry]', 'langit' ),
+		'contact_form_success_message' => __( 'Terima kasih. Pesan Anda berhasil dikirim dan tim kami akan segera menindaklanjuti.', 'langit' ),
+		'contact_form_error_message'  => __( 'Maaf, pesan belum dapat dikirim. Pastikan data wajib sudah lengkap dan coba kembali.', 'langit' ),
 		'contact_quick_eyebrow'       => __( 'Quick Contact', 'langit' ),
 		'contact_quick_title'         => __( 'Need a faster response?', 'langit' ),
 		'contact_quick_description'   => __( 'Hubungi tim kami melalui WhatsApp untuk konsultasi awal, kebutuhan maintenance, atau diskusi proyek yang membutuhkan respons lebih cepat.', 'langit' ),
@@ -279,6 +284,19 @@ function langit_theme_mod( $key ) {
  */
 function langit_sanitize_textarea( $value ) {
 	return sanitize_textarea_field( $value );
+}
+
+/**
+ * Sanitize a comma-separated list of email addresses.
+ *
+ * @param string $value Input value.
+ * @return string
+ */
+function langit_sanitize_email_list( $value ) {
+	$emails = array_filter( array_map( 'trim', explode( ',', (string) $value ) ) );
+	$emails = array_filter( array_map( 'sanitize_email', $emails ), 'is_email' );
+
+	return implode( ', ', $emails );
 }
 
 /**
@@ -443,6 +461,14 @@ function langit_customize_register( $wp_customize ) {
 		'langit_contact_information',
 		array(
 			'title' => esc_html__( 'Contact Information', 'langit' ),
+			'panel' => 'langit_theme_settings',
+		)
+	);
+
+	$wp_customize->add_section(
+		'langit_contact_form_settings',
+		array(
+			'title' => esc_html__( 'Contact Form Settings', 'langit' ),
 			'panel' => 'langit_theme_settings',
 		)
 	);
@@ -1618,8 +1644,36 @@ function langit_customize_register( $wp_customize ) {
 		),
 		'contact_form_shortcode' => array(
 			'label'       => esc_html__( 'Inquiry Form Shortcode', 'langit' ),
-			'description' => esc_html__( 'Supports Fluent Forms, Contact Form 7, or another shortcode provider.', 'langit' ),
-			'section'     => 'langit_contact_information',
+			'description' => esc_html__( 'Optional. Leave empty to use the native Langit contact form.', 'langit' ),
+			'section'     => 'langit_contact_form_settings',
+		),
+		'contact_form_recipient_email' => array(
+			'label'    => esc_html__( 'Recipient Email', 'langit' ),
+			'section'  => 'langit_contact_form_settings',
+			'type'     => 'email',
+			'sanitize' => 'sanitize_email',
+		),
+		'contact_form_cc_email' => array(
+			'label'       => esc_html__( 'CC Email', 'langit' ),
+			'description' => esc_html__( 'Optional. Use commas to add multiple addresses.', 'langit' ),
+			'section'     => 'langit_contact_form_settings',
+			'sanitize'    => 'langit_sanitize_email_list',
+		),
+		'contact_form_subject_prefix' => array(
+			'label'   => esc_html__( 'Email Subject Prefix', 'langit' ),
+			'section' => 'langit_contact_form_settings',
+		),
+		'contact_form_success_message' => array(
+			'label'    => esc_html__( 'Success Message', 'langit' ),
+			'section'  => 'langit_contact_form_settings',
+			'type'     => 'textarea',
+			'sanitize' => 'langit_sanitize_textarea',
+		),
+		'contact_form_error_message' => array(
+			'label'    => esc_html__( 'Error Message', 'langit' ),
+			'section'  => 'langit_contact_form_settings',
+			'type'     => 'textarea',
+			'sanitize' => 'langit_sanitize_textarea',
 		),
 		'contact_quick_eyebrow' => array(
 			'label'   => esc_html__( 'Quick Contact Eyebrow', 'langit' ),
