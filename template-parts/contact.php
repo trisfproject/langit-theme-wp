@@ -51,7 +51,7 @@ $langit_contacts = array(
 
 <section id="contact-information" class="section section--surface">
 	<div class="container contact-page-grid">
-		<div class="stack">
+		<div class="contact-panel contact-panel--info stack">
 			<?php
 			langit_section_heading(
 				array(
@@ -101,7 +101,7 @@ $langit_contacts = array(
 			</div>
 		</div>
 
-		<div class="contact-form-stack">
+		<div class="contact-panel contact-panel--form contact-form-stack">
 			<?php
 			langit_section_heading(
 				array(

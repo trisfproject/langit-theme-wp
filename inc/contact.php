@@ -31,14 +31,41 @@ function langit_contact_form_area() {
 				?>
 			</div>
 		<?php else : ?>
-			<div class="form-placeholder__fields" aria-hidden="true">
-				<span><?php esc_html_e( 'Nama', 'langit' ); ?></span>
-				<span><?php esc_html_e( 'Perusahaan', 'langit' ); ?></span>
-				<span><?php esc_html_e( 'Email', 'langit' ); ?></span>
-				<span><?php esc_html_e( 'Nomor Telepon', 'langit' ); ?></span>
-				<span><?php esc_html_e( 'Jenis Kebutuhan', 'langit' ); ?></span>
-				<span class="form-placeholder__message"><?php esc_html_e( 'Pesan', 'langit' ); ?></span>
-			</div>
+			<form class="form-placeholder__fields contact-fallback-form" method="post" action="<?php echo esc_url( 'mailto:' . sanitize_email( langit_theme_mod( 'contact_email_address' ) ) ); ?>" enctype="text/plain">
+				<label>
+					<span><?php esc_html_e( 'Nama', 'langit' ); ?></span>
+					<input type="text" name="Nama" autocomplete="name" required>
+				</label>
+				<label>
+					<span><?php esc_html_e( 'Perusahaan', 'langit' ); ?></span>
+					<input type="text" name="Perusahaan" autocomplete="organization">
+				</label>
+				<label>
+					<span><?php esc_html_e( 'Email', 'langit' ); ?></span>
+					<input type="email" name="Email" autocomplete="email" required>
+				</label>
+				<label>
+					<span><?php esc_html_e( 'Nomor Telepon', 'langit' ); ?></span>
+					<input type="tel" name="Nomor Telepon" autocomplete="tel">
+				</label>
+				<label>
+					<span><?php esc_html_e( 'Jenis Kebutuhan', 'langit' ); ?></span>
+					<select name="Jenis Kebutuhan">
+						<option value=""><?php esc_html_e( 'Pilih kebutuhan', 'langit' ); ?></option>
+						<option value="cctv"><?php esc_html_e( 'CCTV & Security System', 'langit' ); ?></option>
+						<option value="networking"><?php esc_html_e( 'Networking Infrastructure', 'langit' ); ?></option>
+						<option value="mechanical-electrical"><?php esc_html_e( 'Mechanical Electrical', 'langit' ); ?></option>
+						<option value="fire-alarm"><?php esc_html_e( 'Fire Alarm System', 'langit' ); ?></option>
+						<option value="audio-public-address"><?php esc_html_e( 'Audio & Public Address', 'langit' ); ?></option>
+						<option value="maintenance"><?php esc_html_e( 'Installation & Maintenance', 'langit' ); ?></option>
+					</select>
+				</label>
+				<label class="form-placeholder__message">
+					<span><?php esc_html_e( 'Pesan', 'langit' ); ?></span>
+					<textarea name="Pesan" rows="8" required></textarea>
+				</label>
+				<button type="submit"><?php esc_html_e( 'Send Inquiry', 'langit' ); ?></button>
+			</form>
 			<div class="shortcode-placeholder">
 				<?php esc_html_e( 'Add or activate a form shortcode in Appearance > Customize.', 'langit' ); ?>
 			</div>
