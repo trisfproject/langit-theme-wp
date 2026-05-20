@@ -354,15 +354,18 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 				array(
 					'eyebrow' => langit_theme_mod( 'industry_section_eyebrow' ),
 					'title'   => langit_theme_mod( 'industry_section_title' ),
+					'center'  => true,
 				)
 			);
 			?>
 
 			<div class="coverage-grid">
 				<?php foreach ( $langit_industries as $langit_industry ) : ?>
-					<article class="coverage-card">
-						<h3><?php echo esc_html( $langit_industry['title'] ); ?></h3>
-						<p><?php echo esc_html( $langit_industry['description'] ); ?></p>
+					<article class="<?php echo esc_attr( langit_class_names( array( 'coverage-card', 'coverage-card--' . sanitize_title( $langit_industry['title'] ) ) ) ); ?>">
+						<div class="coverage-card__content">
+							<h3><?php echo esc_html( $langit_industry['title'] ); ?></h3>
+							<p><?php echo esc_html( $langit_industry['description'] ); ?></p>
+						</div>
 					</article>
 				<?php endforeach; ?>
 			</div>

@@ -76,7 +76,7 @@ function langit_customizer_defaults() {
 		'featured_service_count'      => '6',
 		'industry_section_eyebrow'    => __( 'Industry Coverage', 'langit' ),
 		'industry_section_title'      => __( 'Built for Diverse Operating Environments', 'langit' ),
-		'industry_items'              => __( "Industrial | Dukungan sistem dapat disesuaikan dengan skala bangunan, pola operasional, dan kebutuhan keamanan di lapangan.\nCommercial Building | Dukungan sistem dapat disesuaikan dengan skala bangunan, pola operasional, dan kebutuhan keamanan di lapangan.\nGovernment | Dukungan sistem dapat disesuaikan dengan skala bangunan, pola operasional, dan kebutuhan keamanan di lapangan.\nResidential | Dukungan sistem dapat disesuaikan dengan skala bangunan, pola operasional, dan kebutuhan keamanan di lapangan.", 'langit' ),
+		'industry_items'              => __( "Industrial | Pabrik, gudang, fasilitas produksi, dan area operasional industri.\nCommercial Building | Gedung perkantoran, pusat bisnis, mall, hotel, dan area komersial.\nGovernment | Kantor pemerintahan, layanan publik, ruang monitoring, dan command center.\nResidential | Apartemen, perumahan modern, smart home, dan keamanan hunian.", 'langit' ),
 		'projects_section_eyebrow'    => __( 'Featured Projects', 'langit' ),
 		'projects_section_title'      => __( 'Selected work for industrial and commercial facilities.', 'langit' ),
 		'featured_project_ids'        => '',
@@ -403,7 +403,7 @@ function langit_homepage_industries() {
 		$parts        = array_map( 'trim', explode( '|', $row, 2 ) );
 		$industries[] = array(
 			'title'       => $parts[0],
-			'description' => isset( $parts[1] ) && '' !== $parts[1] ? $parts[1] : __( 'Dukungan sistem dapat disesuaikan dengan skala bangunan, pola operasional, dan kebutuhan keamanan di lapangan.', 'langit' ),
+			'description' => isset( $parts[1] ) && '' !== $parts[1] ? $parts[1] : __( 'Bangunan, fasilitas, dan area operasional dengan kebutuhan keamanan dan konektivitas.', 'langit' ),
 		);
 	}
 
