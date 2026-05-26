@@ -430,7 +430,7 @@ input[type="submit"]:focus {
 	height: 100%;
 	min-width: 0;
 	padding: clamp(1.5rem, 1.25rem + 1vw, 2.25rem);
-	border: 1px solid rgba(226, 232, 240, 0.8);
+	border: 1px solid rgba(226, 232, 240, 0.7);
 	border-radius: var(--langit-card-radius);
 	background: linear-gradient(180deg, rgba(255, 255, 255, 0.99) 0%, rgba(248, 250, 252, 0.95) 100%);
 	box-shadow: var(--langit-card-shadow);
@@ -440,7 +440,7 @@ input[type="submit"]:focus {
 .card:hover {
 	border-color: rgba(88, 175, 255, 0.45);
 	box-shadow: var(--langit-card-shadow-hover);
-	transform: translateY(-6px);
+	transform: translateY(-5px);
 }
 
 .card:focus-within {
@@ -1299,6 +1299,7 @@ input[type="submit"]:focus {
 	--coverage-image: url("../images/industries/industry-industrial.webp");
 	position: relative;
 	display: grid;
+	height: 100%;
 	min-height: clamp(18rem, 24vw, 24rem);
 	align-items: end;
 	overflow: hidden;
@@ -1343,12 +1344,16 @@ input[type="submit"]:focus {
 }
 
 .coverage-card:hover::before {
-	transform: scale(1.08);
+	transform: scale(1.06);
 	filter: brightness(1.05) saturate(1.05);
 }
 
 .coverage-card:hover::after {
 	opacity: 0.95;
+}
+
+.coverage-card--industrial {
+	--coverage-image: url("../images/industries/industry-industrial.webp");
 }
 
 .coverage-card--commercial-building {
@@ -1547,21 +1552,24 @@ input[type="submit"]:focus {
 }
 
 .process-card {
+	position: relative;
 	display: grid;
 	align-content: start;
-	gap: 1rem;
-	padding: clamp(1.5rem, 1.25rem + 1vw, 2rem);
-	border: 1px solid rgba(226, 232, 240, 0.8);
+	gap: var(--langit-space-sm);
+	height: 100%;
+	min-width: 0;
+	padding: clamp(1.5rem, 1.25rem + 1vw, 2.25rem);
+	border: 1px solid rgba(226, 232, 240, 0.7);
 	border-radius: var(--langit-card-radius);
-	background: var(--langit-surface);
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.99) 0%, rgba(248, 250, 252, 0.95) 100%);
 	box-shadow: var(--langit-card-shadow);
-	transition: border-color var(--langit-transition-smooth), box-shadow var(--langit-transition-smooth), transform var(--langit-transition-smooth);
+	transition: border-color var(--langit-transition-smooth), box-shadow var(--langit-transition-smooth), transform var(--langit-transition-smooth), background-color var(--langit-transition-smooth);
 }
 
 .process-card:hover {
-	border-color: rgba(88, 175, 255, 0.4);
+	border-color: rgba(88, 175, 255, 0.45);
 	box-shadow: var(--langit-card-shadow-hover);
-	transform: translateY(-4px);
+	transform: translateY(-5px);
 }
 
 .process-card span {
@@ -1571,12 +1579,21 @@ input[type="submit"]:focus {
 	width: 2.75rem;
 	height: 2.75rem;
 	border-radius: 999px;
-	background: rgba(88, 175, 255, 0.1);
+	background: linear-gradient(135deg, rgba(88, 175, 255, 0.12), rgba(56, 189, 248, 0.05));
+	border: 1px solid rgba(88, 175, 255, 0.25);
 	color: var(--langit-primary);
 	font-size: 1rem;
 	font-weight: 850;
 	font-family: monospace, var(--langit-font-sans);
-	box-shadow: 0 4px 10px rgba(88, 175, 255, 0.08);
+	box-shadow: 0 4px 12px rgba(88, 175, 255, 0.08);
+	transition: border-color var(--langit-transition-fast), box-shadow var(--langit-transition-fast), transform var(--langit-transition-fast), background var(--langit-transition-fast);
+}
+
+.process-card:hover span {
+	border-color: rgba(88, 175, 255, 0.55);
+	box-shadow: 0 8px 20px rgba(88, 175, 255, 0.2);
+	transform: scale(1.05);
+	background: linear-gradient(135deg, rgba(88, 175, 255, 0.18), rgba(56, 189, 248, 0.08));
 }
 
 .process-card h3 {
