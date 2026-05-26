@@ -329,120 +329,118 @@ ol {
 	content: "";
 }
 
-.company-section {
+.company-section,
+.products-section {
 	position: relative;
 	overflow: hidden;
-	border-top: 1px solid rgba(203, 213, 225, 0.5);
+	border-top: 1px solid rgba(88, 175, 255, 0.16);
 	isolation: isolate;
 }
 
-.company-section:first-of-type {
+.company-section:first-of-type,
+.products-section:first-of-type {
 	border-top: 0;
 }
 
-.company-section > .container {
+.company-section > .container,
+.products-section > .container {
 	position: relative;
 	z-index: 1;
 }
 
 .company-section::before,
-.company-section::after {
+.company-section::after,
+.products-section::before,
+.products-section::after {
 	position: absolute;
 	content: "";
 	pointer-events: none;
 }
 
+/* Shared atmospheric gradient separator at the bottom of all sections */
+.company-section::after,
+.products-section::after {
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 1px;
+	background: linear-gradient(90deg, transparent, rgba(88, 175, 255, 0.22), transparent);
+}
+
 /*
- * Company Page — Industrial Enterprise Background Rhythm
+ * Company & Products Page Section Background System
  *
- * Design intent: cinematic dark-descend interrupted by two dark-navy anchors.
- * Each section has its own industrial atmosphere — distinct but cohesive.
+ * Design Direction: Apple Enterprise / Modern Architectural Studio.
+ * Light theme only. Layered gradients, radial refractions, blueprint spot grids,
+ * glassmorphic overlays, and whitespace logic.
  *
- * Rhythm:
- * Hero (cinematic) → Overview (graphite-steel) → Vision (deep navy-blueprint) →
- * Why Choose Us (operational slate-navy) → Industries (dark navy anchor) →
- * Values (darkest navy anchor) → Workflow (teal-navy blueprint) → CTA (enterprise tint)
+ * Palette Flow:
+ * 1. White-Steel:          #ffffff to #f4f8fc
+ * 2. Blueprint-White:      #eef5fb to #e9f1f8
+ * 3. Cool Slate:           #f8fbff to #eef5fb
+ * 4. Operational Steel:    #f1f5f9 to #e9eef5
+ * 5. Architectural Slate:  #e9f1f8 to #dde8f3
  */
 
+/* =============================================================================
+   COMPANY PAGE SECTIONS
+   ============================================================================= */
+
 /* ─────────────────────────────────────────────────────────────────────────────
-   Overview — Premium graphite-steel entry.
-   Anchors the page exit from the dark hero without a jarring white flash.
-   Feels like a polished control-room surface.
+   Overview — Clean White-Steel entry.
+   Dual radial refractions bridge the exit from the dark Page Hero section.
 ───────────────────────────────────────────────────────────────────────────── */
 .company-section--overview {
 	background:
-		radial-gradient(ellipse at 100% 0%, rgba(88, 175, 255, 0.1), transparent 50%),
-		radial-gradient(ellipse at 0% 100%, rgba(15, 40, 80, 0.06), transparent 50%),
-		linear-gradient(180deg, #f0f4f8 0%, #e8edf4 100%);
+		radial-gradient(ellipse at 100% 0%, rgba(88, 175, 255, 0.14), transparent 50%),
+		radial-gradient(ellipse at 0% 100%, rgba(88, 140, 200, 0.06), transparent 48%),
+		linear-gradient(180deg, #ffffff 0%, #f4f8fc 100%);
 	color: var(--langit-text);
 }
 
-.company-section--overview::after {
-	right: max(var(--langit-gutter), calc((100vw - var(--langit-container)) / 2));
-	bottom: 0;
-	width: min(22rem, 44vw);
-	height: 1px;
-	background: linear-gradient(90deg, transparent, rgba(88, 175, 255, 0.5));
-}
-
-/* Capability badges on graphite background */
+/* Capability tag badges on white-steel background */
 .company-section--overview .capability-item {
-	border-color: rgba(88, 175, 255, 0.35);
-	background: rgba(255, 255, 255, 0.65);
-	backdrop-filter: blur(6px);
-	-webkit-backdrop-filter: blur(6px);
+	border-color: rgba(88, 175, 255, 0.24);
+	background: rgba(255, 255, 255, 0.85);
+	color: var(--langit-secondary);
+	box-shadow: 0 4px 10px -2px rgba(15, 23, 42, 0.03);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   Vision & Mission — Deep controlled dark navy.
-   Blueprint grid reinforces strategic direction. Cards float as bright surfaces.
+   Vision & Mission — Blueprint-White with a spot-masked structural grid.
+   Spotlight masks keep the technical grid texture strictly inside a central pool.
 ───────────────────────────────────────────────────────────────────────────── */
 .company-section--vision {
 	background:
-		radial-gradient(ellipse at 20% 0%, rgba(88, 175, 255, 0.18), transparent 38rem),
-		radial-gradient(ellipse at 88% 100%, rgba(56, 189, 248, 0.1), transparent 32rem),
-		linear-gradient(180deg, #0a1628 0%, #071020 100%);
-	color: rgba(226, 232, 240, 0.9);
+		radial-gradient(ellipse at 15% 0%, rgba(88, 175, 255, 0.12), transparent 44%),
+		radial-gradient(ellipse at 85% 100%, rgba(56, 189, 248, 0.08), transparent 40%),
+		linear-gradient(180deg, #eef5fb 0%, #e9f1f8 100%);
+	color: var(--langit-text);
 }
 
 .company-section--vision::before {
 	inset: 0;
 	background-image:
-		linear-gradient(rgba(88, 175, 255, 0.065) 1px, transparent 1px),
-		linear-gradient(90deg, rgba(88, 175, 255, 0.065) 1px, transparent 1px);
+		linear-gradient(rgba(88, 175, 255, 0.04) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(88, 175, 255, 0.04) 1px, transparent 1px);
 	background-position: center;
-	background-size: 44px 44px;
-	mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
-	opacity: 0.6;
-}
-
-.company-section--vision .section-heading h2 {
-	color: #ffffff;
-}
-
-.company-section--vision .section-heading p {
-	color: rgba(203, 213, 225, 0.88);
+	background-size: 48px 48px;
+	mask-image: radial-gradient(circle at 50% 50%, #000 30%, transparent 80%);
+	-webkit-mask-image: radial-gradient(circle at 50% 50%, #000 30%, transparent 80%);
+	opacity: 0.8;
 }
 
 .company-section--vision .card {
-	border-color: rgba(88, 175, 255, 0.16);
-	background: rgba(255, 255, 255, 0.055);
-	backdrop-filter: blur(8px);
-	-webkit-backdrop-filter: blur(8px);
-	box-shadow: 0 24px 56px -16px rgba(0, 0, 0, 0.45);
-}
-
-.company-section--vision .card p,
-.company-section--vision .mission-list li {
-	color: rgba(203, 213, 225, 0.88);
-}
-
-.company-section--vision .card__meta {
-	color: var(--langit-primary);
+	border-color: rgba(88, 175, 255, 0.2);
+	background: var(--langit-surface);
+	box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.07);
 }
 
 .company-section--vision .mission-list {
-	gap: 0.75rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+	padding-left: 1.25rem;
 }
 
 .company-section--vision .mission-list li::marker {
@@ -450,196 +448,184 @@ ol {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   Why Choose Us — Operational slate-navy.
-   Distinct from Vision (slightly lighter) and Industries below (slightly lighter).
-   Cards appear as bright elevated surfaces against dark operational background.
+   Why Choose Us — Cool Slate atmosphere.
+   Subtle radial glows make the clean white cards elevate as premium surfaces.
 ───────────────────────────────────────────────────────────────────────────── */
 .company-section--why {
 	background:
-		radial-gradient(ellipse at 96% 50%, rgba(88, 175, 255, 0.12), transparent 38rem),
-		radial-gradient(ellipse at 4% 20%, rgba(56, 189, 248, 0.07), transparent 28rem),
-		linear-gradient(180deg, #0d1f3c 0%, #091829 100%);
-	color: rgba(226, 232, 240, 0.88);
-}
-
-.company-section--why::before {
-	inset: 0;
-	background-image:
-		linear-gradient(rgba(88, 175, 255, 0.04) 1px, transparent 1px),
-		linear-gradient(90deg, rgba(88, 175, 255, 0.04) 1px, transparent 1px);
-	background-position: center;
-	background-size: 60px 60px;
-	mask-image: linear-gradient(180deg, transparent 0%, #000 20%, #000 80%, transparent 100%);
-	opacity: 0.5;
-}
-
-.company-section--why .section-heading h2 {
-	color: #ffffff;
-}
-
-.company-section--why .section-heading p {
-	color: rgba(203, 213, 225, 0.85);
+		radial-gradient(ellipse at 95% 15%, rgba(88, 175, 255, 0.1), transparent 44%),
+		radial-gradient(ellipse at 5% 85%, rgba(88, 175, 255, 0.06), transparent 38%),
+		linear-gradient(180deg, #f8fbff 0%, #eef5fb 100%);
+	color: var(--langit-text);
 }
 
 .company-section--why .card {
-	border-color: rgba(88, 175, 255, 0.15);
-	background:
-		linear-gradient(160deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.035));
-	backdrop-filter: blur(6px);
-	-webkit-backdrop-filter: blur(6px);
-	box-shadow: 0 20px 52px -14px rgba(0, 0, 0, 0.42);
-}
-
-.company-section--why .feature-card h3 {
-	color: #ffffff;
-}
-
-.company-section--why .feature-card p {
-	color: rgba(203, 213, 225, 0.82);
+	border-color: rgba(88, 175, 255, 0.2);
+	background: var(--langit-surface);
+	box-shadow: 0 18px 44px -10px rgba(15, 23, 42, 0.06);
 }
 
 .company-section--why .service-card__icon {
-	border-color: rgba(88, 175, 255, 0.3);
-	background: linear-gradient(135deg, rgba(88, 175, 255, 0.16), rgba(56, 189, 248, 0.07));
-}
-
-.company-section--why::after {
-	bottom: 0;
-	left: 0;
-	right: 0;
-	height: 1px;
-	background: linear-gradient(90deg, transparent, rgba(88, 175, 255, 0.3), transparent);
+	border-color: rgba(88, 175, 255, 0.26);
+	background: linear-gradient(135deg, rgba(88, 175, 255, 0.08), rgba(56, 189, 248, 0.04));
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   Company Values — Darkest navy anchor (unchanged — excellent).
+   Company Values — Operational Slate-Steel.
+   Very clean, lightweight corporate tones with soft refractions.
 ───────────────────────────────────────────────────────────────────────────── */
 .company-section--values {
 	background:
-		radial-gradient(circle at 82% 18%, rgba(56, 189, 248, 0.16), transparent 26rem),
-		radial-gradient(circle at 12% 88%, rgba(88, 175, 255, 0.1), transparent 24rem),
-		linear-gradient(180deg, #0b1220 0%, #07101d 100%);
-	color: rgba(226, 232, 240, 0.88);
-}
-
-.company-section--values .section-heading h2,
-.company-section--values .feature-card h3 {
-	color: #ffffff;
-}
-
-.company-section--values .section-heading p,
-.company-section--values .feature-card p {
-	color: rgba(226, 232, 240, 0.82);
+		radial-gradient(ellipse at 80% 10%, rgba(88, 175, 255, 0.1), transparent 44%),
+		linear-gradient(180deg, #f1f5f9 0%, #e9eef5 100%);
+	color: var(--langit-text);
 }
 
 .company-section--values .card {
 	border-color: rgba(88, 175, 255, 0.18);
-	background:
-		linear-gradient(180deg, rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.62)),
-		rgba(255, 255, 255, 0.06);
-	box-shadow: 0 24px 54px -16px rgba(0, 0, 0, 0.38);
+	background: var(--langit-surface);
+	box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.06);
 }
 
 .company-section--values .service-card__icon {
-	border-color: rgba(88, 175, 255, 0.28);
-	background: linear-gradient(135deg, rgba(88, 175, 255, 0.18), rgba(56, 189, 248, 0.08));
+	border-color: rgba(88, 175, 255, 0.24);
+	background: linear-gradient(135deg, rgba(88, 175, 255, 0.08), rgba(56, 189, 248, 0.04));
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   Operational Workflow — Deep teal-navy blueprint schematic.
-   Slightly distinct from Values above (cooler, teal-shifted) — feels like a
-   technical operations diagram laid over dark infrastructure.
+   Operational Workflow — Architectural Slate with a masked workflow grid.
 ───────────────────────────────────────────────────────────────────────────── */
 .company-section--workflow {
 	background:
-		radial-gradient(ellipse at 96% 10%, rgba(56, 189, 248, 0.14), transparent 32rem),
-		radial-gradient(ellipse at 4% 90%, rgba(88, 175, 255, 0.09), transparent 28rem),
-		linear-gradient(180deg, #071827 0%, #040f1c 100%);
-	color: rgba(226, 232, 240, 0.88);
+		radial-gradient(ellipse at 95% 8%, rgba(56, 189, 248, 0.1), transparent 40%),
+		radial-gradient(ellipse at 5% 92%, rgba(88, 175, 255, 0.08), transparent 36%),
+		linear-gradient(180deg, #e9f1f8 0%, #dde8f3 100%);
+	color: var(--langit-text);
 }
 
 .company-section--workflow::before {
 	inset: 0;
 	background-image:
-		linear-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px),
-		linear-gradient(90deg, rgba(56, 189, 248, 0.07) 1px, transparent 1px);
+		linear-gradient(rgba(88, 175, 255, 0.04) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(88, 175, 255, 0.04) 1px, transparent 1px);
 	background-position: center;
 	background-size: 52px 52px;
-	mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
-	opacity: 0.65;
+	mask-image: linear-gradient(180deg, transparent 0%, #000 15%, #000 85%, transparent 100%);
+	-webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 15%, #000 85%, transparent 100%);
+	opacity: 0.7;
 }
 
-.company-section--workflow .section-heading h2 {
-	color: #ffffff;
-}
-
-.company-section--workflow .section-heading p {
-	color: rgba(203, 213, 225, 0.85);
-}
-
-/* Process cards on dark workflow background */
 .company-section--workflow .process-card {
-	border-color: rgba(56, 189, 248, 0.18);
+	border-color: rgba(88, 175, 255, 0.2);
+	background: var(--langit-surface);
+	box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.06);
+}
+
+/* =============================================================================
+   PRODUCTS PAGE SECTIONS
+   ============================================================================= */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CCTV & Security System — White-Steel.
+───────────────────────────────────────────────────────────────────────────── */
+.products-section--cctv {
 	background:
-		linear-gradient(160deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.03));
-	backdrop-filter: blur(6px);
-	-webkit-backdrop-filter: blur(6px);
-	box-shadow: 0 20px 50px -14px rgba(0, 0, 0, 0.48);
+		radial-gradient(ellipse at 95% 0%, rgba(88, 175, 255, 0.12), transparent 44%),
+		radial-gradient(ellipse at 5% 100%, rgba(88, 175, 255, 0.05), transparent 40%),
+		linear-gradient(180deg, #ffffff 0%, #f4f8fc 100%);
+	color: var(--langit-text);
 }
 
-.company-section--workflow .process-card h3 {
-	color: #ffffff;
-}
-
-.company-section--workflow .process-card p {
-	color: rgba(203, 213, 225, 0.82);
-}
-
-.company-section--workflow .process-card span {
-	color: var(--langit-primary);
-	opacity: 1;
+.products-section--cctv .card {
+	border-color: rgba(88, 175, 255, 0.18);
+	box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.05);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   CTA — Soft enterprise tint (unchanged — clean transition to footer)
+   Networking Infrastructure — Blueprint-White with spotlight grid.
 ───────────────────────────────────────────────────────────────────────────── */
-.company-section--cta {
+.products-section--networking {
 	background:
-		linear-gradient(180deg, rgba(236, 247, 255, 0.95), rgba(248, 250, 252, 0.98)),
-		#eef7ff;
+		radial-gradient(ellipse at 15% 0%, rgba(88, 175, 255, 0.12), transparent 40%),
+		radial-gradient(ellipse at 85% 100%, rgba(56, 189, 248, 0.08), transparent 36%),
+		linear-gradient(180deg, #eef5fb 0%, #e9f1f8 100%);
+	color: var(--langit-text);
 }
 
-.company-section--cta .cta-section {
-	border-color: rgba(88, 175, 255, 0.28);
-	background:
-		linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(232, 244, 255, 0.86)),
-		rgba(255, 255, 255, 0.86);
-	box-shadow: 0 32px 70px -22px rgba(15, 23, 42, 0.16);
+.products-section--networking::before {
+	inset: 0;
+	background-image:
+		linear-gradient(rgba(88, 175, 255, 0.04) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(88, 175, 255, 0.04) 1px, transparent 1px);
+	background-position: center;
+	background-size: 48px 48px;
+	mask-image: radial-gradient(circle at 50% 50%, #000 30%, transparent 80%);
+	-webkit-mask-image: radial-gradient(circle at 50% 50%, #000 30%, transparent 80%);
+	opacity: 0.75;
 }
 
-/*
- * Products Page — Section Background Rhythm
- * Hero (dark) → Overview (white+glow) →
- * Catalog even (white) ↔ Catalog odd (blueprint grid tint) → repeating
- */
-
-/* Products overview: white with radial sky-blue glow — matches Company Overview entry feel */
-.products-section--overview {
-	background:
-		radial-gradient(ellipse at 94% 0%, rgba(88, 175, 255, 0.1), transparent 44%),
-		var(--langit-surface);
-	position: relative;
+.products-section--networking .card {
+	border-color: rgba(88, 175, 255, 0.2);
+	box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.07);
 }
 
-.products-section--overview::after {
-	position: absolute;
-	right: max(var(--langit-gutter), calc((100vw - var(--langit-container)) / 2));
-	bottom: 0;
-	width: min(18rem, 38vw);
-	height: 1px;
-	background: linear-gradient(90deg, transparent, rgba(88, 175, 255, 0.38));
-	content: "";
-	pointer-events: none;
+/* ─────────────────────────────────────────────────────────────────────────────
+   Fire Alarm System — Cool Slate atmosphere.
+───────────────────────────────────────────────────────────────────────────── */
+.products-section--fire-alarm {
+	background:
+		radial-gradient(ellipse at 95% 15%, rgba(88, 175, 255, 0.1), transparent 44%),
+		radial-gradient(ellipse at 5% 85%, rgba(88, 175, 255, 0.06), transparent 38%),
+		linear-gradient(180deg, #f8fbff 0%, #eef5fb 100%);
+	color: var(--langit-text);
+}
+
+.products-section--fire-alarm .card {
+	border-color: rgba(88, 175, 255, 0.18);
+	box-shadow: 0 18px 44px -10px rgba(15, 23, 42, 0.06);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Audio & Public Address — Operational Slate-Steel.
+───────────────────────────────────────────────────────────────────────────── */
+.products-section--audio {
+	background:
+		radial-gradient(ellipse at 80% 10%, rgba(88, 175, 255, 0.1), transparent 44%),
+		linear-gradient(180deg, #f1f5f9 0%, #e9eef5 100%);
+	color: var(--langit-text);
+}
+
+.products-section--audio .card {
+	border-color: rgba(88, 175, 255, 0.18);
+	box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.06);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Mechanical Electrical — Architectural Slate with a masked sparse grid.
+───────────────────────────────────────────────────────────────────────────── */
+.products-section--electrical {
+	background:
+		radial-gradient(ellipse at 95% 8%, rgba(56, 189, 248, 0.1), transparent 40%),
+		radial-gradient(ellipse at 5% 92%, rgba(88, 175, 255, 0.08), transparent 36%),
+		linear-gradient(180deg, #e9f1f8 0%, #dde8f3 100%);
+	color: var(--langit-text);
+}
+
+.products-section--electrical::before {
+	inset: 0;
+	background-image:
+		linear-gradient(rgba(88, 175, 255, 0.035) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(88, 175, 255, 0.035) 1px, transparent 1px);
+	background-position: center;
+	background-size: 64px 64px;
+	mask-image: radial-gradient(circle at 50% 50%, #000 30%, transparent 80%);
+	-webkit-mask-image: radial-gradient(circle at 50% 50%, #000 30%, transparent 80%);
+	opacity: 0.65;
+}
+
+.products-section--electrical .card {
+	border-color: rgba(88, 175, 255, 0.2);
+	box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.07);
 }
 
 .grid,
@@ -717,12 +703,33 @@ ol {
 }
 
 .section-eyebrow {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: max-content;
+	max-width: 100%;
 	margin-bottom: 0.85rem;
-	color: var(--langit-primary);
-	font-size: 0.78rem;
-	font-weight: 850;
-	letter-spacing: 0.12em;
+	padding: 0.46rem 0.95rem;
+	border: 1px solid rgba(88, 175, 255, 0.22);
+	border-radius: 999px;
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(238, 247, 255, 0.86));
+	box-shadow: 0 6px 16px -4px rgba(15, 23, 42, 0.04);
+	color: #0d5ea6;
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	font-size: 0.7rem;
+	font-weight: 800;
+	letter-spacing: 0.15em;
 	text-transform: uppercase;
+	line-height: 1;
+}
+
+/* Adapt to dark navy gradient background sections */
+.section--navy-gradient .section-eyebrow {
+	border-color: rgba(88, 175, 255, 0.26);
+	background: linear-gradient(135deg, rgba(15, 23, 42, 0.5), rgba(88, 175, 255, 0.08));
+	box-shadow: 0 6px 20px -4px rgba(0, 0, 0, 0.25);
+	color: #bde4ff;
 }
 
 .button,

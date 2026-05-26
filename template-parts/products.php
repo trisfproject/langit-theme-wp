@@ -171,27 +171,10 @@ langit_page_hero(
 );
 ?>
 
-<section class="section products-section--overview">
-	<div class="container company-overview">
-		<div class="stack">
-			<p class="section-eyebrow"><?php esc_html_e( 'Products Overview', 'langit' ); ?></p>
-			<h2><?php esc_html_e( 'Integrated systems for modern building operations.', 'langit' ); ?></h2>
-		</div>
-		<div class="stack">
-			<p><?php esc_html_e( 'PT Global Teknindo menyediakan beragam perangkat keras pendukung sistem teknologi gedung, mencakup produk CCTV & Security, Networking Infrastructure, Fire Alarm System, Audio & Public Address, serta Mechanical Electrical.', 'langit' ); ?></p>
-			<p><?php esc_html_e( 'Setiap produk dipilih berdasarkan keandalan di lapangan, kepatuhan standar industri, dan kesiapan integrasi jangka panjang guna menjaga kontinuitas operasional fasilitas Anda.', 'langit' ); ?></p>
-		</div>
-	</div>
-</section>
-
 <?php
-$langit_index = 0;
 foreach ( $product_categories as $langit_key => $langit_cat ) :
-	// Even index (0, 2, 4…) = clean white surface; Odd index (1, 3…) = blueprint grid tint
-	$langit_section_class = ( 0 === $langit_index % 2 ) ? 'section--surface' : 'section--blueprint';
-	$langit_index++;
 	?>
-	<section id="<?php echo esc_attr( $langit_key ); ?>" class="section <?php echo esc_attr( $langit_section_class ); ?>">
+	<section id="<?php echo esc_attr( $langit_key ); ?>" class="section products-section products-section--<?php echo esc_attr( $langit_key ); ?>">
 		<div class="container stack">
 			<?php
 			langit_section_heading(
