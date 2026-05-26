@@ -9,7 +9,6 @@ $langit_image_uri      = get_template_directory_uri() . '/assets/images/';
 $langit_services_query = null;
 $langit_projects_query = null;
 $langit_testimonials_query = null;
-$langit_clients_query = null;
 $langit_team_query = null;
 $langit_faq_query = null;
 $langit_downloads_query = null;
@@ -68,30 +67,7 @@ if ( langit_theme_mod_enabled( 'show_projects_section' ) ) {
 	$langit_projects_query = new WP_Query( $langit_project_args );
 }
 
-if ( langit_theme_mod_enabled( 'show_client_logo_section' ) ) {
-	$langit_featured_client = langit_theme_mod_id_list( 'featured_client_ids' );
-	$langit_client_args     = array(
-		'post_type'              => 'client',
-		'post_status'            => 'publish',
-		'posts_per_page'         => absint( langit_theme_mod( 'featured_client_count' ) ),
-		'orderby'                => array(
-			'menu_order' => 'ASC',
-			'title'      => 'ASC',
-		),
-		'no_found_rows'          => true,
-		'update_post_meta_cache' => true,
-		'update_post_term_cache' => true,
-	);
-
-	if ( ! empty( $langit_featured_client ) ) {
-		$langit_client_args['post__in'] = $langit_featured_client;
-		$langit_client_args['orderby']  = 'post__in';
-	}
-
-	$langit_clients_query = new WP_Query( $langit_client_args );
-}
-
-if ( langit_theme_mod_enabled( 'show_testimonials_section' ) || langit_theme_mod_enabled( 'show_client_logo_section' ) ) {
+if ( langit_theme_mod_enabled( 'show_testimonials_section' ) ) {
 	$langit_featured_testimonial = langit_theme_mod_id_list( 'featured_testimonial_ids' );
 	$langit_testimonial_args     = array(
 		'post_type'              => 'testimonial',
@@ -490,36 +466,7 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 
 <?php endif; ?>
 
-<?php if ( langit_theme_mod_enabled( 'show_client_logo_section' ) ) : ?>
-	<?php
-	$langit_has_client_logos = $langit_clients_query instanceof WP_Query && $langit_clients_query->have_posts();
-	?>
-	<?php if ( $langit_has_client_logos ) : ?>
-		<section class="section section--compact home-section home-section--clients">
-			<div class="container stack">
-				<?php
-				langit_section_heading(
-					array(
-						'eyebrow' => langit_theme_mod( 'client_logo_section_eyebrow' ),
-						'title'   => langit_theme_mod( 'client_logo_section_title' ),
-						'text'    => langit_theme_mod( 'client_logo_section_description' ),
-						'center'  => true,
-					)
-				);
-				?>
-				<div class="client-logo-grid">
-					<?php
-					while ( $langit_clients_query->have_posts() ) :
-						$langit_clients_query->the_post();
-						langit_client_logo_item( get_the_ID() );
-					endwhile;
-					wp_reset_postdata();
-					?>
-				</div>
-			</div>
-		</section>
-	<?php endif; ?>
-<?php endif; ?>
+
 
 <?php if ( $langit_faq_query instanceof WP_Query && $langit_faq_query->have_posts() ) : ?>
 	<section class="section home-section home-section--faq">

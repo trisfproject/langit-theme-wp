@@ -156,7 +156,7 @@ langit_page_hero(
 	</div>
 </section>
 
-<section id="vision-mission" class="section section--surface company-section company-section--vision">
+<section id="vision-mission" class="section company-section company-section--vision">
 	<div class="container stack">
 		<?php
 		langit_section_heading(
@@ -271,7 +271,7 @@ langit_page_hero(
 	</div>
 </section>
 
-<section id="operational-workflow" class="section section--surface company-section company-section--workflow">
+<section id="operational-workflow" class="section company-section company-section--workflow">
 	<div class="container stack">
 		<?php
 		langit_section_heading(

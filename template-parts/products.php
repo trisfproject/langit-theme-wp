@@ -171,7 +171,7 @@ langit_page_hero(
 );
 ?>
 
-<section class="section">
+<section class="section products-section--overview">
 	<div class="container company-overview">
 		<div class="stack">
 			<p class="section-eyebrow"><?php esc_html_e( 'Products Overview', 'langit' ); ?></p>
@@ -187,10 +187,11 @@ langit_page_hero(
 <?php
 $langit_index = 0;
 foreach ( $product_categories as $langit_key => $langit_cat ) :
-	$langit_is_surface = ( $langit_index % 2 !== 0 );
+	// Even index (0, 2, 4…) = clean white surface; Odd index (1, 3…) = blueprint grid tint
+	$langit_section_class = ( 0 === $langit_index % 2 ) ? 'section--surface' : 'section--blueprint';
 	$langit_index++;
 	?>
-	<section id="<?php echo esc_attr( $langit_key ); ?>" class="section <?php echo $langit_is_surface ? 'section--surface' : ''; ?>">
+	<section id="<?php echo esc_attr( $langit_key ); ?>" class="section <?php echo esc_attr( $langit_section_class ); ?>">
 		<div class="container stack">
 			<?php
 			langit_section_heading(
