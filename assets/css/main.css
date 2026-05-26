@@ -1567,6 +1567,171 @@ input[type="submit"]:focus {
 	transform: translateY(-2px);
 }
 
+.related-services-section {
+	background:
+		linear-gradient(180deg, rgba(241, 248, 255, 0.96), rgba(248, 250, 252, 0.98)),
+		var(--langit-background);
+}
+
+.related-service-grid {
+	display: grid;
+	gap: clamp(0.9rem, 1.4vw, 1.2rem);
+	grid-template-columns: 1fr;
+}
+
+.related-service-card {
+	position: relative;
+	isolation: isolate;
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	gap: 0.9rem 1rem;
+	height: 100%;
+	min-width: 0;
+	overflow: hidden;
+	padding: clamp(1.1rem, 1rem + 0.7vw, 1.45rem);
+	border: 1px solid rgba(148, 163, 184, 0.32);
+	border-radius: 20px;
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(241, 248, 255, 0.94)),
+		#ffffff;
+	box-shadow: 0 16px 36px rgba(15, 23, 42, 0.07);
+	transition:
+		border-color var(--langit-transition-smooth),
+		box-shadow var(--langit-transition-smooth),
+		transform var(--langit-transition-smooth);
+}
+
+.related-service-card::before {
+	content: "";
+	position: absolute;
+	inset: 0 auto auto 0;
+	z-index: -1;
+	width: 100%;
+	height: 3px;
+	background: linear-gradient(90deg, var(--langit-primary), rgba(88, 175, 255, 0));
+	opacity: 0.82;
+}
+
+.related-service-card::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background:
+		radial-gradient(circle at 12% 0%, rgba(88, 175, 255, 0.13), transparent 34%),
+		linear-gradient(rgba(88, 175, 255, 0.05) 1px, transparent 1px);
+	background-size: auto, 24px 24px;
+	opacity: 0.55;
+	pointer-events: none;
+}
+
+.related-service-card__icon {
+	display: grid;
+	width: 3.05rem;
+	height: 3.05rem;
+	place-items: center;
+	padding: 0.58rem;
+	border: 1px solid rgba(88, 175, 255, 0.28);
+	border-radius: 15px;
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(232, 244, 255, 0.88)),
+		#f8fbff;
+	box-shadow:
+		0 12px 24px rgba(15, 23, 42, 0.09),
+		inset 0 1px 0 rgba(255, 255, 255, 0.84);
+	transition:
+		border-color var(--langit-transition-fast),
+		box-shadow var(--langit-transition-fast),
+		transform var(--langit-transition-fast);
+}
+
+.related-service-card__icon img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.related-service-card__content {
+	display: grid;
+	gap: 0.45rem;
+	min-width: 0;
+}
+
+.related-service-card h3,
+.related-service-card p {
+	margin-bottom: 0;
+}
+
+.related-service-card h3 {
+	color: var(--langit-secondary);
+	font-size: clamp(1rem, 0.95rem + 0.18vw, 1.12rem);
+	line-height: 1.24;
+}
+
+.related-service-card h3 a {
+	color: inherit;
+	text-decoration: none;
+	transition: color var(--langit-transition-fast);
+}
+
+.related-service-card p {
+	display: -webkit-box;
+	color: #536476;
+	font-size: 0.9rem;
+	line-height: 1.55;
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+
+.related-service-card__link {
+	grid-column: 2;
+	align-self: end;
+	justify-self: start;
+	color: #0f3658;
+	font-size: 0.88rem;
+	font-weight: 850;
+	text-decoration: none;
+	transition: color var(--langit-transition-fast);
+}
+
+.related-service-card__link::after {
+	content: "→";
+	display: inline-block;
+	margin-left: 0.38rem;
+	color: var(--langit-primary);
+	transition: transform var(--langit-transition-fast);
+}
+
+.related-service-card:hover,
+.related-service-card:focus-within {
+	border-color: rgba(88, 175, 255, 0.55);
+	box-shadow: 0 22px 48px rgba(15, 23, 42, 0.11), 0 0 0 1px rgba(88, 175, 255, 0.08);
+	transform: translateY(-4px);
+}
+
+.related-service-card:hover .related-service-card__icon,
+.related-service-card:focus-within .related-service-card__icon {
+	border-color: rgba(88, 175, 255, 0.62);
+	box-shadow:
+		0 16px 32px rgba(88, 175, 255, 0.18),
+		inset 0 1px 0 rgba(255, 255, 255, 0.9);
+	transform: translateY(-1px);
+}
+
+.related-service-card h3 a:hover,
+.related-service-card h3 a:focus,
+.related-service-card__link:hover,
+.related-service-card__link:focus {
+	color: var(--langit-primary);
+}
+
+.related-service-card:hover .related-service-card__link::after,
+.related-service-card__link:focus::after {
+	transform: translateX(4px);
+}
+
 .product-card {
 	display: grid;
 	grid-template-rows: auto auto 1fr auto;
@@ -4068,6 +4233,10 @@ textarea {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
+	.related-service-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
 	.quote-service-grid,
 	.quote-support-grid,
 	.maintenance-plan-grid,
@@ -4414,6 +4583,10 @@ textarea {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 
+	.related-service-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
 	.products-grid {
 		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
@@ -4615,6 +4788,10 @@ textarea {
 	.maintenance-plan-grid,
 	.maintenance-coverage-grid,
 	.maintenance-sla-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.related-service-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 

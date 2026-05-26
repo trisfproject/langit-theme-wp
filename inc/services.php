@@ -670,3 +670,34 @@ function langit_service_summary_card( $service ) {
 	</article>
 	<?php
 }
+
+/**
+ * Render a compact related service card for single service pages.
+ *
+ * @param int $post_id Service post ID.
+ */
+function langit_related_service_card( $post_id ) {
+	$post_id = absint( $post_id );
+
+	if ( ! $post_id ) {
+		return;
+	}
+
+	$link    = get_permalink( $post_id );
+	$icon    = langit_get_service_icon_url( $post_id );
+	$excerpt = wp_trim_words( langit_get_service_excerpt( $post_id ), 16 );
+	?>
+	<article <?php post_class( 'related-service-card', $post_id ); ?>>
+		<a class="related-service-card__icon" href="<?php echo esc_url( $link ); ?>" aria-label="<?php echo esc_attr( get_the_title( $post_id ) ); ?>">
+			<img src="<?php echo esc_url( $icon ); ?>" width="40" height="40" alt="" loading="lazy" decoding="async">
+		</a>
+		<div class="related-service-card__content">
+			<h3><a href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( get_the_title( $post_id ) ); ?></a></h3>
+			<p><?php echo esc_html( $excerpt ); ?></p>
+		</div>
+		<a class="related-service-card__link" href="<?php echo esc_url( $link ); ?>">
+			<?php esc_html_e( 'View Service', 'langit' ); ?>
+		</a>
+	</article>
+	<?php
+}

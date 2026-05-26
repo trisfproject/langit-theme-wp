@@ -7,6 +7,22 @@
 
 $langit_service_cta = langit_get_service_cta_url( get_the_ID(), 'contact' );
 $langit_terms       = get_the_terms( get_the_ID(), 'service_category' );
+$langit_related_services = new WP_Query(
+	array(
+		'post_type'              => 'service',
+		'post_status'            => 'publish',
+		'posts_per_page'         => -1,
+		'post__not_in'           => array( get_the_ID() ),
+		'orderby'                => array(
+			'menu_order' => 'ASC',
+			'title'      => 'ASC',
+		),
+		'order'                  => 'ASC',
+		'no_found_rows'          => true,
+		'update_post_meta_cache' => true,
+		'update_post_term_cache' => true,
+	)
+);
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope itemtype="https://schema.org/Service">
@@ -62,53 +78,31 @@ $langit_terms       = get_the_terms( get_the_ID(), 'service_category' );
 		?>
 	</div>
 
-	<section class="section section--surface">
-		<div class="container stack">
-			<?php
-			langit_section_heading(
-				array(
-					'eyebrow' => esc_html__( 'Related Services', 'langit' ),
-					'title'   => esc_html__( 'Explore other service capabilities.', 'langit' ),
-					'center'  => true,
-				)
-			);
-
-			$langit_related_args = array(
-				'post_type'              => 'service',
-				'post_status'            => 'publish',
-				'posts_per_page'         => 3,
-				'post__not_in'           => array( get_the_ID() ),
-				'no_found_rows'          => true,
-				'update_post_meta_cache' => true,
-				'update_post_term_cache' => true,
-			);
-
-			if ( ! is_wp_error( $langit_terms ) && ! empty( $langit_terms ) ) {
-				$langit_related_args['tax_query'] = array(
+	<?php if ( $langit_related_services->have_posts() ) : ?>
+		<section class="section section--surface related-services-section">
+			<div class="container stack">
+				<?php
+				langit_section_heading(
 					array(
-						'taxonomy' => 'service_category',
-						'field'    => 'term_id',
-						'terms'    => wp_list_pluck( $langit_terms, 'term_id' ),
-					),
+						'eyebrow' => esc_html__( 'Related Services', 'langit' ),
+						'title'   => esc_html__( 'Explore other service capabilities.', 'langit' ),
+						'center'  => true,
+					)
 				);
-			}
+				?>
 
-			$langit_related_services = new WP_Query( $langit_related_args );
-			?>
-
-			<?php if ( $langit_related_services->have_posts() ) : ?>
-				<div class="service-grid">
+				<div class="related-service-grid">
 					<?php
 					while ( $langit_related_services->have_posts() ) :
 						$langit_related_services->the_post();
-						langit_service_card( get_the_ID() );
+						langit_related_service_card( get_the_ID() );
 					endwhile;
 					wp_reset_postdata();
 					?>
 				</div>
-			<?php else : ?>
-				<p class="lede"><?php esc_html_e( 'Tambahkan layanan lain untuk menampilkan rekomendasi layanan terkait secara otomatis.', 'langit' ); ?></p>
-			<?php endif; ?>
-		</div>
-	</section>
+			</div>
+		</section>
+	<?php else : ?>
+		<?php wp_reset_postdata(); ?>
+	<?php endif; ?>
 </article>
