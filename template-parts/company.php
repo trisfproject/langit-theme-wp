@@ -49,45 +49,37 @@ $langit_features = array(
 
 $langit_industries = array(
 	array(
+		'title'       => esc_html__( 'Industrial', 'langit' ),
+		'description' => esc_html__( 'Sistem untuk area produksi, gudang, dan operasional lapangan.', 'langit' ),
+	),
+	array(
 		'title'       => esc_html__( 'Commercial Building', 'langit' ),
-		'description' => esc_html__( 'Dukungan sistem keamanan, jaringan, audio, fire alarm, dan maintenance untuk gedung komersial dengan kebutuhan operasional yang dinamis.', 'langit' ),
+		'description' => esc_html__( 'Infrastruktur gedung kantor, retail, dan area publik modern.', 'langit' ),
 	),
 	array(
-		'title'       => esc_html__( 'Industrial Facility', 'langit' ),
-		'description' => esc_html__( 'Solusi teknologi untuk area produksi, utilitas, gudang, dan fasilitas industri yang membutuhkan stabilitas sistem dan dokumentasi kerja.', 'langit' ),
+		'title'       => esc_html__( 'Government', 'langit' ),
+		'description' => esc_html__( 'Implementasi untuk fasilitas pemerintahan dan layanan publik.', 'langit' ),
 	),
 	array(
-		'title'       => esc_html__( 'Office Infrastructure', 'langit' ),
-		'description' => esc_html__( 'Implementasi konektivitas, keamanan, elektrikal, dan sistem pendukung kantor agar lingkungan kerja lebih aman dan efisien.', 'langit' ),
-	),
-	array(
-		'title'       => esc_html__( 'Warehouse & Logistics', 'langit' ),
-		'description' => esc_html__( 'Dukungan CCTV, jaringan, alarm, audio, dan maintenance untuk area penyimpanan, distribusi, serta aktivitas logistik.', 'langit' ),
-	),
-	array(
-		'title'       => esc_html__( 'Retail & Public Area', 'langit' ),
-		'description' => esc_html__( 'Sistem pendukung untuk area publik, retail, dan fasilitas layanan yang membutuhkan pemantauan, komunikasi, dan operasional yang konsisten.', 'langit' ),
-	),
-	array(
-		'title'       => esc_html__( 'Educational & Institutional Facilities', 'langit' ),
-		'description' => esc_html__( 'Solusi keamanan, jaringan, audio, alarm, instalasi, dan pemeliharaan untuk lingkungan pendidikan serta fasilitas institusional.', 'langit' ),
+		'title'       => esc_html__( 'Residential', 'langit' ),
+		'description' => esc_html__( 'Integrasi keamanan dan jaringan untuk hunian modern.', 'langit' ),
 	),
 );
 
 $langit_values = array(
 	array(
 		'title'       => esc_html__( 'Integrity', 'langit' ),
-		'description' => esc_html__( 'Menjaga kepercayaan melalui komunikasi yang jelas, dokumentasi pekerjaan yang rapi, dan tanggung jawab terhadap hasil layanan.', 'langit' ),
+		'description' => esc_html__( 'Menjaga kepercayaan melalui komunikasi yang jelas, dokumentasi pekerjaan yang rapi, and tanggung jawab terhadap hasil layanan.', 'langit' ),
 		'icon'        => 'document.svg',
 	),
 	array(
 		'title'       => esc_html__( 'Reliability', 'langit' ),
-		'description' => esc_html__( 'Mengutamakan sistem yang stabil, mudah dirawat, dan mampu mendukung kebutuhan operasional client secara berkelanjutan.', 'langit' ),
+		'description' => esc_html__( 'Mengutamakan sistem yang stabil, mudah dirawat, and mampu mendukung kebutuhan operasional client secara berkelanjutan.', 'langit' ),
 		'icon'        => 'maintenance.svg',
 	),
 	array(
 		'title'       => esc_html__( 'Professionalism', 'langit' ),
-		'description' => esc_html__( 'Menjalankan setiap tahapan pekerjaan dengan standar kerja, koordinasi, dan pendekatan teknis yang profesional.', 'langit' ),
+		'description' => esc_html__( 'Menjalankan setiap tahapan pekerjaan dengan standar kerja, koordinasi, and pendekatan teknis yang profesional.', 'langit' ),
 		'icon'        => 'team.svg',
 	),
 	array(
@@ -97,7 +89,7 @@ $langit_values = array(
 	),
 	array(
 		'title'       => esc_html__( 'Efficiency', 'langit' ),
-		'description' => esc_html__( 'Membantu client membangun sistem yang lebih terstruktur, mudah dipantau, dan mendukung efisiensi operasional.', 'langit' ),
+		'description' => esc_html__( 'Membantu client membangun sistem yang lebih terstruktur, mudah dipantau, and mendukung efisiensi operasional.', 'langit' ),
 		'icon'        => 'network.svg',
 	),
 	array(
@@ -110,27 +102,27 @@ $langit_values = array(
 $langit_workflow = array(
 	array(
 		'title'       => esc_html__( 'Consultation', 'langit' ),
-		'description' => esc_html__( 'Tim memahami kebutuhan awal, prioritas operasional, dan ruang lingkup sistem yang ingin dikembangkan.', 'langit' ),
+		'description' => esc_html__( 'Tim memahami kebutuhan awal, prioritas operasional, dan ruang lingkup pekerjaan.', 'langit' ),
 	),
 	array(
-		'title'       => esc_html__( 'Site Survey', 'langit' ),
-		'description' => esc_html__( 'Kondisi lokasi ditinjau untuk menentukan titik instalasi, jalur kerja, perangkat, dan potensi kebutuhan teknis.', 'langit' ),
+		'title'       => esc_html__( 'Survey', 'langit' ),
+		'description' => esc_html__( 'Peninjauan lokasi pekerjaan untuk menentukan jalur instalasi dan titik perangkat.', 'langit' ),
 	),
 	array(
-		'title'       => esc_html__( 'Planning', 'langit' ),
-		'description' => esc_html__( 'Rencana solusi disusun agar pekerjaan berjalan lebih terarah, efisien, dan sesuai kebutuhan operasional client.', 'langit' ),
+		'title'       => esc_html__( 'Design & Planning', 'langit' ),
+		'description' => esc_html__( 'Penyusunan rencana teknis dan rekomendasi solusi sistem secara terstruktur.', 'langit' ),
 	),
 	array(
 		'title'       => esc_html__( 'Installation', 'langit' ),
-		'description' => esc_html__( 'Pekerjaan pemasangan dilakukan dengan memperhatikan kualitas instalasi, kerapian, keselamatan, dan dokumentasi.', 'langit' ),
+		'description' => esc_html__( 'Proses pemasangan perangkat dengan standar keselamatan dan kerapian instalasi.', 'langit' ),
 	),
 	array(
-		'title'       => esc_html__( 'Testing & Integration', 'langit' ),
-		'description' => esc_html__( 'Sistem diuji untuk memastikan fungsi perangkat, koneksi, integrasi, dan kesiapan penggunaan berjalan sesuai kebutuhan.', 'langit' ),
+		'title'       => esc_html__( 'Testing', 'langit' ),
+		'description' => esc_html__( 'Pengujian fungsi dan integrasi sistem untuk memastikan kesiapan operasional.', 'langit' ),
 	),
 	array(
-		'title'       => esc_html__( 'Maintenance Support', 'langit' ),
-		'description' => esc_html__( 'Dukungan pemeliharaan membantu menjaga performa sistem agar tetap stabil dan siap mendukung operasional jangka panjang.', 'langit' ),
+		'title'       => esc_html__( 'Maintenance', 'langit' ),
+		'description' => esc_html__( 'Dukungan pemeliharaan berkala untuk menjaga keandalan sistem jangka panjang.', 'langit' ),
 	),
 );
 ?>
@@ -206,7 +198,7 @@ langit_page_hero(
 		);
 		?>
 
-		<div class="feature-grid">
+		<div class="why-choose-grid">
 			<?php foreach ( $langit_features as $langit_feature ) : ?>
 				<?php
 				langit_card(
@@ -224,7 +216,7 @@ langit_page_hero(
 	</div>
 </section>
 
-<section id="industry-coverage" class="section section--surface">
+<section id="industry-coverage" class="section section--navy-gradient">
 	<div class="container stack">
 		<?php
 		langit_section_heading(
@@ -236,11 +228,13 @@ langit_page_hero(
 		);
 		?>
 
-		<div class="coverage-grid">
+		<div class="industries-serve-grid">
 			<?php foreach ( $langit_industries as $langit_industry ) : ?>
-				<article class="coverage-card solution-card">
-					<h3><?php echo esc_html( $langit_industry['title'] ); ?></h3>
-					<p><?php echo esc_html( $langit_industry['description'] ); ?></p>
+				<article class="<?php echo esc_attr( langit_class_names( array( 'coverage-card', 'coverage-card--' . sanitize_title( $langit_industry['title'] ) ) ) ); ?>">
+					<div class="coverage-card__content">
+						<h3><?php echo esc_html( $langit_industry['title'] ); ?></h3>
+						<p><?php echo esc_html( $langit_industry['description'] ); ?></p>
+					</div>
 				</article>
 			<?php endforeach; ?>
 		</div>
@@ -259,7 +253,7 @@ langit_page_hero(
 		);
 		?>
 
-		<div class="feature-grid">
+		<div class="company-values-grid">
 			<?php foreach ( $langit_values as $langit_value ) : ?>
 				<?php
 				langit_card(
@@ -289,7 +283,7 @@ langit_page_hero(
 		);
 		?>
 
-		<div class="process-grid">
+		<div class="workflow-grid">
 			<?php foreach ( $langit_workflow as $langit_index => $langit_step ) : ?>
 				<article class="process-card">
 					<span><?php echo esc_html( str_pad( (string) ( $langit_index + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>

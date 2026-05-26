@@ -188,6 +188,19 @@ ol {
 		var(--langit-surface);
 }
 
+.section--navy-gradient {
+	background: linear-gradient(180deg, #090f1d 0%, #050a14 100%);
+	color: #ffffff;
+}
+
+.section--navy-gradient .section-heading h2 {
+	color: #ffffff;
+}
+
+.section--navy-gradient .section-heading p {
+	color: rgba(226, 232, 240, 0.85);
+}
+
 .section--compact,
 .u-section--compact {
 	padding-block: clamp(2.25rem, 1.6rem + 3vw, 4rem);
@@ -1183,15 +1196,19 @@ input[type="submit"]:focus {
 .service-grid,
 .coverage-grid,
 .legality-grid,
-	.team-grid,
-	.feature-grid,
-	.process-grid,
-	.contact-info-grid,
-	.trust-grid,
-	.testimonial-grid,
-	.client-grid,
-	.client-logo-grid,
-	.card-grid {
+.team-grid,
+.feature-grid,
+.process-grid,
+.contact-info-grid,
+.trust-grid,
+.testimonial-grid,
+.client-grid,
+.client-logo-grid,
+.card-grid,
+.why-choose-grid,
+.company-values-grid,
+.workflow-grid,
+.industries-serve-grid {
 	display: grid;
 	gap: var(--langit-space-md);
 	grid-template-columns: 1fr;
@@ -1532,26 +1549,45 @@ input[type="submit"]:focus {
 .process-card {
 	display: grid;
 	align-content: start;
-	gap: 0.75rem;
-	padding: var(--langit-space-md);
-	border: 1px solid var(--langit-border);
-	border-radius: var(--langit-radius);
+	gap: 1rem;
+	padding: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+	border: 1px solid rgba(226, 232, 240, 0.8);
+	border-radius: var(--langit-card-radius);
 	background: var(--langit-surface);
+	box-shadow: var(--langit-card-shadow);
+	transition: border-color var(--langit-transition-smooth), box-shadow var(--langit-transition-smooth), transform var(--langit-transition-smooth);
+}
+
+.process-card:hover {
+	border-color: rgba(88, 175, 255, 0.4);
+	box-shadow: var(--langit-card-shadow-hover);
+	transform: translateY(-4px);
 }
 
 .process-card span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	border-radius: 999px;
+	background: rgba(88, 175, 255, 0.1);
 	color: var(--langit-primary);
-	font-size: 0.85rem;
+	font-size: 1rem;
 	font-weight: 850;
-	letter-spacing: 0.12em;
+	font-family: monospace, var(--langit-font-sans);
+	box-shadow: 0 4px 10px rgba(88, 175, 255, 0.08);
 }
 
-.process-card h3,
+.process-card h3 {
+	margin-bottom: 0;
+	font-size: clamp(1.15rem, 1rem + 0.3vw, 1.35rem);
+	font-weight: 750;
+	line-height: 1.22;
+}
+
 .process-card p {
 	margin-bottom: 0;
-}
-
-.process-card p {
 	color: var(--langit-muted);
 }
 
@@ -3259,7 +3295,11 @@ textarea {
 	.site-footer__grid,
 	.card-grid--2,
 	.card-grid--3,
-	.card-grid--4 {
+	.card-grid--4,
+	.why-choose-grid,
+	.company-values-grid,
+	.workflow-grid,
+	.industries-serve-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
@@ -3593,7 +3633,8 @@ textarea {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 
-	.coverage-grid {
+	.coverage-grid,
+	.industries-serve-grid {
 		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
 
@@ -3601,7 +3642,10 @@ textarea {
 		grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
 	}
 
-	.team-grid {
+	.team-grid,
+	.why-choose-grid,
+	.company-values-grid,
+	.workflow-grid {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 
@@ -3752,7 +3796,11 @@ textarea {
 	.contact-info-grid,
 	.site-footer__grid,
 	.card-grid--3,
-	.card-grid--4 {
+	.card-grid--4,
+	.why-choose-grid,
+	.company-values-grid,
+	.workflow-grid,
+	.industries-serve-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
