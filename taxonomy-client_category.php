@@ -11,7 +11,7 @@ get_header();
 <main id="primary" class="site-main">
 	<section class="page-hero">
 		<div class="container stack">
-			<p class="section-eyebrow"><?php esc_html_e( 'Sector Category', 'langit' ); ?></p>
+			<p class="section-eyebrow"><?php esc_html_e( 'Operational Category', 'langit' ); ?></p>
 			<?php the_archive_title( '<h1>', '</h1>' ); ?>
 			<?php the_archive_description( '<div class="lede">', '</div>' ); ?>
 		</div>
@@ -19,7 +19,7 @@ get_header();
 
 	<section class="section section--surface client-sector-archive">
 		<div class="container stack">
-			<div class="client-grid">
+			<div class="client-grid client-grid--references">
 				<?php
 				if ( have_posts() ) :
 					while ( have_posts() ) :
@@ -27,8 +27,8 @@ get_header();
 						langit_client_card( get_the_ID() );
 					endwhile;
 				else :
-					foreach ( langit_default_client_sectors() as $langit_sector ) {
-						langit_client_sector_card( $langit_sector );
+					foreach ( langit_default_client_references() as $langit_client ) {
+						langit_client_reference_card( $langit_client );
 					}
 				endif;
 				?>

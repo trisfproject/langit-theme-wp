@@ -13,7 +13,7 @@ $langit_related_projects = array_filter( array_map( 'absint', explode( ',', get_
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="single-hero">
 		<div class="single-hero__content stack">
-			<p class="section-eyebrow"><?php esc_html_e( 'Deployment Environment', 'langit' ); ?></p>
+			<p class="section-eyebrow"><?php esc_html_e( 'Client Reference', 'langit' ); ?></p>
 			<?php if ( ! is_wp_error( $langit_client_terms ) && ! empty( $langit_client_terms ) ) : ?>
 				<div class="post-card__term">
 					<?php
@@ -51,7 +51,7 @@ $langit_related_projects = array_filter( array_map( 'absint', explode( ',', get_
 
 				<?php if ( ! empty( $langit_client_details ) ) : ?>
 					<div class="card client-panel">
-						<p class="section-eyebrow"><?php esc_html_e( 'Sector Information', 'langit' ); ?></p>
+						<p class="section-eyebrow"><?php esc_html_e( 'Reference Information', 'langit' ); ?></p>
 						<dl class="client-meta-list">
 							<?php foreach ( $langit_client_details as $langit_label => $langit_value ) : ?>
 								<div>
@@ -65,7 +65,7 @@ $langit_related_projects = array_filter( array_map( 'absint', explode( ',', get_
 			</div>
 
 			<div class="stack">
-				<p class="section-eyebrow"><?php esc_html_e( 'Environment Overview', 'langit' ); ?></p>
+				<p class="section-eyebrow"><?php esc_html_e( 'Operational Overview', 'langit' ); ?></p>
 				<div class="single-content">
 					<?php
 					the_content();
