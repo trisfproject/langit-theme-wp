@@ -492,10 +492,9 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 
 <?php if ( langit_theme_mod_enabled( 'show_client_logo_section' ) ) : ?>
 	<?php
-	$langit_has_client_logos      = $langit_clients_query instanceof WP_Query && $langit_clients_query->have_posts();
-	$langit_has_testimonial_logos = $langit_testimonials_query instanceof WP_Query && $langit_testimonials_query->have_posts();
+	$langit_has_client_logos = $langit_clients_query instanceof WP_Query && $langit_clients_query->have_posts();
 	?>
-	<?php if ( $langit_has_client_logos || $langit_has_testimonial_logos ) : ?>
+	<?php if ( $langit_has_client_logos ) : ?>
 		<section class="section section--compact home-section home-section--clients">
 			<div class="container stack">
 				<?php
@@ -509,31 +508,13 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 				);
 				?>
 				<div class="client-logo-grid">
-					<?php if ( $langit_has_client_logos ) : ?>
-						<?php
-						while ( $langit_clients_query->have_posts() ) :
-							$langit_clients_query->the_post();
-							langit_client_logo_item( get_the_ID() );
-						endwhile;
-						wp_reset_postdata();
-						?>
-					<?php else : ?>
-						<?php
-						$langit_testimonials_query->rewind_posts();
-						while ( $langit_testimonials_query->have_posts() ) :
-							$langit_testimonials_query->the_post();
-							if ( ! has_post_thumbnail() ) {
-								continue;
-							}
-							?>
-							<div class="client-logo-item">
-								<?php the_post_thumbnail( 'thumbnail', array( 'loading' => 'lazy', 'decoding' => 'async' ) ); ?>
-							</div>
-							<?php
-						endwhile;
-						wp_reset_postdata();
-						?>
-					<?php endif; ?>
+					<?php
+					while ( $langit_clients_query->have_posts() ) :
+						$langit_clients_query->the_post();
+						langit_client_logo_item( get_the_ID() );
+					endwhile;
+					wp_reset_postdata();
+					?>
 				</div>
 			</div>
 		</section>

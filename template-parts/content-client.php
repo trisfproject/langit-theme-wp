@@ -7,14 +7,13 @@
 
 $langit_client_terms     = get_the_terms( get_the_ID(), 'client_category' );
 $langit_client_details   = langit_get_client_details( get_the_ID() );
-$langit_client_website   = get_post_meta( get_the_ID(), 'langit_client_website_url', true );
 $langit_related_projects = array_filter( array_map( 'absint', explode( ',', get_post_meta( get_the_ID(), 'langit_client_related_project_ids', true ) ) ) );
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope itemtype="https://schema.org/Organization">
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="single-hero">
 		<div class="single-hero__content stack">
-			<p class="section-eyebrow"><?php esc_html_e( 'Client Profile', 'langit' ); ?></p>
+			<p class="section-eyebrow"><?php esc_html_e( 'Deployment Environment', 'langit' ); ?></p>
 			<?php if ( ! is_wp_error( $langit_client_terms ) && ! empty( $langit_client_terms ) ) : ?>
 				<div class="post-card__term">
 					<?php
@@ -30,9 +29,9 @@ $langit_related_projects = array_filter( array_map( 'absint', explode( ',', get_
 					?>
 				</div>
 			<?php endif; ?>
-			<?php the_title( '<h1 class="entry-title" itemprop="name">', '</h1>' ); ?>
+			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 			<?php if ( has_excerpt() ) : ?>
-				<p class="lede" itemprop="description"><?php echo esc_html( get_the_excerpt() ); ?></p>
+				<p class="lede"><?php echo esc_html( get_the_excerpt() ); ?></p>
 			<?php endif; ?>
 		</div>
 	</header>
@@ -43,16 +42,16 @@ $langit_related_projects = array_filter( array_map( 'absint', explode( ',', get_
 				<div class="card client-profile-card">
 					<div class="client-profile-card__logo">
 						<?php if ( has_post_thumbnail() ) : ?>
-							<?php the_post_thumbnail( 'medium', array( 'loading' => 'eager', 'decoding' => 'async', 'itemprop' => 'logo' ) ); ?>
+							<?php the_post_thumbnail( 'medium_large', array( 'loading' => 'eager', 'decoding' => 'async' ) ); ?>
 						<?php else : ?>
 							<span><?php the_title(); ?></span>
 						<?php endif; ?>
 					</div>
 				</div>
 
-				<?php if ( ! empty( $langit_client_details ) || ! empty( $langit_client_website ) ) : ?>
+				<?php if ( ! empty( $langit_client_details ) ) : ?>
 					<div class="card client-panel">
-						<p class="section-eyebrow"><?php esc_html_e( 'Client Information', 'langit' ); ?></p>
+						<p class="section-eyebrow"><?php esc_html_e( 'Sector Information', 'langit' ); ?></p>
 						<dl class="client-meta-list">
 							<?php foreach ( $langit_client_details as $langit_label => $langit_value ) : ?>
 								<div>
@@ -60,20 +59,14 @@ $langit_related_projects = array_filter( array_map( 'absint', explode( ',', get_
 									<dd><?php echo esc_html( $langit_value ); ?></dd>
 								</div>
 							<?php endforeach; ?>
-							<?php if ( ! empty( $langit_client_website ) ) : ?>
-								<div>
-									<dt><?php esc_html_e( 'Website', 'langit' ); ?></dt>
-									<dd><a href="<?php echo esc_url( $langit_client_website ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Visit Website', 'langit' ); ?></a></dd>
-								</div>
-							<?php endif; ?>
 						</dl>
 					</div>
 				<?php endif; ?>
 			</div>
 
 			<div class="stack">
-				<p class="section-eyebrow"><?php esc_html_e( 'Company Overview', 'langit' ); ?></p>
-				<div class="single-content" itemprop="description">
+				<p class="section-eyebrow"><?php esc_html_e( 'Environment Overview', 'langit' ); ?></p>
+				<div class="single-content">
 					<?php
 					the_content();
 
@@ -95,7 +88,7 @@ $langit_related_projects = array_filter( array_map( 'absint', explode( ',', get_
 			langit_section_heading(
 				array(
 					'eyebrow' => esc_html__( 'Related Projects', 'langit' ),
-					'title'   => esc_html__( 'Project experience connected to client and industry requirements.', 'langit' ),
+					'title'   => esc_html__( 'Project experience connected to sector and operational requirements.', 'langit' ),
 					'center'  => true,
 				)
 			);
@@ -143,7 +136,7 @@ $langit_related_projects = array_filter( array_map( 'absint', explode( ',', get_
 			langit_section_heading(
 				array(
 					'eyebrow' => esc_html__( 'Related Services', 'langit' ),
-					'title'   => esc_html__( 'Service capabilities that support client operations.', 'langit' ),
+					'title'   => esc_html__( 'Service capabilities for deployment and operational support.', 'langit' ),
 					'center'  => true,
 				)
 			);
@@ -175,7 +168,7 @@ $langit_related_projects = array_filter( array_map( 'absint', explode( ',', get_
 					?>
 				</div>
 			<?php else : ?>
-				<p class="lede"><?php esc_html_e( 'Tambahkan layanan untuk menampilkan kapabilitas yang relevan pada profil klien.', 'langit' ); ?></p>
+				<p class="lede"><?php esc_html_e( 'Tambahkan layanan untuk menampilkan kapabilitas yang relevan pada sektor ini.', 'langit' ); ?></p>
 			<?php endif; ?>
 		</div>
 	</section>

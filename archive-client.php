@@ -12,15 +12,26 @@ get_header();
 	<?php
 	langit_page_hero(
 		array(
-			'eyebrow' => esc_html__( 'Clients & Partners', 'langit' ),
-			'title'   => post_type_archive_title( '', false ),
-			'text'    => esc_html__( 'Daftar klien, partner, dan industri yang menjadi bagian dari pengalaman proyek serta dukungan layanan PT Global Teknindo.', 'langit' ),
+			'eyebrow' => esc_html__( 'Operational Sectors', 'langit' ),
+			'title'   => esc_html__( 'Deployment Environments', 'langit' ),
+			'text'    => esc_html__( 'Area penerapan sistem keamanan, jaringan, alarm, audio, elektrikal, instalasi, dan dukungan operasional PT Global Teknindo.', 'langit' ),
 		)
 	);
 	?>
 
-	<section class="section section--surface">
+	<section class="section section--surface client-sector-archive">
 		<div class="container stack">
+			<?php
+			langit_section_heading(
+				array(
+					'eyebrow' => esc_html__( 'Coverage Capability', 'langit' ),
+					'title'   => esc_html__( 'Infrastructure support across active building environments.', 'langit' ),
+					'text'    => esc_html__( 'Setiap sektor memiliki kebutuhan lapangan yang berbeda, mulai dari monitoring, jaringan, kontrol akses, fire alarm, audio, hingga maintenance sistem.', 'langit' ),
+					'center'  => true,
+				)
+			);
+			?>
+
 			<div class="client-grid">
 				<?php
 				if ( have_posts() ) :
@@ -29,7 +40,9 @@ get_header();
 						langit_client_card( get_the_ID() );
 					endwhile;
 				else :
-					get_template_part( 'template-parts/content', 'none' );
+					foreach ( langit_default_client_sectors() as $langit_sector ) {
+						langit_client_sector_card( $langit_sector );
+					}
 				endif;
 				?>
 			</div>
