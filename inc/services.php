@@ -686,11 +686,14 @@ function langit_related_service_card( $post_id ) {
 	$link    = get_permalink( $post_id );
 	$icon    = langit_get_service_icon_url( $post_id );
 	$excerpt = wp_trim_words( langit_get_service_excerpt( $post_id ), 16 );
+	$terms   = get_the_terms( $post_id, 'service_category' );
+	$meta    = ( ! is_wp_error( $terms ) && ! empty( $terms ) ) ? $terms[0]->name : esc_html__( 'Service', 'langit' );
 	?>
 	<article <?php post_class( 'related-service-card', $post_id ); ?>>
 		<a class="related-service-card__icon" href="<?php echo esc_url( $link ); ?>" aria-label="<?php echo esc_attr( get_the_title( $post_id ) ); ?>">
 			<img src="<?php echo esc_url( $icon ); ?>" width="40" height="40" alt="" loading="lazy" decoding="async">
 		</a>
+		<p class="related-service-card__meta"><?php echo esc_html( $meta ); ?></p>
 		<div class="related-service-card__content">
 			<h3><a href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( get_the_title( $post_id ) ); ?></a></h3>
 			<p><?php echo esc_html( $excerpt ); ?></p>

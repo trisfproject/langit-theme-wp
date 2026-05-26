@@ -1577,18 +1577,19 @@ input[type="submit"]:focus {
 	display: grid;
 	gap: clamp(0.9rem, 1.4vw, 1.2rem);
 	grid-template-columns: 1fr;
+	align-items: stretch;
 }
 
 .related-service-card {
 	position: relative;
 	isolation: isolate;
 	display: grid;
-	grid-template-columns: auto minmax(0, 1fr);
-	gap: 0.9rem 1rem;
+	grid-template-rows: auto auto 1fr auto;
+	gap: 0.76rem;
 	height: 100%;
 	min-width: 0;
 	overflow: hidden;
-	padding: clamp(1.1rem, 1rem + 0.7vw, 1.45rem);
+	padding: clamp(1.2rem, 1.08rem + 0.75vw, 1.55rem);
 	border: 1px solid rgba(148, 163, 184, 0.32);
 	border-radius: 20px;
 	background:
@@ -1627,8 +1628,8 @@ input[type="submit"]:focus {
 
 .related-service-card__icon {
 	display: grid;
-	width: 3.05rem;
-	height: 3.05rem;
+	width: 3.25rem;
+	height: 3.25rem;
 	place-items: center;
 	padding: 0.58rem;
 	border: 1px solid rgba(88, 175, 255, 0.28);
@@ -1652,9 +1653,27 @@ input[type="submit"]:focus {
 	object-fit: contain;
 }
 
+.related-service-card__meta {
+	align-self: start;
+	width: fit-content;
+	max-width: 100%;
+	margin-bottom: 0;
+	padding: 0.3rem 0.66rem;
+	border: 1px solid rgba(88, 175, 255, 0.2);
+	border-radius: 999px;
+	background: rgba(88, 175, 255, 0.075);
+	color: #1871b8;
+	font-size: 0.66rem;
+	font-weight: 850;
+	letter-spacing: 0.08em;
+	line-height: 1.15;
+	text-transform: uppercase;
+}
+
 .related-service-card__content {
 	display: grid;
-	gap: 0.45rem;
+	align-content: start;
+	gap: 0.5rem;
 	min-width: 0;
 }
 
@@ -1665,8 +1684,8 @@ input[type="submit"]:focus {
 
 .related-service-card h3 {
 	color: var(--langit-secondary);
-	font-size: clamp(1rem, 0.95rem + 0.18vw, 1.12rem);
-	line-height: 1.24;
+	font-size: clamp(1.04rem, 0.98rem + 0.22vw, 1.18rem);
+	line-height: 1.25;
 }
 
 .related-service-card h3 a {
@@ -1675,18 +1694,17 @@ input[type="submit"]:focus {
 	transition: color var(--langit-transition-fast);
 }
 
-.related-service-card p {
+.related-service-card__content p {
 	display: -webkit-box;
 	color: #536476;
-	font-size: 0.9rem;
-	line-height: 1.55;
+	font-size: 0.91rem;
+	line-height: 1.58;
 	overflow: hidden;
 	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 2;
+	-webkit-line-clamp: 3;
 }
 
 .related-service-card__link {
-	grid-column: 2;
 	align-self: end;
 	justify-self: start;
 	color: #0f3658;
