@@ -571,11 +571,12 @@ function langit_get_service_excerpt( $post_id ) {
 function langit_service_card( $service ) {
 	if ( is_array( $service ) ) {
 		?>
-		<article id="<?php echo esc_attr( sanitize_title( $service['title'] ) ); ?>" class="card product-card">
-			<div class="product-card__visual" aria-hidden="true">
+		<article id="<?php echo esc_attr( sanitize_title( $service['title'] ) ); ?>" class="card product-card service-card service-card--archive">
+			<p class="card__meta"><?php esc_html_e( 'Operational Service', 'langit' ); ?></p>
+			<div class="product-card__visual service-card__visual" aria-hidden="true">
 				<img src="<?php echo esc_url( $service['icon'] ); ?>" width="48" height="48" alt="" loading="lazy" decoding="async">
 			</div>
-			<div class="product-card__body">
+			<div class="product-card__body service-card__body">
 				<h3><?php echo esc_html( $service['title'] ); ?></h3>
 				<p><?php echo esc_html( $service['description'] ); ?></p>
 			</div>
@@ -601,12 +602,12 @@ function langit_service_card( $service ) {
 	$icon    = langit_get_service_icon_url( $post_id );
 	$link    = get_permalink( $post_id );
 	?>
-	<article id="<?php echo esc_attr( get_post_field( 'post_name', $post_id ) ); ?>" <?php post_class( 'card product-card', $post_id ); ?>>
-		<a class="product-card__visual" href="<?php echo esc_url( $link ); ?>" aria-label="<?php echo esc_attr( get_the_title( $post_id ) ); ?>">
+	<article id="<?php echo esc_attr( get_post_field( 'post_name', $post_id ) ); ?>" <?php post_class( 'card product-card service-card service-card--archive', $post_id ); ?>>
+		<p class="card__meta"><?php echo esc_html( $meta ); ?></p>
+		<a class="product-card__visual service-card__visual" href="<?php echo esc_url( $link ); ?>" aria-label="<?php echo esc_attr( get_the_title( $post_id ) ); ?>">
 			<img src="<?php echo esc_url( $icon ); ?>" width="48" height="48" alt="" loading="lazy" decoding="async">
 		</a>
-		<div class="product-card__body">
-			<p class="card__meta"><?php echo esc_html( $meta ); ?></p>
+		<div class="product-card__body service-card__body">
 			<h3><a href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( get_the_title( $post_id ) ); ?></a></h3>
 			<p><?php echo esc_html( langit_get_service_excerpt( $post_id ) ); ?></p>
 		</div>
@@ -630,33 +631,42 @@ function langit_service_card( $service ) {
  */
 function langit_service_summary_card( $service ) {
 	if ( is_array( $service ) ) {
-		langit_card(
-			array(
-				'title'      => $service['title'],
-				'text'       => $service['description'],
-				'class'      => 'service-card',
-				'icon_class' => 'service-card__icon',
-				'icon_url'   => $service['icon'],
-			)
-		);
+		?>
+		<article class="card service-card service-card--summary">
+			<p class="card__meta"><?php esc_html_e( 'Operational Service', 'langit' ); ?></p>
+			<img class="service-card__icon" src="<?php echo esc_url( $service['icon'] ); ?>" width="48" height="48" alt="" loading="lazy" decoding="async">
+			<div class="service-card__body">
+				<h3><?php echo esc_html( $service['title'] ); ?></h3>
+				<p><?php echo esc_html( $service['description'] ); ?></p>
+			</div>
+		</article>
+		<?php
 		return;
 	}
 
 	$post_id  = absint( $service );
 	$icon_url = langit_get_service_icon_url( $post_id );
+	$terms    = get_the_terms( $post_id, 'service_category' );
+	$meta     = ( ! is_wp_error( $terms ) && ! empty( $terms ) ) ? $terms[0]->name : esc_html__( 'Service', 'langit' );
 
-	langit_card(
-		array(
-			'title'      => get_the_title( $post_id ),
-			'text'       => langit_get_service_excerpt( $post_id ),
-			'class'      => 'service-card',
-			'icon_class' => 'service-card__icon',
-			'icon_url'   => $icon_url,
-			'action'     => array(
-				'url'     => get_permalink( $post_id ),
+	$link = get_permalink( $post_id );
+	?>
+	<article <?php post_class( 'card service-card service-card--summary', $post_id ); ?>>
+		<p class="card__meta"><?php echo esc_html( $meta ); ?></p>
+		<img class="service-card__icon" src="<?php echo esc_url( $icon_url ); ?>" width="48" height="48" alt="" loading="lazy" decoding="async">
+		<div class="service-card__body">
+			<h3><a href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( get_the_title( $post_id ) ); ?></a></h3>
+			<p><?php echo esc_html( langit_get_service_excerpt( $post_id ) ); ?></p>
+		</div>
+		<?php
+		langit_button(
+			array(
+				'url'     => $link,
 				'label'   => esc_html__( 'View Service', 'langit' ),
 				'variant' => 'ghost',
-			),
-		)
-	);
+			)
+		);
+		?>
+	</article>
+	<?php
 }
