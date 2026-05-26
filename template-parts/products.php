@@ -19,19 +19,159 @@ $langit_process = array(
 	esc_html__( 'Maintenance', 'langit' ),
 );
 
-$langit_services_query = new WP_Query(
-	array(
-		'post_type'              => 'service',
-		'post_status'            => 'publish',
-		'posts_per_page'         => -1,
-		'orderby'                => array(
-			'menu_order' => 'ASC',
-			'title'      => 'ASC',
+// Define products catalog array
+$product_categories = array(
+	'cctv' => array(
+		'title' => esc_html__( 'CCTV & Security System', 'langit' ),
+		'products' => array(
+			array(
+				'name'        => 'Hikvision ColorVu Camera',
+				'description' => 'Kamera pengawas warna 24 jam untuk kondisi cahaya rendah.',
+				'spec'        => '4MP / Full-Color / IP67',
+				'image'       => 'cctv_colorvu.webp',
+			),
+			array(
+				'name'        => 'PTZ Surveillance Camera',
+				'description' => 'Kamera pemantauan dengan kendali putar dan zoom area luas.',
+				'spec'        => '25x Zoom / 1080p / IR 150m',
+				'image'       => 'cctv_ptz.webp',
+			),
+			array(
+				'name'        => 'Indoor Dome Camera',
+				'description' => 'Kamera pengawas kubah untuk instalasi plafon ruangan kantor.',
+				'spec'        => '2MP / Wide Angle / PoE',
+				'image'       => 'cctv_dome.webp',
+			),
+			array(
+				'name'        => 'Outdoor Bullet Camera',
+				'description' => 'Kamera pengawas tahan cuaca untuk area luar ruangan.',
+				'spec'        => '4MP / IR 30m / Weatherproof',
+				'image'       => 'cctv_bullet.webp',
+			),
+			array(
+				'name'        => 'AI Smart CCTV',
+				'description' => 'Kamera cerdas dengan fitur deteksi objek dan analisis video.',
+				'spec'        => 'AI Human/Vehicle Detection',
+				'image'       => 'cctv_ai.webp',
+			),
 		),
-		'no_found_rows'          => true,
-		'update_post_meta_cache' => true,
-		'update_post_term_cache' => true,
-	)
+	),
+	'networking' => array(
+		'title' => esc_html__( 'Networking Infrastructure', 'langit' ),
+		'products' => array(
+			array(
+				'name'        => 'MikroTik Core Router',
+				'description' => 'Router utama untuk manajemen bandwidth dan perutean jaringan kantor.',
+				'spec'        => '10x Gigabit Ports / SFP+',
+				'image'       => 'net_router.webp',
+			),
+			array(
+				'name'        => 'UniFi Access Point',
+				'description' => 'Perangkat pemancar Wi-Fi untuk konektivitas nirkabel gedung perkantoran.',
+				'spec'        => 'Wi-Fi 6 / Dual-Band / 300+ Clients',
+				'image'       => 'net_ap.webp',
+			),
+			array(
+				'name'        => 'Managed PoE Switch',
+				'description' => 'Switch PoE terkelola untuk distribusi daya dan data kamera.',
+				'spec'        => '24-Port / Gigabit / 370W PoE',
+				'image'       => 'net_poe_switch.webp',
+			),
+			array(
+				'name'        => 'Fiber Optic Distribution Panel',
+				'description' => 'Panel terminal serat optik untuk backbone jaringan gedung.',
+				'spec'        => '24-Port LC Duplex / 1U Rackmount',
+				'image'       => 'net_fodp.webp',
+			),
+		),
+	),
+	'fire-alarm' => array(
+		'title' => esc_html__( 'Fire Alarm System', 'langit' ),
+		'products' => array(
+			array(
+				'name'        => 'Smoke Detector',
+				'description' => 'Detektor asap untuk peringatan awal potensi kebakaran ruangan.',
+				'spec'        => 'Photoelectric / Addressable / UL Listed',
+				'image'       => 'fire_smoke.webp',
+			),
+			array(
+				'name'        => 'Addressable Fire Alarm Panel',
+				'description' => 'Panel kontrol utama untuk memantau status seluruh detektor gedung.',
+				'spec'        => '2-Loop / 500 Devices / LCD Display',
+				'image'       => 'fire_panel.webp',
+			),
+			array(
+				'name'        => 'Heat Detector',
+				'description' => 'Detektor kenaikan suhu panas untuk area dapur dan mekanikal.',
+				'spec'        => 'Rate-of-Rise / Addressable',
+				'image'       => 'fire_heat.webp',
+			),
+			array(
+				'name'        => 'Manual Call Point',
+				'description' => 'Tombol darurat manual untuk mengaktifkan sirine kebakaran.',
+				'spec'        => 'Break Glass / Resettable',
+				'image'       => 'fire_mcp.webp',
+			),
+		),
+	),
+	'audio' => array(
+		'title' => esc_html__( 'Audio & Public Address', 'langit' ),
+		'products' => array(
+			array(
+				'name'        => 'TOA Ceiling Speaker',
+				'description' => 'Speaker plafon untuk pengumuman dan musik latar ruangan.',
+				'spec'        => '6W / 100V Line / 6-inch',
+				'image'       => 'audio_ceiling.webp',
+			),
+			array(
+				'name'        => 'Paging Microphone',
+				'description' => 'Mikrofon panggilan dengan tombol pemilih zona suara gedung.',
+				'spec'        => 'Gooseneck / Zone Selector / Chime',
+				'image'       => 'audio_mic.webp',
+			),
+			array(
+				'name'        => 'Mixer Amplifier',
+				'description' => 'Penguat daya audio dengan kontrol pencampuran input suara.',
+				'spec'        => '240W / 100V / 5 Zone Selectors',
+				'image'       => 'audio_mixer.webp',
+			),
+			array(
+				'name'        => 'Wall Mount Speaker',
+				'description' => 'Speaker dinding untuk kebutuhan distribusi suara koridor gedung.',
+				'spec'        => '15W / 2-Way System / Bracket Included',
+				'image'       => 'audio_wall.webp',
+			),
+		),
+	),
+	'electrical' => array(
+		'title' => esc_html__( 'Mechanical Electrical', 'langit' ),
+		'products' => array(
+			array(
+				'name'        => 'Electrical Distribution Panel',
+				'description' => 'Panel pembagi daya listrik utama untuk instalasi gedung.',
+				'spec'        => '3-Phase / 400V / IP54 Enclosure',
+				'image'       => 'me_panel.webp',
+			),
+			array(
+				'name'        => 'ATS AMF Panel',
+				'description' => 'Panel otomatis pemindah daya listrik dari PLN ke genset.',
+				'spec'        => 'Automatic Transfer Switch / 100kVA',
+				'image'       => 'me_ats_amf.webp',
+			),
+			array(
+				'name'        => 'Industrial Cable Tray',
+				'description' => 'Jalur kabel logam terstruktur untuk instalasi kabel gedung.',
+				'spec'        => 'Hot-Dip Galvanized / Ladder Type',
+				'image'       => 'me_cable_tray.webp',
+			),
+			array(
+				'name'        => 'Smart Power Monitoring',
+				'description' => 'Sistem pemantauan daya listrik digital untuk efisiensi energi.',
+				'spec'        => 'RS485 Modbus / LCD Power Meter',
+				'image'       => 'me_monitoring.webp',
+			),
+		),
+	),
 );
 ?>
 
@@ -40,7 +180,7 @@ langit_page_hero(
 	array(
 		'eyebrow' => esc_html__( 'Products', 'langit' ),
 		'title'   => get_the_title(),
-		'text'    => esc_html__( 'Solusi teknologi gedung untuk keamanan, jaringan, elektrikal, alarm, audio, instalasi, dan pemeliharaan sistem yang mendukung operasional modern.', 'langit' ),
+		'text'    => esc_html__( 'Katalog perangkat teknologi gedung untuk keamanan, jaringan, proteksi kebakaran, sistem audio, serta instalasi mekanikal elektrikal.', 'langit' ),
 	)
 );
 ?>
@@ -52,43 +192,64 @@ langit_page_hero(
 			<h2><?php esc_html_e( 'Integrated systems for modern building operations.', 'langit' ); ?></h2>
 		</div>
 		<div class="stack">
-			<p><?php esc_html_e( 'PT Global Teknindo menyediakan solusi teknologi gedung meliputi CCTV & Security System, Networking Infrastructure, Mechanical Electrical, Fire Alarm System, Audio & Public Address, serta Installation & Maintenance Service.', 'langit' ); ?></p>
-			<p><?php esc_html_e( 'Setiap layanan dirancang untuk membantu pelanggan membangun sistem yang rapi, terdokumentasi, mudah dirawat, dan sesuai kebutuhan operasional di lapangan.', 'langit' ); ?></p>
+			<p><?php esc_html_e( 'PT Global Teknindo menyediakan beragam perangkat keras pendukung sistem teknologi gedung, mencakup produk CCTV & Security, Networking Infrastructure, Fire Alarm System, Audio & Public Address, serta Mechanical Electrical.', 'langit' ); ?></p>
+			<p><?php esc_html_e( 'Setiap produk dipilih berdasarkan keandalan di lapangan, kepatuhan standar industri, dan kesiapan integrasi jangka panjang guna menjaga kontinuitas operasional fasilitas Anda.', 'langit' ); ?></p>
 		</div>
 	</div>
 </section>
 
-<section class="section section--surface">
-	<div class="container stack">
-		<?php
-		langit_section_heading(
-			array(
-				'eyebrow' => esc_html__( 'Product & Service Grid', 'langit' ),
-				'title'   => esc_html__( 'Core services for security, infrastructure, and facility systems.', 'langit' ),
-				'center'  => true,
-			)
-		);
-		?>
+<?php
+$langit_index = 0;
+foreach ( $product_categories as $langit_key => $langit_cat ) :
+	$langit_is_surface = ( $langit_index % 2 !== 0 );
+	$langit_index++;
+	?>
+	<section id="<?php echo esc_attr( $langit_key ); ?>" class="section <?php echo $langit_is_surface ? 'section--surface' : ''; ?>">
+		<div class="container stack">
+			<?php
+			langit_section_heading(
+				array(
+					'eyebrow' => esc_html__( 'Product Catalog', 'langit' ),
+					'title'   => $langit_cat['title'],
+					'center'  => true,
+				)
+			);
+			?>
 
-		<div class="service-grid">
-			<?php if ( $langit_services_query->have_posts() ) : ?>
-				<?php
-				while ( $langit_services_query->have_posts() ) :
-					$langit_services_query->the_post();
-					langit_service_card( get_the_ID() );
-				endwhile;
-				wp_reset_postdata();
-				?>
-			<?php else : ?>
-				<?php
-				foreach ( langit_default_services() as $langit_service ) {
-					langit_service_card( $langit_service );
-				}
-				?>
-			<?php endif; ?>
+			<div class="products-grid">
+				<?php foreach ( $langit_cat['products'] as $langit_prod ) : ?>
+					<article class="card post-card product-card">
+						<div class="product-card__media">
+							<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/products/' . $langit_prod['image'] ); ?>" alt="<?php echo esc_attr( $langit_prod['name'] ); ?>" loading="lazy" decoding="async">
+						</div>
+						<header class="product-card__header">
+							<?php if ( ! empty( $langit_prod['spec'] ) ) : ?>
+								<div class="product-card__badge"><?php echo esc_html( $langit_prod['spec'] ); ?></div>
+							<?php endif; ?>
+							<h3 class="product-card__title"><?php echo esc_html( $langit_prod['name'] ); ?></h3>
+						</header>
+						<div class="entry-summary product-card__summary">
+							<p><?php echo esc_html( $langit_prod['description'] ); ?></p>
+						</div>
+						<div class="product-card__actions">
+							<?php
+							langit_button(
+								array(
+									'url'              => home_url( '/contact/' ),
+									'label'            => esc_html__( 'Consult via WhatsApp', 'langit' ),
+									'variant'          => 'primary',
+									'whatsapp_context' => 'product_inquiry',
+									'service_name'     => $langit_prod['name'],
+								)
+							);
+							?>
+						</div>
+					</article>
+				<?php endforeach; ?>
+			</div>
 		</div>
-	</div>
-</section>
+	</section>
+<?php endforeach; ?>
 
 <section class="section">
 	<div class="container stack">
@@ -139,4 +300,3 @@ langit_page_hero(
 
 <?php
 langit_inquiry( 'service' );
-?>

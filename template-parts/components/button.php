@@ -50,6 +50,28 @@ if ( ( $is_contact_url && ! $is_anchor ) || ! empty( $args['whatsapp_context'] )
 		case 'hero':
 			$message = esc_html__( 'Halo Global Teknindo, saya ingin konsultasi kebutuhan sistem teknologi gedung.', 'langit' );
 			break;
+		case 'product_inquiry':
+			$service_name = ! empty( $args['service_name'] ) ? $args['service_name'] : '';
+			if ( ! empty( $service_name ) ) {
+				// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralSingle, WordPress.WP.I18n.NonSingularStringLiteralFormat
+				$message = sprintf( esc_html__( 'Halo Global Teknindo, saya ingin konsultasi mengenai %s.', 'langit' ), $service_name );
+			} else {
+				$message = esc_html__( 'Halo Global Teknindo, saya ingin konsultasi mengenai produk Anda.', 'langit' );
+			}
+			break;
+		case 'product':
+		case 'products':
+			$service_name = ! empty( $args['service_name'] ) ? $args['service_name'] : '';
+			if ( empty( $service_name ) && is_singular( 'service' ) ) {
+				$service_name = get_the_title();
+			}
+			if ( ! empty( $service_name ) ) {
+				// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralSingle, WordPress.WP.I18n.NonSingularStringLiteralFormat
+				$message = sprintf( esc_html__( 'Halo Global Teknindo, saya tertarik dengan produk %s.', 'langit' ), $service_name );
+			} else {
+				$message = esc_html__( 'Halo Global Teknindo, saya tertarik dengan produk yang ditawarkan.', 'langit' );
+			}
+			break;
 		case 'service':
 		case 'services':
 			$service_name = ! empty( $args['service_name'] ) ? $args['service_name'] : '';
