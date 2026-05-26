@@ -243,9 +243,10 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 					);
 					langit_button(
 						array(
-							'url'     => langit_theme_mod( 'hero_secondary_button_url' ),
-							'label'   => langit_theme_mod( 'hero_secondary_button_text' ),
-							'variant' => 'ghost',
+							'url'              => langit_theme_mod( 'hero_secondary_button_url' ),
+							'label'            => langit_theme_mod( 'hero_secondary_button_text' ),
+							'variant'          => 'ghost',
+							'whatsapp_context' => 'hero',
 						)
 					);
 					?>

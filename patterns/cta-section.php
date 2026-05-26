@@ -26,7 +26,7 @@
 
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center","flexWrap":"wrap"}} -->
 <div class="wp-block-buttons"><!-- wp:button -->
-<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/contact/">Contact Us</a></div>
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( langit_contact_whatsapp_url( 'Halo Global Teknindo, saya ingin diskusi kebutuhan infrastruktur dan teknologi gedung.' ) ); ?>" target="_blank" rel="noopener noreferrer">Contact Us</a></div>
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-outline"} -->

@@ -422,6 +422,21 @@ input[type="submit"]:focus {
 	color: var(--langit-secondary);
 }
 
+.button__icon {
+	display: inline-block;
+	width: 1.15rem;
+	height: 1.15rem;
+	margin-right: 0.5rem;
+	flex-shrink: 0;
+	fill: currentColor;
+	vertical-align: text-bottom;
+	transition: transform var(--langit-transition-fast);
+}
+
+.button:hover .button__icon {
+	transform: scale(1.08);
+}
+
 .card {
 	position: relative;
 	display: grid;

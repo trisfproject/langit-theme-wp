@@ -582,9 +582,11 @@ function langit_service_card( $service ) {
 			<?php
 			langit_button(
 				array(
-					'url'     => home_url( '/contact/' ),
-					'label'   => esc_html__( 'Request Info', 'langit' ),
-					'variant' => 'ghost',
+					'url'              => home_url( '/contact/' ),
+					'label'            => esc_html__( 'Request Info', 'langit' ),
+					'variant'          => 'ghost',
+					'whatsapp_context' => 'services',
+					'service_name'     => $service['title'],
 				)
 			);
 			?>

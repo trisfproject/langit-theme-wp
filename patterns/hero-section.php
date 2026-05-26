@@ -31,7 +31,7 @@
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-outline"} -->
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="/contact/">Contact Us</a></div>
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( langit_contact_whatsapp_url( 'Halo Global Teknindo, saya ingin konsultasi kebutuhan sistem teknologi gedung.' ) ); ?>" target="_blank" rel="noopener noreferrer">Contact Us</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group -->

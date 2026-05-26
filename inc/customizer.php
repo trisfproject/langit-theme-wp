@@ -1829,29 +1829,47 @@ add_action( 'customize_register', 'langit_customize_register' );
  * Build a telephone-friendly WhatsApp URL.
  *
  * @param string $number Visible WhatsApp number.
+ * @param string $message Optional prefilled text.
  * @return string
  */
-function langit_whatsapp_url( $number ) {
+function langit_whatsapp_url( $number, $message = '' ) {
 	$digits = preg_replace( '/\D+/', '', $number );
 
 	if ( empty( $digits ) ) {
 		return home_url( '/contact/' );
 	}
 
-	return 'https://wa.me/' . $digits;
+	if ( '0' === substr( $digits, 0, 1 ) ) {
+		$digits = '62' . substr( $digits, 1 );
+	}
+
+	$url = 'https://wa.me/' . $digits;
+
+	if ( ! empty( $message ) ) {
+		$url .= '?text=' . rawurlencode( $message );
+	}
+
+	return $url;
 }
 
 /**
  * Return the configured WhatsApp URL.
  *
+ * @param string $message Optional prefilled text.
  * @return string
  */
-function langit_contact_whatsapp_url() {
+function langit_contact_whatsapp_url( $message = '' ) {
 	$url = langit_theme_mod( 'contact_whatsapp_url' );
 
 	if ( ! empty( $url ) ) {
+		if ( ! empty( $message ) ) {
+			if ( false !== strpos( $url, 'wa.me' ) || false !== strpos( $url, 'whatsapp.com' ) ) {
+				$query_char = ( false !== strpos( $url, '?' ) ) ? '&' : '?';
+				return $url . $query_char . 'text=' . rawurlencode( $message );
+			}
+		}
 		return $url;
 	}
 
-	return langit_whatsapp_url( langit_theme_mod( 'contact_whatsapp_number' ) );
+	return langit_whatsapp_url( langit_theme_mod( 'contact_whatsapp_number' ), $message );
 }
