@@ -51,20 +51,6 @@ $langit_contacts = array(
 
 <section id="contact-information" class="section section--surface">
 	<div class="container contact-page-grid">
-		<div class="contact-panel contact-panel--form contact-form-stack">
-			<?php
-			langit_section_heading(
-				array(
-					'eyebrow' => langit_theme_mod( 'contact_form_eyebrow' ),
-					'title'   => langit_theme_mod( 'contact_form_title' ),
-					'text'    => langit_theme_mod( 'contact_form_description' ),
-					'class'   => 'stack',
-				)
-			);
-			?>
-			<?php langit_contact_form_area(); ?>
-		</div>
-
 		<div class="contact-panel contact-panel--info stack">
 			<?php
 			langit_section_heading(
@@ -113,6 +99,20 @@ $langit_contacts = array(
 				}
 				?>
 			</div>
+		</div>
+
+		<div class="contact-panel contact-panel--form contact-form-stack">
+			<?php
+			langit_section_heading(
+				array(
+					'eyebrow' => langit_theme_mod( 'contact_form_eyebrow' ),
+					'title'   => langit_theme_mod( 'contact_form_title' ),
+					'text'    => langit_theme_mod( 'contact_form_description' ),
+					'class'   => 'stack',
+				)
+			);
+			?>
+			<?php langit_contact_form_area(); ?>
 		</div>
 	</div>
 </section>
