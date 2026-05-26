@@ -41,10 +41,16 @@ if ( langit_theme_mod_enabled( 'show_services_section' ) ) {
 
 if ( langit_theme_mod_enabled( 'show_projects_section' ) ) {
 	$langit_featured_project = langit_theme_mod_id_list( 'featured_project_ids' );
+	$langit_project_count    = absint( langit_theme_mod( 'featured_project_count' ) );
+
+	if ( 3 === $langit_project_count ) {
+		$langit_project_count = 4;
+	}
+
 	$langit_project_args     = array(
 		'post_type'              => 'project',
 		'post_status'            => 'publish',
-		'posts_per_page'         => absint( langit_theme_mod( 'featured_project_count' ) ),
+		'posts_per_page'         => $langit_project_count,
 		'orderby'                => array(
 			'menu_order' => 'ASC',
 			'date'       => 'DESC',

@@ -2049,10 +2049,11 @@ input[type="submit"]:focus {
 	display: grid;
 	grid-template-rows: auto auto 1fr auto;
 	gap: var(--langit-space-sm);
+	height: 100%;
 	padding: 0;
 	overflow: hidden;
 	background: var(--langit-surface);
-	border: 1px solid rgba(226, 232, 240, 0.8);
+	border: 1px solid rgba(226, 232, 240, 0.7);
 	border-radius: var(--langit-card-radius);
 	box-shadow: var(--langit-card-shadow);
 	transition: border-color var(--langit-transition-smooth), box-shadow var(--langit-transition-smooth), transform var(--langit-transition-smooth);

@@ -80,7 +80,7 @@ function langit_customizer_defaults() {
 		'projects_section_eyebrow'    => __( 'Featured Projects', 'langit' ),
 		'projects_section_title'      => __( 'Selected work for industrial and commercial facilities.', 'langit' ),
 		'featured_project_ids'        => '',
-		'featured_project_count'      => '3',
+		'featured_project_count'      => '4',
 		'trust_section_eyebrow'       => __( 'Client Trust', 'langit' ),
 		'trust_section_title'         => __( 'Trusted support for demanding operating environments.', 'langit' ),
 		'trust_section_description'   => __( 'Kepercayaan pelanggan dibangun melalui proses kerja terukur, dokumentasi yang jelas, dukungan teknis responsif, dan pengalaman lintas kebutuhan fasilitas.', 'langit' ),
