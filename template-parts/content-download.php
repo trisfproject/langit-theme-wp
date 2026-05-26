@@ -132,5 +132,4 @@ $langit_meta  = langit_download_meta( get_the_ID() );
 		</div>
 	</section>
 
-	<?php langit_global_cta( 'contact' ); ?>
 </article>

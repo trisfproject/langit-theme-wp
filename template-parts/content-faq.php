@@ -120,5 +120,4 @@ $langit_related_service = absint( get_post_meta( get_the_ID(), 'langit_faq_relat
 		</div>
 	</section>
 
-	<?php langit_global_cta( 'contact' ); ?>
 </article>

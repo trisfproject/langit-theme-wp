@@ -162,5 +162,4 @@ $langit_terms      = get_the_terms( get_the_ID(), 'team_department' );
 		</div>
 	</section>
 
-	<?php langit_global_cta( 'contact' ); ?>
 </article>

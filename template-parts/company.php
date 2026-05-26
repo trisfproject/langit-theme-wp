@@ -294,27 +294,3 @@ langit_page_hero(
 		</div>
 	</div>
 </section>
-
-<?php
-$langit_services_url = get_post_type_archive_link( 'services' );
-
-langit_cta(
-	array(
-		'title'         => esc_html__( 'Ready to Build Reliable Technology Infrastructure?', 'langit' ),
-		'text'          => esc_html__( 'Hubungi PT Global Teknindo untuk konsultasi, survey, instalasi, maupun pengembangan sistem teknologi bangunan yang profesional dan terpercaya.', 'langit' ),
-		'variant'       => 'split',
-		'section_class' => 'company-section company-section--cta',
-		'actions'       => array(
-			array(
-				'url'   => home_url( '/contact/' ),
-				'label' => esc_html__( 'Contact Us', 'langit' ),
-			),
-			array(
-				'url'     => $langit_services_url ? $langit_services_url : home_url( '/services/' ),
-				'label'   => esc_html__( 'Our Services', 'langit' ),
-				'variant' => 'ghost',
-			),
-		),
-	)
-);
-?>

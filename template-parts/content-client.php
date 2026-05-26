@@ -173,5 +173,4 @@ $langit_related_projects = array_filter( array_map( 'absint', explode( ',', get_
 		</div>
 	</section>
 
-	<?php langit_global_cta( 'contact' ); ?>
 </article>

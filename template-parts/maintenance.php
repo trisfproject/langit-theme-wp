@@ -94,25 +94,3 @@ langit_page_hero(
 		</div>
 	</section>
 <?php endif; ?>
-
-<?php
-langit_cta(
-	array(
-		'eyebrow' => langit_theme_mod( 'maintenance_cta_eyebrow' ),
-		'title'   => langit_theme_mod( 'maintenance_cta_title' ),
-		'text'    => langit_theme_mod( 'maintenance_cta_description' ),
-		'variant' => 'consultation',
-		'actions' => array(
-			array(
-				'url'   => langit_theme_mod( 'maintenance_cta_primary_url' ),
-				'label' => langit_theme_mod( 'maintenance_cta_primary_text' ),
-			),
-			array(
-				'url'     => langit_contact_whatsapp_url(),
-				'label'   => langit_theme_mod( 'maintenance_cta_secondary_text' ),
-				'variant' => 'ghost',
-			),
-		),
-	)
-);
-?>

@@ -114,12 +114,4 @@ $langit_project_details = langit_get_project_details( get_the_ID() );
 		</div>
 	</section>
 
-	<?php
-	langit_inquiry(
-		'project',
-		array(
-			'panel_class' => 'support-cta',
-		)
-	);
-	?>
 </article>

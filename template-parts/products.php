@@ -297,6 +297,3 @@ foreach ( $product_categories as $langit_key => $langit_cat ) :
 		</div>
 	</div>
 </section>
-
-<?php
-langit_inquiry( 'service' );
