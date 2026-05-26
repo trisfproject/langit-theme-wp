@@ -137,7 +137,7 @@ langit_page_hero(
 );
 ?>
 
-<section id="company-overview" class="section">
+<section id="company-overview" class="section company-section company-section--overview">
 	<div class="container company-overview">
 		<div class="stack">
 			<p class="section-eyebrow"><?php esc_html_e( 'About Company', 'langit' ); ?></p>
@@ -156,7 +156,7 @@ langit_page_hero(
 	</div>
 </section>
 
-<section id="vision-mission" class="section section--surface">
+<section id="vision-mission" class="section section--surface company-section company-section--vision">
 	<div class="container stack">
 		<?php
 		langit_section_heading(
@@ -186,7 +186,7 @@ langit_page_hero(
 	</div>
 </section>
 
-<section id="why-choose-us" class="section">
+<section id="why-choose-us" class="section company-section company-section--why">
 	<div class="container stack">
 		<?php
 		langit_section_heading(
@@ -241,7 +241,7 @@ langit_page_hero(
 	</div>
 </section>
 
-<section id="company-values" class="section">
+<section id="company-values" class="section company-section company-section--values">
 	<div class="container stack">
 		<?php
 		langit_section_heading(
@@ -271,7 +271,7 @@ langit_page_hero(
 	</div>
 </section>
 
-<section id="operational-workflow" class="section section--surface">
+<section id="operational-workflow" class="section section--surface company-section company-section--workflow">
 	<div class="container stack">
 		<?php
 		langit_section_heading(
@@ -300,10 +300,11 @@ $langit_services_url = get_post_type_archive_link( 'services' );
 
 langit_cta(
 	array(
-		'title'   => esc_html__( 'Ready to Build Reliable Technology Infrastructure?', 'langit' ),
-		'text'    => esc_html__( 'Hubungi PT Global Teknindo untuk konsultasi, survey, instalasi, maupun pengembangan sistem teknologi bangunan yang profesional dan terpercaya.', 'langit' ),
-		'variant' => 'split',
-		'actions' => array(
+		'title'         => esc_html__( 'Ready to Build Reliable Technology Infrastructure?', 'langit' ),
+		'text'          => esc_html__( 'Hubungi PT Global Teknindo untuk konsultasi, survey, instalasi, maupun pengembangan sistem teknologi bangunan yang profesional dan terpercaya.', 'langit' ),
+		'variant'       => 'split',
+		'section_class' => 'company-section company-section--cta',
+		'actions'       => array(
 			array(
 				'url'   => home_url( '/contact/' ),
 				'label' => esc_html__( 'Contact Us', 'langit' ),

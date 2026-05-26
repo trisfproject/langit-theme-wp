@@ -264,6 +264,136 @@ ol {
 	content: "";
 }
 
+.company-section {
+	position: relative;
+	overflow: hidden;
+	border-top: 1px solid rgba(203, 213, 225, 0.5);
+	isolation: isolate;
+}
+
+.company-section:first-of-type {
+	border-top: 0;
+}
+
+.company-section > .container {
+	position: relative;
+	z-index: 1;
+}
+
+.company-section::before,
+.company-section::after {
+	position: absolute;
+	content: "";
+	pointer-events: none;
+}
+
+.company-section--overview {
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.96)),
+		var(--langit-surface);
+}
+
+.company-section--overview::after {
+	right: max(var(--langit-gutter), calc((100vw - var(--langit-container)) / 2));
+	bottom: 0;
+	width: min(18rem, 38vw);
+	height: 1px;
+	background: linear-gradient(90deg, transparent, rgba(88, 175, 255, 0.42));
+}
+
+.company-section--vision {
+	background:
+		radial-gradient(circle at 18% 12%, rgba(88, 175, 255, 0.14), transparent 28rem),
+		linear-gradient(180deg, rgba(232, 244, 255, 0.82), rgba(248, 250, 252, 0.98)),
+		#eef7ff;
+}
+
+.company-section--vision::before {
+	inset: 0;
+	background-image:
+		linear-gradient(rgba(88, 175, 255, 0.055) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(88, 175, 255, 0.055) 1px, transparent 1px);
+	background-position: center;
+	background-size: 44px 44px;
+	mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+	opacity: 0.45;
+}
+
+.company-section--why {
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(246, 250, 255, 0.96)),
+		var(--langit-surface);
+}
+
+.company-section--why::after {
+	top: clamp(2rem, 4vw, 4rem);
+	left: max(var(--langit-gutter), calc((100vw - var(--langit-container)) / 2));
+	width: min(16rem, 34vw);
+	height: min(16rem, 34vw);
+	border-radius: 999px;
+	background: radial-gradient(circle, rgba(88, 175, 255, 0.12), transparent 68%);
+	filter: blur(2px);
+}
+
+.company-section--values {
+	background:
+		radial-gradient(circle at 82% 18%, rgba(56, 189, 248, 0.16), transparent 26rem),
+		radial-gradient(circle at 12% 88%, rgba(88, 175, 255, 0.1), transparent 24rem),
+		linear-gradient(180deg, #0b1220 0%, #07101d 100%);
+	color: rgba(226, 232, 240, 0.88);
+}
+
+.company-section--values .section-heading h2,
+.company-section--values .feature-card h3 {
+	color: #ffffff;
+}
+
+.company-section--values .section-heading p,
+.company-section--values .feature-card p {
+	color: rgba(226, 232, 240, 0.82);
+}
+
+.company-section--values .card {
+	border-color: rgba(88, 175, 255, 0.18);
+	background:
+		linear-gradient(180deg, rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.62)),
+		rgba(255, 255, 255, 0.06);
+	box-shadow: 0 24px 54px -16px rgba(0, 0, 0, 0.38);
+}
+
+.company-section--values .service-card__icon {
+	border-color: rgba(88, 175, 255, 0.28);
+	background: linear-gradient(135deg, rgba(88, 175, 255, 0.18), rgba(56, 189, 248, 0.08));
+}
+
+.company-section--workflow {
+	background:
+		radial-gradient(circle at 86% 10%, rgba(88, 175, 255, 0.12), transparent 24rem),
+		linear-gradient(180deg, rgba(248, 250, 252, 0.96), rgba(255, 255, 255, 0.99)),
+		var(--langit-surface);
+}
+
+.company-section--workflow::before {
+	inset-inline: max(var(--langit-gutter), calc((100vw - var(--langit-container)) / 2));
+	top: 0;
+	height: 1px;
+	background: linear-gradient(90deg, transparent, rgba(88, 175, 255, 0.4), transparent);
+}
+
+.company-section--cta {
+	background:
+		linear-gradient(180deg, rgba(236, 247, 255, 0.95), rgba(248, 250, 252, 0.98)),
+		#eef7ff;
+}
+
+.company-section--cta .cta-section {
+	border-color: rgba(88, 175, 255, 0.28);
+	background:
+		linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(232, 244, 255, 0.86)),
+		rgba(255, 255, 255, 0.86);
+	box-shadow: 0 32px 70px -22px rgba(15, 23, 42, 0.16);
+}
+
 .grid,
 .u-grid {
 	display: grid;
