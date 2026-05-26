@@ -19,22 +19,16 @@ get_header();
 
 	<section class="section section--surface client-sector-archive">
 		<div class="container stack">
-			<div class="client-grid client-grid--references">
+			<div class="client-ecosystem-list">
 				<?php
-				if ( have_posts() ) :
-					while ( have_posts() ) :
-						the_post();
-						langit_client_card( get_the_ID() );
-					endwhile;
-				else :
-					foreach ( langit_default_client_references() as $langit_client ) {
-						langit_client_reference_card( $langit_client );
-					}
-				endif;
+				$langit_current_term = get_queried_object();
+				$langit_category     = $langit_current_term instanceof WP_Term ? $langit_current_term->name : '';
+
+				foreach ( langit_get_client_ecosystems( $langit_category ) as $langit_ecosystem ) {
+					langit_client_ecosystem_section( $langit_ecosystem );
+				}
 				?>
 			</div>
-
-			<?php the_posts_navigation(); ?>
 		</div>
 	</section>
 </main>

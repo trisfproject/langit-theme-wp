@@ -24,30 +24,21 @@ get_header();
 			<?php
 			langit_section_heading(
 				array(
-					'eyebrow' => esc_html__( 'Operational Trust', 'langit' ),
-					'title'   => esc_html__( 'Real customer references across industrial and facility environments.', 'langit' ),
-					'text'    => esc_html__( 'Daftar berikut menggunakan nama pelanggan dari dokumen company profile sebagai referensi pengalaman kerja dan cakupan operasional perusahaan.', 'langit' ),
+					'eyebrow' => esc_html__( 'Industrial Ecosystem', 'langit' ),
+					'title'   => esc_html__( 'Deployment coverage across operational zones.', 'langit' ),
+					'text'    => esc_html__( 'Referensi pelanggan disusun berdasarkan kawasan dan lingkungan operasional agar cakupan pengalaman terlihat lebih terstruktur, matang, dan relevan untuk kebutuhan industri.', 'langit' ),
 					'center'  => true,
 				)
 			);
 			?>
 
-			<div class="client-grid client-grid--references">
+			<div class="client-ecosystem-list">
 				<?php
-				if ( have_posts() ) :
-					while ( have_posts() ) :
-						the_post();
-						langit_client_card( get_the_ID() );
-					endwhile;
-				else :
-					foreach ( langit_default_client_references() as $langit_client ) {
-						langit_client_reference_card( $langit_client );
-					}
-				endif;
+				foreach ( langit_get_client_ecosystems() as $langit_ecosystem ) {
+					langit_client_ecosystem_section( $langit_ecosystem );
+				}
 				?>
 			</div>
-
-			<?php the_posts_navigation(); ?>
 		</div>
 	</section>
 </main>

@@ -512,6 +512,150 @@ function langit_default_client_sectors() {
 }
 
 /**
+ * Return enterprise descriptions for each client ecosystem.
+ *
+ * @return array<string,string>
+ */
+function langit_client_ecosystem_descriptions() {
+	return array(
+		'Kawasan Industri EJIP'                       => esc_html__( 'Dukungan implementasi sistem keamanan, jaringan, dan infrastruktur operasional untuk berbagai fasilitas industri di kawasan EJIP.', 'langit' ),
+		'Kawasan Industri Hyundai dan Delta Silicon'  => esc_html__( 'Cakupan pengalaman pada lingkungan manufaktur dan fasilitas produksi dengan kebutuhan sistem yang stabil, terpantau, dan siap operasional.', 'langit' ),
+		'Kawasan Industri GIIC'                       => esc_html__( 'Pengalaman penerapan infrastruktur teknologi untuk fasilitas industri berskala besar dengan kebutuhan monitoring dan dukungan teknis berkelanjutan.', 'langit' ),
+		'Kawasan Industri Jababeka'                   => esc_html__( 'Referensi pekerjaan pada area industri, kantor, dan fasilitas pendukung dengan kebutuhan keamanan, jaringan, dan elektrikal yang terstruktur.', 'langit' ),
+		'Kawasan Industri MM2100'                     => esc_html__( 'Cakupan pelanggan pada ekosistem manufaktur dan operasional pabrik yang membutuhkan keandalan instalasi serta pemeliharaan sistem.', 'langit' ),
+		'Kawasan Industri KIIC'                       => esc_html__( 'Pengalaman mendukung fasilitas produksi dan area industri dengan kebutuhan integrasi sistem, pemantauan, dan dukungan operasional.', 'langit' ),
+		'Kawasan Mitra Karawang'                      => esc_html__( 'Referensi pelanggan pada lingkungan industri Karawang dengan kebutuhan infrastruktur teknologi yang rapi dan mudah dirawat.', 'langit' ),
+		'Kawasan Industri Surya Cipta'                => esc_html__( 'Cakupan pekerjaan pada fasilitas industri dengan kebutuhan keamanan, jaringan operasional, elektrikal, dan support lapangan.', 'langit' ),
+		'Rumah Sakit, Perkantoran, Apartemen dan Hotel' => esc_html__( 'Pengalaman pada fasilitas publik, gedung komersial, hunian vertikal, dan hospitality dengan kebutuhan sistem gedung yang aman dan terkoordinasi.', 'langit' ),
+	);
+}
+
+/**
+ * Return client ecosystem groups from CPT content, with PDF data as a safe fallback.
+ *
+ * @param string $category Optional category name.
+ * @return array<int,array<string,mixed>>
+ */
+function langit_get_client_ecosystems( $category = '' ) {
+	$descriptions = langit_client_ecosystem_descriptions();
+	$groups       = array();
+	$query_args   = array(
+		'post_type'              => 'client',
+		'post_status'            => 'publish',
+		'posts_per_page'         => -1,
+		'orderby'                => array(
+			'menu_order' => 'ASC',
+			'title'      => 'ASC',
+		),
+		'no_found_rows'          => true,
+		'update_post_meta_cache' => false,
+		'update_post_term_cache' => true,
+	);
+
+	if ( '' !== $category ) {
+		$query_args['tax_query'] = array(
+			array(
+				'taxonomy' => 'client_category',
+				'field'    => 'name',
+				'terms'    => $category,
+			),
+		);
+	}
+
+	$client_query = new WP_Query( $query_args );
+
+	if ( $client_query->have_posts() ) {
+		while ( $client_query->have_posts() ) {
+			$client_query->the_post();
+			$terms      = get_the_terms( get_the_ID(), 'client_category' );
+			$group_name = ( ! is_wp_error( $terms ) && ! empty( $terms ) ) ? $terms[0]->name : esc_html__( 'Operational References', 'langit' );
+
+			if ( '' !== $category && $group_name !== $category ) {
+				continue;
+			}
+
+			if ( ! isset( $groups[ $group_name ] ) ) {
+				$groups[ $group_name ] = array(
+					'title'       => $group_name,
+					'description' => isset( $descriptions[ $group_name ] ) ? $descriptions[ $group_name ] : esc_html__( 'Referensi pelanggan pada lingkungan operasional dengan kebutuhan sistem keamanan, jaringan, elektrikal, audio, instalasi, dan maintenance.', 'langit' ),
+					'image'       => langit_get_client_category_image_url( $group_name ),
+					'clients'     => array(),
+				);
+			}
+
+			$groups[ $group_name ]['clients'][] = array(
+				'name' => get_the_title(),
+				'url'  => get_permalink(),
+			);
+		}
+		wp_reset_postdata();
+	}
+
+	if ( empty( $groups ) ) {
+		foreach ( langit_client_reference_data() as $client ) {
+			if ( '' !== $category && $client['category'] !== $category ) {
+				continue;
+			}
+
+			if ( ! isset( $groups[ $client['category'] ] ) ) {
+				$groups[ $client['category'] ] = array(
+					'title'       => $client['category'],
+					'description' => isset( $descriptions[ $client['category'] ] ) ? $descriptions[ $client['category'] ] : esc_html__( 'Referensi pelanggan pada lingkungan operasional dengan kebutuhan sistem keamanan, jaringan, elektrikal, audio, instalasi, dan maintenance.', 'langit' ),
+					'image'       => langit_get_client_category_image_url( $client['category'] ),
+					'clients'     => array(),
+				);
+			}
+
+			$groups[ $client['category'] ]['clients'][] = array(
+				'name' => $client['name'],
+				'url'  => '',
+			);
+		}
+	}
+
+	return array_values( $groups );
+}
+
+/**
+ * Render a grouped industrial ecosystem panel.
+ *
+ * @param array<string,mixed> $ecosystem Ecosystem data.
+ */
+function langit_client_ecosystem_section( $ecosystem ) {
+	$clients = isset( $ecosystem['clients'] ) && is_array( $ecosystem['clients'] ) ? $ecosystem['clients'] : array();
+	?>
+	<article class="client-ecosystem-card" style="--client-image: url('<?php echo esc_url( $ecosystem['image'] ); ?>');">
+		<div class="client-ecosystem-card__visual" aria-hidden="true">
+			<span><?php esc_html_e( 'Industrial Ecosystem', 'langit' ); ?></span>
+		</div>
+
+		<div class="client-ecosystem-card__content stack">
+			<div class="client-ecosystem-card__header">
+				<p class="section-eyebrow"><?php esc_html_e( 'Deployment Zone', 'langit' ); ?></p>
+				<h2><?php echo esc_html( $ecosystem['title'] ); ?></h2>
+				<p><?php echo esc_html( $ecosystem['description'] ); ?></p>
+			</div>
+
+			<div class="client-ecosystem-card__meta">
+				<span><?php echo esc_html( count( $clients ) ); ?></span>
+				<?php esc_html_e( 'documented references', 'langit' ); ?>
+			</div>
+
+			<div class="client-chip-grid" aria-label="<?php echo esc_attr( sprintf( /* translators: %s: ecosystem title. */ __( 'Client references in %s', 'langit' ), $ecosystem['title'] ) ); ?>">
+				<?php foreach ( $clients as $client ) : ?>
+					<?php if ( ! empty( $client['url'] ) ) : ?>
+						<a class="client-chip" href="<?php echo esc_url( $client['url'] ); ?>"><?php echo esc_html( $client['name'] ); ?></a>
+					<?php else : ?>
+						<span class="client-chip"><?php echo esc_html( $client['name'] ); ?></span>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</article>
+	<?php
+}
+
+/**
  * Return a client excerpt.
  *
  * @param int $post_id Client post ID.
