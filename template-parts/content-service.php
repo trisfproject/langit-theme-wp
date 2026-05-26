@@ -11,13 +11,9 @@ $langit_related_services = new WP_Query(
 	array(
 		'post_type'              => 'service',
 		'post_status'            => 'publish',
-		'posts_per_page'         => -1,
+		'posts_per_page'         => 3,
 		'post__not_in'           => array( get_the_ID() ),
-		'orderby'                => array(
-			'menu_order' => 'ASC',
-			'title'      => 'ASC',
-		),
-		'order'                  => 'ASC',
+		'orderby'                => 'rand',
 		'no_found_rows'          => true,
 		'update_post_meta_cache' => true,
 		'update_post_term_cache' => true,

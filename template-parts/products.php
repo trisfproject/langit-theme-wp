@@ -5,20 +5,6 @@
  * @package Langit
  */
 
-$langit_solutions = array(
-	esc_html__( 'Industrial Solutions', 'langit' ),
-	esc_html__( 'Commercial Building Solutions', 'langit' ),
-	esc_html__( 'Government Solutions', 'langit' ),
-	esc_html__( 'Residential Solutions', 'langit' ),
-);
-
-$langit_process = array(
-	esc_html__( 'Consultation', 'langit' ),
-	esc_html__( 'Planning', 'langit' ),
-	esc_html__( 'Installation', 'langit' ),
-	esc_html__( 'Maintenance', 'langit' ),
-);
-
 // Define products catalog array
 $product_categories = array(
 	'cctv' => array(
@@ -250,50 +236,3 @@ foreach ( $product_categories as $langit_key => $langit_cat ) :
 		</div>
 	</section>
 <?php endforeach; ?>
-
-<section class="section">
-	<div class="container stack">
-		<?php
-		langit_section_heading(
-			array(
-				'eyebrow' => esc_html__( 'Featured Solutions', 'langit' ),
-				'title'   => esc_html__( 'Adaptable solutions for different project environments.', 'langit' ),
-				'center'  => true,
-			)
-		);
-		?>
-
-		<div class="coverage-grid">
-			<?php foreach ( $langit_solutions as $langit_solution ) : ?>
-				<article class="coverage-card solution-card">
-					<h3><?php echo esc_html( $langit_solution ); ?></h3>
-					<p><?php esc_html_e( 'Solusi dapat disesuaikan dengan kebutuhan area, skala proyek, prioritas keamanan, dan standar operasional pelanggan.', 'langit' ); ?></p>
-				</article>
-			<?php endforeach; ?>
-		</div>
-	</div>
-</section>
-
-<section class="section section--surface">
-	<div class="container stack">
-		<?php
-		langit_section_heading(
-			array(
-				'eyebrow' => esc_html__( 'Process', 'langit' ),
-				'title'   => esc_html__( 'Simple workflow from requirement to long-term support.', 'langit' ),
-				'center'  => true,
-			)
-		);
-		?>
-
-		<div class="process-grid">
-			<?php foreach ( $langit_process as $langit_index => $langit_step ) : ?>
-				<article class="process-card">
-					<span><?php echo esc_html( str_pad( (string) ( $langit_index + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>
-					<h3><?php echo esc_html( $langit_step ); ?></h3>
-					<p><?php esc_html_e( 'Setiap tahap dilakukan secara terarah, mulai dari pengumpulan kebutuhan, penyusunan rencana teknis, pelaksanaan instalasi, hingga dukungan pemeliharaan.', 'langit' ); ?></p>
-				</article>
-			<?php endforeach; ?>
-		</div>
-	</div>
-</section>
