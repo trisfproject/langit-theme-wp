@@ -33,9 +33,9 @@ if ( ! function_exists( 'langit_site_logo' ) ) {
 			);
 		} else {
 			$logo = sprintf(
-				'<img class="%1$s" src="%2$s" width="64" height="64" alt="%3$s" decoding="async">',
+				'<img class="%1$s" src="%2$s" width="300" height="72" alt="%3$s" decoding="async">',
 				esc_attr( $image_class ),
-				esc_url( get_template_directory_uri() . '/assets/images/langit-icon.svg' ),
+				esc_url( get_template_directory_uri() . '/assets/images/global-teknindo-logo-dark.svg' ),
 				esc_attr( $site_name )
 			);
 		}

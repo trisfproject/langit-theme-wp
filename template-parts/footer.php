@@ -58,7 +58,6 @@ $footer_copyright = str_replace(
 <footer id="colophon" class="site-footer">
 	<div class="site-footer__inner">
 		<div class="site-footer__brand">
-			<?php langit_site_logo( 'site-footer__logo', 'site-footer__logo-image' ); ?>
 			<p class="site-footer__company"><?php echo esc_html( langit_theme_mod( 'company_name' ) ); ?></p>
 			<p><?php echo esc_html( langit_theme_mod( 'company_short_description' ) ); ?></p>
 		</div>
