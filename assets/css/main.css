@@ -968,14 +968,6 @@ input[type="submit"]:focus {
 	overflow-wrap: anywhere;
 }
 
-.site-description {
-	display: none;
-	margin: 0.2rem 0 0;
-	color: var(--langit-muted);
-	font-size: 0.86rem;
-	line-height: 1.25;
-}
-
 .main-navigation {
 	display: flex;
 	flex: 0 0 auto;
@@ -4526,10 +4518,6 @@ textarea {
 	.custom-logo {
 		max-width: 11rem;
 		max-height: 3.25rem;
-	}
-
-	.site-description {
-		display: block;
 	}
 
 	.grid--2,

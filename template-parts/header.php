@@ -5,7 +5,6 @@
  * @package Langit
  */
 
-$langit_description = get_bloginfo( 'description', 'display' );
 ?>
 
 <header id="masthead" class="site-header">
@@ -14,10 +13,6 @@ $langit_description = get_bloginfo( 'description', 'display' );
 			<?php langit_site_logo(); ?>
 			<div class="site-branding__text">
 				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-
-				<?php if ( $langit_description || is_customize_preview() ) : ?>
-					<p class="site-description"><?php echo esc_html( $langit_description ); ?></p>
-				<?php endif; ?>
 			</div>
 		</div>
 
