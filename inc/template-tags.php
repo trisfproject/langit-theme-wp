@@ -31,22 +31,15 @@ if ( ! function_exists( 'langit_site_logo' ) ) {
 					'decoding' => 'async',
 				)
 			);
-		} else {
-			$logo = sprintf(
-				'<img class="%1$s" src="%2$s" width="300" height="72" alt="%3$s" decoding="async">',
-				esc_attr( $image_class ),
-				esc_url( get_template_directory_uri() . '/assets/images/global-teknindo-logo-dark.svg' ),
-				esc_attr( $site_name )
+
+			printf(
+				'<a class="%1$s" href="%2$s" rel="home" aria-label="%3$s">%4$s</a>',
+				esc_attr( $class ),
+				esc_url( home_url( '/' ) ),
+				esc_attr( $site_name ),
+				$logo // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			);
 		}
-
-		printf(
-			'<a class="%1$s" href="%2$s" rel="home" aria-label="%3$s">%4$s</a>',
-			esc_attr( $class ),
-			esc_url( home_url( '/' ) ),
-			esc_attr( $site_name ),
-			$logo // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		);
 	}
 }
 
