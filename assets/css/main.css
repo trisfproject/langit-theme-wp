@@ -44,7 +44,6 @@
 }
 
 html {
-	overflow-x: hidden;
 	scroll-behavior: smooth;
 }
 
@@ -55,7 +54,6 @@ body {
 	font-family: var(--langit-font-sans);
 	font-size: 1rem;
 	line-height: 1.75;
-	overflow-x: hidden;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 }
@@ -149,7 +147,6 @@ ol {
 
 .site {
 	min-width: 0;
-	overflow-x: clip;
 }
 
 .container,
@@ -1238,6 +1235,7 @@ input[type="submit"]:focus {
 
 .site-main {
 	min-height: 55vh;
+	overflow-x: clip;
 }
 
 .hero {
