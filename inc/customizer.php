@@ -1822,6 +1822,9 @@ function langit_customize_register( $wp_customize ) {
 			$wp_customize->add_control( 'langit_' . $key, $control_args );
 		}
 	}
+
+	// Remove tagline (blogdescription) control from Site Identity section.
+	$wp_customize->remove_control( 'blogdescription' );
 }
 add_action( 'customize_register', 'langit_customize_register' );
 
