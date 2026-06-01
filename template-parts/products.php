@@ -225,6 +225,21 @@ langit_page_hero(
 );
 ?>
 
+<section class="section product-nav-section">
+	<div class="container">
+		<nav class="product-category-nav" aria-label="<?php esc_attr_e( 'Product categories navigation', 'langit' ); ?>">
+			<div class="product-category-nav__list">
+				<?php foreach ( $product_categories as $langit_key => $langit_cat ) : ?>
+					<a href="#<?php echo esc_attr( $langit_key ); ?>" class="product-category-nav__link" data-category-link="<?php echo esc_attr( $langit_key ); ?>">
+						<span><?php echo esc_html( $langit_cat['title'] ); ?></span>
+					</a>
+				<?php endforeach; ?>
+			</div>
+		</nav>
+	</div>
+</section>
+
+
 <?php
 foreach ( $product_categories as $langit_key => $langit_cat ) :
 	?>

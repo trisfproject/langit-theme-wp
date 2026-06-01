@@ -169,5 +169,64 @@
 			}
 		}
 	});
+
+	// Smooth scroll to product categories on click & IntersectionObserver highlight
+	const productNav = document.querySelector('.product-category-nav');
+	if (productNav) {
+		const navLinks = Array.from(productNav.querySelectorAll('.product-category-nav__link'));
+		const sections = navLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+
+		navLinks.forEach(link => {
+			link.addEventListener('click', function (event) {
+				const targetId = link.getAttribute('href');
+				const target = document.querySelector(targetId);
+				if (target) {
+					event.preventDefault();
+					const headerOffset = header ? header.offsetHeight : 0;
+					const navOffset = productNav.closest('.product-nav-section') ? productNav.closest('.product-nav-section').offsetHeight : 0;
+					const elementPosition = target.getBoundingClientRect().top;
+					const offsetPosition = elementPosition + window.pageYOffset - headerOffset - navOffset - 8;
+
+					window.scrollTo({
+						top: offsetPosition,
+						behavior: 'smooth'
+					});
+				}
+			});
+		});
+
+		// Intersection Observer for scroll-spy highlighting
+		if ('IntersectionObserver' in window) {
+			const observerOptions = {
+				root: null,
+				rootMargin: '-20% 0px -60% 0px',
+				threshold: 0
+			};
+
+			const observer = new IntersectionObserver(entries => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						const activeId = '#' + entry.target.id;
+						navLinks.forEach(link => {
+							const isActive = link.getAttribute('href') === activeId;
+							link.classList.toggle('is-active', isActive);
+
+							// Scroll the active chip into view horizontally on mobile
+							if (isActive && !isDesktop()) {
+								link.scrollIntoView({
+									behavior: 'smooth',
+									block: 'nearest',
+									inline: 'center'
+								});
+							}
+						});
+					}
+				});
+			}, observerOptions);
+
+			sections.forEach(section => observer.observe(section));
+		}
+	}
 })();
+
 
