@@ -115,16 +115,6 @@ $footer_copyright = str_replace(
 				<?php langit_footer_link_list( $footer_company ); ?>
 			</nav>
 
-			<nav class="footer-column" aria-label="<?php esc_attr_e( 'Services footer links', 'langit' ); ?>">
-				<h3><?php esc_html_e( 'Services', 'langit' ); ?></h3>
-				<?php langit_footer_link_list( $footer_services ); ?>
-			</nav>
-
-			<nav class="footer-column" aria-label="<?php esc_attr_e( 'Projects footer links', 'langit' ); ?>">
-				<h3><?php esc_html_e( 'Projects', 'langit' ); ?></h3>
-				<?php langit_footer_link_list( $footer_projects ); ?>
-			</nav>
-
 			<nav class="footer-column" aria-label="<?php esc_attr_e( 'Contact footer links', 'langit' ); ?>">
 				<h3><?php esc_html_e( 'Contact', 'langit' ); ?></h3>
 				<?php langit_footer_link_list( $footer_contact ); ?>

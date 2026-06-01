@@ -5466,10 +5466,10 @@ textarea {
 }
 
 
-/* 5. Footer Layout Overrides for 4-Columns */
+/* 5. Footer Layout Overrides for 2-Columns */
 @media (min-width: 901px) {
 	.site-footer__grid {
-		grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+		grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
 	}
 }
 
