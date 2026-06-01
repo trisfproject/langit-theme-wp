@@ -5,16 +5,11 @@
  * @package Langit
  */
 
-$footer_company_nav = array(
-	esc_html__( 'About Company', 'langit' )    => home_url( '/company/#company-overview' ),
-	esc_html__( 'Vision & Mission', 'langit' ) => home_url( '/company/#vision-mission' ),
-	esc_html__( 'Clients', 'langit' )          => langit_get_clients_archive_url(),
-);
-
-$footer_contact = array(
-	langit_theme_mod( 'contact_whatsapp_number' ) => langit_contact_whatsapp_url(),
-	langit_theme_mod( 'contact_email_address' )   => 'mailto:' . langit_theme_mod( 'contact_email_address' ),
-);
+$langit_footer_phone    = langit_theme_mod( 'contact_whatsapp_number' );
+$langit_footer_email    = langit_theme_mod( 'contact_email_address' );
+$langit_footer_wa_url   = langit_contact_whatsapp_url();
+$langit_footer_address  = langit_theme_mod( 'company_address' );
+$langit_footer_hours    = langit_theme_mod( 'company_working_hours' );
 ?>
 
 <section class="footer-cta">
@@ -35,24 +30,47 @@ $footer_contact = array(
 <footer id="colophon" class="site-footer">
 	<div class="site-footer__inner">
 
-		<!-- Left column: brand + navigation -->
+		<!-- Left column: company identity -->
 		<div class="site-footer__left">
-			<div class="site-footer__brand">
-				<p class="site-footer__company"><?php echo esc_html( langit_theme_mod( 'company_name' ) ); ?></p>
-				<p><?php echo esc_html( langit_theme_mod( 'company_short_description' ) ); ?></p>
-			</div>
-
-			<nav class="site-footer__nav" aria-label="<?php esc_attr_e( 'Footer company navigation', 'langit' ); ?>">
-				<?php langit_footer_link_list( $footer_company_nav ); ?>
-			</nav>
+			<p class="site-footer__company"><?php echo esc_html( langit_theme_mod( 'company_name' ) ); ?></p>
+			<p class="site-footer__tagline"><?php echo esc_html( langit_theme_mod( 'company_short_description' ) ); ?></p>
 		</div>
 
-		<!-- Right column: contact -->
+		<!-- Right column: contact details -->
 		<div class="site-footer__right">
-			<nav class="footer-column" aria-label="<?php esc_attr_e( 'Contact footer links', 'langit' ); ?>">
-				<h3><?php esc_html_e( 'Contact', 'langit' ); ?></h3>
-				<?php langit_footer_link_list( $footer_contact ); ?>
-			</nav>
+			<h3 class="site-footer__contact-heading"><?php esc_html_e( 'Contact', 'langit' ); ?></h3>
+
+			<dl class="site-footer__contact-list">
+
+				<?php if ( ! empty( $langit_footer_phone ) ) : ?>
+				<div class="site-footer__contact-item">
+					<dt><?php esc_html_e( 'Phone', 'langit' ); ?></dt>
+					<dd><a href="<?php echo esc_url( $langit_footer_wa_url ); ?>"><?php echo esc_html( $langit_footer_phone ); ?></a></dd>
+				</div>
+				<?php endif; ?>
+
+				<?php if ( ! empty( $langit_footer_email ) ) : ?>
+				<div class="site-footer__contact-item">
+					<dt><?php esc_html_e( 'Email', 'langit' ); ?></dt>
+					<dd><a href="mailto:<?php echo esc_attr( $langit_footer_email ); ?>"><?php echo esc_html( $langit_footer_email ); ?></a></dd>
+				</div>
+				<?php endif; ?>
+
+				<?php if ( ! empty( $langit_footer_hours ) ) : ?>
+				<div class="site-footer__contact-item">
+					<dt><?php esc_html_e( 'Working Hours', 'langit' ); ?></dt>
+					<dd><?php echo nl2br( esc_html( $langit_footer_hours ) ); ?></dd>
+				</div>
+				<?php endif; ?>
+
+				<?php if ( ! empty( $langit_footer_address ) ) : ?>
+				<div class="site-footer__contact-item">
+					<dt><?php esc_html_e( 'Address', 'langit' ); ?></dt>
+					<dd><?php echo nl2br( esc_html( $langit_footer_address ) ); ?></dd>
+				</div>
+				<?php endif; ?>
+
+			</dl>
 		</div>
 
 	</div>
