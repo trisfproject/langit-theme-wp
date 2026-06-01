@@ -13,8 +13,6 @@ $footer_company = array(
 	esc_html__( 'Contact', 'langit' )          => home_url( '/contact/' ),
 );
 
-$footer_products = langit_get_core_service_links();
-
 $footer_contact = array(
 	langit_theme_mod( 'contact_whatsapp_number' ) => langit_contact_whatsapp_url(),
 	langit_theme_mod( 'contact_email_address' )   => 'mailto:' . langit_theme_mod( 'contact_email_address' ),
@@ -66,11 +64,6 @@ $footer_copyright = str_replace(
 			<nav class="footer-column" aria-label="<?php esc_attr_e( 'Company footer links', 'langit' ); ?>">
 				<h3><?php esc_html_e( 'Company', 'langit' ); ?></h3>
 				<?php langit_footer_link_list( $footer_company ); ?>
-			</nav>
-
-			<nav class="footer-column" aria-label="<?php esc_attr_e( 'Products footer links', 'langit' ); ?>">
-				<h3><?php esc_html_e( 'Products', 'langit' ); ?></h3>
-				<?php langit_footer_link_list( $footer_products ); ?>
 			</nav>
 
 			<nav class="footer-column" aria-label="<?php esc_attr_e( 'Contact footer links', 'langit' ); ?>">
