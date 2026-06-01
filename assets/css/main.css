@@ -5508,8 +5508,12 @@ textarea {
 
 /* 7. Industries We Serve Headline Desktop Layout */
 @media (min-width: 901px) {
+	.section-heading--industry {
+		max-width: 960px !important;
+	}
 	.section-heading--industry h2 {
-		max-width: 48ch;
+		max-width: none !important;
+		text-wrap: wrap !important;
 		margin-inline: auto;
 	}
 }
