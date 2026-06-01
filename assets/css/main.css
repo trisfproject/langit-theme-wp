@@ -5504,5 +5504,23 @@ textarea {
 	}
 }
 
+/* 8. Streamlined Footer Layout Rebalancing */
+.site-footer__grid {
+	grid-template-columns: 1fr !important;
+}
+
+@media (min-width: 769px) {
+	.site-footer__inner {
+		grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr) !important;
+	}
+}
+
+@media (min-width: 901px) {
+	.site-footer__grid {
+		grid-template-columns: 1fr !important;
+	}
+}
+
+
 
 
