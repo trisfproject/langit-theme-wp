@@ -5,11 +5,11 @@
  * @package Langit
  */
 
-$langit_footer_phone    = langit_theme_mod( 'contact_whatsapp_number' );
-$langit_footer_email    = langit_theme_mod( 'contact_email_address' );
-$langit_footer_wa_url   = langit_contact_whatsapp_url();
-$langit_footer_address  = langit_theme_mod( 'company_address' );
-$langit_footer_hours    = langit_theme_mod( 'company_working_hours' );
+$langit_footer_phone   = langit_theme_mod( 'contact_whatsapp_number' );
+$langit_footer_email   = langit_theme_mod( 'contact_email_address' );
+$langit_footer_wa_url  = langit_contact_whatsapp_url();
+$langit_footer_address = langit_theme_mod( 'company_address' );
+$langit_footer_hours   = langit_theme_mod( 'company_working_hours' );
 ?>
 
 <section class="footer-cta">
@@ -30,41 +30,50 @@ $langit_footer_hours    = langit_theme_mod( 'company_working_hours' );
 <footer id="colophon" class="site-footer">
 	<div class="site-footer__inner">
 
-		<!-- Left column: company identity -->
-		<div class="site-footer__left">
+		<!-- Column 1: Company identity -->
+		<div class="site-footer__col site-footer__col--company">
 			<p class="site-footer__company"><?php echo esc_html( langit_theme_mod( 'company_name' ) ); ?></p>
 			<p class="site-footer__tagline"><?php echo esc_html( langit_theme_mod( 'company_short_description' ) ); ?></p>
 		</div>
 
-		<!-- Right column: contact details -->
-		<div class="site-footer__right">
-			<h3 class="site-footer__contact-heading"><?php esc_html_e( 'Contact', 'langit' ); ?></h3>
+		<!-- Column 2: Contact (phone + email) -->
+		<div class="site-footer__col site-footer__col--contact">
+			<h3 class="site-footer__col-heading"><?php esc_html_e( 'Contact', 'langit' ); ?></h3>
 
-			<dl class="site-footer__contact-list">
+			<dl class="site-footer__detail-list">
 
 				<?php if ( ! empty( $langit_footer_phone ) ) : ?>
-				<div class="site-footer__contact-item">
+				<div class="site-footer__detail-item">
 					<dt><?php esc_html_e( 'Phone', 'langit' ); ?></dt>
 					<dd><a href="<?php echo esc_url( $langit_footer_wa_url ); ?>"><?php echo esc_html( $langit_footer_phone ); ?></a></dd>
 				</div>
 				<?php endif; ?>
 
 				<?php if ( ! empty( $langit_footer_email ) ) : ?>
-				<div class="site-footer__contact-item">
+				<div class="site-footer__detail-item">
 					<dt><?php esc_html_e( 'Email', 'langit' ); ?></dt>
 					<dd><a href="mailto:<?php echo esc_attr( $langit_footer_email ); ?>"><?php echo esc_html( $langit_footer_email ); ?></a></dd>
 				</div>
 				<?php endif; ?>
 
+			</dl>
+		</div>
+
+		<!-- Column 3: Office (working hours + address) -->
+		<div class="site-footer__col site-footer__col--office">
+			<h3 class="site-footer__col-heading"><?php esc_html_e( 'Office', 'langit' ); ?></h3>
+
+			<dl class="site-footer__detail-list">
+
 				<?php if ( ! empty( $langit_footer_hours ) ) : ?>
-				<div class="site-footer__contact-item">
+				<div class="site-footer__detail-item">
 					<dt><?php esc_html_e( 'Working Hours', 'langit' ); ?></dt>
 					<dd><?php echo nl2br( esc_html( $langit_footer_hours ) ); ?></dd>
 				</div>
 				<?php endif; ?>
 
 				<?php if ( ! empty( $langit_footer_address ) ) : ?>
-				<div class="site-footer__contact-item">
+				<div class="site-footer__detail-item">
 					<dt><?php esc_html_e( 'Address', 'langit' ); ?></dt>
 					<dd><?php echo nl2br( esc_html( $langit_footer_address ) ); ?></dd>
 				</div>
