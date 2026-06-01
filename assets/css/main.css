@@ -4956,9 +4956,12 @@ textarea {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 
-	.coverage-grid,
 	.industries-serve-grid {
 		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.coverage-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 
 	.vision-mission-grid {
