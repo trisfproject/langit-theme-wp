@@ -49,22 +49,39 @@ $langit_features = array(
 
 $langit_industries = array(
 	array(
-		'title'       => esc_html__( 'Industrial', 'langit' ),
-		'description' => esc_html__( 'Sistem untuk area produksi, gudang, dan operasional lapangan.', 'langit' ),
+		'title'       => esc_html__( 'Manufacturing Industry', 'langit' ),
+		'description' => esc_html__( 'Integrasi sistem keamanan, manajemen daya elektrikal, dan instrumentasi kontrol untuk mendukung keandalan operasional lini produksi pabrik.', 'langit' ),
+	),
+	array(
+		'title'       => esc_html__( 'Automotive Industry', 'langit' ),
+		'description' => esc_html__( 'Penyediaan infrastruktur jaringan data berkecepatan tinggi, sistem CCTV industri, dan kelistrikan untuk area perakitan otomatis robotik.', 'langit' ),
+	),
+	array(
+		'title'       => esc_html__( 'Warehouse & Logistics', 'langit' ),
+		'description' => esc_html__( 'Solusi kelistrikan panel ATS/AMF, lampu area industri, sistem public address otomatis, serta jaringan Wi-Fi terstruktur untuk pusat distribusi logistik.', 'langit' ),
 	),
 	array(
 		'title'       => esc_html__( 'Commercial Building', 'langit' ),
-		'description' => esc_html__( 'Infrastruktur gedung kantor, retail, dan area publik modern.', 'langit' ),
+		'description' => esc_html__( 'Pembangunan sistem kontrol akses gedung pintar terintegrasi, CCTV surveillance, instalasi fire alarm, dan manajemen daya mekanikal elektrikal.', 'langit' ),
 	),
 	array(
-		'title'       => esc_html__( 'Government', 'langit' ),
-		'description' => esc_html__( 'Implementasi untuk fasilitas pemerintahan dan layanan publik.', 'langit' ),
+		'title'       => esc_html__( 'Healthcare Facilities', 'langit' ),
+		'description' => esc_html__( 'Sistem kelistrikan kritis terproteksi, interkoneksi data medis, fire alarm berstandar regulasi, serta public address audio evakuasi untuk rumah sakit.', 'langit' ),
 	),
 	array(
-		'title'       => esc_html__( 'Residential', 'langit' ),
-		'description' => esc_html__( 'Integrasi keamanan dan jaringan untuk hunian modern.', 'langit' ),
+		'title'       => esc_html__( 'Hospitality & Residential', 'langit' ),
+		'description' => esc_html__( 'Implementasi sistem keamanan komprehensif, jaringan internet publik nirkabel terkelola, sistem audio lobby, dan kelistrikan gedung bertingkat.', 'langit' ),
+	),
+	array(
+		'title'       => esc_html__( 'Government & Public Sector', 'langit' ),
+		'description' => esc_html__( 'Penyediaan sistem jaringan komunikasi publik aman terstandarisasi, instalasi kelistrikan handal, dan sistem proteksi dini kebakaran fasilitas negara.', 'langit' ),
+	),
+	array(
+		'title'       => esc_html__( 'Education Facilities', 'langit' ),
+		'description' => esc_html__( 'Pembangunan jaringan kabel serat optik kampus, sistem bel otomatis terjadwal, audio gedung serbaguna, dan pemantauan CCTV area akademik.', 'langit' ),
 	),
 );
+
 
 $langit_values = array(
 	array(
