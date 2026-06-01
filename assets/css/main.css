@@ -2696,12 +2696,38 @@ input[type="submit"]:focus {
 		var(--langit-surface);
 }
 
-.contact-info-grid--enterprise {
-	gap: clamp(0.85rem, 1.25vw, var(--langit-space-sm));
+
+/* Contact info two-row layout */
+.contact-info-block {
+	display: flex;
+	flex-direction: column;
+	gap: clamp(0.75rem, 1.25vw, var(--langit-space-sm));
 }
 
-.contact-card--wide {
-	grid-column: 1 / -1;
+.contact-info-row {
+	display: grid;
+	gap: clamp(0.75rem, 1.25vw, var(--langit-space-sm));
+	grid-template-columns: 1fr;
+}
+
+/* Row 1: 3 channels — tablet+ get 2 cols, desktop get 3 */
+@media (min-width: 600px) {
+	.contact-info-row--channels {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (min-width: 901px) {
+	.contact-info-row--channels {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+/* Row 2: 2 location cards — tablet+ always side-by-side */
+@media (min-width: 600px) {
+	.contact-info-row--location {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
 }
 
 .quick-contact-card h3,
@@ -5212,6 +5238,7 @@ textarea {
 
 }
 
+/* legacy enterprise grid — retained for fallback compatibility */
 @media (min-width: 901px) {
 	.contact-info-grid--enterprise {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -5563,7 +5590,7 @@ textarea {
 	}
 }
 
-/* 6. Industries We Serve — card background images (slugs match sanitize_title() output) */
+/* Homepage slugs (from sanitize_title of homepage industry_items) */
 .coverage-card--manufacturing {
 	--coverage-image: url("../images/industries/industry-manufacturing-industry.webp");
 }
@@ -5581,6 +5608,32 @@ textarea {
 }
 .coverage-card--healthcare {
 	--coverage-image: url("../images/industries/industry-healthcare.webp");
+}
+
+/* Company page slugs (from sanitize_title of company page industry list) */
+.coverage-card--manufacturing-industry {
+	--coverage-image: url("../images/industries/industry-manufacturing-industry.webp");
+}
+.coverage-card--automotive-industry {
+	--coverage-image: url("../images/industries/industry-automotive-industry.webp");
+}
+.coverage-card--warehouse-logistics {
+	--coverage-image: url("../images/industries/industry-warehouse-logistics.webp");
+}
+.coverage-card--commercial-building {
+	--coverage-image: url("../images/industries/industry-commercial-building.webp");
+}
+.coverage-card--healthcare-facilities {
+	--coverage-image: url("../images/industries/industry-healthcare-facilities.webp");
+}
+.coverage-card--hospitality-residential {
+	--coverage-image: url("../images/industries/industry-hospitality-residential.webp");
+}
+.coverage-card--government-public-sector {
+	--coverage-image: url("../images/industries/industry-government-public-sector.webp");
+}
+.coverage-card--education-facilities {
+	--coverage-image: url("../images/industries/industry-education-facilities.webp");
 }
 
 /* 7. Industries We Serve Headline Desktop Layout */
