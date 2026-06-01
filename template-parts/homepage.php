@@ -373,6 +373,7 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 			?>
 
 			<div class="partners-grid">
+				<!-- Security & Access Control -->
 				<div class="partner-logo-item partner-logo-item--hikvision" title="Hikvision">
 					<svg viewBox="0 0 160 48" width="100%" height="100%" fill="currentColor"><text x="50%" y="32" font-family="'Montserrat', 'Inter', sans-serif" font-size="20" font-weight="900" text-anchor="middle" letter-spacing="0.04em">HIKVISION</text></svg>
 				</div>
@@ -382,26 +383,46 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 				<div class="partner-logo-item partner-logo-item--uniview" title="Uniview">
 					<svg viewBox="0 0 160 48" width="100%" height="100%" fill="currentColor"><text x="50%" y="32" font-family="'Montserrat', 'Inter', sans-serif" font-size="20" font-weight="800" text-anchor="middle" letter-spacing="-0.02em">uniview</text></svg>
 				</div>
+				<div class="partner-logo-item partner-logo-item--zkteco" title="ZKTeco">
+					<svg viewBox="0 0 160 48" width="100%" height="100%" fill="currentColor"><text x="50%" y="32" font-family="'Montserrat', 'Inter', sans-serif" font-size="21" font-weight="900" text-anchor="middle" letter-spacing="0.02em">ZKTeco</text></svg>
+				</div>
+
+				<!-- Networking Infrastructure -->
 				<div class="partner-logo-item partner-logo-item--mikrotik" title="MikroTik">
 					<svg viewBox="0 0 180 48" width="100%" height="100%" fill="currentColor"><polygon points="12,12 36,12 24,36" fill="currentColor" opacity="0.85" /><polygon points="20,24 44,24 32,48" fill="currentColor" opacity="0.65" /><text x="52" y="32" font-family="'Montserrat', 'Inter', sans-serif" font-size="19" font-weight="800">MikroTik</text></svg>
 				</div>
 				<div class="partner-logo-item partner-logo-item--ubiquiti" title="Ubiquiti">
 					<svg viewBox="0 0 180 48" width="100%" height="100%" fill="currentColor"><circle cx="24" cy="24" r="12" fill="none" stroke="currentColor" stroke-width="3" /><circle cx="24" cy="24" r="6" fill="currentColor" /><text x="48" y="32" font-family="'Montserrat', 'Inter', sans-serif" font-size="18" font-weight="800" letter-spacing="0.05em">UBIQUITI</text></svg>
 				</div>
+				<div class="partner-logo-item partner-logo-item--ruijie" title="Ruijie">
+					<svg viewBox="0 0 160 48" width="100%" height="100%" fill="currentColor"><text x="50%" y="32" font-family="'Montserrat', 'Inter', sans-serif" font-size="20" font-weight="900" text-anchor="middle" letter-spacing="0.02em">Ruijie</text></svg>
+				</div>
+
+				<!-- Audio & Public Address -->
 				<div class="partner-logo-item partner-logo-item--toa" title="TOA">
 					<svg viewBox="0 0 160 48" width="100%" height="100%" fill="currentColor"><text x="50%" y="32" font-family="'Impact', 'Arial Black', sans-serif" font-style="italic" font-size="26" font-weight="900" text-anchor="middle" letter-spacing="0.06em">TOA</text></svg>
 				</div>
+				<div class="partner-logo-item partner-logo-item--inter-m" title="Inter-M">
+					<svg viewBox="0 0 160 48" width="100%" height="100%" fill="currentColor"><text x="50%" y="32" font-family="'Montserrat', 'Inter', sans-serif" font-style="italic" font-size="22" font-weight="900" text-anchor="middle" letter-spacing="0.06em">interM</text></svg>
+				</div>
+				<div class="partner-logo-item partner-logo-item--yamaha" title="Yamaha">
+					<svg viewBox="0 0 180 48" width="100%" height="100%" fill="currentColor"><circle cx="20" cy="24" r="10" fill="none" stroke="currentColor" stroke-width="2.5"/><line x1="20" y1="14" x2="20" y2="34" stroke="currentColor" stroke-width="2.5"/><line x1="10" y1="24" x2="30" y2="24" stroke="currentColor" stroke-width="2.5"/><text x="44" y="32" font-family="'Times New Roman', 'Georgia', serif" font-size="22" font-weight="900" letter-spacing="0.08em">YAMAHA</text></svg>
+				</div>
+
+				<!-- Fire Alarm & Safety -->
 				<div class="partner-logo-item partner-logo-item--bosch" title="Bosch">
 					<svg viewBox="0 0 160 48" width="100%" height="100%" fill="currentColor"><circle cx="24" cy="24" r="10" fill="none" stroke="currentColor" stroke-width="3" /><line x1="24" y1="14" x2="24" y2="34" stroke="currentColor" stroke-width="3" /><text x="44" y="32" font-family="'Century Gothic', sans-serif" font-size="22" font-weight="900" letter-spacing="0.04em">BOSCH</text></svg>
 				</div>
 				<div class="partner-logo-item partner-logo-item--honeywell" title="Honeywell">
 					<svg viewBox="0 0 160 48" width="100%" height="100%" fill="currentColor"><text x="50%" y="32" font-family="'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="900" text-anchor="middle" letter-spacing="-0.02em">Honeywell</text></svg>
 				</div>
+				<div class="partner-logo-item partner-logo-item--techma" title="Techma">
+					<svg viewBox="0 0 160 48" width="100%" height="100%" fill="currentColor"><text x="50%" y="32" font-family="'Montserrat', 'Inter', sans-serif" font-size="21" font-weight="900" text-anchor="middle" letter-spacing="0.05em">TECHMA</text></svg>
+				</div>
+
+				<!-- Electrical -->
 				<div class="partner-logo-item partner-logo-item--schneider-electric" title="Schneider Electric">
 					<svg viewBox="0 0 200 48" width="100%" height="100%" fill="currentColor"><polygon points="12,14 26,14 26,28 12,28" fill="none" stroke="currentColor" stroke-width="3" /><circle cx="19" cy="21" r="4" fill="currentColor" /><text x="36" y="30" font-family="'Helvetica Neue', Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="0.02em">Schneider</text></svg>
-				</div>
-				<div class="partner-logo-item partner-logo-item--ruijie" title="Ruijie">
-					<svg viewBox="0 0 160 48" width="100%" height="100%" fill="currentColor"><text x="50%" y="32" font-family="'Montserrat', 'Inter', sans-serif" font-size="20" font-weight="900" text-anchor="middle" letter-spacing="0.02em">Ruijie</text></svg>
 				</div>
 			</div>
 		</div>

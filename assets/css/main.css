@@ -5298,6 +5298,23 @@ textarea {
 	color: #003399;
 	border-color: rgba(0, 51, 153, 0.4);
 }
+.partner-logo-item--zkteco:hover {
+	color: #00A356;
+	border-color: rgba(0, 163, 86, 0.4);
+}
+.partner-logo-item--inter-m:hover {
+	color: #C00000;
+	border-color: rgba(192, 0, 0, 0.4);
+}
+.partner-logo-item--yamaha:hover {
+	color: #002C93;
+	border-color: rgba(0, 44, 147, 0.4);
+}
+.partner-logo-item--techma:hover {
+	color: #E30613;
+	border-color: rgba(227, 6, 19, 0.4);
+}
+
 
 
 /* 2. Industries We Serve SVG Icons */
