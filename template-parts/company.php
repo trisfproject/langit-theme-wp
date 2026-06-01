@@ -311,3 +311,26 @@ langit_page_hero(
 		</div>
 	</div>
 </section>
+
+<section id="clients" class="section company-section company-section--clients section--surface">
+	<div class="container stack">
+		<?php
+		langit_section_heading(
+			array(
+				'eyebrow' => esc_html__( 'Our Clients', 'langit' ),
+				'title'   => esc_html__( 'Trusted by enterprise clients and industrial facilities.', 'langit' ),
+				'center'  => true,
+			)
+		);
+		?>
+
+		<div class="client-ecosystem-list">
+			<?php
+			foreach ( langit_get_client_ecosystems() as $langit_ecosystem ) {
+				langit_client_ecosystem_section( $langit_ecosystem );
+			}
+			?>
+		</div>
+	</div>
+</section>
+

@@ -251,7 +251,7 @@ function langit_customizer_defaults() {
 		'footer_cta_description'      => __( 'Global Teknindo menghadirkan solusi terintegrasi untuk keamanan, jaringan, elektrikal, audio, instalasi, dan maintenance guna mendukung infrastruktur bangunan modern yang lebih aman, efisien, dan terpercaya.', 'langit' ),
 		'footer_cta_button_text'      => __( 'Contact Us', 'langit' ),
 		'footer_cta_button_url'       => home_url( '/contact/' ),
-		'footer_copyright_text'       => __( 'Copyright {year} {site_name}. All rights reserved.', 'langit' ),
+		'footer_copyright_text'       => __( '© {year} PT Global Teknindo. All Rights Reserved.', 'langit' ),
 		'tracking_ga_id'              => '',
 		'tracking_gtm_id'             => '',
 		'tracking_meta_pixel_id'      => '',
