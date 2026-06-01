@@ -247,18 +247,22 @@ ol {
  * CTA (blueprint tint) → Footer (dark)
  */
 
-/* Company intro: clean white with a faint sky-blue radial warmth top-right */
+/* Company intro: white to soft blue gradient */
 .home-section--company {
-	background:
-		radial-gradient(ellipse at 94% 0%, rgba(88, 175, 255, 0.1), transparent 46%),
-		var(--langit-surface);
+	background: linear-gradient(180deg, #ffffff 0%, #f4f9ff 100%);
 }
 
-/* Services: blueprint-grid tint — enterprise technical texture */
+/* Trust/Stats: white background with subtle radial blue glow */
+.home-section--trust {
+	background:
+		radial-gradient(circle at 50% 50%, rgba(88, 175, 255, 0.08), transparent 70%),
+		#ffffff;
+}
+
+/* Services: soft blue gradient (#f8fbff → #eef5fc) — enterprise technical texture */
 .home-section--services {
 	background:
-		linear-gradient(180deg, rgba(232, 244, 255, 0.86), rgba(241, 248, 255, 0.96)),
-		#eef7ff;
+		linear-gradient(180deg, #f8fbff 0%, #eef5fc 100%);
 	position: relative;
 	isolation: isolate;
 }
@@ -267,8 +271,8 @@ ol {
 	position: absolute;
 	inset: 0;
 	background-image:
-		linear-gradient(rgba(88, 175, 255, 0.04) 1px, transparent 1px),
-		linear-gradient(90deg, rgba(88, 175, 255, 0.04) 1px, transparent 1px);
+		linear-gradient(rgba(88, 175, 255, 0.03) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(88, 175, 255, 0.03) 1px, transparent 1px);
 	background-position: center;
 	background-size: 48px 48px;
 	mask-image: linear-gradient(180deg, transparent 0%, #000 20%, #000 80%, transparent 100%);
@@ -283,19 +287,23 @@ ol {
 	z-index: 1;
 }
 
-/* Projects / Team / FAQ / Certifications: cool slate — depth after dark navy Industry */
-.home-section--projects,
+/* Industries We Serve: light blue-tinted background (#f4f8fc → #eef5fc) */
+.home-section--industry {
+	background: linear-gradient(180deg, #f4f8fc 0%, #eef5fc 100%);
+}
+
+/* Projects: white background (#ffffff → #f7fafc) */
+.home-section--projects {
+	background: linear-gradient(180deg, #ffffff 0%, #f7fafc 100%);
+}
+
+/* Team / FAQ / Certifications: cool slate */
 .home-section--team,
 .home-section--faq,
 .home-section--certifications {
 	background:
 		linear-gradient(180deg, rgba(241, 245, 249, 0.96), rgba(248, 250, 252, 0.98)),
 		#f1f5f9;
-}
-
-/* Trust/Stats: pure white — intentional lightness after cool-slate projects */
-.home-section--trust {
-	background: var(--langit-surface);
 }
 
 /* Testimonials / Downloads: clean neutral */
@@ -5203,7 +5211,9 @@ textarea {
 .home-section--partners {
 	border-top: 1px solid rgba(226, 232, 240, 0.7);
 	border-bottom: 1px solid rgba(226, 232, 240, 0.7);
-	background: linear-gradient(180deg, rgba(248, 250, 252, 0.5) 0%, rgba(255, 255, 255, 0.99) 100%);
+	background-color: #ffffff;
+	background-image: radial-gradient(rgba(88, 175, 255, 0.08) 1.5px, transparent 1.5px);
+	background-size: 24px 24px;
 }
 
 .partners-grid {
