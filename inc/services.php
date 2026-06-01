@@ -92,6 +92,20 @@ function langit_register_services() {
 			},
 		)
 	);
+
+	register_post_meta(
+		'service',
+		'langit_service_scope',
+		array(
+			'type'              => 'string',
+			'single'            => true,
+			'sanitize_callback' => 'sanitize_text_field',
+			'show_in_rest'      => true,
+			'auth_callback'     => function() {
+				return current_user_can( 'edit_posts' );
+			},
+		)
+	);
 }
 add_action( 'init', 'langit_register_services' );
 
@@ -186,6 +200,7 @@ add_action( 'add_meta_boxes_service', 'langit_add_service_meta_boxes' );
 function langit_service_details_meta_box( $post ) {
 	$cta_url   = get_post_meta( $post->ID, 'langit_service_cta_url', true );
 	$cta_label = get_post_meta( $post->ID, 'langit_service_cta_label', true );
+	$scope     = get_post_meta( $post->ID, 'langit_service_scope', true );
 	wp_nonce_field( 'langit_save_service_details', 'langit_service_details_nonce' );
 	?>
 	<p>
@@ -210,7 +225,17 @@ function langit_service_details_meta_box( $post ) {
 			placeholder="<?php esc_attr_e( 'Request Info', 'langit' ); ?>"
 		>
 	</p>
-	<p class="description"><?php esc_html_e( 'Optional. Leave empty to link to the service detail page.', 'langit' ); ?></p>
+	<p>
+		<label for="langit_service_scope"><?php esc_html_e( 'Typical Scope (Comma-separated)', 'langit' ); ?></label>
+		<textarea
+			id="langit_service_scope"
+			name="langit_service_scope"
+			class="widefat"
+			rows="3"
+			placeholder="<?php esc_attr_e( 'Site Survey, System Design, Installation, Configuration, Testing, Maintenance', 'langit' ); ?>"
+		><?php echo esc_textarea( $scope ); ?></textarea>
+	</p>
+	<p class="description"><?php esc_html_e( 'Optional. Typical Scope defaults to 6 steps if empty.', 'langit' ); ?></p>
 	<?php
 }
 
@@ -247,6 +272,15 @@ function langit_save_service_details( $post_id ) {
 			delete_post_meta( $post_id, 'langit_service_cta_label' );
 		} else {
 			update_post_meta( $post_id, 'langit_service_cta_label', $cta_label );
+		}
+	}
+
+	if ( isset( $_POST['langit_service_scope'] ) ) {
+		$scope = sanitize_text_field( wp_unslash( $_POST['langit_service_scope'] ) );
+		if ( empty( $scope ) ) {
+			delete_post_meta( $post_id, 'langit_service_scope' );
+		} else {
+			update_post_meta( $post_id, 'langit_service_scope', $scope );
 		}
 	}
 }

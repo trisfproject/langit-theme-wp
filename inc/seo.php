@@ -69,8 +69,27 @@ function langit_meta_description() {
 
 	$description = get_bloginfo( 'description', 'display' );
 
-	return langit_seo_clean_text( $description ? $description : get_bloginfo( 'name', 'display' ) );
+	if ( empty( $description ) || 'Just another WordPress site' === $description ) {
+		$description = esc_html__( 'PT Global Teknindo provides integrated building technology solutions including CCTV, networking infrastructure, fire alarm systems, audio systems, mechanical electrical systems, installation and maintenance services.', 'langit' );
+	}
+
+	return langit_seo_clean_text( $description );
 }
+
+/**
+ * Override default title parts on front page/home.
+ *
+ * @param array $title_parts Title parts.
+ * @return array
+ */
+function langit_document_title_parts( $title_parts ) {
+	if ( is_front_page() || is_home() ) {
+		$title_parts['title']   = esc_html__( 'PT Global Teknindo', 'langit' );
+		$title_parts['tagline'] = esc_html__( 'Building Technology Systems', 'langit' );
+	}
+	return $title_parts;
+}
+add_filter( 'document_title_parts', 'langit_document_title_parts', 15 );
 
 /**
  * Resolve a social sharing image.
@@ -168,6 +187,25 @@ function langit_output_schema() {
 					'@id' => home_url( '/#organization' ),
 				),
 			),
+			array(
+				'@type'      => 'LocalBusiness',
+				'@id'        => home_url( '/#localbusiness' ),
+				'name'       => 'PT Global Teknindo',
+				'image'      => langit_social_image_url(),
+				'logo'       => langit_schema_logo_url(),
+				'url'        => home_url( '/' ),
+				'telephone'  => langit_theme_mod( 'contact_whatsapp_number' ),
+				'email'      => langit_theme_mod( 'contact_email_address' ),
+				'priceRange' => '$$',
+				'address'    => array(
+					'@type'           => 'PostalAddress',
+					'streetAddress'   => langit_theme_mod( 'company_address' ),
+					'addressLocality' => 'Bekasi',
+					'addressRegion'   => 'Jawa Barat',
+					'postalCode'      => '17147',
+					'addressCountry'  => 'ID',
+				),
+			),
 		),
 	);
 
@@ -189,6 +227,35 @@ function langit_output_schema() {
 				'@id' => home_url( '/#organization' ),
 			),
 		);
+	}
+
+	if ( is_singular( 'service' ) ) {
+		$service_id = get_the_ID();
+		$scope_str  = get_post_meta( $service_id, 'langit_service_scope', true );
+		$scope_list = ! empty( $scope_str ) ? array_map( 'trim', explode( ',', $scope_str ) ) : array();
+
+		$service_schema = array(
+			'@type'       => 'Service',
+			'@id'         => get_permalink() . '#service',
+			'name'        => get_the_title(),
+			'description' => langit_meta_description(),
+			'provider'    => array(
+				'@id' => home_url( '/#organization' ),
+			),
+			'areaServed'  => 'Indonesia',
+		);
+
+		if ( ! empty( $scope_list ) ) {
+			$service_schema['hasPart'] = array();
+			foreach ( $scope_list as $step ) {
+				$service_schema['hasPart'][] = array(
+					'@type' => 'CreativeWork',
+					'name'  => $step,
+				);
+			}
+		}
+
+		$schema['@graph'][] = $service_schema;
 	}
 
 	printf(

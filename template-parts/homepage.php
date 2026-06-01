@@ -296,6 +296,35 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 	</section>
 <?php endif; ?>
 
+<?php if ( langit_theme_mod_enabled( 'show_trust_section' ) ) : ?>
+	<section class="section home-section home-section--trust">
+		<div class="container stack">
+			<?php
+			langit_section_heading(
+				array(
+					'eyebrow' => langit_theme_mod( 'trust_section_eyebrow' ),
+					'title'   => langit_theme_mod( 'trust_section_title' ),
+					'text'    => langit_theme_mod( 'trust_section_description' ),
+					'center'  => true,
+				)
+			);
+			?>
+
+			<div class="trust-grid">
+				<?php foreach ( langit_trust_stats() as $langit_stat ) : ?>
+					<article class="card trust-card">
+						<?php if ( ! empty( $langit_stat['value'] ) ) : ?>
+							<strong><?php echo esc_html( $langit_stat['value'] ); ?></strong>
+						<?php endif; ?>
+						<h3><?php echo esc_html( $langit_stat['label'] ); ?></h3>
+						<p><?php echo esc_html( $langit_stat['description'] ); ?></p>
+					</article>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
+<?php endif; ?>
+
 <?php if ( langit_theme_mod_enabled( 'show_services_section' ) ) : ?>
 	<section id="services" class="section home-section home-section--services">
 		<div class="container stack">
@@ -329,6 +358,56 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 	</section>
 <?php endif; ?>
 
+<?php if ( langit_theme_mod_enabled( 'show_partners_section' ) ) : ?>
+	<section class="section home-section home-section--partners">
+		<div class="container stack">
+			<?php
+			langit_section_heading(
+				array(
+					'eyebrow' => langit_theme_mod( 'partners_section_eyebrow' ),
+					'title'   => langit_theme_mod( 'partners_section_title' ),
+					'text'    => langit_theme_mod( 'partners_section_description' ),
+					'center'  => true,
+				)
+			);
+			?>
+
+			<div class="partners-grid">
+				<div class="partner-logo-item partner-logo-item--hikvision" title="Hikvision">
+					<svg viewBox="0 0 160 48" width="100%" height="100%" fill="currentColor"><text x="50%" y="32" font-family="'Montserrat', 'Inter', sans-serif" font-size="20" font-weight="900" text-anchor="middle" letter-spacing="0.04em">HIKVISION</text></svg>
+				</div>
+				<div class="partner-logo-item partner-logo-item--dahua" title="Dahua">
+					<svg viewBox="0 0 160 48" width="100%" height="100%" fill="currentColor"><text x="50%" y="32" font-family="'Montserrat', 'Inter', sans-serif" font-size="20" font-weight="800" text-anchor="middle" letter-spacing="0.02em">dahua</text></svg>
+				</div>
+				<div class="partner-logo-item partner-logo-item--uniview" title="Uniview">
+					<svg viewBox="0 0 160 48" width="100%" height="100%" fill="currentColor"><text x="50%" y="32" font-family="'Montserrat', 'Inter', sans-serif" font-size="20" font-weight="800" text-anchor="middle" letter-spacing="-0.02em">uniview</text></svg>
+				</div>
+				<div class="partner-logo-item partner-logo-item--mikrotik" title="MikroTik">
+					<svg viewBox="0 0 180 48" width="100%" height="100%" fill="currentColor"><polygon points="12,12 36,12 24,36" fill="currentColor" opacity="0.85" /><polygon points="20,24 44,24 32,48" fill="currentColor" opacity="0.65" /><text x="52" y="32" font-family="'Montserrat', 'Inter', sans-serif" font-size="19" font-weight="800">MikroTik</text></svg>
+				</div>
+				<div class="partner-logo-item partner-logo-item--ubiquiti" title="Ubiquiti">
+					<svg viewBox="0 0 180 48" width="100%" height="100%" fill="currentColor"><circle cx="24" cy="24" r="12" fill="none" stroke="currentColor" stroke-width="3" /><circle cx="24" cy="24" r="6" fill="currentColor" /><text x="48" y="32" font-family="'Montserrat', 'Inter', sans-serif" font-size="18" font-weight="800" letter-spacing="0.05em">UBIQUITI</text></svg>
+				</div>
+				<div class="partner-logo-item partner-logo-item--toa" title="TOA">
+					<svg viewBox="0 0 160 48" width="100%" height="100%" fill="currentColor"><text x="50%" y="32" font-family="'Impact', 'Arial Black', sans-serif" font-style="italic" font-size="26" font-weight="900" text-anchor="middle" letter-spacing="0.06em">TOA</text></svg>
+				</div>
+				<div class="partner-logo-item partner-logo-item--bosch" title="Bosch">
+					<svg viewBox="0 0 160 48" width="100%" height="100%" fill="currentColor"><circle cx="24" cy="24" r="10" fill="none" stroke="currentColor" stroke-width="3" /><line x1="24" y1="14" x2="24" y2="34" stroke="currentColor" stroke-width="3" /><text x="44" y="32" font-family="'Century Gothic', sans-serif" font-size="22" font-weight="900" letter-spacing="0.04em">BOSCH</text></svg>
+				</div>
+				<div class="partner-logo-item partner-logo-item--honeywell" title="Honeywell">
+					<svg viewBox="0 0 160 48" width="100%" height="100%" fill="currentColor"><text x="50%" y="32" font-family="'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="900" text-anchor="middle" letter-spacing="-0.02em">Honeywell</text></svg>
+				</div>
+				<div class="partner-logo-item partner-logo-item--schneider-electric" title="Schneider Electric">
+					<svg viewBox="0 0 200 48" width="100%" height="100%" fill="currentColor"><polygon points="12,14 26,14 26,28 12,28" fill="none" stroke="currentColor" stroke-width="3" /><circle cx="19" cy="21" r="4" fill="currentColor" /><text x="36" y="30" font-family="'Helvetica Neue', Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="0.02em">Schneider</text></svg>
+				</div>
+				<div class="partner-logo-item partner-logo-item--ruijie" title="Ruijie">
+					<svg viewBox="0 0 160 48" width="100%" height="100%" fill="currentColor"><text x="50%" y="32" font-family="'Montserrat', 'Inter', sans-serif" font-size="20" font-weight="900" text-anchor="middle" letter-spacing="0.02em">Ruijie</text></svg>
+				</div>
+			</div>
+		</div>
+	</section>
+<?php endif; ?>
+
 <?php if ( langit_theme_mod_enabled( 'show_industry_section' ) && ! empty( $langit_industries ) ) : ?>
 	<section class="section home-section home-section--industry">
 		<div class="container stack">
@@ -343,9 +422,12 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 			?>
 
 			<div class="coverage-grid">
-				<?php foreach ( $langit_industries as $langit_industry ) : ?>
-					<article class="<?php echo esc_attr( langit_class_names( array( 'coverage-card', 'coverage-card--' . sanitize_title( $langit_industry['title'] ) ) ) ); ?>">
-						<div class="coverage-card__content">
+				<?php foreach ( $langit_industries as $langit_industry ) :
+					$langit_industry_slug = sanitize_title( $langit_industry['title'] );
+					?>
+					<article class="<?php echo esc_attr( langit_class_names( array( 'coverage-card', 'coverage-card--' . $langit_industry_slug ) ) ); ?>">
+						<div class="coverage-card__content stack">
+							<?php echo langit_get_industry_icon( $langit_industry['title'] ); ?>
 							<h3><?php echo esc_html( $langit_industry['title'] ); ?></h3>
 							<p><?php echo esc_html( $langit_industry['description'] ); ?></p>
 						</div>
@@ -382,32 +464,6 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 	</section>
 <?php endif; ?>
 
-<?php if ( langit_theme_mod_enabled( 'show_trust_section' ) ) : ?>
-	<section class="section home-section home-section--trust">
-		<div class="container stack">
-			<?php
-			langit_section_heading(
-				array(
-					'eyebrow' => langit_theme_mod( 'trust_section_eyebrow' ),
-					'title'   => langit_theme_mod( 'trust_section_title' ),
-					'text'    => langit_theme_mod( 'trust_section_description' ),
-					'center'  => true,
-				)
-			);
-			?>
-
-			<div class="trust-grid">
-				<?php foreach ( langit_trust_stats() as $langit_stat ) : ?>
-					<article class="card trust-card">
-						<strong><?php echo esc_html( $langit_stat['value'] ); ?></strong>
-						<h3><?php echo esc_html( $langit_stat['label'] ); ?></h3>
-						<p><?php echo esc_html( $langit_stat['description'] ); ?></p>
-					</article>
-				<?php endforeach; ?>
-			</div>
-		</div>
-	</section>
-<?php endif; ?>
 
 <?php if ( $langit_team_query instanceof WP_Query && $langit_team_query->have_posts() ) : ?>
 	<section class="section home-section home-section--team">

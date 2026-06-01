@@ -74,6 +74,38 @@ $langit_related_services = new WP_Query(
 		?>
 	</div>
 
+	<?php
+	$langit_scope_str = get_post_meta( get_the_ID(), 'langit_service_scope', true );
+	if ( empty( $langit_scope_str ) ) {
+		$langit_scope_str = 'Site Survey, System Design, Installation, Configuration, Testing, Maintenance';
+	}
+	$langit_scopes = array_map( 'trim', explode( ',', $langit_scope_str ) );
+	?>
+	<section class="section section--compact service-scope-section">
+		<div class="container stack">
+			<?php
+			langit_section_heading(
+				array(
+					'eyebrow' => esc_html__( 'Our Methodology', 'langit' ),
+					'title'   => esc_html__( 'Typical Work Scope', 'langit' ),
+					'center'  => true,
+				)
+			);
+			?>
+			<div class="scope-checklist">
+				<?php foreach ( $langit_scopes as $langit_index => $langit_step ) : ?>
+					<div class="checklist-item">
+						<span class="checklist-item__num"><?php echo esc_html( sprintf( '%02d', $langit_index + 1 ) ); ?></span>
+						<div class="checklist-item__content">
+							<h4 class="checklist-item__title"><?php echo esc_html( $langit_step ); ?></h4>
+							<span class="checklist-item__check">✓ Active Scope</span>
+						</div>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
+
 	<?php if ( $langit_related_services->have_posts() ) : ?>
 		<section class="section section--surface related-services-section">
 			<div class="container stack">

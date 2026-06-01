@@ -70,6 +70,8 @@ function langit_register_projects() {
 		'langit_project_year',
 		'langit_project_service_type',
 		'langit_project_client',
+		'langit_project_industry',
+		'langit_project_systems',
 	);
 
 	foreach ( $project_meta as $meta_key ) {
@@ -148,7 +150,9 @@ add_action( 'add_meta_boxes_project', 'langit_add_project_meta_boxes' );
  */
 function langit_project_details_meta_box( $post ) {
 	$fields = array(
-		'langit_project_client'       => esc_html__( 'Client / Industry', 'langit' ),
+		'langit_project_client'       => esc_html__( 'Client Name', 'langit' ),
+		'langit_project_industry'     => esc_html__( 'Industry Type', 'langit' ),
+		'langit_project_systems'      => esc_html__( 'Implemented Systems (comma-separated)', 'langit' ),
 		'langit_project_location'     => esc_html__( 'Location', 'langit' ),
 		'langit_project_year'         => esc_html__( 'Completion Year', 'langit' ),
 		'langit_project_service_type' => esc_html__( 'Service Type', 'langit' ),
@@ -193,6 +197,8 @@ function langit_save_project_details( $post_id ) {
 
 	$fields = array(
 		'langit_project_client',
+		'langit_project_industry',
+		'langit_project_systems',
 		'langit_project_location',
 		'langit_project_year',
 		'langit_project_service_type',
@@ -226,7 +232,9 @@ function langit_seed_project_entries() {
 			'category'     => 'Fire Alarm Projects',
 			'image'        => 'fire-alarm-integration.webp',
 			'menu_order'   => 10,
-			'client'       => 'Warehouse Facility',
+			'client'       => 'PT Tempo Scan Pasific Tbk',
+			'industry'     => 'Manufacturing',
+			'systems'      => 'Fire Alarm System, Safety Integration',
 			'location'     => 'Karawang, Indonesia',
 			'year'         => '2025',
 			'service_type' => 'Fire Alarm System',
@@ -239,7 +247,9 @@ function langit_seed_project_entries() {
 			'category'     => 'Audio System Projects',
 			'image'        => 'audio-public-address-installation.webp',
 			'menu_order'   => 20,
-			'client'       => 'Public Facility',
+			'client'       => 'PT Rijal Warehouse',
+			'industry'     => 'Warehouse & Logistics',
+			'systems'      => 'Audio System, Public Address, Automated Schedule',
 			'location'     => 'Bandung, Indonesia',
 			'year'         => '2025',
 			'service_type' => 'Audio & Public Address',
@@ -252,7 +262,9 @@ function langit_seed_project_entries() {
 			'category'     => 'CCTV Projects',
 			'image'        => 'cctv-commercial-building.webp',
 			'menu_order'   => 30,
-			'client'       => 'Commercial Building',
+			'client'       => 'PT Global Tower',
+			'industry'     => 'Commercial Building',
+			'systems'      => 'CCTV System, Security System',
 			'location'     => 'Jakarta, Indonesia',
 			'year'         => '2026',
 			'service_type' => 'CCTV & Security System',
@@ -265,7 +277,9 @@ function langit_seed_project_entries() {
 			'category'     => 'Maintenance Projects',
 			'image'        => 'preventive-maintenance-services.webp',
 			'menu_order'   => 40,
-			'client'       => 'Operational Facility',
+			'client'       => 'PT Modern Logistics',
+			'industry'     => 'Warehouse & Logistics',
+			'systems'      => 'CCTV System, Networking, Maintenance',
 			'location'     => 'Surabaya, Indonesia',
 			'year'         => '2026',
 			'service_type' => 'Installation & Maintenance',
@@ -278,7 +292,9 @@ function langit_seed_project_entries() {
 			'category'     => 'Networking Projects',
 			'image'        => 'network-infrastructure-deployment.webp',
 			'menu_order'   => 50,
-			'client'       => 'Corporate Office',
+			'client'       => 'PT Tech Solutions Office',
+			'industry'     => 'Commercial Building',
+			'systems'      => 'Networking, Fiber Optic, Wi-Fi',
 			'location'     => 'Bekasi, Indonesia',
 			'year'         => '2026',
 			'service_type' => 'Networking Infrastructure',
@@ -291,7 +307,9 @@ function langit_seed_project_entries() {
 			'category'     => 'Mechanical Electrical',
 			'image'        => 'mechanical-electrical-panel.webp',
 			'menu_order'   => 60,
-			'client'       => 'Industrial Facility',
+			'client'       => 'PT Industrial Manufacture',
+			'industry'     => 'Manufacturing',
+			'systems'      => 'Electrical Panel, Smart Power Monitoring',
 			'location'     => 'Tangerang, Indonesia',
 			'year'         => '2025',
 			'service_type' => 'Mechanical Electrical',
@@ -379,7 +397,7 @@ function langit_seed_project_image_attachment( $slug, $filename, $title ) {
  * Seed production project entries into the Projects CPT.
  */
 function langit_seed_projects_content() {
-	$seed_version = '2026-05-26-v3';
+	$seed_version = '2026-06-01-v4';
 
 	if ( get_option( 'langit_project_seed_version' ) === $seed_version ) {
 		return;
@@ -422,6 +440,8 @@ function langit_seed_projects_content() {
 		update_post_meta( $post_id, 'langit_project_location', $project['location'] );
 		update_post_meta( $post_id, 'langit_project_year', $project['year'] );
 		update_post_meta( $post_id, 'langit_project_service_type', $project['service_type'] );
+		update_post_meta( $post_id, 'langit_project_industry', isset( $project['industry'] ) ? $project['industry'] : '' );
+		update_post_meta( $post_id, 'langit_project_systems', isset( $project['systems'] ) ? $project['systems'] : '' );
 
 		$attachment_id = langit_seed_project_image_attachment( $project['slug'], $project['image'], $project['title'] );
 
@@ -473,11 +493,15 @@ function langit_get_project_details( $post_id ) {
  * @param int $post_id Project post ID.
  */
 function langit_project_card( $post_id ) {
-	$terms = get_the_terms( $post_id, 'project_category' );
-	$meta  = ( ! is_wp_error( $terms ) && ! empty( $terms ) ) ? $terms[0]->name : esc_html__( 'Project', 'langit' );
+	$terms        = get_the_terms( $post_id, 'project_category' );
+	$meta         = ( ! is_wp_error( $terms ) && ! empty( $terms ) ) ? $terms[0]->name : esc_html__( 'Project', 'langit' );
+	$client_name  = get_post_meta( $post_id, 'langit_project_client', true );
+	$display_title = ! empty( $client_name ) ? $client_name : get_the_title( $post_id );
+	$industry     = get_post_meta( $post_id, 'langit_project_industry', true );
+	$systems_str  = get_post_meta( $post_id, 'langit_project_systems', true );
 	?>
 	<article id="<?php echo esc_attr( get_post_field( 'post_name', $post_id ) ); ?>" <?php post_class( 'card post-card project-card', $post_id ); ?>>
-		<a class="post-card__media" href="<?php echo esc_url( get_permalink( $post_id ) ); ?>" aria-label="<?php echo esc_attr( get_the_title( $post_id ) ); ?>">
+		<a class="post-card__media" href="<?php echo esc_url( get_permalink( $post_id ) ); ?>" aria-label="<?php echo esc_attr( $display_title ); ?>">
 			<?php if ( has_post_thumbnail( $post_id ) ) : ?>
 				<?php echo get_the_post_thumbnail( $post_id, 'langit-card', array( 'loading' => 'lazy', 'decoding' => 'async' ) ); ?>
 			<?php else : ?>
@@ -488,11 +512,31 @@ function langit_project_card( $post_id ) {
 		<header class="post-card__header">
 			<div class="post-card__term"><?php echo esc_html( $meta ); ?></div>
 			<h3 class="post-card__title">
-				<a href="<?php echo esc_url( get_permalink( $post_id ) ); ?>"><?php echo esc_html( get_the_title( $post_id ) ); ?></a>
+				<a href="<?php echo esc_url( get_permalink( $post_id ) ); ?>"><?php echo esc_html( $display_title ); ?></a>
 			</h3>
 		</header>
 
 		<div class="entry-summary">
+			<?php if ( ! empty( $industry ) ) : ?>
+				<div class="project-card__industry-row">
+					<span class="project-card__meta-label"><?php esc_html_e( 'Industry:', 'langit' ); ?></span>
+					<span class="badge badge--industry"><?php echo esc_html( $industry ); ?></span>
+				</div>
+			<?php endif; ?>
+
+			<?php if ( ! empty( $systems_str ) ) :
+				$systems = array_map( 'trim', explode( ',', $systems_str ) );
+				?>
+				<div class="project-card__systems-row">
+					<span class="project-card__meta-label"><?php esc_html_e( 'Implemented:', 'langit' ); ?></span>
+					<div class="project-card__systems-list">
+						<?php foreach ( $systems as $system ) : ?>
+							<span class="badge badge--system"><span class="badge__check">✓</span> <?php echo esc_html( $system ); ?></span>
+						<?php endforeach; ?>
+					</div>
+				</div>
+			<?php endif; ?>
+
 			<p><?php echo esc_html( langit_get_project_excerpt( $post_id ) ); ?></p>
 		</div>
 
