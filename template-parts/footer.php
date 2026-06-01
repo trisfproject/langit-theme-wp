@@ -8,9 +8,7 @@
 $footer_company = array(
 	esc_html__( 'About Company', 'langit' )    => home_url( '/company/#company-overview' ),
 	esc_html__( 'Vision & Mission', 'langit' ) => home_url( '/company/#vision-mission' ),
-	esc_html__( 'Legality', 'langit' )         => home_url( '/company/#company-legality' ),
 	esc_html__( 'Clients', 'langit' )          => langit_get_clients_archive_url(),
-	esc_html__( 'Contact', 'langit' )          => home_url( '/contact/' ),
 );
 
 $footer_services = array();
@@ -65,8 +63,8 @@ if ( ! empty( $langit_projects_posts ) ) {
 $footer_contact = array(
 	langit_theme_mod( 'contact_whatsapp_number' ) => langit_contact_whatsapp_url(),
 	langit_theme_mod( 'contact_email_address' )   => 'mailto:' . langit_theme_mod( 'contact_email_address' ),
-	langit_theme_mod( 'company_address' )         => home_url( '/contact/#contact-information' ),
-	langit_theme_mod( 'company_working_hours' )   => home_url( '/contact/#contact-information' ),
+	esc_html__( 'View Location Details', 'langit' ) => home_url( '/contact/#contact-information' ),
+	esc_html__( 'View Business Hours', 'langit' )   => home_url( '/contact/#contact-information' ),
 );
 
 $footer_social = array_filter(

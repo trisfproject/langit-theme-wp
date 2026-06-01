@@ -149,4 +149,25 @@
 			heroBackgrounds[activeHeroBackground].classList.add('is-active');
 		}, 5200);
 	}
+
+	// Smooth scroll to hash on page load
+	window.addEventListener('load', function () {
+		if (window.location.hash) {
+			const hash = window.location.hash;
+			const target = document.querySelector(hash);
+			if (target) {
+				setTimeout(function () {
+					const headerOffset = header ? header.offsetHeight : 0;
+					const elementPosition = target.getBoundingClientRect().top;
+					const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 24;
+
+					window.scrollTo({
+						top: offsetPosition,
+						behavior: 'smooth'
+					});
+				}, 150);
+			}
+		}
+	});
 })();
+
