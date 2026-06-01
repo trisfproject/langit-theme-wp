@@ -8,7 +8,7 @@
 $footer_company_nav = array(
 	esc_html__( 'About Company', 'langit' )    => home_url( '/company/#company-overview' ),
 	esc_html__( 'Vision & Mission', 'langit' ) => home_url( '/company/#vision-mission' ),
-	esc_html__( 'Clients', 'langit' )          => home_url( '/company/#clients' ),
+	esc_html__( 'Clients', 'langit' )          => langit_get_clients_archive_url(),
 );
 
 $footer_contact = array(
