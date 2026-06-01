@@ -127,6 +127,48 @@ $product_categories = array(
 				'spec'        => '15W / 2-Way System / Bracket Included',
 				'image'       => 'audio_wall.webp',
 			),
+			array(
+				'name'        => 'Voice Evacuation System',
+				'description' => 'Sistem audio evakuasi darurat yang terintegrasi dengan fire alarm untuk memberikan instruksi otomatis saat kondisi emergency.',
+				'spec'        => 'EMERGENCY AUDIO / EVACUATION',
+				'image'       => 'audio_voice_evac.webp',
+			),
+			array(
+				'name'        => 'Automatic Bell System',
+				'description' => 'Sistem bel otomatis untuk kantor, pabrik, sekolah, dan fasilitas operasional.',
+				'spec'        => 'AUTOMATED SCHEDULE / ALERT',
+				'image'       => 'audio_auto_bell.webp',
+			),
+			array(
+				'name'        => 'Car Call System',
+				'description' => 'Sistem pemanggil kendaraan atau sopir untuk area lobby, warehouse, dan loading dock.',
+				'spec'        => 'VEHICLE CALLING / LOBBY',
+				'image'       => 'audio_car_call.webp',
+			),
+		),
+	),
+	'led-display' => array(
+		'title'   => esc_html__( 'LED & Digital Display', 'langit' ),
+		'eyebrow' => esc_html__( 'DISPLAY TECHNOLOGY', 'langit' ),
+		'products' => array(
+			array(
+				'name'        => 'Running Text LED',
+				'description' => 'Display LED untuk informasi operasional, produksi, dan area publik.',
+				'spec'        => 'LED SIGNAGE / INFORMATION',
+				'image'       => 'led_running_text.webp',
+			),
+			array(
+				'name'        => 'LED Videotron',
+				'description' => 'Layar LED indoor maupun outdoor untuk kebutuhan informasi dan promosi visual.',
+				'spec'        => 'FULL COLOR / DISPLAY WALL',
+				'image'       => 'led_videotron.webp',
+			),
+			array(
+				'name'        => 'Digital Clock System',
+				'description' => 'Jam digital industri dan sistem penunjuk waktu untuk kantor, pabrik, dan fasilitas publik.',
+				'spec'        => 'TIME MANAGEMENT / DIGITAL',
+				'image'       => 'led_digital_clock.webp',
+			),
 		),
 	),
 	'electrical' => array(
@@ -156,6 +198,18 @@ $product_categories = array(
 				'spec'        => 'RS485 Modbus / LCD Power Meter',
 				'image'       => 'me_monitoring.webp',
 			),
+			array(
+				'name'        => 'Industrial Lighting System',
+				'description' => 'Lampu industri, lampu jalan, lampu gudang, dan area produksi.',
+				'spec'        => 'INDUSTRIAL LIGHTING',
+				'image'       => 'me_industrial_lighting.webp',
+			),
+			array(
+				'name'        => 'Industrial Exhaust Fan',
+				'description' => 'Exhaust fan gedung dan area produksi untuk menjaga sirkulasi udara yang optimal.',
+				'spec'        => 'VENTILATION / AIRFLOW',
+				'image'       => 'me_exhaust_fan.webp',
+			),
 		),
 	),
 );
@@ -179,7 +233,7 @@ foreach ( $product_categories as $langit_key => $langit_cat ) :
 			<?php
 			langit_section_heading(
 				array(
-					'eyebrow' => esc_html__( 'Product Catalog', 'langit' ),
+					'eyebrow' => ! empty( $langit_cat['eyebrow'] ) ? $langit_cat['eyebrow'] : esc_html__( 'Product Catalog', 'langit' ),
 					'title'   => $langit_cat['title'],
 					'center'  => true,
 				)

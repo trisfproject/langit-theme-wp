@@ -599,6 +599,22 @@ ol {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   LED & Digital Display — White-Steel.
+───────────────────────────────────────────────────────────────────────────── */
+.products-section--led-display {
+	background:
+		radial-gradient(ellipse at 95% 0%, rgba(88, 175, 255, 0.12), transparent 44%),
+		radial-gradient(ellipse at 5% 100%, rgba(88, 175, 255, 0.05), transparent 40%),
+		linear-gradient(180deg, #ffffff 0%, #f4f8fc 100%);
+	color: var(--langit-text);
+}
+
+.products-section--led-display .card {
+	border-color: rgba(88, 175, 255, 0.18);
+	box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.05);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    Mechanical Electrical — Architectural Slate with a masked sparse grid.
 ───────────────────────────────────────────────────────────────────────────── */
 .products-section--electrical {
