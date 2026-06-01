@@ -5563,27 +5563,24 @@ textarea {
 	}
 }
 
-/* 6. Company Page Industries Custom Backgrounds */
-.coverage-card--manufacturing-industry {
+/* 6. Industries We Serve — card background images (slugs match sanitize_title() output) */
+.coverage-card--manufacturing {
 	--coverage-image: url("../images/industries/industry-manufacturing-industry.webp");
-}
-.coverage-card--automotive-industry {
-	--coverage-image: url("../images/industries/industry-automotive-industry.webp");
 }
 .coverage-card--warehouse-logistics {
 	--coverage-image: url("../images/industries/industry-warehouse-logistics.webp");
 }
-.coverage-card--healthcare-facilities {
-	--coverage-image: url("../images/industries/industry-healthcare-facilities.webp");
+.coverage-card--commercial-building {
+	--coverage-image: url("../images/industries/industry-commercial-building.webp");
 }
-.coverage-card--hospitality-residential {
-	--coverage-image: url("../images/industries/industry-hospitality-residential.webp");
+.coverage-card--government {
+	--coverage-image: url("../images/industries/industry-government.webp");
 }
-.coverage-card--government-public-sector {
-	--coverage-image: url("../images/industries/industry-government-public-sector.webp");
+.coverage-card--education {
+	--coverage-image: url("../images/industries/industry-education.webp");
 }
-.coverage-card--education-facilities {
-	--coverage-image: url("../images/industries/industry-education-facilities.webp");
+.coverage-card--healthcare {
+	--coverage-image: url("../images/industries/industry-healthcare.webp");
 }
 
 /* 7. Industries We Serve Headline Desktop Layout */
