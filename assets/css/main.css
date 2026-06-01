@@ -5496,4 +5496,13 @@ textarea {
 	--coverage-image: url("../images/industries/industry-education-facilities.webp");
 }
 
+/* 7. Industries We Serve Headline Desktop Layout */
+@media (min-width: 901px) {
+	.section-heading--industry h2 {
+		max-width: 48ch;
+		margin-inline: auto;
+	}
+}
+
+
 

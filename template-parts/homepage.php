@@ -438,6 +438,7 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 					'eyebrow' => langit_theme_mod( 'industry_section_eyebrow' ),
 					'title'   => langit_theme_mod( 'industry_section_title' ),
 					'center'  => true,
+					'class'   => 'section-heading--industry',
 				)
 			);
 			?>
