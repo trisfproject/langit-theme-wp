@@ -79,7 +79,7 @@ function langit_customizer_defaults() {
 		'partners_section_title'      => __( 'Teknologi Terpercaya untuk Implementasi Sistem', 'langit' ),
 		'partners_section_description' => __( 'PT Global Teknindo mengimplementasikan solusi menggunakan teknologi dan perangkat dari produsen terkemuka yang telah banyak digunakan pada berbagai proyek industri dan komersial.', 'langit' ),
 		'industry_section_eyebrow'    => __( 'INDUSTRIES WE SERVE', 'langit' ),
-		'industry_section_title'      => __( 'Technology solutions for operational facilities and enterprise environments.', 'langit' ),
+		'industry_section_title'      => __( 'Technology solutions for operational facilities<br class="desktop-only"> and enterprise environments.', 'langit' ),
 		'industry_items'              => __( "Manufacturing | Solusi integrasi sistem untuk lini produksi, otomasi, dan efisiensi pabrik modern.\nWarehouse & Logistics | Sistem keamanan, jaringan, dan pelacakan untuk area pergudangan serta loading dock.\nCommercial Building | Infrastruktur teknologi pintar untuk gedung perkantoran, pusat bisnis, dan area publik.\nGovernment | Keandalan sistem keamanan dan kontrol data untuk gedung instansi pemerintah dan fasilitas publik.\nEducation | Jaringan terstruktur, audio kelas, dan proteksi keselamatan di area kampus serta institusi pendidikan.\nHealthcare | Solusi teknologi terintegrasi untuk mendukung keandalan operasional dan keselamatan rumah sakit.", 'langit' ),
 		'projects_section_eyebrow'    => __( 'Featured Projects', 'langit' ),
 		'projects_section_title'      => __( 'Selected work for industrial and commercial facilities.', 'langit' ),

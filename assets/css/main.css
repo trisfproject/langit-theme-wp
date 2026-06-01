@@ -5531,6 +5531,18 @@ textarea {
 	}
 }
 
+/* Helper utility for explicit responsive line breaks */
+.desktop-only {
+	display: none;
+}
+
+@media (min-width: 901px) {
+	.desktop-only {
+		display: inline;
+	}
+}
+
+
 
 
 

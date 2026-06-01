@@ -31,7 +31,7 @@ $classes = array( 'section-heading', $args['center'] ? 'section-heading--center'
 	<?php endif; ?>
 
 	<?php if ( ! empty( $args['title'] ) ) : ?>
-		<h<?php echo esc_attr( (string) $level ); ?>><?php echo esc_html( $args['title'] ); ?></h<?php echo esc_attr( (string) $level ); ?>>
+		<h<?php echo esc_attr( (string) $level ); ?>><?php echo wp_kses( $args['title'], array( 'br' => array( 'class' => true ) ) ); ?></h<?php echo esc_attr( (string) $level ); ?>>
 	<?php endif; ?>
 
 	<?php if ( ! empty( $args['text'] ) ) : ?>
