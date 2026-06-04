@@ -4954,7 +4954,7 @@ textarea {
 	}
 
 	.hero-v2__content-layer {
-		padding-block: calc(var(--langit-header-height) + 6.5rem) 0 !important; /* Shifted downward to center and rebalance spacing */
+		padding-block: calc(var(--langit-header-height) + 9rem) 0 !important; /* Shifted downward to center and rebalance spacing */
 		padding-inline: clamp(4rem, 8vw, 6rem) !important; /* Target visual spacing: 64px–96px horizontal padding */
 		gap: 1.5rem !important;
 		grid-template-columns: 1fr !important;
@@ -4989,7 +4989,7 @@ textarea {
 	.hero--v2 .hero-v2__title {
 		font-size: clamp(2.1rem, 4.5vw, 3rem) !important; /* Intentionally smaller, balanced heading */
 		line-height: 1.05 !important;
-		margin-bottom: 3.5rem !important; /* Spacing above description (moves it down further 28px) */
+		margin-bottom: 1.15rem !important; /* Spacing above description (reunites headline and description) */
 		color: #ffffff !important;
 	}
 
