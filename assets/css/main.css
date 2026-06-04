@@ -4522,7 +4522,9 @@ input[type="submit"]:focus {
 		width: 100% !important;
 		height: 100% !important;
 		object-fit: cover !important;
-		object-position: 85% center !important; /* Push crop building right away from text */
+		object-position: 75% center !important; /* Move crop building away from text */
+		transform: scale(1.9) !important; /* Zoom background image for dedicated mobile crop impact (180%-200%) */
+		transform-origin: 75% center !important; /* Focus on strongest visual subject */
 	}
 
 	.hero-v2__bg-overlay,
@@ -4531,10 +4533,10 @@ input[type="submit"]:focus {
 		inset: 0 !important;
 		background: linear-gradient(
 			180deg,
-			rgba(3, 15, 35, 0.92) 0%,
-			rgba(3, 15, 35, 0.82) 50%,
-			rgba(3, 15, 35, 0.92) 100%
-		) !important; /* Dark overlay for text readability */
+			rgba(3, 15, 35, 0.96) 0%,
+			rgba(3, 15, 35, 0.88) 50%,
+			rgba(3, 15, 35, 0.96) 100%
+		) !important; /* Increased overlay strength for text readability */
 		mix-blend-mode: normal !important;
 		opacity: 1 !important;
 		z-index: 2 !important;
@@ -4904,18 +4906,22 @@ textarea {
 @media (min-width: 768px) and (max-width: 1024px) {
 	.hero--home.hero--v2,
 	.hero-v2 {
-		min-height: 52vh !important; /* Shorter footprint so partners rise above or close to fold */
+		min-height: 60vh !important; /* Hero height approximately 60vh-65vh */
 		display: flex !important;
 		flex-direction: column !important;
 		justify-content: center !important;
 	}
 
 	.hero-v2__content-layer {
-		padding-block: calc(var(--langit-header-height) + 2rem) 2.5rem !important; /* Compressed padding */
+		padding-block: calc(var(--langit-header-height) + 2rem) 2rem !important; /* Reduced bottom padding for tighter visual flow to Partners */
+		padding-inline: clamp(4rem, 8vw, 6rem) !important; /* Target visual spacing: 64px–96px horizontal padding */
 		gap: 1.5rem !important;
 		grid-template-columns: 1fr !important;
 		position: relative;
 		z-index: 10;
+		width: 100% !important;
+		max-width: var(--langit-hero-v2-container, 1380px) !important;
+		box-sizing: border-box !important;
 	}
 
 	.hero-v2__content-inner {
@@ -5008,7 +5014,8 @@ textarea {
 
 	.home-section--partners,
 	.home-section-partners {
-		padding-block: 24px 28px !important; /* Technology Partners rises above fold */
+		padding-top: 1.25rem !important; /* Reduce spacing between Hero and Technology Partners */
+		padding-bottom: 24px !important;
 	}
 }
 
