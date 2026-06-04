@@ -4470,7 +4470,12 @@ input[type="submit"]:focus {
 	.hero-v2 .hero-v2__overlay {
 		position: absolute !important;
 		inset: 0 !important;
-		background: rgba(3, 15, 35, 0.45) !important; /* Slightly darkens the image to keep it highly visible */
+		background: linear-gradient(
+			180deg,
+			rgba(3, 15, 35, 0.35) 0%,
+			rgba(3, 15, 35, 0.45) 50%,
+			#030f23 100%
+		) !important; /* Fades seamlessly to navy at the bottom to connect with the content card */
 		mix-blend-mode: normal !important;
 		opacity: 1 !important;
 		z-index: 2 !important;
@@ -4483,13 +4488,17 @@ input[type="submit"]:focus {
 
 	.hero-v2__content-layer {
 		position: relative !important;
-		padding-block: 2.25rem 2.75rem !important; /* Spaced content below the image */
+		margin-top: -5.5rem !important; /* Pull content card up to overlap bottom of the image for connected composition */
+		background: linear-gradient(180deg, rgba(3, 15, 35, 0) 0%, rgba(3, 15, 35, 0.95) 3rem, #030f23 5.5rem) !important; /* Seamless fading transition */
+		border-radius: 0 !important; /* Remove card outline to unify layout */
+		padding-block: 0.75rem 2.5rem !important; /* Reduced top padding to bring text closer to image subject */
 		padding-inline: 1.25rem !important; /* Prevent edge-to-edge text */
 		gap: 1.25rem !important;
 		grid-template-columns: 1fr !important;
 		z-index: 10;
 		box-sizing: border-box !important;
 		width: 100% !important;
+		box-shadow: none !important; /* Remove separation shadow */
 	}
 
 	.hero-v2__content-inner {
@@ -4518,6 +4527,15 @@ input[type="submit"]:focus {
 		line-height: 1.05 !important;
 		margin-bottom: 0.5rem !important;
 		color: #ffffff !important;
+	}
+
+	.hero-v2__headline-line {
+		display: inline !important;
+		white-space: normal !important;
+	}
+
+	.hero-v2__headline-line:not(:last-child)::after {
+		content: " " !important;
 	}
 
 	.hero--v2 .hero-v2__description,
