@@ -4947,7 +4947,7 @@ textarea {
 	}
 
 	.hero-v2__content-layer {
-		padding-block: calc(var(--langit-header-height) + 1.25rem) 1.5rem !important; /* Compressed padding */
+		padding-block: calc(var(--langit-header-height) + 4rem) 2.5rem !important; /* Shifted downward to center and rebalance spacing */
 		padding-inline: clamp(4rem, 8vw, 6rem) !important; /* Target visual spacing: 64px–96px horizontal padding */
 		gap: 1.5rem !important;
 		grid-template-columns: 1fr !important;
