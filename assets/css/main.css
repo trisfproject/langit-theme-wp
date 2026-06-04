@@ -4999,13 +4999,14 @@ textarea {
 	.hero-v2 .hero-v2__description {
 		font-size: 0.98rem !important;
 		line-height: 1.68 !important;
-		margin-bottom: 1rem !important; /* Reduced vertical spacing */
+		margin-bottom: 0.5rem !important; /* Reduced vertical spacing to sit closer to CTA */
 		color: rgba(241, 245, 249, 0.85) !important;
 		max-width: 52ch !important;
 	}
 
 	.hero-v2__cta,
 	.hero-v2__actions {
+		margin-top: 0 !important; /* Remove global desktop margin-top */
 		flex-wrap: wrap !important;
 		gap: 0.75rem !important;
 		display: flex !important;
