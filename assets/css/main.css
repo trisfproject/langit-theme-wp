@@ -4489,10 +4489,10 @@ input[type="submit"]:focus {
 
 	.hero-v2__content-layer {
 		position: relative !important;
-		margin-top: -5rem !important; /* Pull content card up to overlap bottom of the image for connected composition */
-		background: linear-gradient(180deg, rgba(3, 15, 35, 0) 0%, rgba(3, 15, 35, 0.95) 2.5rem, #030f23 4.5rem) !important; /* Seamless fading transition */
+		margin-top: -8.5rem !important; /* Pull content card up further to overlap bottom of the image and shift layout upward */
+		background: linear-gradient(180deg, rgba(3, 15, 35, 0) 0%, rgba(3, 15, 35, 0.95) 3.5rem, #030f23 7rem) !important; /* Seamless fading transition */
 		border-radius: 0 !important; /* Remove card outline to unify layout */
-		padding-block: 0.5rem 1.75rem !important; /* Reduced top padding to bring text closer to image subject */
+		padding-block: 0.5rem 4.5rem !important; /* Reduced top padding to bring text closer, expanded bottom padding to detach CTA from partners */
 		padding-inline: 1.25rem !important; /* Prevent edge-to-edge text */
 		gap: 1.25rem !important;
 		grid-template-columns: 1fr !important;
