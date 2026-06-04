@@ -5,47 +5,11 @@
  * @package Langit
  */
 
-$langit_icon_uri = get_template_directory_uri() . '/assets/icons/';
 $langit_whatsapp_url = langit_contact_whatsapp_url();
 $langit_phone_number = langit_theme_mod( 'contact_whatsapp_number' );
 $langit_phone_url    = 'tel:' . preg_replace( '/[^0-9+]/', '', $langit_phone_number );
-
-
-$langit_contacts_row1 = array(
-	array(
-		'label' => esc_html__( 'WhatsApp', 'langit' ),
-		'value' => langit_theme_mod( 'contact_whatsapp_number' ),
-		'text'  => '',
-		'icon'  => $langit_icon_uri . 'contact.svg',
-	),
-	array(
-		'label' => esc_html__( 'Phone', 'langit' ),
-		'value' => $langit_phone_number,
-		'text'  => '',
-		'icon'  => $langit_icon_uri . 'time.svg',
-	),
-	array(
-		'label' => esc_html__( 'Email', 'langit' ),
-		'value' => langit_theme_mod( 'contact_email_address' ),
-		'text'  => '',
-		'icon'  => $langit_icon_uri . 'contact.svg',
-	),
-);
-
-$langit_contacts_row2 = array(
-	array(
-		'label' => esc_html__( 'Office Address', 'langit' ),
-		'value' => langit_theme_mod( 'company_address' ),
-		'text'  => '',
-		'icon'  => $langit_icon_uri . 'location.svg',
-	),
-	array(
-		'label' => esc_html__( 'Working Hours', 'langit' ),
-		'value' => langit_theme_mod( 'company_working_hours' ),
-		'text'  => esc_html__( 'Respons konsultasi mengikuti jam operasional.', 'langit' ),
-		'icon'  => $langit_icon_uri . 'time.svg',
-	),
-);
+$langit_email        = langit_theme_mod( 'contact_email_address' );
+$langit_address      = langit_theme_mod( 'company_address' );
 ?>
 <?php
 langit_page_hero(
@@ -57,81 +21,45 @@ langit_page_hero(
 );
 ?>
 
-<section id="contact-information" class="section section--surface">
-	<div class="container contact-page-grid">
-		<div class="contact-panel contact-panel--info stack">
+<section class="contact-bar-section">
+	<div class="container contact-bar">
+		<div class="contact-bar__item">
+			<span class="contact-bar__label"><?php esc_html_e( 'Office Phone', 'langit' ); ?></span>
+			<a href="<?php echo esc_url( $langit_phone_url ); ?>" class="contact-bar__value"><?php echo esc_html( $langit_phone_number ); ?></a>
+		</div>
+		<div class="contact-bar__item">
+			<span class="contact-bar__label"><?php esc_html_e( 'Email', 'langit' ); ?></span>
+			<a href="mailto:<?php echo esc_attr( $langit_email ); ?>" class="contact-bar__value"><?php echo esc_html( $langit_email ); ?></a>
+		</div>
+		<div class="contact-bar__item">
+			<span class="contact-bar__label"><?php esc_html_e( 'Office Address', 'langit' ); ?></span>
+			<span class="contact-bar__value"><?php echo esc_html( $langit_address ); ?></span>
+		</div>
+		<div class="contact-bar__actions">
 			<?php
-			langit_section_heading(
+			langit_button(
 				array(
-					'eyebrow' => langit_theme_mod( 'contact_info_eyebrow' ),
-					'title'   => langit_theme_mod( 'contact_info_title' ),
-					'text'    => esc_html__( 'Pilih jalur komunikasi yang paling sesuai untuk konsultasi proyek, permintaan survey, kebutuhan maintenance, atau koordinasi teknis.', 'langit' ),
+					'url'   => $langit_whatsapp_url,
+					'label' => esc_html__( 'Chat via WhatsApp', 'langit' ),
 				)
 			);
-			?>
 
-			<div class="contact-info-block">
-
-				<!-- Row 1: WhatsApp · Phone · Email (3 equal columns) -->
-				<div class="contact-info-row contact-info-row--channels">
-					<?php foreach ( $langit_contacts_row1 as $langit_contact ) : ?>
-						<?php
-						langit_card(
-							array(
-								'meta'       => $langit_contact['label'],
-								'title'      => $langit_contact['value'],
-								'text'       => $langit_contact['text'],
-								'class'      => 'contact-card',
-								'icon_class' => 'contact-card__icon',
-								'icon_url'   => $langit_contact['icon'],
-							)
-						);
-						?>
-					<?php endforeach; ?>
-				</div>
-
-				<!-- Row 2: Office Address · Working Hours (2 equal columns) -->
-				<div class="contact-info-row contact-info-row--location">
-					<?php foreach ( $langit_contacts_row2 as $langit_contact ) : ?>
-						<?php
-						langit_card(
-							array(
-								'meta'       => $langit_contact['label'],
-								'title'      => $langit_contact['value'],
-								'text'       => $langit_contact['text'],
-								'class'      => 'contact-card',
-								'icon_class' => 'contact-card__icon',
-								'icon_url'   => $langit_contact['icon'],
-							)
-						);
-						?>
-					<?php endforeach; ?>
-				</div>
-
-			</div>
-
-			<div class="cluster contact-page-actions">
-				<?php
+			if ( ! empty( $langit_phone_number ) ) {
 				langit_button(
 					array(
-						'url'   => $langit_whatsapp_url,
-						'label' => esc_html__( 'Chat via WhatsApp', 'langit' ),
+						'url'     => $langit_phone_url,
+						'label'   => esc_html__( 'Call Office', 'langit' ),
+						'variant' => 'ghost',
 					)
 				);
-
-				if ( ! empty( $langit_phone_number ) ) {
-					langit_button(
-						array(
-							'url'     => $langit_phone_url,
-							'label'   => esc_html__( 'Call Now', 'langit' ),
-							'variant' => 'ghost',
-						)
-					);
-				}
-				?>
-			</div>
+			}
+			?>
 		</div>
+	</div>
+</section>
 
+<section id="contact-form-section" class="section section--surface">
+	<div class="container contact-page-grid">
 		<div class="contact-panel contact-panel--form contact-form-stack">
 			<?php
 			langit_section_heading(
