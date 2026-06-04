@@ -4516,30 +4516,43 @@ input[type="submit"]:focus {
 	}
 
 	.hero-v2__bg-slide {
+		display: none !important; /* Hide other slides to preserve performance */
+	}
+
+	.hero-v2__bg-slide--1 {
 		display: block !important;
 		position: absolute !important;
 		inset: 0 !important;
 		width: 100% !important;
 		height: 100% !important;
 		object-fit: cover !important;
-		object-position: 75% center !important; /* Move crop building away from text */
-		transform: scale(1.9) !important; /* Zoom background image for dedicated mobile crop impact (180%-200%) */
-		transform-origin: 75% center !important; /* Focus on strongest visual subject */
+		object-position: right center !important; /* Move crop building away from text */
+		transform: scale(2.0) !important; /* Zoom background image (180%-220%) */
+		transform-origin: right center !important; /* Focus on strongest visual subject */
+		opacity: 1 !important;
+		animation: none !important;
 	}
 
-	.hero-v2__bg-overlay,
-	.hero-v2__overlay {
+	.hero--home.hero--v2 .hero-v2__bg-overlay,
+	.hero-v2 .hero-v2__bg-overlay,
+	.hero--home.hero--v2 .hero-v2__overlay,
+	.hero-v2 .hero-v2__overlay {
 		position: absolute !important;
 		inset: 0 !important;
 		background: linear-gradient(
 			180deg,
-			rgba(3, 15, 35, 0.96) 0%,
-			rgba(3, 15, 35, 0.88) 50%,
-			rgba(3, 15, 35, 0.96) 100%
-		) !important; /* Increased overlay strength for text readability */
+			rgba(3, 15, 35, 0.65) 0%,
+			rgba(3, 15, 35, 0.45) 50%,
+			rgba(3, 15, 35, 0.65) 100%
+		) !important; /* Reduced overlay intensity for readability with visible background photo */
 		mix-blend-mode: normal !important;
 		opacity: 1 !important;
 		z-index: 2 !important;
+	}
+
+	.hero-v2__bg-overlay::after,
+	.hero-v2__overlay::after {
+		content: none !important; /* Disable the desktop white horizontal gradient overlay on mobile */
 	}
 
 	.home-section--partners,
@@ -4987,6 +5000,10 @@ textarea {
 	}
 
 	.hero-v2__bg-slide {
+		display: none !important; /* Hide other slides to preserve performance */
+	}
+
+	.hero-v2__bg-slide--1 {
 		display: block !important;
 		position: absolute !important;
 		inset: 0 !important;
@@ -4994,10 +5011,14 @@ textarea {
 		height: 100% !important;
 		object-fit: cover !important;
 		object-position: 80% center !important; /* Pushes architectural tower right to leave space for text */
+		opacity: 1 !important;
+		animation: none !important;
 	}
 
-	.hero-v2__bg-overlay,
-	.hero-v2__overlay {
+	.hero--home.hero--v2 .hero-v2__bg-overlay,
+	.hero-v2 .hero-v2__bg-overlay,
+	.hero--home.hero--v2 .hero-v2__overlay,
+	.hero-v2 .hero-v2__overlay {
 		position: absolute !important;
 		inset: 0 !important;
 		background: linear-gradient(
@@ -5010,6 +5031,11 @@ textarea {
 		mix-blend-mode: normal !important;
 		opacity: 1 !important;
 		z-index: 2 !important;
+	}
+
+	.hero-v2__bg-overlay::after,
+	.hero-v2__overlay::after {
+		content: none !important; /* Disable desktop white horizontal gradient on tablet */
 	}
 
 	.home-section--partners,
