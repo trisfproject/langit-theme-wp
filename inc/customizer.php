@@ -168,6 +168,7 @@ function langit_customizer_defaults() {
 		'company_address'             => __( "Ruko Grand Permata City, Blok A3 No. 9\nKarangsetia, Kec. Karangbahagia\nKabupaten Bekasi, Jawa Barat 17530", 'langit' ),
 		'company_working_hours'       => __( "Monday – Friday\n08:00 – 17:00 WIB", 'langit' ),
 		'contact_whatsapp_number'     => '+62 817-3933-300',
+		'office_phone'                => '+62 21 8911 3844',
 		'contact_whatsapp_url'        => '',
 		'contact_email_address'       => 'info@globalteknindo.co.id',
 		'contact_hero_description'    => __( 'Tim Global Teknindo siap membantu kebutuhan keamanan, jaringan, elektrikal, audio, instalasi, dan maintenance untuk fasilitas maupun industri Anda.', 'langit' ),
@@ -1680,6 +1681,10 @@ function langit_customize_register( $wp_customize ) {
 		),
 		'contact_whatsapp_number' => array(
 			'label'   => esc_html__( 'WhatsApp Number', 'langit' ),
+			'section' => 'langit_contact_information',
+		),
+		'office_phone' => array(
+			'label'   => esc_html__( 'Office Phone', 'langit' ),
 			'section' => 'langit_contact_information',
 		),
 		'contact_whatsapp_url' => array(

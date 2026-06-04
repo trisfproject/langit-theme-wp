@@ -5,11 +5,11 @@
  * @package Langit
  */
 
-$langit_footer_phone   = langit_theme_mod( 'contact_whatsapp_number' );
-$langit_footer_email   = langit_theme_mod( 'contact_email_address' );
-$langit_footer_wa_url  = langit_contact_whatsapp_url();
-$langit_footer_address = langit_theme_mod( 'company_address' );
-$langit_footer_hours   = langit_theme_mod( 'company_working_hours' );
+$langit_footer_phone     = langit_theme_mod( 'office_phone' );
+$langit_footer_phone_url = 'tel:' . preg_replace( '/[^0-9+]/', '', $langit_footer_phone );
+$langit_footer_email     = langit_theme_mod( 'contact_email_address' );
+$langit_footer_address   = langit_theme_mod( 'company_address' );
+$langit_footer_hours     = langit_theme_mod( 'company_working_hours' );
 ?>
 
 <section class="footer-cta">
@@ -45,7 +45,7 @@ $langit_footer_hours   = langit_theme_mod( 'company_working_hours' );
 				<?php if ( ! empty( $langit_footer_phone ) ) : ?>
 				<div class="site-footer__detail-item">
 					<dt><?php esc_html_e( 'Phone', 'langit' ); ?></dt>
-					<dd><a href="<?php echo esc_url( $langit_footer_wa_url ); ?>"><?php echo esc_html( $langit_footer_phone ); ?></a></dd>
+					<dd><a href="<?php echo esc_url( $langit_footer_phone_url ); ?>"><?php echo esc_html( $langit_footer_phone ); ?></a></dd>
 				</div>
 				<?php endif; ?>
 

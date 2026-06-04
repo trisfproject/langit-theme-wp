@@ -6,7 +6,7 @@
  */
 
 $langit_whatsapp_url = langit_contact_whatsapp_url();
-$langit_phone_number = langit_theme_mod( 'contact_whatsapp_number' );
+$langit_phone_number = langit_theme_mod( 'office_phone' );
 $langit_phone_url    = 'tel:' . preg_replace( '/[^0-9+]/', '', $langit_phone_number );
 $langit_email        = langit_theme_mod( 'contact_email_address' );
 $langit_address      = langit_theme_mod( 'company_address' );

@@ -207,7 +207,7 @@ function langit_output_organization_schema() {
 		'url'      => home_url( '/' ),
 		'logo'     => $logo_url,
 		'email'    => langit_theme_mod( 'contact_email_address' ),
-		'telephone' => langit_theme_mod( 'contact_whatsapp_number' ),
+		'telephone' => langit_theme_mod( 'office_phone' ),
 		'address'  => array(
 			'@type'           => 'PostalAddress',
 			'streetAddress'   => langit_theme_mod( 'company_address' ),

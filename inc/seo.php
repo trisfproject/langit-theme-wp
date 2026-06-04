@@ -194,7 +194,7 @@ function langit_output_schema() {
 				'image'      => langit_social_image_url(),
 				'logo'       => langit_schema_logo_url(),
 				'url'        => home_url( '/' ),
-				'telephone'  => langit_theme_mod( 'contact_whatsapp_number' ),
+				'telephone'  => langit_theme_mod( 'office_phone' ),
 				'email'      => langit_theme_mod( 'contact_email_address' ),
 				'priceRange' => '$$',
 				'address'    => array(
