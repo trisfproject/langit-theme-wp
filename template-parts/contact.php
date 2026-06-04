@@ -47,6 +47,15 @@ $langit_contacts_row2 = array(
 	),
 );
 ?>
+<?php
+langit_page_hero(
+	array(
+		'eyebrow' => esc_html__( 'CONTACT INFORMATION', 'langit' ),
+		'title'   => esc_html__( 'Reach Our Team', 'langit' ),
+		'text'    => esc_html__( 'Hubungi tim Global Teknindo untuk konsultasi proyek, permintaan survey, kebutuhan maintenance, maupun dukungan teknis untuk sistem keamanan, jaringan, elektrikal, fire alarm, dan infrastruktur bangunan.', 'langit' ),
+	)
+);
+?>
 
 <section id="contact-information" class="section section--surface">
 	<div class="container contact-page-grid">
