@@ -4432,7 +4432,7 @@ input[type="submit"]:focus {
 	.hero-v2__bg-layer {
 		position: relative !important;
 		width: 100% !important;
-		height: 40vh !important; /* Occupies ~40% of viewport height */
+		height: 35vh !important; /* Occupies ~35% of viewport height */
 		max-height: none !important;
 		aspect-ratio: auto !important;
 		z-index: 1 !important;
@@ -4489,10 +4489,10 @@ input[type="submit"]:focus {
 
 	.hero-v2__content-layer {
 		position: relative !important;
-		margin-top: -5.5rem !important; /* Pull content card up to overlap bottom of the image for connected composition */
-		background: linear-gradient(180deg, rgba(3, 15, 35, 0) 0%, rgba(3, 15, 35, 0.95) 3rem, #030f23 5.5rem) !important; /* Seamless fading transition */
+		margin-top: -5rem !important; /* Pull content card up to overlap bottom of the image for connected composition */
+		background: linear-gradient(180deg, rgba(3, 15, 35, 0) 0%, rgba(3, 15, 35, 0.95) 2.5rem, #030f23 4.5rem) !important; /* Seamless fading transition */
 		border-radius: 0 !important; /* Remove card outline to unify layout */
-		padding-block: 0.75rem 2.5rem !important; /* Reduced top padding to bring text closer to image subject */
+		padding-block: 0.5rem 1.75rem !important; /* Reduced top padding to bring text closer to image subject */
 		padding-inline: 1.25rem !important; /* Prevent edge-to-edge text */
 		gap: 1.25rem !important;
 		grid-template-columns: 1fr !important;
@@ -4508,7 +4508,7 @@ input[type="submit"]:focus {
 
 	.hero--v2 .hero-v2__badge,
 	.hero-v2 .hero-v2__badge {
-		margin-bottom: 0.5rem !important;
+		margin-bottom: 0.35rem !important; /* Reduced vertical spacing */
 		background: rgba(255, 255, 255, 0.08) !important;
 		border-color: rgba(255, 255, 255, 0.15) !important;
 		color: #ffffff !important;
@@ -4526,7 +4526,7 @@ input[type="submit"]:focus {
 	.hero--v2 .hero-v2__title {
 		font-size: clamp(1.8rem, 7vw, 2.35rem) !important;
 		line-height: 1.05 !important;
-		margin-bottom: 0.5rem !important;
+		margin-bottom: 0.35rem !important; /* Reduced vertical spacing */
 		color: #ffffff !important;
 	}
 
@@ -4543,7 +4543,7 @@ input[type="submit"]:focus {
 	.hero-v2 .hero-v2__description {
 		font-size: 0.92rem !important;
 		line-height: 1.55 !important;
-		margin-bottom: 1rem !important;
+		margin-bottom: 0.75rem !important; /* Reduced vertical spacing */
 		color: rgba(241, 245, 249, 0.85) !important;
 		/* Limit description to exactly 3 lines with truncation */
 		display: -webkit-box !important;
@@ -4558,7 +4558,7 @@ input[type="submit"]:focus {
 		flex-direction: column !important;
 		align-items: stretch !important;
 		width: 100% !important;
-		gap: 0.65rem !important;
+		gap: 0.5rem !important; /* Reduced spacing between stacked buttons */
 		display: flex !important;
 	}
 
@@ -4578,7 +4578,7 @@ input[type="submit"]:focus {
 
 	.home-section--partners,
 	.home-section-partners {
-		padding-top: 2rem !important;
+		padding-top: 1rem !important; /* Draw Technology Partners section closer */
 	}
 }
 
