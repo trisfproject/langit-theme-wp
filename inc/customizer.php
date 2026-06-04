@@ -23,11 +23,15 @@ function langit_customizer_defaults() {
 		'hero_primary_button_url'     => '#services',
 		'hero_secondary_button_text'  => __( 'Contact Us', 'langit' ),
 		'hero_secondary_button_url'   => home_url( '/contact/' ),
-		'hero_background_1'           => get_template_directory_uri() . '/assets/images/services/cctv-security-system.webp',
-		'hero_background_2'           => get_template_directory_uri() . '/assets/images/projects/network-infrastructure-deployment.webp',
-		'hero_background_3'           => get_template_directory_uri() . '/assets/images/projects/fire-alarm-integration.webp',
-		'hero_background_4'           => get_template_directory_uri() . '/assets/images/projects/audio-public-address-installation.webp',
-		'hero_overlay_opacity'        => '0.82',
+		'hero_background_1'           => get_template_directory_uri() . '/assets/images/hero/hero-01.webp',
+		'hero_background_2'           => get_template_directory_uri() . '/assets/images/hero/hero-02.webp',
+		'hero_background_3'           => get_template_directory_uri() . '/assets/images/hero/hero-03.webp',
+		'hero_background_4'           => get_template_directory_uri() . '/assets/images/hero/hero-04.webp',
+		'hero_background_5'           => get_template_directory_uri() . '/assets/images/hero/hero-05.webp',
+		'hero_background_6'           => get_template_directory_uri() . '/assets/images/hero/hero-06.webp',
+		'hero_slideshow_enabled'      => '1',
+		'hero_slideshow_duration'     => '10',
+		'hero_overlay_strength'       => '75',
 		'show_hero_section'           => '1',
 		'show_company_section'        => '1',
 		'show_services_section'       => '1',
@@ -344,6 +348,28 @@ function langit_sanitize_overlay_opacity( $value ) {
 }
 
 /**
+ * Sanitize hero overlay strength.
+ *
+ * @param mixed $value Strength value.
+ * @return string
+ */
+function langit_sanitize_overlay_strength( $value ) {
+	$strength = absint( $value );
+	return (string) min( 90, max( 40, $strength ) );
+}
+
+/**
+ * Sanitize hero slideshow duration.
+ *
+ * @param mixed $value Duration in seconds.
+ * @return string
+ */
+function langit_sanitize_slideshow_duration( $value ) {
+	$duration = absint( $value );
+	return (string) min( 30, max( 5, $duration ) );
+}
+
+/**
  * Sanitize a comma-separated list of post IDs.
  *
  * @param string $value Input value.
@@ -423,7 +449,7 @@ function langit_customize_register( $wp_customize ) {
 	$wp_customize->add_panel(
 		'langit_theme_settings',
 		array(
-			'title'       => esc_html__( 'Langit Theme Settings', 'langit' ),
+			'title'       => esc_html__( 'Homepage Settings', 'langit' ),
 			'description' => esc_html__( 'Editable homepage and footer content for the Langit theme.', 'langit' ),
 			'priority'    => 30,
 		)
@@ -538,42 +564,73 @@ function langit_customize_register( $wp_customize ) {
 		),
 		'hero_background_1' => array(
 			'label'       => esc_html__( 'Hero Background 1', 'langit' ),
-			'description' => esc_html__( 'Recommended topic: CCTV & Security System. Suggested size: 1920x1080 WebP.', 'langit' ),
+			'description' => esc_html__( 'Recommended size: 2880 × 1620 pixels', 'langit' ),
 			'section'     => 'langit_hero_settings',
 			'type'        => 'image',
 			'sanitize'    => 'esc_url_raw',
 		),
 		'hero_background_2' => array(
 			'label'       => esc_html__( 'Hero Background 2', 'langit' ),
-			'description' => esc_html__( 'Recommended topic: Networking Infrastructure & Mechanical Electrical.', 'langit' ),
+			'description' => esc_html__( 'Recommended size: 2880 × 1620 pixels', 'langit' ),
 			'section'     => 'langit_hero_settings',
 			'type'        => 'image',
 			'sanitize'    => 'esc_url_raw',
 		),
 		'hero_background_3' => array(
 			'label'       => esc_html__( 'Hero Background 3', 'langit' ),
-			'description' => esc_html__( 'Recommended topic: Fire Alarm System.', 'langit' ),
+			'description' => esc_html__( 'Recommended size: 2880 × 1620 pixels', 'langit' ),
 			'section'     => 'langit_hero_settings',
 			'type'        => 'image',
 			'sanitize'    => 'esc_url_raw',
 		),
 		'hero_background_4' => array(
 			'label'       => esc_html__( 'Hero Background 4', 'langit' ),
-			'description' => esc_html__( 'Recommended topic: Audio & Public Address.', 'langit' ),
+			'description' => esc_html__( 'Recommended size: 2880 × 1620 pixels', 'langit' ),
 			'section'     => 'langit_hero_settings',
 			'type'        => 'image',
 			'sanitize'    => 'esc_url_raw',
 		),
-		'hero_overlay_opacity' => array(
-			'label'       => esc_html__( 'Hero Overlay Opacity', 'langit' ),
-			'description' => esc_html__( 'Adjust darkness for text readability. Recommended range: 0.70 - 0.88.', 'langit' ),
+		'hero_background_5' => array(
+			'label'       => esc_html__( 'Hero Background 5', 'langit' ),
+			'description' => esc_html__( 'Recommended size: 2880 × 1620 pixels', 'langit' ),
+			'section'     => 'langit_hero_settings',
+			'type'        => 'image',
+			'sanitize'    => 'esc_url_raw',
+		),
+		'hero_background_6' => array(
+			'label'       => esc_html__( 'Hero Background 6', 'langit' ),
+			'description' => esc_html__( 'Recommended size: 2880 × 1620 pixels', 'langit' ),
+			'section'     => 'langit_hero_settings',
+			'type'        => 'image',
+			'sanitize'    => 'esc_url_raw',
+		),
+		'hero_slideshow_enabled' => array(
+			'label'    => esc_html__( 'Enable Hero Slideshow', 'langit' ),
+			'section'  => 'langit_hero_settings',
+			'type'     => 'checkbox',
+			'sanitize' => 'langit_sanitize_checkbox',
+		),
+		'hero_slideshow_duration' => array(
+			'label'       => esc_html__( 'Slide Duration (seconds)', 'langit' ),
 			'section'     => 'langit_hero_settings',
 			'type'        => 'number',
-			'sanitize'    => 'langit_sanitize_overlay_opacity',
+			'sanitize'    => 'langit_sanitize_slideshow_duration',
 			'input_attrs' => array(
-				'min'  => '0.35',
-				'max'  => '0.95',
-				'step' => '0.01',
+				'min'  => '5',
+				'max'  => '30',
+				'step' => '1',
+			),
+		),
+		'hero_overlay_strength' => array(
+			'label'       => esc_html__( 'Overlay Strength (%)', 'langit' ),
+			'description' => esc_html__( 'Controls dark background contrast for text legibility.', 'langit' ),
+			'section'     => 'langit_hero_settings',
+			'type'        => 'range',
+			'sanitize'    => 'langit_sanitize_overlay_strength',
+			'input_attrs' => array(
+				'min'  => '40',
+				'max'  => '90',
+				'step' => '1',
 			),
 		),
 		'show_company_section' => array(
@@ -1901,3 +1958,36 @@ function langit_contact_whatsapp_url( $message = '' ) {
 
 	return langit_whatsapp_url( langit_theme_mod( 'contact_whatsapp_number' ), $message );
 }
+
+/**
+ * Print Customizer control scripts in the footer to show live range slider values.
+ */
+function langit_customize_controls_print_scripts() {
+	?>
+	<script type="text/javascript">
+		(function($) {
+			wp.customize.bind('ready', function() {
+				// Dynamic value display for Range Slider: Overlay Strength
+				wp.customize('langit_hero_overlay_strength', function(setting) {
+					var control = wp.customize.control('langit_hero_overlay_strength');
+					if (control) {
+						var $container = control.container;
+						var $title = $container.find('.customize-control-title');
+						
+						// Create value display element
+						var $valueDisplay = $('<span class="range-value" style="font-weight: 600; margin-left: 6px; color: #007cba;">' + setting.get() + '%</span>');
+						$title.append($valueDisplay);
+						
+						// Update display on value change
+						setting.bind(function(newVal) {
+							$valueDisplay.text(newVal + '%');
+						});
+					}
+				});
+			});
+		})(jQuery);
+	</script>
+	<?php
+}
+add_action( 'customize_controls_print_footer_scripts', 'langit_customize_controls_print_scripts' );
+

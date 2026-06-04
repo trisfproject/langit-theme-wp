@@ -187,7 +187,6 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 	<?php
 	/* Hero V2 — force V2 content. Customizer values used as overrideable fallbacks. */
 	$langit_hero_primary_url   = langit_theme_mod( 'hero_primary_button_url' ) ?: '#services';
-	$langit_hero_visual        = langit_theme_mod( 'hero_visual_image' ) ?: get_template_directory_uri() . '/assets/images/hero-v2-visual.webp';
 
 	/* V2 canonical content — DB values override only if explicitly set in Customizer */
 	$langit_hero_eyebrow       = langit_theme_mod( 'hero_eyebrow' )            ?: 'INTEGRATED BUILDING TECHNOLOGY';
@@ -198,20 +197,96 @@ if ( langit_theme_mod_enabled( 'show_certifications_section' ) ) {
 	$langit_hero_description   = langit_theme_mod( 'hero_description' )         ?: 'PT Global Teknindo menghadirkan solusi terintegrasi untuk keamanan, jaringan, elektrikal, fire alarm, audio, instalasi, dan pemeliharaan melalui konsultasi, implementasi, serta dukungan teknis yang menjaga operasional fasilitas tetap andal.';
 	$langit_hero_btn_primary   = langit_theme_mod( 'hero_primary_button_text' ) ?: 'Explore Services';
 	$langit_hero_btn_secondary = langit_theme_mod( 'hero_secondary_button_text' ) ?: 'Contact Us';
+
+	// Hero Background Slideshow Settings
+	$langit_slideshow_enabled  = langit_theme_mod_enabled( 'hero_slideshow_enabled' );
+	$langit_slide_duration     = (int) langit_theme_mod( 'hero_slideshow_duration' ) ?: 10;
+	$langit_overlay_strength   = (int) langit_theme_mod( 'hero_overlay_strength' ) ?: 75;
+
+	$langit_hero_slides = array();
+	for ( $i = 1; $i <= 6; $i++ ) {
+		$slide_img = langit_theme_mod( 'hero_background_' . $i );
+		if ( ! empty( $slide_img ) ) {
+			$langit_hero_slides[] = $slide_img;
+		}
+	}
+
+	// Fallback to default if no images uploaded
+	if ( empty( $langit_hero_slides ) ) {
+		$langit_hero_slides[] = get_template_directory_uri() . '/assets/images/hero/hero-01.webp';
+	}
+
+	// Restrict to single slide if slideshow disabled
+	if ( ! $langit_slideshow_enabled ) {
+		$langit_hero_slides = array( $langit_hero_slides[0] );
+	}
+
+	$langit_num_slides = count( $langit_hero_slides );
 	?>
+	<style id="langit-hero-dynamic-css">
+		.hero--v2 .hero-v2__bg-overlay {
+			opacity: <?php echo esc_html( $langit_overlay_strength / 100 ); ?> !important;
+		}
+		<?php if ( $langit_num_slides > 1 ) : 
+			$langit_total_time = $langit_num_slides * $langit_slide_duration;
+			$langit_transition_time = 2; // 2s crossfade
+			$langit_slot_pct = 100 / $langit_num_slides;
+			$langit_transition_pct = ( $langit_transition_time / $langit_total_time ) * 100;
+			$langit_visible_pct = $langit_slot_pct - $langit_transition_pct;
+			$langit_fade_in_start = 100 - $langit_transition_pct;
+			?>
+			@keyframes hero-slideshow-custom {
+				0%, <?php echo esc_html( $langit_visible_pct ); ?>% {
+					opacity: 1;
+				}
+				<?php echo esc_html( $langit_slot_pct ); ?>%, <?php echo esc_html( $langit_fade_in_start ); ?>% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			.hero--v2 .hero-v2__bg-slide {
+				display: block;
+				position: absolute;
+				inset: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center center;
+				opacity: 0;
+				animation: hero-slideshow-custom <?php echo esc_html( $langit_total_time ); ?>s linear infinite !important;
+			}
+			<?php for ( $i = 0; $i < $langit_num_slides; $i++ ) : 
+				$langit_delay = -1 * ( ( $langit_num_slides - $i ) % $langit_num_slides ) * $langit_slide_duration;
+				?>
+				.hero--v2 .hero-v2__bg-slide--<?php echo esc_html( $i + 1 ); ?> {
+					animation-delay: <?php echo esc_html( $langit_delay ); ?>s !important;
+				}
+			<?php endfor; ?>
+		<?php else : ?>
+			.hero--v2 .hero-v2__bg-slide {
+				display: none !important;
+			}
+			.hero--v2 .hero-v2__bg-slide--1 {
+				display: block !important;
+				opacity: 1 !important;
+				animation: none !important;
+			}
+		<?php endif; ?>
+	</style>
 	<section class="hero hero--home hero--v2" aria-label="<?php esc_attr_e( 'Homepage Hero', 'langit' ); ?>" data-langit-hero="v2">
 		<!-- Background Layer -->
 		<div class="hero-v2__bg-layer" aria-hidden="true">
-			<img
-				class="hero-v2__bg-img"
-				src="<?php echo esc_url( $langit_hero_visual ); ?>"
-				width="1920"
-				height="1080"
-				alt=""
-				loading="eager"
-				fetchpriority="high"
-				decoding="async"
-			>
+			<div class="hero-v2__bg-slides">
+				<?php foreach ( $langit_hero_slides as $index => $slide_url ) : 
+					$slide_class = 'hero-v2__bg-slide hero-v2__bg-slide--' . ( $index + 1 );
+					$loading = ( 0 === $index ) ? 'eager' : 'lazy';
+					$fetchpriority = ( 0 === $index ) ? 'fetchpriority="high"' : '';
+					?>
+					<img class="<?php echo esc_attr( $slide_class ); ?>" src="<?php echo esc_url( $slide_url ); ?>" alt="" loading="<?php echo esc_attr( $loading ); ?>" <?php echo $fetchpriority; ?> decoding="async">
+				<?php endforeach; ?>
+			</div>
 			<div class="hero-v2__bg-overlay"></div>
 		</div>
 
