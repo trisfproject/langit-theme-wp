@@ -17,9 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 function langit_customizer_defaults() {
 	return array(
 		'hero_eyebrow'                => __( 'INTEGRATED BUILDING TECHNOLOGY', 'langit' ),
-		'hero_title'                  => __( 'Reliable Building Technology Systems', 'langit' ),
+		'hero_title'                  => __( 'Integrated Building Technology Solutions', 'langit' ),
 		'hero_description'            => __( 'PT Global Teknindo menghadirkan solusi terintegrasi untuk keamanan, jaringan, elektrikal, fire alarm, audio, instalasi, dan pemeliharaan melalui konsultasi, implementasi, serta dukungan teknis yang menjaga operasional fasilitas tetap andal.', 'langit' ),
-		'hero_primary_button_text'    => __( 'Our Services', 'langit' ),
+		'hero_primary_button_text'    => __( 'Explore Services', 'langit' ),
 		'hero_primary_button_url'     => '#services',
 		'hero_secondary_button_text'  => __( 'Contact Us', 'langit' ),
 		'hero_secondary_button_url'   => home_url( '/contact/' ),
@@ -75,7 +75,7 @@ function langit_customizer_defaults() {
 		'services_section_title'      => __( 'Integrated Services for Building Infrastructure', 'langit' ),
 		'featured_service_ids'        => '',
 		'featured_service_count'      => '6',
-		'partners_section_eyebrow'    => __( 'TECHNOLOGY PARTNERS', 'langit' ),
+		'partners_section_eyebrow'    => __( 'TRUSTED TECHNOLOGY PARTNERS', 'langit' ),
 		'partners_section_title'      => __( 'Technologies Trusted<br class="desktop-only"> in Our Implementations', 'langit' ),
 		'partners_section_description' => __( 'PT Global Teknindo mengimplementasikan solusi menggunakan teknologi terpercaya dari produsen global dan platform enterprise yang telah terbukti pada berbagai proyek industri, komersial, dan fasilitas operasional modern.', 'langit' ),
 		'industry_section_eyebrow'    => __( 'INDUSTRIES WE SERVE', 'langit' ),

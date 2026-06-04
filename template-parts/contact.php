@@ -10,41 +10,40 @@ $langit_whatsapp_url = langit_contact_whatsapp_url();
 $langit_phone_number = langit_theme_mod( 'contact_whatsapp_number' );
 $langit_phone_url    = 'tel:' . preg_replace( '/[^0-9+]/', '', $langit_phone_number );
 
-$langit_contacts = array(
+
+$langit_contacts_row1 = array(
 	array(
 		'label' => esc_html__( 'WhatsApp', 'langit' ),
 		'value' => langit_theme_mod( 'contact_whatsapp_number' ),
 		'text'  => '',
 		'icon'  => $langit_icon_uri . 'contact.svg',
-		'class' => '',
 	),
 	array(
 		'label' => esc_html__( 'Phone', 'langit' ),
 		'value' => $langit_phone_number,
 		'text'  => '',
 		'icon'  => $langit_icon_uri . 'time.svg',
-		'class' => '',
 	),
 	array(
 		'label' => esc_html__( 'Email', 'langit' ),
 		'value' => langit_theme_mod( 'contact_email_address' ),
 		'text'  => '',
 		'icon'  => $langit_icon_uri . 'contact.svg',
-		'class' => '',
 	),
+);
+
+$langit_contacts_row2 = array(
 	array(
 		'label' => esc_html__( 'Office Address', 'langit' ),
 		'value' => langit_theme_mod( 'company_address' ),
 		'text'  => '',
 		'icon'  => $langit_icon_uri . 'location.svg',
-		'class' => '',
 	),
 	array(
 		'label' => esc_html__( 'Working Hours', 'langit' ),
 		'value' => langit_theme_mod( 'company_working_hours' ),
 		'text'  => esc_html__( 'Respons konsultasi mengikuti jam operasional.', 'langit' ),
 		'icon'  => $langit_icon_uri . 'time.svg',
-		'class' => 'contact-card--wide',
 	),
 );
 ?>
@@ -62,21 +61,44 @@ $langit_contacts = array(
 			);
 			?>
 
-			<div class="contact-info-grid contact-info-grid--enterprise">
-				<?php foreach ( $langit_contacts as $langit_contact ) : ?>
-					<?php
-					langit_card(
-						array(
-							'meta'       => $langit_contact['label'],
-							'title'      => $langit_contact['value'],
-							'text'       => $langit_contact['text'],
-							'class'      => langit_class_names( array( 'contact-card', $langit_contact['class'] ) ),
-							'icon_class' => 'contact-card__icon',
-							'icon_url'   => $langit_contact['icon'],
-						)
-					);
-					?>
-				<?php endforeach; ?>
+			<div class="contact-info-block">
+
+				<!-- Row 1: WhatsApp · Phone · Email (3 equal columns) -->
+				<div class="contact-info-row contact-info-row--channels">
+					<?php foreach ( $langit_contacts_row1 as $langit_contact ) : ?>
+						<?php
+						langit_card(
+							array(
+								'meta'       => $langit_contact['label'],
+								'title'      => $langit_contact['value'],
+								'text'       => $langit_contact['text'],
+								'class'      => 'contact-card',
+								'icon_class' => 'contact-card__icon',
+								'icon_url'   => $langit_contact['icon'],
+							)
+						);
+						?>
+					<?php endforeach; ?>
+				</div>
+
+				<!-- Row 2: Office Address · Working Hours (2 equal columns) -->
+				<div class="contact-info-row contact-info-row--location">
+					<?php foreach ( $langit_contacts_row2 as $langit_contact ) : ?>
+						<?php
+						langit_card(
+							array(
+								'meta'       => $langit_contact['label'],
+								'title'      => $langit_contact['value'],
+								'text'       => $langit_contact['text'],
+								'class'      => 'contact-card',
+								'icon_class' => 'contact-card__icon',
+								'icon_url'   => $langit_contact['icon'],
+							)
+						);
+						?>
+					<?php endforeach; ?>
+				</div>
+
 			</div>
 
 			<div class="cluster contact-page-actions">
