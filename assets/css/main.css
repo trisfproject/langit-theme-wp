@@ -4372,6 +4372,10 @@ input[type="submit"]:focus {
 	text-align: center;
 }
 
+.contact-page .footer-cta__inner {
+	max-width: 820px;
+}
+
 .footer-cta h2 {
 	max-width: 720px;
 	margin-bottom: 0;

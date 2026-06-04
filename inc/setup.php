@@ -82,3 +82,15 @@ function langit_favicon_links() {
 	printf( '<link rel="apple-touch-icon" href="%1$s">' . "\n", esc_url( $icon_url ) );
 }
 add_action( 'wp_head', 'langit_favicon_links' );
+
+/**
+ * Add custom body classes for specific pages.
+ */
+function langit_body_classes( $classes ) {
+	if ( is_page( 'contact' ) || is_page_template( 'page-contact.php' ) ) {
+		$classes[] = 'contact-page';
+	}
+	return $classes;
+}
+add_filter( 'body_class', 'langit_body_classes' );
+
