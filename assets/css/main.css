@@ -4939,14 +4939,14 @@ textarea {
 @media (min-width: 768px) and (max-width: 1024px) {
 	.hero--home.hero--v2,
 	.hero-v2 {
-		min-height: 60vh !important; /* Hero height approximately 60vh-65vh */
+		min-height: 56vh !important; /* Shorter footprint so partners rise above or close to fold */
 		display: flex !important;
 		flex-direction: column !important;
 		justify-content: center !important;
 	}
 
 	.hero-v2__content-layer {
-		padding-block: calc(var(--langit-header-height) + 2rem) 2rem !important; /* Reduced bottom padding for tighter visual flow to Partners */
+		padding-block: calc(var(--langit-header-height) + 1.25rem) 1.5rem !important; /* Compressed padding */
 		padding-inline: clamp(4rem, 8vw, 6rem) !important; /* Target visual spacing: 64px–96px horizontal padding */
 		gap: 1.5rem !important;
 		grid-template-columns: 1fr !important;
@@ -4963,7 +4963,7 @@ textarea {
 
 	.hero--v2 .hero-v2__badge,
 	.hero-v2 .hero-v2__badge {
-		margin-bottom: 0.75rem !important;
+		margin-bottom: 0.5rem !important; /* Reduced vertical spacing */
 		background: rgba(255, 255, 255, 0.08) !important;
 		border-color: rgba(255, 255, 255, 0.15) !important;
 		color: #ffffff !important;
@@ -4981,15 +4981,24 @@ textarea {
 	.hero--v2 .hero-v2__title {
 		font-size: clamp(2.1rem, 4.5vw, 3rem) !important; /* Intentionally smaller, balanced heading */
 		line-height: 1.05 !important;
-		margin-bottom: 0.75rem !important;
+		margin-bottom: 0.5rem !important; /* Reduced vertical spacing */
 		color: #ffffff !important;
+	}
+
+	.hero-v2__headline-line {
+		display: inline !important;
+		white-space: normal !important;
+	}
+
+	.hero-v2__headline-line:not(:last-child)::after {
+		content: " " !important;
 	}
 
 	.hero--v2 .hero-v2__description,
 	.hero-v2 .hero-v2__description {
 		font-size: 0.98rem !important;
 		line-height: 1.68 !important;
-		margin-bottom: 1.25rem !important;
+		margin-bottom: 1rem !important; /* Reduced vertical spacing */
 		color: rgba(241, 245, 249, 0.85) !important;
 		max-width: 52ch !important;
 	}
@@ -5060,8 +5069,7 @@ textarea {
 
 	.home-section--partners,
 	.home-section-partners {
-		padding-top: 1.25rem !important; /* Reduce spacing between Hero and Technology Partners */
-		padding-bottom: 24px !important;
+		padding-block: 1rem 1.25rem !important; /* Reduce spacing to bring partners closer */
 	}
 }
 
