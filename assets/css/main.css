@@ -4424,6 +4424,7 @@ input[type="submit"]:focus {
 		min-height: auto !important;
 		display: flex !important;
 		flex-direction: column !important;
+		padding: 0 !important; /* Remove base hero padding to eliminate top navbar gap and bottom empty space */
 		background: #030f23 !important; /* Premium dark navy background for stacked layout */
 		border-bottom: 1px solid rgba(203, 213, 225, 0.1) !important;
 	}
