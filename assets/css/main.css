@@ -4418,18 +4418,78 @@ input[type="submit"]:focus {
 }
 
 @media (max-width: 767px) {
-	/* Hero V2 Mobile responsive (≤ 767px) */
+	/* Hero V2 Mobile responsive (≤ 767px) - Stacked Layout */
 	.hero--home.hero--v2,
 	.hero-v2 {
 		min-height: auto !important;
+		display: flex !important;
+		flex-direction: column !important;
+		background: #030f23 !important; /* Premium dark navy background for stacked layout */
+		border-bottom: 1px solid rgba(203, 213, 225, 0.1) !important;
+	}
+
+	.hero-v2__bg-layer {
+		position: relative !important;
+		width: 100% !important;
+		height: 40vh !important; /* Occupies ~40% of viewport height */
+		max-height: none !important;
+		aspect-ratio: auto !important;
+		z-index: 1 !important;
+		display: block !important;
+		overflow: hidden !important;
+	}
+
+	.hero-v2__bg-slides {
+		position: absolute !important;
+		inset: 0 !important;
+		width: 100% !important;
+		height: 100% !important;
+		max-height: none !important;
+	}
+
+	.hero-v2__bg-slide {
+		display: none !important; /* Hide other slides to preserve performance */
+	}
+
+	.hero-v2__bg-slide--1 {
+		display: block !important;
+		position: absolute !important;
+		inset: 0 !important;
+		width: 100% !important;
+		height: 100% !important;
+		object-fit: cover !important;
+		object-position: right center !important; /* Focus on strongest visual building subject */
+		opacity: 1 !important;
+		animation: none !important;
+		transform: none !important;
+	}
+
+	.hero--home.hero--v2 .hero-v2__bg-overlay,
+	.hero-v2 .hero-v2__bg-overlay,
+	.hero--home.hero--v2 .hero-v2__overlay,
+	.hero-v2 .hero-v2__overlay {
+		position: absolute !important;
+		inset: 0 !important;
+		background: rgba(3, 15, 35, 0.45) !important; /* Slightly darkens the image to keep it highly visible */
+		mix-blend-mode: normal !important;
+		opacity: 1 !important;
+		z-index: 2 !important;
+	}
+
+	.hero-v2__bg-overlay::after,
+	.hero-v2__overlay::after {
+		content: none !important; /* Disable desktop horizontal white gradient */
 	}
 
 	.hero-v2__content-layer {
-		padding-block: calc(var(--langit-header-height) + 1.25rem) 3.5rem !important; /* Shorter vertical footprint, breathing room at bottom */
-		gap: 1rem !important; /* Reduced vertical spacing */
+		position: relative !important;
+		padding-block: 2.25rem 2.75rem !important; /* Spaced content below the image */
+		padding-inline: 1.25rem !important; /* Prevent edge-to-edge text */
+		gap: 1.25rem !important;
 		grid-template-columns: 1fr !important;
-		position: relative;
 		z-index: 10;
+		box-sizing: border-box !important;
+		width: 100% !important;
 	}
 
 	.hero-v2__content-inner {
@@ -4438,7 +4498,7 @@ input[type="submit"]:focus {
 
 	.hero--v2 .hero-v2__badge,
 	.hero-v2 .hero-v2__badge {
-		margin-bottom: 0.5rem !important; /* Tightened breathing room */
+		margin-bottom: 0.5rem !important;
 		background: rgba(255, 255, 255, 0.08) !important;
 		border-color: rgba(255, 255, 255, 0.15) !important;
 		color: #ffffff !important;
@@ -4454,7 +4514,7 @@ input[type="submit"]:focus {
 	.hero-v2 .hero-v2__headline,
 	.hero-v2 .hero-v2__title,
 	.hero--v2 .hero-v2__title {
-		font-size: clamp(1.8rem, 7vw, 2.35rem) !important; /* Prominent but scaled title */
+		font-size: clamp(1.8rem, 7vw, 2.35rem) !important;
 		line-height: 1.05 !important;
 		margin-bottom: 0.5rem !important;
 		color: #ffffff !important;
@@ -4497,67 +4557,9 @@ input[type="submit"]:focus {
 		text-align: center !important;
 	}
 
-	.hero-v2__bg-layer {
-		position: absolute !important;
-		inset: 0 !important;
-		width: 100% !important;
-		height: 100% !important;
-		max-height: none !important;
-		aspect-ratio: auto !important;
-		z-index: 1 !important;
-	}
-
-	.hero-v2__bg-slides {
-		position: absolute !important;
-		inset: 0 !important;
-		width: 100% !important;
-		height: 100% !important;
-		max-height: none !important;
-	}
-
-	.hero-v2__bg-slide {
-		display: none !important; /* Hide other slides to preserve performance */
-	}
-
-	.hero-v2__bg-slide--1 {
-		display: block !important;
-		position: absolute !important;
-		inset: 0 !important;
-		width: 100% !important;
-		height: 100% !important;
-		object-fit: cover !important;
-		object-position: right center !important; /* Move crop building away from text */
-		transform: scale(2.0) !important; /* Zoom background image (180%-220%) */
-		transform-origin: right center !important; /* Focus on strongest visual subject */
-		opacity: 1 !important;
-		animation: none !important;
-	}
-
-	.hero--home.hero--v2 .hero-v2__bg-overlay,
-	.hero-v2 .hero-v2__bg-overlay,
-	.hero--home.hero--v2 .hero-v2__overlay,
-	.hero-v2 .hero-v2__overlay {
-		position: absolute !important;
-		inset: 0 !important;
-		background: linear-gradient(
-			180deg,
-			rgba(3, 15, 35, 0.65) 0%,
-			rgba(3, 15, 35, 0.45) 50%,
-			rgba(3, 15, 35, 0.65) 100%
-		) !important; /* Reduced overlay intensity for readability with visible background photo */
-		mix-blend-mode: normal !important;
-		opacity: 1 !important;
-		z-index: 2 !important;
-	}
-
-	.hero-v2__bg-overlay::after,
-	.hero-v2__overlay::after {
-		content: none !important; /* Disable the desktop white horizontal gradient overlay on mobile */
-	}
-
 	.home-section--partners,
 	.home-section-partners {
-		padding-top: 2rem !important; /* Added more spacing before partners */
+		padding-top: 2rem !important;
 	}
 }
 
