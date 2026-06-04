@@ -4982,7 +4982,7 @@ textarea {
 	.hero--v2 .hero-v2__title {
 		font-size: clamp(2.1rem, 4.5vw, 3rem) !important; /* Intentionally smaller, balanced heading */
 		line-height: 1.05 !important;
-		margin-bottom: 1.75rem !important; /* Visual spacing above description (moves it down 20px) */
+		margin-bottom: 3.5rem !important; /* Spacing above description (moves it down further 28px) */
 		color: #ffffff !important;
 	}
 
@@ -4997,11 +4997,11 @@ textarea {
 
 	.hero--v2 .hero-v2__description,
 	.hero-v2 .hero-v2__description {
-		font-size: 0.92rem !important;
-		line-height: 1.5 !important;
-		margin-bottom: 0.75rem !important; /* Spacing below description */
+		font-size: 0.85rem !important;
+		line-height: 1.4 !important;
+		margin-bottom: 0.95rem !important; /* Spacing below description to keep CTA position unchanged */
 		color: rgba(241, 245, 249, 0.85) !important;
-		max-width: 60ch !important;
+		max-width: none !important;
 	}
 
 	.hero-v2__cta,
