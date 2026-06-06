@@ -6255,8 +6255,135 @@ textarea {
 	}
 }
 
+/* =============================================================================
+   INNER PAGE HERO OPTIMIZATION
+   Minimalist B2B design system alignment · Tighter hierarchy
+   ============================================================================= */
 
+/* Spacing and heights */
+.page-hero {
+	padding-top: 48px !important;
+	padding-bottom: 48px !important;
+	min-height: 0 !important;
+	display: block !important;
+}
 
+@media (min-width: 768px) {
+	.page-hero {
+		padding-top: 64px !important;
+		padding-bottom: 64px !important;
+	}
+}
 
+@media (min-width: 1025px) {
+	.page-hero {
+		padding-top: 72px !important;
+		padding-bottom: 72px !important;
+	}
+}
 
+/* Typography scale and groupings */
+.page-hero h1 {
+	font-size: 40px !important;
+	line-height: 1.1 !important;
+	font-weight: 800 !important;
+	letter-spacing: -0.025em !important;
+	margin-top: 0 !important;
+	margin-bottom: 20px !important;
+}
 
+.page-hero h1:last-child {
+	margin-bottom: 0 !important;
+}
+
+.page-hero .section-eyebrow {
+	margin-top: 0 !important;
+	margin-bottom: 16px !important;
+}
+
+.page-hero .lede {
+	font-size: 16px !important;
+	line-height: 1.7 !important;
+	max-width: 700px !important;
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+@media (min-width: 768px) {
+	.page-hero h1 {
+		font-size: 48px !important;
+	}
+	.page-hero .lede {
+		font-size: 18px !important;
+	}
+}
+
+@media (min-width: 1025px) {
+	.page-hero h1 {
+		font-size: 56px !important;
+		line-height: 1.05 !important;
+	}
+	.page-hero .lede {
+		font-size: 20px !important;
+	}
+}
+
+/* Treat eyebrow, headline, and description as one visual group */
+.page-hero .stack > * + * {
+	margin-top: 0 !important;
+}
+
+/* Transition to next content section */
+.page-hero + .section,
+.page-hero + .blog-layout,
+.page-hero + .product-nav-section,
+.page-hero + * > .section:first-child,
+.page-hero + * > .blog-layout:first-child {
+	padding-top: clamp(2rem, 3.5vw, 3.5rem) !important;
+}
+
+/* Grid alignment and left-align logic */
+.page-hero__content {
+	width: min(100% - (var(--langit-gutter) * 2), var(--langit-container)) !important;
+	max-width: var(--langit-container) !important;
+}
+
+.page-hero .container {
+	display: flex !important;
+	flex-direction: column !important;
+	align-items: flex-start !important;
+	text-align: left !important;
+}
+
+/* Base mobile width: 100% */
+.page-hero .container > * {
+	width: 100% !important;
+	max-width: 100% !important;
+}
+
+/* Eyebrow badge compact pill styling (does not stretch) */
+.page-hero .section-eyebrow {
+	width: auto !important;
+	width: fit-content !important;
+	display: inline-flex !important;
+}
+
+/* Tablet viewports: max-width around 720px / description 700px */
+@media (min-width: 768px) {
+	.page-hero .container > * {
+		max-width: 720px !important;
+	}
+	.page-hero .lede {
+		max-width: 700px !important;
+	}
+}
+
+/* Desktop viewports: max-width ~920px / description ~820px */
+@media (min-width: 1025px) {
+	.page-hero .container > * {
+		max-width: 920px !important;
+	}
+	.page-hero .lede {
+		max-width: 820px !important;
+	}
+}

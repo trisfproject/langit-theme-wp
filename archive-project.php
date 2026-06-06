@@ -12,9 +12,9 @@ get_header();
 	<?php
 	langit_page_hero(
 		array(
-			'eyebrow' => esc_html__( 'Projects', 'langit' ),
-			'title'   => post_type_archive_title( '', false ),
-			'text'    => esc_html__( 'Portofolio pekerjaan teknologi gedung untuk kebutuhan keamanan, jaringan, elektrikal, alarm, audio, instalasi, dan pemeliharaan fasilitas.', 'langit' ),
+			'eyebrow' => esc_html__( 'PROJECT PORTFOLIO', 'langit' ),
+			'title'   => esc_html__( 'Proven Deployments Across Industries', 'langit' ),
+			'text'    => esc_html__( 'Rekam jejak implementasi sistem keamanan, jaringan, elektrikal, audio, dan infrastruktur bangunan pada berbagai sektor industri dan komersial.', 'langit' ),
 		)
 	);
 	?>

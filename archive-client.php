@@ -12,9 +12,9 @@ get_header();
 	<?php
 	langit_page_hero(
 		array(
-			'eyebrow' => esc_html__( 'Enterprise Trust', 'langit' ),
+			'eyebrow' => esc_html__( 'ENTERPRISE TRUST', 'langit' ),
 			'title'   => esc_html__( 'Client References', 'langit' ),
-			'text'    => esc_html__( 'Referensi pelanggan dan lingkungan operasional yang tercantum dalam dokumen company profile, mencakup kawasan industri, fasilitas komersial, rumah sakit, apartemen, hotel, dan instansi.', 'langit' ),
+			'text'    => esc_html__( 'Referensi pelanggan dan lingkungan operasional yang mencerminkan pengalaman implementasi pada berbagai sektor industri, komersial, fasilitas publik, dan institusi.', 'langit' ),
 		)
 	);
 	?>

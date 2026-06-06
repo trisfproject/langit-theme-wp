@@ -16,7 +16,7 @@ langit_page_hero(
 	array(
 		'eyebrow' => esc_html__( 'CONTACT INFORMATION', 'langit' ),
 		'title'   => esc_html__( 'Reach Our Team', 'langit' ),
-		'text'    => esc_html__( 'Hubungi tim Global Teknindo untuk konsultasi proyek, permintaan survey, kebutuhan maintenance, maupun dukungan teknis untuk sistem keamanan, jaringan, elektrikal, fire alarm, dan infrastruktur bangunan.', 'langit' ),
+		'text'    => esc_html__( 'Hubungi tim Global Teknindo untuk konsultasi proyek, kebutuhan survey, dukungan teknis, instalasi, maintenance, maupun pengembangan sistem teknologi bangunan.', 'langit' ),
 	)
 );
 ?>

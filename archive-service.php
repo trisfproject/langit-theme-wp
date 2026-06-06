@@ -12,9 +12,9 @@ get_header();
 	<?php
 	langit_page_hero(
 		array(
-			'eyebrow' => esc_html__( 'Services', 'langit' ),
-			'title'   => post_type_archive_title( '', false ),
-			'text'    => esc_html__( 'Jelajahi layanan teknologi gedung untuk keamanan, jaringan, elektrikal, alarm, audio, instalasi, dan pemeliharaan sistem.', 'langit' ),
+			'eyebrow' => esc_html__( 'PROFESSIONAL SERVICES', 'langit' ),
+			'title'   => esc_html__( 'Integrated Building Solutions', 'langit' ),
+			'text'    => esc_html__( 'Solusi terintegrasi mulai dari perencanaan, instalasi, implementasi hingga pemeliharaan sistem keamanan, jaringan, elektrikal, audio, dan infrastruktur gedung.', 'langit' ),
 		)
 	);
 	?>

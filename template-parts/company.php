@@ -147,9 +147,9 @@ $langit_workflow = array(
 <?php
 langit_page_hero(
 	array(
-		'eyebrow' => esc_html__( 'Company', 'langit' ),
-		'title'   => esc_html__( 'About PT Global Teknindo', 'langit' ),
-		'text'    => esc_html__( 'Profil perusahaan, kapabilitas layanan, nilai kerja, dan alur operasional PT Global Teknindo dalam mendukung kebutuhan teknologi bangunan modern.', 'langit' ),
+		'eyebrow' => esc_html__( 'COMPANY PROFILE', 'langit' ),
+		'title'   => esc_html__( 'Building Technology Partner for Modern Facilities', 'langit' ),
+		'text'    => esc_html__( 'PT Global Teknindo menghadirkan solusi terintegrasi untuk keamanan, jaringan, elektrikal, audio, instalasi, dan maintenance bagi fasilitas komersial, industri, serta infrastruktur modern.', 'langit' ),
 	)
 );
 ?>

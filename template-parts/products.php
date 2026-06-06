@@ -214,17 +214,15 @@ $product_categories = array(
 	),
 );
 ?>
-
 <?php
 langit_page_hero(
 	array(
-		'eyebrow' => esc_html__( 'Products', 'langit' ),
-		'title'   => get_the_title(),
-		'text'    => esc_html__( 'Katalog perangkat teknologi gedung untuk keamanan, jaringan, proteksi kebakaran, sistem audio, serta instalasi mekanikal elektrikal.', 'langit' ),
+		'eyebrow' => esc_html__( 'PRODUCT CATALOG', 'langit' ),
+		'title'   => esc_html__( 'Technology Systems & Equipment', 'langit' ),
+		'text'    => esc_html__( 'Pilihan perangkat dan sistem teknologi bangunan yang telah digunakan pada berbagai implementasi komersial, industri, dan fasilitas operasional modern.', 'langit' ),
 	)
 );
 ?>
-
 <section class="section product-nav-section">
 	<div class="container">
 		<nav class="product-category-nav" aria-label="<?php esc_attr_e( 'Product categories navigation', 'langit' ); ?>">
