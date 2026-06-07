@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    
+    <!-- Accent Gradient -->
+    <linearGradient id="accentGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.2" />
+    </linearGradient>
+
+    <!-- Highlight Gradient -->
+    <linearGradient id="highlightGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#0369a1" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#334155" stroke-width="0.75" stroke-opacity="0.5" />
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgGrad)" />
+
+  <!-- Grid Overlay -->
+  <rect width="800" height="450" fill="url(#grid)" />
+
+  <!-- Abstract Architectural Shapes -->
+  <path d="M 0 450 L 300 200 L 450 350 L 800 100 L 800 450 Z" fill="url(#accentGrad)" />
+  <path d="M 150 450 L 500 150 L 650 300 L 800 200 L 800 450 Z" fill="url(#highlightGrad)" />
+
+  <!-- Construction lines -->
+  <line x1="0" y1="225" x2="800" y2="225" stroke="#475569" stroke-width="1" stroke-dasharray="5,5" stroke-opacity="0.5" />
+  <line x1="400" y1="0" x2="400" y2="450" stroke="#475569" stroke-width="1" stroke-dasharray="5,5" stroke-opacity="0.5" />
+
+  <!-- Tech/Engineering Symbol in Center -->
+  <g transform="translate(400, 225)">
+    <!-- Outer dashed circle -->
+    <circle r="80" fill="none" stroke="#58afff" stroke-width="1.5" stroke-dasharray="8,6" stroke-opacity="0.6" />
+    <!-- Inner solid circle -->
+    <circle r="60" fill="none" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.4" />
+    <circle r="40" fill="none" stroke="#38bdf8" stroke-width="2" stroke-opacity="0.8" />
+    
+    <!-- Crosshairs -->
+    <path d="M -90 0 L -50 0 M 50 0 L 90 0 M 0 -90 L 0 -50 M 0 50 L 0 90" stroke="#58afff" stroke-width="1.5" stroke-opacity="0.7" />
+    
+    <!-- Central Dot -->
+    <circle r="6" fill="#58afff" />
+    
+    <!-- Hexagon detail -->
+    <polygon points="0,-30 26,-15 26,15 0,30 -26,15 -26,-15" fill="none" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.5" />
+  </g>
+
+  <!-- Title / Logo text watermark in bottom right -->
+  <text x="760" y="415" font-family="'Inter', -apple-system, sans-serif" font-size="18" font-weight="700" letter-spacing="0.1em" fill="#38bdf8" fill-opacity="0.7" text-anchor="end">LANGIT</text>
+  <text x="760" y="390" font-family="'Inter', -apple-system, sans-serif" font-size="11" font-weight="600" letter-spacing="0.2em" fill="#64748b" fill-opacity="0.8" text-anchor="end">INDUSTRY INSIGHTS</text>
+</svg>

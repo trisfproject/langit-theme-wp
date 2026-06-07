@@ -6,8 +6,8 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope itemtype="https://schema.org/BlogPosting">
-	<header class="single-hero">
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'blog-single-container single-post-container article-container' ); ?> itemscope itemtype="https://schema.org/BlogPosting">
+	<header class="single-hero article-header blog-post-header">
 		<div class="single-hero__content stack">
 			<?php langit_post_modified_meta(); ?>
 			<div class="post-card__term">
@@ -17,7 +17,7 @@
 				<?php langit_posted_on(); ?>
 				<?php langit_posted_by(); ?>
 			</div>
-			<?php the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' ); ?>
+			<?php the_title( '<h1 class="entry-title blog-post-title single-post-title" itemprop="headline">', '</h1>' ); ?>
 		</div>
 	</header>
 

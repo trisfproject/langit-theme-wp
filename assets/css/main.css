@@ -3112,15 +3112,20 @@ a.contact-bar__value:hover {
 	overflow: hidden;
 	border-radius: calc(var(--langit-card-radius) - 1px) calc(var(--langit-card-radius) - 1px) 0 0;
 	background: #0f172a;
+	transform: translateZ(0);
+	isolation: isolate;
 }
 
 .post-card__media img,
 .post-card__media span {
 	display: block;
 	width: 100%;
+	height: auto;
 	aspect-ratio: 16 / 9;
 	object-fit: cover;
 	transition: transform 1.2s var(--langit-transition-smooth);
+	border-top-left-radius: calc(var(--langit-card-radius) - 1px);
+	border-top-right-radius: calc(var(--langit-card-radius) - 1px);
 }
 
 .post-card:hover .post-card__media img,
@@ -3128,24 +3133,7 @@ a.contact-bar__value:hover {
 	transform: scale(1.04);
 }
 
-.post-card__media span {
-	position: relative;
-	background-image: url("../images/langit-blog-placeholder.svg");
-	background-position: center;
-	background-size: cover;
-}
 
-.post-card__media span::after {
-	display: none;
-	position: absolute;
-	inset: 50% auto auto 50%;
-	width: 3rem;
-	height: 3rem;
-	border-radius: var(--langit-radius);
-	background: linear-gradient(135deg, var(--langit-primary), var(--langit-accent));
-	content: "";
-	transform: translate(-50%, -50%);
-}
 
 .post-card__header,
 .post-card .entry-summary,
@@ -3205,6 +3193,19 @@ a.contact-bar__value:hover {
 	text-decoration: none;
 }
 
+.post-card__term {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: auto;
+	max-width: fit-content;
+	justify-self: start;
+	align-self: start;
+	padding: 6px 12px;
+	border-radius: 999px;
+	min-height: unset;
+}
+
 .post-card__title a {
 	text-decoration: none;
 	color: inherit;
@@ -3215,8 +3216,16 @@ a.contact-bar__value:hover {
 	color: var(--langit-primary);
 }
 
+.post-card .entry-summary {
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
 .post-card .entry-summary p {
-	margin-bottom: 0;
+	display: inline;
+	margin: 0;
 	color: var(--langit-muted);
 }
 
@@ -6843,4 +6852,350 @@ textarea {
 		padding-block: 2.5rem !important;
 	}
 }
+
+/* ==========================================================================
+   BLOG CARD RESPONSIVE REFINEMENT
+   ========================================================================== */
+
+/* 1. Grid layout responsive behavior */
+.blog-grid {
+	display: grid !important;
+	grid-template-columns: 1fr !important;
+	gap: 20px !important;
+}
+
+@media (min-width: 768px) {
+	.blog-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+		gap: 24px !important;
+	}
+}
+
+@media (min-width: 1200px) {
+	.blog-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+		gap: 32px !important;
+	}
+}
+
+/* Specifying override for listing context */
+.blog-layout--listing .blog-grid,
+.blog-grid:not(.project-grid) {
+	display: grid !important;
+	grid-template-columns: 1fr !important;
+	gap: 20px !important;
+}
+
+@media (min-width: 768px) {
+	.blog-layout--listing .blog-grid,
+	.blog-grid:not(.project-grid) {
+		grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+		gap: 24px !important;
+	}
+}
+
+@media (min-width: 1200px) {
+	.blog-layout--listing .blog-grid,
+	.blog-grid:not(.project-grid) {
+		grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+		gap: 32px !important;
+	}
+}
+
+/* 2. Card layout: Flexbox-column & Equal Height */
+.blog-grid:not(.project-grid) .post-card {
+	display: flex !important;
+	flex-direction: column !important;
+	gap: 0 !important;
+	height: 100% !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+}
+
+/* 3. Image aspect ratio & object-fit */
+.blog-grid:not(.project-grid) .post-card__media {
+	width: 100% !important;
+	aspect-ratio: 16 / 9 !important;
+	flex-shrink: 0 !important;
+}
+
+.blog-grid:not(.project-grid) .post-card__media img {
+	width: 100% !important;
+	height: 100% !important;
+	object-fit: cover !important;
+}
+
+/* 4. Card Content: Spacing & order */
+.blog-grid:not(.project-grid) .post-card__header {
+	display: flex !important;
+	flex-direction: column !important;
+	gap: 0 !important;
+	margin-top: var(--langit-space-sm) !important;
+	margin-bottom: 12px !important;
+}
+
+/* Category Badge + Date row */
+.blog-grid:not(.project-grid) .post-card__meta-row {
+	display: flex !important;
+	align-items: center !important;
+	gap: 12px !important;
+	margin-inline: clamp(1.5rem, 1.25rem + 1vw, 2.25rem) !important;
+	margin-top: 0 !important;
+	margin-bottom: 20px !important;
+}
+
+.blog-grid:not(.project-grid) .post-card .post-card__term,
+.blog-grid:not(.project-grid) .post-card .post-card__term a {
+	font-size: 11px !important;
+	font-weight: 600 !important;
+	letter-spacing: .08em !important;
+	text-transform: uppercase !important;
+}
+
+.blog-grid:not(.project-grid) .post-card .entry-meta {
+	font-size: 13px !important;
+	font-weight: 500 !important;
+	color: var(--langit-muted) !important;
+	margin-bottom: 0 !important;
+}
+
+/* Title -> Excerpt */
+.blog-grid:not(.project-grid) .post-card__title,
+.blog-grid:not(.project-grid) .blog-card-title {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	font-size: 24px !important;
+	line-height: 1.25 !important;
+	font-weight: 700 !important;
+	display: -webkit-box !important;
+	-webkit-line-clamp: 2 !important;
+	-webkit-box-orient: vertical !important;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+}
+
+/* Excerpt clamping & responsive */
+.blog-grid:not(.project-grid) .post-card .entry-summary,
+.blog-grid:not(.project-grid) .blog-card-excerpt {
+	margin-top: 0 !important;
+	margin-bottom: 12px !important;
+	font-size: 15px !important;
+	line-height: 1.7 !important;
+	display: -webkit-box !important;
+	-webkit-line-clamp: 3 !important;
+	-webkit-box-orient: vertical !important;
+	overflow: hidden !important;
+}
+
+.blog-grid:not(.project-grid) .post-card .entry-summary p,
+.blog-grid:not(.project-grid) .blog-card-excerpt p {
+	display: inline !important;
+	margin: 0 !important;
+	font-size: inherit !important;
+	line-height: inherit !important;
+}
+
+/* Responsive Overrides */
+@media (max-width: 1024px) {
+	.blog-grid:not(.project-grid) .post-card__title,
+	.blog-grid:not(.project-grid) .blog-card-title {
+		font-size: 22px !important;
+	}
+}
+
+@media (max-width: 768px) {
+	.blog-grid:not(.project-grid) .post-card__title,
+	.blog-grid:not(.project-grid) .blog-card-title {
+		font-size: 20px !important;
+	}
+
+	.blog-grid:not(.project-grid) .post-card .entry-summary,
+	.blog-grid:not(.project-grid) .blog-card-excerpt {
+		font-size: 14px !important;
+		line-height: 1.6 !important;
+		-webkit-line-clamp: 2 !important;
+	}
+}
+
+/* Read More is pushed to the bottom of the card */
+.blog-grid:not(.project-grid) .post-card .read-more-link {
+	margin-top: auto !important;
+}
+
+/* =============================================================================
+   BLOG DETAIL TYPOGRAPHY & LAYOUT REFINEMENT
+   Only applicable on standard Blog Detail Pages (.single-post)
+   ============================================================================= */
+
+:root {
+	--container-width: var(--langit-container);
+}
+
+/* 1. Required Container Classes alignment */
+.blog-single-container,
+.single-post-container,
+.article-container {
+	max-width: var(--container-width);
+	margin: 0 auto;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+/* Scope to standard blog detail page to remove offsets/indentation and align content with global layouts */
+.single-post .blog-single-container,
+.single-post .single-post-container,
+.single-post .article-container {
+	max-width: 100% !important;
+	margin-left: 0 !important;
+	margin-right: auto !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
+/* Single Post Grid Layout: 70-75% article column + 25-30% sidebar with 64px gap */
+.single-post .blog-layout--single {
+	display: grid !important;
+	grid-template-columns: minmax(0, 1fr) 320px !important;
+	gap: 64px !important;
+}
+
+@media (max-width: 1024px) {
+	.single-post .blog-layout--single {
+		grid-template-columns: 1fr !important;
+		gap: 40px !important;
+	}
+}
+
+.single-post .article-header,
+.single-post .blog-post-header {
+	max-width: 100% !important;
+	width: 100% !important;
+	margin-left: 0 !important;
+	margin-right: auto !important;
+}
+
+.single-post .single-hero__content {
+	max-width: 100% !important;
+	width: 100% !important;
+	margin-left: 0 !important;
+	margin-right: auto !important;
+}
+
+/* 2. Visual Hierarchy Spacing */
+
+/* Category -> Meta (12px) */
+.single-post .single-hero .post-card__term {
+	margin-top: 0 !important;
+	margin-bottom: 12px !important;
+	display: inline-block !important;
+}
+
+/* Meta -> Title (16px) */
+.single-post .single-hero .entry-meta {
+	margin-top: 0 !important;
+	margin-bottom: 16px !important;
+	display: flex !important;
+	align-items: center !important;
+	gap: 12px !important;
+}
+
+.single-post .single-hero .entry-meta,
+.single-post .single-hero .entry-meta * {
+	font-size: 14px !important;
+	font-weight: 500 !important;
+	color: var(--langit-muted, #718096) !important;
+}
+
+/* Title -> Featured Image (28px) */
+.single-post .single-hero {
+	margin-top: 0 !important;
+	margin-bottom: 28px !important;
+	padding-bottom: 0 !important;
+}
+
+.single-post .entry-title,
+.single-post .blog-post-title,
+.single-post .single-post-title {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	font-size: 48px !important;
+	line-height: 1.08 !important;
+	font-weight: 800 !important;
+	letter-spacing: -0.03em !important;
+	color: var(--langit-secondary, #0f172a) !important;
+	max-width: 20ch !important;
+}
+
+/* Featured Image styling & size (width follows content area, 32px margin bottom to content) */
+.single-post .single-featured-image {
+	width: 100% !important;
+	max-width: 100% !important;
+	margin-left: 0 !important;
+	margin-right: auto !important;
+	margin-top: 0 !important;
+	margin-bottom: 32px !important;
+	border-radius: var(--langit-radius, 16px) !important;
+	overflow: hidden !important;
+}
+
+.single-post .single-featured-image img {
+	width: 100% !important;
+	height: auto !important;
+	object-fit: cover !important;
+	border-radius: var(--langit-radius, 16px) !important;
+}
+
+/* Align single content and footer to fill the available article column (zero offset/whitespace) */
+.single-post .single-content,
+.single-post .single-footer {
+	margin-left: 0 !important;
+	margin-right: auto !important;
+	max-width: 100% !important;
+	width: 100% !important;
+}
+
+/* Align direct children of post content block (paragraphs, lists, etc.) to 100% width and left align */
+.single-post .entry-content > * {
+	width: 100% !important;
+	max-width: 100% !important;
+	margin-left: 0 !important;
+	margin-right: auto !important;
+}
+
+/* 3. Article Content Typography Scale */
+.single-post .single-content p,
+.single-post .single-content li {
+	font-size: 18px !important;
+	line-height: 1.9 !important;
+	color: var(--langit-text, #334155) !important;
+}
+
+/* Responsive Overrides for Title and Content text sizes */
+@media (max-width: 1024px) {
+	.single-post .entry-title,
+	.single-post .blog-post-title,
+	.single-post .single-post-title {
+		font-size: 40px !important;
+	}
+
+	.single-post .single-content p,
+	.single-post .single-content li {
+		font-size: 17px !important;
+	}
+}
+
+@media (max-width: 768px) {
+	.single-post .entry-title,
+	.single-post .blog-post-title,
+	.single-post .single-post-title {
+		font-size: 32px !important;
+	}
+
+	.single-post .single-content p,
+	.single-post .single-content li {
+		font-size: 16px !important;
+	}
+}
+
+
 
