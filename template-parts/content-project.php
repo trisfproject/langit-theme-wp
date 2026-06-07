@@ -37,77 +37,83 @@ $langit_project_details = langit_get_project_details( get_the_ID() );
 		</div>
 	</header>
 
-	<?php if ( has_post_thumbnail() ) : ?>
-		<figure class="single-featured-image">
-			<?php the_post_thumbnail( 'langit-social', array_merge( langit_featured_image_attrs( true ), array( 'itemprop' => 'image' ) ) ); ?>
-		</figure>
+	<?php
+	/* ── Project Overview Card – full-width, above image/description grid ── */
+	$langit_client       = get_post_meta( get_the_ID(), 'langit_project_client', true );
+	$langit_location     = get_post_meta( get_the_ID(), 'langit_project_location', true );
+	$langit_year         = get_post_meta( get_the_ID(), 'langit_project_year', true );
+	$langit_service_type = get_post_meta( get_the_ID(), 'langit_project_service_type', true );
+	$langit_systems_str  = get_post_meta( get_the_ID(), 'langit_project_systems', true );
+
+	$langit_has_details = ! empty( $langit_client ) || ! empty( $langit_location ) || ! empty( $langit_year ) || ! empty( $langit_service_type ) || ! empty( $langit_systems_str );
+
+	if ( $langit_has_details ) : ?>
+		<div class="container project-overview-section">
+			<div class="card project-detail-card project-detail-card--horizontal">
+				<p class="section-eyebrow"><?php esc_html_e( 'Project Overview', 'langit' ); ?></p>
+				<dl class="project-meta-list project-meta-list--horizontal">
+					<?php if ( ! empty( $langit_client ) ) : ?>
+						<div>
+							<dt><?php esc_html_e( 'Client', 'langit' ); ?></dt>
+							<dd><?php echo esc_html( $langit_client ); ?></dd>
+						</div>
+					<?php endif; ?>
+
+					<?php if ( ! empty( $langit_location ) ) : ?>
+						<div>
+							<dt><?php esc_html_e( 'Location', 'langit' ); ?></dt>
+							<dd><?php echo esc_html( $langit_location ); ?></dd>
+						</div>
+					<?php endif; ?>
+
+					<?php if ( ! empty( $langit_year ) ) : ?>
+						<div>
+							<dt><?php esc_html_e( 'Completion Year', 'langit' ); ?></dt>
+							<dd><?php echo esc_html( $langit_year ); ?></dd>
+						</div>
+					<?php endif; ?>
+
+					<?php if ( ! empty( $langit_service_type ) ) : ?>
+						<div>
+							<dt><?php esc_html_e( 'Service Type', 'langit' ); ?></dt>
+							<dd><?php echo esc_html( $langit_service_type ); ?></dd>
+						</div>
+					<?php endif; ?>
+
+					<?php if ( ! empty( $langit_systems_str ) ) :
+						$langit_systems = array_filter( array_map( 'trim', explode( ',', $langit_systems_str ) ) );
+						if ( ! empty( $langit_systems ) ) : ?>
+							<div class="project-meta-list__systems">
+								<dt><?php esc_html_e( 'Systems Implemented', 'langit' ); ?></dt>
+								<dd>
+									<div class="project-overview-tags">
+										<?php foreach ( $langit_systems as $langit_sys ) : ?>
+											<span class="project-tag"><?php echo esc_html( $langit_sys ); ?></span>
+										<?php endforeach; ?>
+									</div>
+								</dd>
+							</div>
+						<?php endif;
+					endif; ?>
+				</dl>
+			</div>
+		</div>
 	<?php endif; ?>
 
-	<section class="section section--compact">
-		<div class="container project-detail-grid">
-			<?php
-			$langit_client       = get_post_meta( get_the_ID(), 'langit_project_client', true );
-			$langit_location     = get_post_meta( get_the_ID(), 'langit_project_location', true );
-			$langit_year         = get_post_meta( get_the_ID(), 'langit_project_year', true );
-			$langit_service_type = get_post_meta( get_the_ID(), 'langit_project_service_type', true );
-			$langit_systems_str  = get_post_meta( get_the_ID(), 'langit_project_systems', true );
-			
-			$langit_has_details = ! empty( $langit_client ) || ! empty( $langit_location ) || ! empty( $langit_year ) || ! empty( $langit_service_type ) || ! empty( $langit_systems_str );
-			
-			if ( $langit_has_details ) : ?>
-				<div class="card project-detail-card">
-					<p class="section-eyebrow"><?php esc_html_e( 'Project Overview', 'langit' ); ?></p>
-					<dl class="project-meta-list">
-						<?php if ( ! empty( $langit_client ) ) : ?>
-							<div>
-								<dt><?php esc_html_e( 'Client', 'langit' ); ?></dt>
-								<dd><?php echo esc_html( $langit_client ); ?></dd>
-							</div>
-						<?php endif; ?>
-						
-						<?php if ( ! empty( $langit_location ) ) : ?>
-							<div>
-								<dt><?php esc_html_e( 'Location', 'langit' ); ?></dt>
-								<dd><?php echo esc_html( $langit_location ); ?></dd>
-							</div>
-						<?php endif; ?>
-						
-						<?php if ( ! empty( $langit_year ) ) : ?>
-							<div>
-								<dt><?php esc_html_e( 'Completion Year', 'langit' ); ?></dt>
-								<dd><?php echo esc_html( $langit_year ); ?></dd>
-							</div>
-						<?php endif; ?>
-						
-						<?php if ( ! empty( $langit_service_type ) ) : ?>
-							<div>
-								<dt><?php esc_html_e( 'Service Type', 'langit' ); ?></dt>
-								<dd><?php echo esc_html( $langit_service_type ); ?></dd>
-							</div>
-						<?php endif; ?>
-						
-						<?php if ( ! empty( $langit_systems_str ) ) :
-							$langit_systems = array_filter( array_map( 'trim', explode( ',', $langit_systems_str ) ) );
-							if ( ! empty( $langit_systems ) ) : ?>
-								<div>
-									<dt><?php esc_html_e( 'Systems Implemented', 'langit' ); ?></dt>
-									<dd>
-										<div class="project-overview-tags">
-											<?php foreach ( $langit_systems as $langit_sys ) : ?>
-												<span class="project-tag"><?php echo esc_html( $langit_sys ); ?></span>
-											<?php endforeach; ?>
-										</div>
-									</dd>
-								</div>
-							<?php endif;
-						endif; ?>
-					</dl>
-				</div>
-			<?php endif; ?>
+	<div class="container single-project-grid<?php echo has_post_thumbnail() ? ' has-image' : ''; ?>">
+		<?php if ( has_post_thumbnail() ) : ?>
+			<div class="single-project-grid__image">
+				<figure class="single-featured-image">
+					<?php the_post_thumbnail( 'langit-social', array_merge( langit_featured_image_attrs( true ), array( 'itemprop' => 'image' ) ) ); ?>
+				</figure>
+			</div>
+		<?php endif; ?>
 
-			<div class="stack">
+		<div class="single-project-grid__content">
+			<!-- Project Description -->
+			<div class="stack project-description-wrapper">
 				<p class="section-eyebrow"><?php esc_html_e( 'Project Description', 'langit' ); ?></p>
-				<div class="single-content project-content">
+				<div class="single-content project-content" itemprop="description">
 					<?php
 					the_content();
 
@@ -121,7 +127,7 @@ $langit_project_details = langit_get_project_details( get_the_ID() );
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
 
 	<section class="section section--surface">
 		<div class="container stack">

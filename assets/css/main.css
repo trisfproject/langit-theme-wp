@@ -6592,6 +6592,133 @@ textarea {
 	margin-top: 0 !important;
 }
 
+/* ── Project Overview Section (full-width card above image/description) ── */
+.project-overview-section {
+	width: min(100% - (var(--langit-gutter) * 2), var(--langit-container)) !important;
+	max-width: var(--langit-container) !important;
+	margin-inline: auto !important;
+	margin-top: 72px !important;
+	margin-bottom: 0 !important;
+}
+
+/* Horizontal layout for the overview card */
+.project-detail-card--horizontal {
+	padding: 2rem 2.5rem !important;
+}
+
+.project-meta-list--horizontal {
+	display: grid !important;
+	gap: 0 !important;
+	margin: 0 !important;
+	margin-top: 1rem !important;
+}
+
+/* Desktop: multi-column horizontal layout */
+@media (min-width: 1025px) {
+	.project-meta-list--horizontal {
+		grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)) !important;
+		gap: 0 !important;
+	}
+
+	.project-meta-list--horizontal > div,
+	.project-meta-list--horizontal > .project-meta-list__systems {
+		border-bottom: 0 !important;
+		border-right: 1px solid var(--langit-border) !important;
+		padding: 0.5rem 1.5rem 0.5rem 0 !important;
+		margin-right: 1.5rem !important;
+	}
+
+	.project-meta-list--horizontal > div:last-child,
+	.project-meta-list--horizontal > .project-meta-list__systems:last-child {
+		border-right: 0 !important;
+		padding-right: 0 !important;
+		margin-right: 0 !important;
+	}
+}
+
+/* Mobile: vertical stack */
+@media (max-width: 1024px) {
+	.project-meta-list--horizontal > div,
+	.project-meta-list--horizontal > .project-meta-list__systems {
+		padding-bottom: 0.85rem !important;
+		border-bottom: 1px solid var(--langit-border) !important;
+	}
+
+	.project-meta-list--horizontal > div:last-child,
+	.project-meta-list--horizontal > .project-meta-list__systems:last-child {
+		padding-bottom: 0 !important;
+		border-bottom: 0 !important;
+	}
+}
+
+/* ── Single Project Two-Column Grid Layout (image + description) ── */
+.single-project-grid {
+	width: min(100% - (var(--langit-gutter) * 2), var(--langit-container)) !important;
+	max-width: var(--langit-container) !important;
+	margin-inline: auto !important;
+	margin-top: 48px !important;
+	margin-bottom: 80px !important;
+}
+
+/* On Desktop: 2-column grid when image is present */
+@media (min-width: 1025px) {
+	.single-project-grid.has-image {
+		display: grid !important;
+		grid-template-columns: 1fr 1.22fr !important; /* 45% image / 55% content */
+		gap: 48px !important;
+		align-items: start !important;
+	}
+}
+
+/* Tablet & Mobile: stack vertically */
+@media (max-width: 1024px) {
+	.single-project-grid.has-image {
+		display: flex !important;
+		flex-direction: column !important;
+		gap: 40px !important;
+	}
+}
+
+/* Image styling within the grid */
+.single-project-grid__image {
+	width: 100% !important;
+}
+
+.single-project-grid__image .single-featured-image {
+	width: 100% !important;
+	max-width: 100% !important;
+	margin: 0 !important;
+	border-radius: var(--langit-radius, 16px) !important;
+	overflow: hidden !important;
+}
+
+.single-project-grid__image .single-featured-image img {
+	width: 100% !important;
+	height: auto !important;
+	aspect-ratio: 4 / 3 !important;
+	object-fit: cover !important;
+	display: block !important;
+}
+
+/* Content styling within the grid */
+.single-project-grid__content {
+	width: 100% !important;
+	max-width: 100% !important;
+	margin: 0 !important;
+	display: flex !important;
+	flex-direction: column !important;
+	gap: 40px !important; /* Spacing between description and overview card */
+}
+
+.single-project-grid__content > *:first-child {
+	margin-top: 0 !important;
+}
+
+.single-project-grid__content .project-description-wrapper .section-eyebrow {
+	margin-top: 0 !important;
+}
+
+
 
 /* Premium Delivery Process / Methodology layout refinements */
 .single-service .checklist-item {
@@ -6665,3 +6792,116 @@ textarea {
 	padding-block: 0.4rem !important;
 	font-size: 0.8rem !important;
 }
+
+/* =============================================================================
+   SINGLE SERVICE & SINGLE PROJECT — VISUAL BACKGROUND RHYTHM
+   Pattern: Hero (#F5FAFF) → Main Content (#FFFFFF) → Secondary (#F8FAFD)
+            → Related Services (#FFFFFF) → CTA (#EAF5FF) → Footer (dark navy)
+   Principle: Background contrast + spacing as section dividers — no thick borders.
+   ============================================================================= */
+
+/* ── Token definitions ── */
+:root {
+	--langit-bg-hero:      #F5FAFF;   /* Soft blue-white — hero zone     */
+	--langit-bg-white:     #FFFFFF;   /* Pure white — primary content    */
+	--langit-bg-subtle:    #F8FAFD;   /* Very light grey-blue — secondary */
+	--langit-bg-cta:       #EAF5FF;   /* Light blue wash — CTA           */
+}
+
+/* ── 1. HERO — #F5FAFF ── */
+.single-service .single-hero,
+.single-project .single-hero {
+	background: var(--langit-bg-hero) !important;
+}
+
+/* ── 2. MAIN CONTENT — #FFFFFF ── */
+/* Service: image+description grid   |   Project: overview card + image+description grid */
+.single-service .single-service-grid,
+.single-project .project-overview-section,
+.single-project .single-project-grid {
+	background: var(--langit-bg-white) !important;
+}
+
+/* Extend white band fully edge-to-edge behind the contained columns */
+.single-service article,
+.single-project article {
+	background: var(--langit-bg-white) !important;
+}
+
+/* Override the article bg: hero still needs its own colour */
+.single-service .single-hero,
+.single-project .single-hero {
+	background: var(--langit-bg-hero) !important;
+	position: relative;
+	z-index: 0;
+}
+
+/* ── 3. SECONDARY CONTENT — #F8FAFD ── */
+/* Service: Methodology / Delivery Process section */
+.single-service .service-scope-section {
+	background: var(--langit-bg-subtle) !important;
+}
+
+/* Project: Related Services (replaces section--surface) */
+.single-project .section.section--surface {
+	background: var(--langit-bg-subtle) !important;
+}
+
+/* ── 4. RELATED SERVICES (Service page) — #FFFFFF ── */
+/* Keeps the rhythm: Methodology (#F8FAFD) → Related (#FFFFFF) → CTA (#EAF5FF) */
+.single-service .related-services-section {
+	background: var(--langit-bg-white) !important;
+}
+
+/* ── 5. CTA SECTION WRAPPER — #EAF5FF ── */
+/* The <section class="section ..."> that wraps the cta-section panel */
+.single-service article > .section:last-of-type,
+.single-project article > .section:last-of-type {
+	background: var(--langit-bg-cta) !important;
+}
+
+/* Soften the cta-section panel itself so it reads as inset on the blue wash */
+.single-service article > .section:last-of-type .cta-section,
+.single-project article > .section:last-of-type .cta-section {
+	background:
+		linear-gradient(135deg, rgba(255,255,255,0.72), rgba(255,255,255,0.5)) !important;
+	border-color: rgba(88, 175, 255, 0.28) !important;
+	box-shadow: 0 8px 32px rgba(10, 80, 180, 0.06) !important;
+}
+
+/* ── Section padding: give each zone breathing room ── */
+.single-service .single-hero,
+.single-project .single-hero {
+	padding-block: clamp(3rem, 2rem + 4vw, 5rem) !important;
+}
+
+/* Generous padding on secondary-colour bands */
+.single-service .service-scope-section,
+.single-project .section.section--surface {
+	padding-block: clamp(3rem, 2rem + 4vw, 5.5rem) !important;
+}
+
+/* CTA wrapper breathing room */
+.single-service article > .section:last-of-type,
+.single-project article > .section:last-of-type {
+	padding-block: clamp(3rem, 2rem + 4vw, 5rem) !important;
+}
+
+/* ── Responsive: consistent on tablet & mobile ── */
+@media (max-width: 768px) {
+	.single-service .single-hero,
+	.single-project .single-hero {
+		padding-block: 2.5rem !important;
+	}
+
+	.single-service .service-scope-section,
+	.single-project .section.section--surface {
+		padding-block: 2.5rem !important;
+	}
+
+	.single-service article > .section:last-of-type,
+	.single-project article > .section:last-of-type {
+		padding-block: 2.5rem !important;
+	}
+}
+
