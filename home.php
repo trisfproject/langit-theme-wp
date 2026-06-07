@@ -11,9 +11,9 @@ get_header();
 <main id="primary" class="site-main">
 	<section class="page-hero">
 		<div class="container stack">
-			<p class="section-eyebrow"><?php esc_html_e( 'INDUSTRY INSIGHTS', 'langit' ); ?></p>
-			<h1><?php esc_html_e( 'Technology, Security & Infrastructure', 'langit' ); ?></h1>
-			<p class="lede"><?php esc_html_e( 'Artikel, panduan, dan wawasan seputar teknologi bangunan, sistem keamanan, jaringan, elektrikal, audio, serta praktik terbaik pengelolaan infrastruktur modern.', 'langit' ); ?></p>
+			<p class="section-eyebrow"><?php esc_html_e( 'BLOGS', 'langit' ); ?></p>
+			<h1><?php esc_html_e( 'Industry Insights', 'langit' ); ?></h1>
+			<p class="lede"><?php esc_html_e( 'Perspektif, praktik terbaik, dan pembelajaran lapangan dari implementasi teknologi gedung, sistem keamanan, jaringan, dan infrastruktur modern.', 'langit' ); ?></p>
 		</div>
 	</section>
 
