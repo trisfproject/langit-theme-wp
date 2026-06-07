@@ -227,7 +227,7 @@ add_action( 'save_post_project', 'langit_save_project_details' );
 function langit_seed_project_entries() {
 	return array(
 		array(
-			'title'        => 'Fire Alarm System Integration',
+			'title'        => 'Industrial Fire Alarm System Integration',
 			'slug'         => 'fire-alarm-system-integration',
 			'category'     => 'Fire Alarm Projects',
 			'image'        => 'fire-alarm-integration.webp',
@@ -239,10 +239,10 @@ function langit_seed_project_entries() {
 			'year'         => '2025',
 			'service_type' => 'Fire Alarm System',
 			'excerpt'      => 'Integrasi sistem fire alarm untuk gedung operasional dan fasilitas komersial dengan pengujian alarm, sensor, dan panel kontrol.',
-			'description'  => '<p>Fire Alarm System Integration disiapkan untuk meningkatkan kesiapan fasilitas dalam menghadapi kondisi darurat. Ruang lingkup pekerjaan meliputi penentuan titik perangkat, instalasi detector, manual call point, alarm output, panel, dan pengujian fungsi sistem.</p><p>Proses implementasi dilakukan secara terarah agar sistem peringatan dini dapat bekerja sesuai kebutuhan area dan membantu pengelola fasilitas merespons kondisi darurat dengan lebih cepat.</p><p>Selain instalasi, pekerjaan juga menekankan dokumentasi dan pemeriksaan fungsi sehingga sistem lebih mudah dipantau serta dirawat secara berkala.</p>',
+			'description'  => '<p>Fire Alarm System Integration disiapkan untuk meningkatkan kesiapan fasilitas dalam menghadapi kondisi darurat. Ruang lingkup pekerjaan meliputi penentuan titik perangkat, instalasi detector, manual call point, alarm output, panel, and pengujian fungsi sistem.</p><p>Proses implementasi dilakukan secara terarah agar sistem peringatan dini dapat bekerja sesuai kebutuhan area dan membantu pengelola fasilitas merespons kondisi darurat dengan lebih cepat.</p><p>Selain instalasi, pekerjaan juga menekankan dokumentasi dan pemeriksaan fungsi sehingga sistem lebih mudah dipantau serta dirawat secara berkala.</p>',
 		),
 		array(
-			'title'        => 'Audio & Public Address Installation',
+			'title'        => 'Integrated Audio & Public Address Deployment',
 			'slug'         => 'audio-public-address-installation',
 			'category'     => 'Audio System Projects',
 			'image'        => 'audio-public-address-installation.webp',
@@ -257,7 +257,7 @@ function langit_seed_project_entries() {
 			'description'  => '<p>Proyek Audio & Public Address Installation mencakup pemasangan sistem audio, perangkat paging, speaker area, dan konfigurasi dasar untuk mendukung komunikasi internal fasilitas.</p><p>Perencanaan dilakukan dengan memperhatikan karakter ruang, pembagian zona, kebutuhan volume, dan kemudahan pengoperasian oleh tim pengelola gedung atau fasilitas.</p><p>Sistem yang terpasang membantu penyampaian informasi menjadi lebih jelas, terpusat, dan siap digunakan untuk kebutuhan pengumuman harian maupun komunikasi operasional.</p>',
 		),
 		array(
-			'title'        => 'CCTV Installation for Commercial Building',
+			'title'        => 'Commercial Building CCTV Surveillance Deployment',
 			'slug'         => 'cctv-installation-commercial-building',
 			'category'     => 'CCTV Projects',
 			'image'        => 'cctv-commercial-building.webp',
@@ -269,10 +269,10 @@ function langit_seed_project_entries() {
 			'year'         => '2026',
 			'service_type' => 'CCTV & Security System',
 			'excerpt'      => 'Implementasi CCTV untuk area gedung komersial dengan perencanaan titik kamera, integrasi jaringan, dan pengujian sistem pemantauan.',
-			'description'  => '<p>Proyek ini mencakup pekerjaan konsultasi, survei area, penentuan titik kamera, instalasi perangkat CCTV, integrasi jaringan, serta pengujian sistem pemantauan untuk kebutuhan gedung komersial.</p><p>Tim teknis memastikan jalur instalasi dibuat rapi, perangkat mudah diakses untuk pemeliharaan, dan area prioritas mendapatkan cakupan visual yang sesuai dengan kebutuhan operasional gedung.</p><p>Hasil pekerjaan diarahkan untuk membantu pengelola fasilitas meningkatkan keamanan area, memperkuat dokumentasi kejadian, dan menjaga sistem pemantauan tetap andal dalam penggunaan harian.</p>',
+			'description'  => '<p>Proyek ini mencakup pekerjaan konsultasi, survei area, penentuan titik kamera, instalasi perangkat CCTV, integrasi jaringan, serta pengujian sistem pemantauan untuk kebutuhan gedung komersial.</p><p>Tim teknis memastikan jalur instalasi dibuat rapi, perangkat mudah diakses untuk pemeliharaan, and area prioritas mendapatkan cakupan visual yang sesuai dengan kebutuhan operasional gedung.</p><p>Hasil pekerjaan diarahkan untuk membantu pengelola fasilitas meningkatkan keamanan area, memperkuat dokumentasi kejadian, dan menjaga sistem pemantauan tetap andal dalam penggunaan harian.</p>',
 		),
 		array(
-			'title'        => 'Preventive Maintenance Services',
+			'title'        => 'Preventive Maintenance Program Implementation',
 			'slug'         => 'preventive-maintenance-services',
 			'category'     => 'Maintenance Projects',
 			'image'        => 'preventive-maintenance-services.webp',
@@ -287,7 +287,7 @@ function langit_seed_project_entries() {
 			'description'  => '<p>Preventive Maintenance Services dilakukan untuk membantu pelanggan menjaga sistem tetap stabil dan siap digunakan. Pekerjaan dapat mencakup pemeriksaan perangkat, pengecekan koneksi, pembersihan area instalasi, pengujian fungsi, dan rekomendasi tindak lanjut.</p><p>Pendekatan maintenance berkala membantu mendeteksi potensi gangguan lebih awal, mengurangi risiko downtime, dan memperpanjang usia penggunaan perangkat yang mendukung operasional fasilitas.</p><p>Tim menyusun hasil pemeriksaan secara terstruktur sehingga pelanggan dapat memahami kondisi sistem dan menentukan prioritas perbaikan atau pengembangan berikutnya.</p>',
 		),
 		array(
-			'title'        => 'Network Infrastructure Deployment',
+			'title'        => 'Enterprise Network Infrastructure Deployment',
 			'slug'         => 'network-infrastructure-deployment',
 			'category'     => 'Networking Projects',
 			'image'        => 'network-infrastructure-deployment.webp',
@@ -302,7 +302,7 @@ function langit_seed_project_entries() {
 			'description'  => '<p>Network Infrastructure Deployment dilakukan untuk mendukung konektivitas data pada area kantor and fasilitas operasional. Pekerjaan meliputi perencanaan jalur, penarikan kabel, terminasi, penataan perangkat, serta pengujian koneksi.</p><p>Setiap titik jaringan diberi dokumentasi dan labeling agar mudah ditelusuri saat terjadi pengembangan, perubahan layout, atau pekerjaan maintenance di kemudian hari.</p><p>Implementasi ini membantu pelanggan memperoleh jaringan yang lebih stabil, tertata, dan siap mendukung kebutuhan sistem keamanan, perangkat kerja, akses internet, serta integrasi operasional lainnya.</p>',
 		),
 		array(
-			'title'        => 'Mechanical Electrical Panel Installation',
+			'title'        => 'Industrial Power Distribution System Implementation',
 			'slug'         => 'mechanical-electrical-panel-installation',
 			'category'     => 'Mechanical Electrical',
 			'image'        => 'mechanical-electrical-panel.webp',
@@ -314,7 +314,7 @@ function langit_seed_project_entries() {
 			'year'         => '2025',
 			'service_type' => 'Mechanical Electrical',
 			'excerpt'      => 'Pekerjaan panel dan instalasi elektrikal pendukung fasilitas industri dengan fokus pada kerapian, keamanan, dan kemudahan pemeriksaan.',
-			'description'  => '<p>Proyek Mechanical Electrical Panel Installation mencakup dukungan instalasi panel dan sistem elektrikal pendukung untuk kebutuhan fasilitas industri. Pekerjaan dilakukan dengan memperhatikan keamanan instalasi, keteraturan jalur, dan kemudahan inspeksi.</p><p>Tim melakukan koordinasi teknis mulai dari peninjauan kebutuhan daya, persiapan area kerja, instalasi perangkat pendukung, hingga pemeriksaan fungsi sebelum sistem digunakan secara operasional.</p><p>Dengan dokumentasi yang jelas and pekerjaan yang terstruktur, pelanggan dapat memiliki instalasi elektrikal yang lebih mudah dirawat and lebih siap mengikuti kebutuhan pengembangan fasilitas.</p>',
+			'description'  => '<p>Proyek Mechanical Electrical Panel Installation mencakup dukungan instalasi panel dan sistem elektrikal pendukung untuk kebutuhan fasilitas industri. Pekerjaan dilakukan dengan memperhatikan keamanan instalasi, keteraturan jalur, and kemudahan inspeksi.</p><p>Tim melakukan koordinasi teknis mulai dari peninjauan kebutuhan daya, persiapan area kerja, instalasi perangkat pendukung, hingga pemeriksaan fungsi sebelum sistem digunakan secara operasional.</p><p>Dengan dokumentasi yang jelas and pekerjaan yang terstruktur, pelanggan dapat memiliki instalasi elektrikal yang lebih mudah dirawat and lebih siap mengikuti kebutuhan pengembangan fasilitas.</p>',
 		),
 	);
 }
@@ -397,7 +397,7 @@ function langit_seed_project_image_attachment( $slug, $filename, $title ) {
  * Seed production project entries into the Projects CPT.
  */
 function langit_seed_projects_content() {
-	$seed_version = '2026-06-01-v4';
+	$seed_version = '2026-06-07-v1';
 
 	if ( get_option( 'langit_project_seed_version' ) === $seed_version ) {
 		return;

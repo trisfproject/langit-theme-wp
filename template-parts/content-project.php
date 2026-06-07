@@ -43,16 +43,62 @@ $langit_project_details = langit_get_project_details( get_the_ID() );
 
 	<section class="section section--compact">
 		<div class="container project-detail-grid">
-			<?php if ( ! empty( $langit_project_details ) ) : ?>
+			<?php
+			$langit_client       = get_post_meta( get_the_ID(), 'langit_project_client', true );
+			$langit_location     = get_post_meta( get_the_ID(), 'langit_project_location', true );
+			$langit_year         = get_post_meta( get_the_ID(), 'langit_project_year', true );
+			$langit_service_type = get_post_meta( get_the_ID(), 'langit_project_service_type', true );
+			$langit_systems_str  = get_post_meta( get_the_ID(), 'langit_project_systems', true );
+			
+			$langit_has_details = ! empty( $langit_client ) || ! empty( $langit_location ) || ! empty( $langit_year ) || ! empty( $langit_service_type ) || ! empty( $langit_systems_str );
+			
+			if ( $langit_has_details ) : ?>
 				<div class="card project-detail-card">
-					<p class="section-eyebrow"><?php esc_html_e( 'Project Information', 'langit' ); ?></p>
+					<p class="section-eyebrow"><?php esc_html_e( 'Project Overview', 'langit' ); ?></p>
 					<dl class="project-meta-list">
-						<?php foreach ( $langit_project_details as $langit_label => $langit_value ) : ?>
+						<?php if ( ! empty( $langit_client ) ) : ?>
 							<div>
-								<dt><?php echo esc_html( $langit_label ); ?></dt>
-								<dd><?php echo esc_html( $langit_value ); ?></dd>
+								<dt><?php esc_html_e( 'Client', 'langit' ); ?></dt>
+								<dd><?php echo esc_html( $langit_client ); ?></dd>
 							</div>
-						<?php endforeach; ?>
+						<?php endif; ?>
+						
+						<?php if ( ! empty( $langit_location ) ) : ?>
+							<div>
+								<dt><?php esc_html_e( 'Location', 'langit' ); ?></dt>
+								<dd><?php echo esc_html( $langit_location ); ?></dd>
+							</div>
+						<?php endif; ?>
+						
+						<?php if ( ! empty( $langit_year ) ) : ?>
+							<div>
+								<dt><?php esc_html_e( 'Completion Year', 'langit' ); ?></dt>
+								<dd><?php echo esc_html( $langit_year ); ?></dd>
+							</div>
+						<?php endif; ?>
+						
+						<?php if ( ! empty( $langit_service_type ) ) : ?>
+							<div>
+								<dt><?php esc_html_e( 'Service Type', 'langit' ); ?></dt>
+								<dd><?php echo esc_html( $langit_service_type ); ?></dd>
+							</div>
+						<?php endif; ?>
+						
+						<?php if ( ! empty( $langit_systems_str ) ) :
+							$langit_systems = array_filter( array_map( 'trim', explode( ',', $langit_systems_str ) ) );
+							if ( ! empty( $langit_systems ) ) : ?>
+								<div>
+									<dt><?php esc_html_e( 'Systems Implemented', 'langit' ); ?></dt>
+									<dd>
+										<div class="project-overview-tags">
+											<?php foreach ( $langit_systems as $langit_sys ) : ?>
+												<span class="project-tag"><?php echo esc_html( $langit_sys ); ?></span>
+											<?php endforeach; ?>
+										</div>
+									</dd>
+								</div>
+							<?php endif;
+						endif; ?>
 					</dl>
 				</div>
 			<?php endif; ?>

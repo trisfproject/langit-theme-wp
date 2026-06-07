@@ -690,7 +690,13 @@ function langit_service_summary_card( $service ) {
 		<img class="service-card__icon" src="<?php echo esc_url( $icon_url ); ?>" width="48" height="48" alt="" loading="lazy" decoding="async">
 		<div class="service-card__body">
 			<h3><a href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( get_the_title( $post_id ) ); ?></a></h3>
-			<p><?php echo esc_html( langit_get_service_excerpt( $post_id ) ); ?></p>
+			<?php
+			$langit_excerpt = langit_get_service_excerpt( $post_id );
+			if ( is_singular( 'project' ) ) {
+				$langit_excerpt = wp_trim_words( $langit_excerpt, 12 );
+			}
+			?>
+			<p><?php echo esc_html( $langit_excerpt ); ?></p>
 		</div>
 		<?php
 		langit_button(

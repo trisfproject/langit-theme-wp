@@ -44,14 +44,6 @@ $langit_related_services = new WP_Query(
 			<?php if ( has_excerpt() ) : ?>
 				<p class="lede" itemprop="description"><?php echo esc_html( get_the_excerpt() ); ?></p>
 			<?php endif; ?>
-			<?php
-			langit_button(
-					array(
-						'url'   => $langit_service_cta,
-						'label' => langit_get_service_cta_label( get_the_ID() ),
-					)
-				);
-			?>
 		</div>
 	</header>
 
@@ -76,10 +68,71 @@ $langit_related_services = new WP_Query(
 
 	<?php
 	$langit_scope_str = get_post_meta( get_the_ID(), 'langit_service_scope', true );
-	if ( empty( $langit_scope_str ) ) {
-		$langit_scope_str = 'Site Survey, System Design, Installation, Configuration, Testing, Maintenance';
+	
+	// Default process steps with title and description
+	$langit_default_process = array(
+		array(
+			'title' => esc_html__( 'Site Survey', 'langit' ),
+			'desc'  => esc_html__( 'Requirement assessment and field verification.', 'langit' ),
+		),
+		array(
+			'title' => esc_html__( 'System Design', 'langit' ),
+			'desc'  => esc_html__( 'System planning and technical preparation.', 'langit' ),
+		),
+		array(
+			'title' => esc_html__( 'Installation', 'langit' ),
+			'desc'  => esc_html__( 'Deployment according to approved design.', 'langit' ),
+		),
+		array(
+			'title' => esc_html__( 'Configuration', 'langit' ),
+			'desc'  => esc_html__( 'Device setup and integration.', 'langit' ),
+		),
+		array(
+			'title' => esc_html__( 'Testing', 'langit' ),
+			'desc'  => esc_html__( 'Functional and performance validation.', 'langit' ),
+		),
+		array(
+			'title' => esc_html__( 'Maintenance', 'langit' ),
+			'desc'  => esc_html__( 'Ongoing support and preventive maintenance.', 'langit' ),
+		),
+	);
+
+	if ( ! empty( $langit_scope_str ) ) {
+		$langit_scopes_raw = array_map( 'trim', explode( ',', $langit_scope_str ) );
+		$langit_scopes = array();
+		
+		// Map descriptions if they match standard steps, otherwise leave description empty
+		$desc_map = array(
+			'site survey'   => esc_html__( 'Requirement assessment and field verification.', 'langit' ),
+			'system design' => esc_html__( 'System planning and technical preparation.', 'langit' ),
+			'installation'  => esc_html__( 'Deployment according to approved design.', 'langit' ),
+			'configuration' => esc_html__( 'Device setup and integration.', 'langit' ),
+			'testing'       => esc_html__( 'Functional and performance validation.', 'langit' ),
+			'maintenance'   => esc_html__( 'Ongoing support and preventive maintenance.', 'langit' ),
+		);
+		
+		foreach ( $langit_scopes_raw as $raw_step ) {
+			$lower_step = strtolower( $raw_step );
+			$desc = isset( $desc_map[ $lower_step ] ) ? $desc_map[ $lower_step ] : '';
+			
+			// Fallback: search for substring match
+			if ( empty( $desc ) ) {
+				foreach ( $desc_map as $key => $val ) {
+					if ( strpos( $lower_step, $key ) !== false || strpos( $key, $lower_step ) !== false ) {
+						$desc = $val;
+						break;
+					}
+				}
+			}
+			
+			$langit_scopes[] = array(
+				'title' => $raw_step,
+				'desc'  => $desc,
+			);
+		}
+	} else {
+		$langit_scopes = $langit_default_process;
 	}
-	$langit_scopes = array_map( 'trim', explode( ',', $langit_scope_str ) );
 	?>
 	<section class="section section--compact service-scope-section">
 		<div class="container stack">
@@ -87,7 +140,7 @@ $langit_related_services = new WP_Query(
 			langit_section_heading(
 				array(
 					'eyebrow' => esc_html__( 'Our Methodology', 'langit' ),
-					'title'   => esc_html__( 'Typical Work Scope', 'langit' ),
+					'title'   => esc_html__( 'Our Delivery Process', 'langit' ),
 					'center'  => true,
 				)
 			);
@@ -97,7 +150,10 @@ $langit_related_services = new WP_Query(
 					<div class="checklist-item">
 						<span class="checklist-item__num"><?php echo esc_html( sprintf( '%02d', $langit_index + 1 ) ); ?></span>
 						<div class="checklist-item__content">
-							<h4 class="checklist-item__title"><?php echo esc_html( $langit_step ); ?></h4>
+							<h4 class="checklist-item__title"><?php echo esc_html( $langit_step['title'] ); ?></h4>
+							<?php if ( ! empty( $langit_step['desc'] ) ) : ?>
+								<p class="checklist-item__desc"><?php echo esc_html( $langit_step['desc'] ); ?></p>
+							<?php endif; ?>
 							<span class="checklist-item__check">✓ Active Scope</span>
 						</div>
 					</div>
