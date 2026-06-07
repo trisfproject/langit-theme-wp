@@ -341,7 +341,7 @@ function langit_seed_service_entries() {
 			'category'    => 'Security System',
 			'image'       => 'cctv-security-system.webp',
 			'menu_order'  => 10,
-			'excerpt'     => 'Solusi CCTV dan sistem keamanan untuk pemantauan area, kontrol akses, serta perlindungan fasilitas secara lebih terukur dan mudah dikelola.',
+			'excerpt'     => 'Solusi CCTV dan sistem keamanan terintegrasi untuk pemantauan area, kontrol akses, serta perlindungan fasilitas secara real-time. Kami merancang sistem pengawasan yang andal guna meminimalisir risiko keamanan dan mendukung keselamatan operasional di area komersial maupun industri.',
 			'description' => '<p>PT Global Teknindo menyediakan layanan konsultasi, perencanaan, instalasi, dan integrasi CCTV serta security system untuk gedung komersial, fasilitas industri, area operasional, kantor, dan lingkungan kerja yang membutuhkan pemantauan andal.</p><p>Setiap sistem dirancang dengan mempertimbangkan titik pengawasan, kebutuhan penyimpanan rekaman, kualitas gambar, akses pemantauan, serta kemudahan pemeliharaan. Pendekatan ini membantu pelanggan membangun sistem keamanan yang rapi, terdokumentasi, dan siap mendukung operasional harian.</p><p>Layanan dapat mencakup pemasangan kamera, penarikan kabel, konfigurasi perangkat perekam, integrasi jaringan, pengujian fungsi, serta dukungan maintenance berkala agar sistem tetap bekerja optimal.</p>',
 		),
 		array(
@@ -350,7 +350,7 @@ function langit_seed_service_entries() {
 			'category'    => 'Network Infrastructure',
 			'image'       => 'networking-infrastructure.webp',
 			'menu_order'  => 20,
-			'excerpt'     => 'Pembangunan infrastruktur jaringan data yang stabil, rapi, dan scalable untuk mendukung konektivitas kantor, gedung, dan area industri.',
+			'excerpt'     => 'Pembangunan infrastruktur jaringan data yang stabil, rapi, dan scalable untuk mendukung konektivitas kantor, gedung, dan area industri. Kami memastikan kualitas kabel terstruktur, manajemen perangkat aktif yang efisien, serta cakupan sinyal nirkabel yang optimal di seluruh area operasional.',
 			'description' => '<p>Layanan Networking Infrastructure mencakup perencanaan, instalasi, penataan, dan pengujian jaringan data untuk kebutuhan bisnis modern. Solusi disiapkan untuk mendukung konektivitas perangkat kerja, sistem keamanan, server, akses internet, serta integrasi antar area operasional.</p><p>PT Global Teknindo memperhatikan struktur kabel, jalur distribusi, titik akses, perangkat aktif, dokumentasi jaringan, dan kemudahan perawatan agar infrastruktur dapat berkembang mengikuti kebutuhan perusahaan.</p><p>Implementasi dilakukan dengan standar kerja yang rapi, mulai dari survei kebutuhan, penarikan kabel, terminasi, labeling, pengujian koneksi, hingga pendampingan teknis setelah pekerjaan selesai.</p>',
 		),
 		array(
@@ -359,7 +359,7 @@ function langit_seed_service_entries() {
 			'category'    => 'Mechanical Electrical',
 			'image'       => 'mechanical-electrical.webp',
 			'menu_order'  => 30,
-			'excerpt'     => 'Dukungan sistem mekanikal elektrikal untuk bangunan dan fasilitas operasional dengan instalasi yang aman, terstruktur, dan mudah dirawat.',
+			'excerpt'     => 'Dukungan sistem mekanikal elektrikal untuk bangunan dan fasilitas operasional dengan instalasi yang aman, terstruktur, dan mudah dirawat. Setiap rancangan difokuskan pada distribusi daya yang andal, efisiensi energi, serta kepatuhan terhadap standar keselamatan industri yang berlaku.',
 			'description' => '<p>Mechanical Electrical merupakan bagian penting dari keandalan operasional bangunan dan fasilitas industri. PT Global Teknindo membantu pelanggan dalam pekerjaan konsultasi, instalasi, integrasi, dan pemeliharaan sistem pendukung elektrikal sesuai kebutuhan area kerja.</p><p>Ruang lingkup layanan dapat disesuaikan dengan kondisi proyek, mulai dari distribusi daya, panel pendukung, jalur kabel, perangkat operasional, hingga koordinasi dengan sistem teknologi gedung lainnya.</p><p>Setiap pekerjaan diarahkan untuk menghasilkan instalasi yang aman, tertata, terdokumentasi, serta mudah diperiksa ketika dilakukan pengembangan atau maintenance di kemudian hari.</p>',
 		),
 		array(
@@ -368,7 +368,7 @@ function langit_seed_service_entries() {
 			'category'    => 'Safety System',
 			'image'       => 'fire-alarm-system.webp',
 			'menu_order'  => 40,
-			'excerpt'     => 'Instalasi fire alarm system untuk mendukung deteksi dini, keselamatan penghuni, dan kesiapan fasilitas dalam kondisi darurat.',
+			'excerpt'     => 'Instalasi fire alarm system untuk mendukung deteksi dini, keselamatan penghuni, dan kesiapan fasilitas dalam kondisi darurat. Sistem kami dirancang secara responsif untuk mendeteksi bahaya kebakaran sejak awal guna melindungi aset penting dan mempermudah prosedur evakuasi.',
 			'description' => '<p>PT Global Teknindo menyediakan layanan Fire Alarm System untuk membantu bangunan dan fasilitas operasional memiliki sistem deteksi serta peringatan dini yang lebih siap digunakan. Solusi disiapkan berdasarkan kebutuhan area, fungsi ruangan, jalur evakuasi, dan prioritas keselamatan.</p><p>Pekerjaan dapat mencakup perencanaan titik perangkat, instalasi kabel, pemasangan detector, manual call point, bell atau sounder, panel kontrol, pengujian fungsi, serta dokumentasi hasil pekerjaan.</p><p>Dengan instalasi yang terstruktur dan pemeriksaan berkala, sistem fire alarm dapat mendukung kesiapsiagaan fasilitas sekaligus membantu pengelola menjaga standar keselamatan operasional.</p>',
 		),
 		array(
@@ -377,7 +377,7 @@ function langit_seed_service_entries() {
 			'category'    => 'Audio System',
 			'image'       => 'audio-public-address.webp',
 			'menu_order'  => 50,
-			'excerpt'     => 'Solusi audio, paging, dan public address untuk kebutuhan komunikasi internal, pengumuman, serta informasi operasional di berbagai area.',
+			'excerpt'     => 'Solusi audio, paging, dan public address untuk kebutuhan komunikasi internal, pengumuman, serta informasi operasional di berbagai area. Kami menghadirkan distribusi suara yang jernih dan sistem pembagian zona suara yang fleksibel untuk area pabrik, kantor, maupun bangunan komersial.',
 			'description' => '<p>Audio & Public Address mendukung komunikasi yang jelas di gedung, area produksi, fasilitas umum, ruang kerja, dan lingkungan operasional yang membutuhkan sistem pengumuman terpusat. PT Global Teknindo membantu merancang dan mengimplementasikan sistem audio sesuai karakter area serta kebutuhan penggunaan.</p><p>Layanan dapat mencakup pemilihan perangkat, perencanaan zona, instalasi speaker, amplifier, microphone, paging system, jalur kabel, konfigurasi dasar, hingga pengujian distribusi suara.</p><p>Solusi disiapkan agar komunikasi internal menjadi lebih efektif, mudah dioperasikan, dan dapat dirawat secara berkelanjutan sesuai kebutuhan fasilitas.</p>',
 		),
 		array(
@@ -386,7 +386,7 @@ function langit_seed_service_entries() {
 			'category'    => 'Maintenance Service',
 			'image'       => 'installation-maintenance.webp',
 			'menu_order'  => 60,
-			'excerpt'     => 'Layanan instalasi dan maintenance untuk menjaga sistem teknologi gedung tetap rapi, stabil, dan siap mendukung operasional jangka panjang.',
+			'excerpt'     => 'Layanan instalasi dan maintenance berkala untuk menjaga sistem teknologi gedung tetap rapi, stabil, dan siap mendukung operasional jangka panjang. Dukungan teknis yang responsif membantu meminimalisir potensi kerusakan perangkat serta memastikan kontinuitas bisnis Anda.',
 			'description' => '<p>Installation & Maintenance Service membantu pelanggan memastikan sistem yang terpasang dapat berjalan stabil setelah implementasi. Layanan ini mencakup pekerjaan instalasi perangkat, pengecekan fungsi, perapihan jalur, dokumentasi, perawatan berkala, serta dukungan teknis ketika dibutuhkan.</p><p>PT Global Teknindo menempatkan maintenance sebagai bagian penting dari keandalan sistem. Pemeriksaan berkala membantu mendeteksi potensi gangguan lebih awal, menjaga performa perangkat, dan mendukung kontinuitas operasional fasilitas.</p><p>Layanan dapat diterapkan untuk CCTV, jaringan, elektrikal, fire alarm, audio, serta sistem pendukung lain yang membutuhkan penanganan teknis profesional dan responsif.</p>',
 		),
 	);
@@ -470,7 +470,7 @@ function langit_seed_service_image_attachment( $slug, $filename, $title ) {
  * Seed production service entries into the Services CPT.
  */
 function langit_seed_services_content() {
-	$seed_version = '2026-05-17';
+	$seed_version = '2026-06-07-v2';
 
 	if ( get_option( 'langit_service_seed_version' ) === $seed_version ) {
 		return;
@@ -521,7 +521,7 @@ function langit_seed_services_content() {
 
 	update_option( 'langit_service_seed_version', $seed_version );
 }
-add_action( 'admin_init', 'langit_seed_services_content' );
+add_action( 'init', 'langit_seed_services_content' );
 
 /**
  * Get a service CTA URL.

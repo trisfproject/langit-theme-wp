@@ -22,12 +22,13 @@ $langit_related_services = new WP_Query(
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope itemtype="https://schema.org/Service">
-	<header class="single-hero">
-		<div class="single-hero__content stack">
+	<header class="page-hero single-hero">
+		<div class="container page-hero__content single-hero__content stack">
 			<div class="single-hero__meta-row">
-				<span class="section-eyebrow"><?php esc_html_e( 'Service Detail', 'langit' ); ?></span>
+				<span class="single-hero__breadcrumb-eyebrow"><?php esc_html_e( 'SERVICE', 'langit' ); ?></span>
 				<?php if ( ! is_wp_error( $langit_terms ) && ! empty( $langit_terms ) ) : ?>
-					<span class="single-hero__category">
+					<span class="single-hero__breadcrumb-separator">&gt;</span>
+					<span class="single-hero__breadcrumb-category">
 						<?php
 						$langit_term_links = array();
 						foreach ( $langit_terms as $langit_term ) {

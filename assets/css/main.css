@@ -4237,11 +4237,6 @@ a.contact-bar__value:hover {
 	font-weight: 750;
 }
 
-.single-hero {
-	padding-block: var(--langit-space-lg);
-}
-
-.single-hero__content,
 .single-content,
 .single-footer,
 .single-featured-image,
@@ -6318,7 +6313,7 @@ textarea {
 .page-hero .lede {
 	font-size: 16px !important;
 	line-height: 1.7 !important;
-	max-width: 700px !important;
+	max-width: 720px !important;
 	margin-top: 0 !important;
 	margin-bottom: 0 !important;
 }
@@ -6382,23 +6377,23 @@ textarea {
 	display: inline-flex !important;
 }
 
-/* Tablet viewports: max-width around 720px / description 700px */
+/* Tablet viewports: max-width around 720px / description 720px */
 @media (min-width: 768px) {
 	.page-hero .container > * {
 		max-width: 720px !important;
 	}
 	.page-hero .lede {
-		max-width: 700px !important;
+		max-width: 720px !important;
 	}
 }
 
-/* Desktop viewports: max-width ~920px / description ~820px */
+/* Desktop viewports: max-width ~920px / description ~750px */
 @media (min-width: 1025px) {
 	.page-hero .container > * {
 		max-width: 920px !important;
 	}
 	.page-hero .lede {
-		max-width: 820px !important;
+		max-width: 750px !important;
 	}
 }
 
@@ -6407,99 +6402,52 @@ textarea {
    Align layouts with the global site container boundaries
    ============================================================================= */
 
-/* Single Hero content layer grid alignment and left-align */
-.single-service .single-hero__content,
-.single-project .single-hero__content {
-	width: min(100% - (var(--langit-gutter) * 2), var(--langit-container)) !important;
-	max-width: var(--langit-container) !important;
-	margin-inline: auto !important;
-	display: flex !important;
-	flex-direction: column !important;
-	align-items: flex-start !important;
-	text-align: left !important;
-}
-
-/* Base mobile width: 100% */
-.single-service .single-hero__content > *,
-.single-project .single-hero__content > * {
-	width: 100% !important;
-	max-width: 100% !important;
-}
-
-/* Eyebrow badge compact pill styling (does not stretch) */
-.single-service .single-hero__content .section-eyebrow,
-.single-project .single-hero__content .section-eyebrow,
-.single-service .single-hero__content .post-card__term,
-.single-project .single-hero__content .post-card__term {
-	display: inline-flex !important;
-	width: auto !important;
-	max-width: fit-content !important;
-	flex: 0 0 auto !important;
-	align-self: flex-start !important;
-}
-
-/* Single Hero Metadata Row & Inline Category Pill Style */
+/* Single Hero Metadata Row & Breadcrumb Style */
 .single-hero__meta-row {
 	display: inline-flex !important;
 	align-items: center !important;
 	flex-wrap: wrap !important;
 	gap: 12px !important;
 	margin-top: 0 !important;
-	margin-bottom: 24px !important;
+	margin-bottom: 16px !important;
 }
 
 .single-hero__meta-row > * {
 	margin: 0 !important;
 }
 
-.single-hero__category {
-	font-size: clamp(14px, 0.88rem + 0.05vw, 15px) !important;
-	font-weight: 550 !important;
+.single-hero__breadcrumb-eyebrow,
+.single-hero__breadcrumb-separator,
+.single-hero__breadcrumb-category {
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	letter-spacing: 0.08em !important;
 	color: var(--langit-muted, #718096) !important;
-	text-transform: none !important;
-	text-decoration: none !important;
 	display: inline-flex !important;
 	align-items: center !important;
 }
 
-.single-hero__category a {
-	color: inherit !important;
-	text-decoration: none !important;
-	transition: color var(--langit-transition-fast, 200ms) !important;
+.single-hero__breadcrumb-eyebrow {
+	text-transform: uppercase !important;
 }
 
-.single-hero__category a:hover {
+.single-hero__breadcrumb-category {
+	text-transform: none !important;
+}
+
+.single-hero__breadcrumb-category a {
+	color: inherit !important;
+	text-decoration: none !important;
+	transition: color 150ms ease !important;
+}
+
+.single-hero__breadcrumb-category a:hover {
 	color: var(--langit-primary, #0a64be) !important;
 }
 
 .single-service .single-hero__content .single-hero__meta-row + h1,
 .single-project .single-hero__content .single-hero__meta-row + h1 {
 	margin-top: 0 !important;
-}
-
-
-/* Tablet viewports: content max-width around 720px, description max-width 700px */
-@media (min-width: 768px) {
-	.single-service .single-hero__content > *,
-	.single-project .single-hero__content > * {
-		max-width: 720px !important;
-	}
-	.single-service .single-hero__content .lede,
-	.single-project .single-hero__content .lede {
-		max-width: 700px !important;
-	}
-}
-
-/* Desktop viewports: content max-width ~920px, description max-width ~820px */
-@media (min-width: 1025px) {
-	.single-service .single-hero__content > *,
-	.single-project .single-hero__content > * {
-		max-width: 920px !important;
-	}
-	.single-service .single-hero__content .lede,
-	.single-project .single-hero__content .lede {
-		max-width: 820px !important;
-	}
 }
 
 /* Content layout expansion (Featured Image, Content block, Footer) */
@@ -6870,10 +6818,6 @@ textarea {
 }
 
 /* ── Section padding: give each zone breathing room ── */
-.single-service .single-hero,
-.single-project .single-hero {
-	padding-block: clamp(3rem, 2rem + 4vw, 5rem) !important;
-}
 
 /* Generous padding on secondary-colour bands */
 .single-service .service-scope-section,
@@ -6889,11 +6833,6 @@ textarea {
 
 /* ── Responsive: consistent on tablet & mobile ── */
 @media (max-width: 768px) {
-	.single-service .single-hero,
-	.single-project .single-hero {
-		padding-block: 2.5rem !important;
-	}
-
 	.single-service .service-scope-section,
 	.single-project .section.section--surface {
 		padding-block: 2.5rem !important;

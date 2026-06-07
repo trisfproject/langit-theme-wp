@@ -238,7 +238,7 @@ function langit_seed_project_entries() {
 			'location'     => 'Karawang, Indonesia',
 			'year'         => '2025',
 			'service_type' => 'Fire Alarm System',
-			'excerpt'      => 'Integrasi sistem fire alarm untuk gedung operasional dan fasilitas komersial dengan pengujian alarm, sensor, dan panel kontrol.',
+			'excerpt'      => 'Integrasi sistem fire alarm untuk gedung operasional dan fasilitas komersial dengan pengujian alarm, sensor, dan panel kontrol secara menyeluruh. Proyek ini memastikan respon cepat terhadap deteksi dini potensi bahaya kebakaran di area pabrik guna melindungi keselamatan kerja karyawan.',
 			'description'  => '<p>Fire Alarm System Integration disiapkan untuk meningkatkan kesiapan fasilitas dalam menghadapi kondisi darurat. Ruang lingkup pekerjaan meliputi penentuan titik perangkat, instalasi detector, manual call point, alarm output, panel, and pengujian fungsi sistem.</p><p>Proses implementasi dilakukan secara terarah agar sistem peringatan dini dapat bekerja sesuai kebutuhan area dan membantu pengelola fasilitas merespons kondisi darurat dengan lebih cepat.</p><p>Selain instalasi, pekerjaan juga menekankan dokumentasi dan pemeriksaan fungsi sehingga sistem lebih mudah dipantau serta dirawat secara berkala.</p>',
 		),
 		array(
@@ -253,7 +253,7 @@ function langit_seed_project_entries() {
 			'location'     => 'Bandung, Indonesia',
 			'year'         => '2025',
 			'service_type' => 'Audio & Public Address',
-			'excerpt'      => 'Implementasi sistem audio dan public address untuk komunikasi internal, pengumuman area, dan kebutuhan operasional.',
+			'excerpt'      => 'Implementasi sistem audio dan public address untuk komunikasi internal, pengumuman area, dan kebutuhan operasional pergudangan secara otomatis. Sistem ini mempermudah penyebaran informasi secara jelas, terjadwal, dan menjangkau seluruh zona operasional logistik dengan optimal.',
 			'description'  => '<p>Proyek Audio & Public Address Installation mencakup pemasangan sistem audio, perangkat paging, speaker area, dan konfigurasi dasar untuk mendukung komunikasi internal fasilitas.</p><p>Perencanaan dilakukan dengan memperhatikan karakter ruang, pembagian zona, kebutuhan volume, dan kemudahan pengoperasian oleh tim pengelola gedung atau fasilitas.</p><p>Sistem yang terpasang membantu penyampaian informasi menjadi lebih jelas, terpusat, dan siap digunakan untuk kebutuhan pengumuman harian maupun komunikasi operasional.</p>',
 		),
 		array(
@@ -268,7 +268,7 @@ function langit_seed_project_entries() {
 			'location'     => 'Jakarta, Indonesia',
 			'year'         => '2026',
 			'service_type' => 'CCTV & Security System',
-			'excerpt'      => 'Implementasi CCTV untuk area gedung komersial dengan perencanaan titik kamera, integrasi jaringan, dan pengujian sistem pemantauan.',
+			'excerpt'      => 'Implementasi CCTV untuk area gedung komersial dengan perencanaan titik kamera yang presisi, integrasi jaringan, dan pengujian sistem pemantauan secara real-time. Solusi pengawasan terpadu ini membantu pengelola gedung memantau akses keamanan secara lebih efisien dan terdokumentasi.',
 			'description'  => '<p>Proyek ini mencakup pekerjaan konsultasi, survei area, penentuan titik kamera, instalasi perangkat CCTV, integrasi jaringan, serta pengujian sistem pemantauan untuk kebutuhan gedung komersial.</p><p>Tim teknis memastikan jalur instalasi dibuat rapi, perangkat mudah diakses untuk pemeliharaan, and area prioritas mendapatkan cakupan visual yang sesuai dengan kebutuhan operasional gedung.</p><p>Hasil pekerjaan diarahkan untuk membantu pengelola fasilitas meningkatkan keamanan area, memperkuat dokumentasi kejadian, dan menjaga sistem pemantauan tetap andal dalam penggunaan harian.</p>',
 		),
 		array(
@@ -283,7 +283,7 @@ function langit_seed_project_entries() {
 			'location'     => 'Surabaya, Indonesia',
 			'year'         => '2026',
 			'service_type' => 'Installation & Maintenance',
-			'excerpt'      => 'Layanan preventive maintenance untuk memastikan performa sistem tetap stabil, aman, dan siap operasional.',
+			'excerpt'      => 'Layanan preventive maintenance sistem keamanan dan jaringan terpadu untuk memastikan performa sistem tetap stabil, aman, dan siap operasional. Program pemeliharaan berkala ini dirancang guna mencegah terjadinya kegagalan sistem mendadak serta memperpanjang masa pakai perangkat.',
 			'description'  => '<p>Preventive Maintenance Services dilakukan untuk membantu pelanggan menjaga sistem tetap stabil dan siap digunakan. Pekerjaan dapat mencakup pemeriksaan perangkat, pengecekan koneksi, pembersihan area instalasi, pengujian fungsi, dan rekomendasi tindak lanjut.</p><p>Pendekatan maintenance berkala membantu mendeteksi potensi gangguan lebih awal, mengurangi risiko downtime, dan memperpanjang usia penggunaan perangkat yang mendukung operasional fasilitas.</p><p>Tim menyusun hasil pemeriksaan secara terstruktur sehingga pelanggan dapat memahami kondisi sistem dan menentukan prioritas perbaikan atau pengembangan berikutnya.</p>',
 		),
 		array(
@@ -298,7 +298,7 @@ function langit_seed_project_entries() {
 			'location'     => 'Bekasi, Indonesia',
 			'year'         => '2026',
 			'service_type' => 'Networking Infrastructure',
-			'excerpt'      => 'Pembangunan jaringan data untuk kantor operasional dengan struktur kabel, terminasi, labeling, dan pengujian konektivitas.',
+			'excerpt'      => 'Pembangunan jaringan data untuk kantor operasional dengan struktur kabel terstandarisasi, terminasi, labeling, dan pengujian konektivitas berkecepatan tinggi. Infrastruktur ini siap mendukung integrasi sistem keamanan, manajemen database, serta kelancaran komunikasi data harian.',
 			'description'  => '<p>Network Infrastructure Deployment dilakukan untuk mendukung konektivitas data pada area kantor and fasilitas operasional. Pekerjaan meliputi perencanaan jalur, penarikan kabel, terminasi, penataan perangkat, serta pengujian koneksi.</p><p>Setiap titik jaringan diberi dokumentasi dan labeling agar mudah ditelusuri saat terjadi pengembangan, perubahan layout, atau pekerjaan maintenance di kemudian hari.</p><p>Implementasi ini membantu pelanggan memperoleh jaringan yang lebih stabil, tertata, dan siap mendukung kebutuhan sistem keamanan, perangkat kerja, akses internet, serta integrasi operasional lainnya.</p>',
 		),
 		array(
@@ -313,7 +313,7 @@ function langit_seed_project_entries() {
 			'location'     => 'Tangerang, Indonesia',
 			'year'         => '2025',
 			'service_type' => 'Mechanical Electrical',
-			'excerpt'      => 'Pekerjaan panel dan instalasi elektrikal pendukung fasilitas industri dengan fokus pada kerapian, keamanan, dan kemudahan pemeriksaan.',
+			'excerpt'      => 'Pekerjaan panel dan instalasi elektrikal pendukung fasilitas industri dengan fokus pada kerapian jalur kabel, keselamatan kerja, dan kemudahan pemeriksaan. Sistem distribusi daya ini dikonfigurasi untuk menyuplai energi secara stabil demi menjaga kontinuitas proses produksi pabrik.',
 			'description'  => '<p>Proyek Mechanical Electrical Panel Installation mencakup dukungan instalasi panel dan sistem elektrikal pendukung untuk kebutuhan fasilitas industri. Pekerjaan dilakukan dengan memperhatikan keamanan instalasi, keteraturan jalur, and kemudahan inspeksi.</p><p>Tim melakukan koordinasi teknis mulai dari peninjauan kebutuhan daya, persiapan area kerja, instalasi perangkat pendukung, hingga pemeriksaan fungsi sebelum sistem digunakan secara operasional.</p><p>Dengan dokumentasi yang jelas and pekerjaan yang terstruktur, pelanggan dapat memiliki instalasi elektrikal yang lebih mudah dirawat and lebih siap mengikuti kebutuhan pengembangan fasilitas.</p>',
 		),
 	);
@@ -397,7 +397,7 @@ function langit_seed_project_image_attachment( $slug, $filename, $title ) {
  * Seed production project entries into the Projects CPT.
  */
 function langit_seed_projects_content() {
-	$seed_version = '2026-06-07-v1';
+	$seed_version = '2026-06-07-v2';
 
 	if ( get_option( 'langit_project_seed_version' ) === $seed_version ) {
 		return;
@@ -452,7 +452,7 @@ function langit_seed_projects_content() {
 
 	update_option( 'langit_project_seed_version', $seed_version );
 }
-add_action( 'admin_init', 'langit_seed_projects_content' );
+add_action( 'init', 'langit_seed_projects_content' );
 
 /**
  * Get a project excerpt.
