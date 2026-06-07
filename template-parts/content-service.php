@@ -47,23 +47,27 @@ $langit_related_services = new WP_Query(
 		</div>
 	</header>
 
-	<?php if ( has_post_thumbnail() ) : ?>
-		<figure class="single-featured-image">
-			<?php the_post_thumbnail( 'langit-social', array_merge( langit_featured_image_attrs( true ), array( 'itemprop' => 'image' ) ) ); ?>
-		</figure>
-	<?php endif; ?>
+	<div class="container single-service-grid<?php echo has_post_thumbnail() ? ' has-image' : ''; ?>">
+		<?php if ( has_post_thumbnail() ) : ?>
+			<div class="single-service-grid__image">
+				<figure class="single-featured-image">
+					<?php the_post_thumbnail( 'langit-social', array_merge( langit_featured_image_attrs( true ), array( 'itemprop' => 'image' ) ) ); ?>
+				</figure>
+			</div>
+		<?php endif; ?>
 
-	<div class="container single-content" itemprop="description">
-		<?php
-		the_content();
+		<div class="single-service-grid__content single-content" itemprop="description">
+			<?php
+			the_content();
 
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'langit' ),
-				'after'  => '</div>',
-			)
-		);
-		?>
+			wp_link_pages(
+				array(
+					'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'langit' ),
+					'after'  => '</div>',
+				)
+			);
+			?>
+		</div>
 	</div>
 
 	<?php

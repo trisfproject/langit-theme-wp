@@ -6492,6 +6492,67 @@ textarea {
 	max-width: 100% !important;
 }
 
+/* Single Service Two-Column Grid Layout */
+.single-service-grid {
+	width: min(100% - (var(--langit-gutter) * 2), var(--langit-container)) !important;
+	max-width: var(--langit-container) !important;
+	margin-inline: auto !important;
+	margin-top: 80px !important;
+	margin-bottom: 80px !important;
+}
+
+/* On Desktop: 2-column grid when image is present */
+@media (min-width: 1025px) {
+	.single-service-grid.has-image {
+		display: grid !important;
+		grid-template-columns: 1fr 1.4fr !important;
+		gap: 48px !important;
+		align-items: start !important;
+	}
+}
+
+/* Tablet & Mobile: stack vertically */
+@media (max-width: 1024px) {
+	.single-service-grid.has-image {
+		display: flex !important;
+		flex-direction: column !important;
+		gap: 40px !important;
+	}
+}
+
+/* Image styling within the grid */
+.single-service-grid__image {
+	width: 100% !important;
+}
+
+.single-service-grid__image .single-featured-image {
+	width: 100% !important;
+	max-width: 100% !important;
+	margin: 0 !important;
+	border-radius: var(--langit-radius, 16px) !important;
+	overflow: hidden !important;
+}
+
+.single-service-grid__image .single-featured-image img {
+	width: 100% !important;
+	height: auto !important;
+	aspect-ratio: 4 / 3 !important;
+	object-fit: cover !important;
+	display: block !important;
+}
+
+/* Content styling within the grid */
+.single-service-grid__content {
+	width: 100% !important;
+	max-width: 100% !important;
+	margin: 0 !important;
+}
+
+.single-service-grid__content > *:first-child {
+	margin-top: 0 !important;
+}
+
+
 /* Premium Delivery Process / Methodology layout refinements */
 .single-service .checklist-item {
 	padding: 1.5rem 1.25rem !important;
