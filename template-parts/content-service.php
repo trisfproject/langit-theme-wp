@@ -24,22 +24,24 @@ $langit_related_services = new WP_Query(
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope itemtype="https://schema.org/Service">
 	<header class="single-hero">
 		<div class="single-hero__content stack">
-			<p class="section-eyebrow"><?php esc_html_e( 'Service Detail', 'langit' ); ?></p>
-			<?php if ( ! is_wp_error( $langit_terms ) && ! empty( $langit_terms ) ) : ?>
-				<div class="post-card__term">
-					<?php
-					$langit_term_links = array();
-					foreach ( $langit_terms as $langit_term ) {
-						$langit_term_links[] = sprintf(
-							'<a href="%1$s" rel="tag">%2$s</a>',
-							esc_url( get_term_link( $langit_term ) ),
-							esc_html( $langit_term->name )
-						);
-					}
-					echo wp_kses_post( implode( ', ', $langit_term_links ) );
-					?>
-				</div>
-			<?php endif; ?>
+			<div class="single-hero__meta-row">
+				<span class="section-eyebrow"><?php esc_html_e( 'Service Detail', 'langit' ); ?></span>
+				<?php if ( ! is_wp_error( $langit_terms ) && ! empty( $langit_terms ) ) : ?>
+					<span class="single-hero__category">
+						<?php
+						$langit_term_links = array();
+						foreach ( $langit_terms as $langit_term ) {
+							$langit_term_links[] = sprintf(
+								'<a href="%1$s" rel="tag">%2$s</a>',
+								esc_url( get_term_link( $langit_term ) ),
+								esc_html( $langit_term->name )
+							);
+						}
+						echo wp_kses_post( implode( ', ', $langit_term_links ) );
+						?>
+					</span>
+				<?php endif; ?>
+			</div>
 			<?php the_title( '<h1 class="entry-title" itemprop="name">', '</h1>' ); ?>
 			<?php if ( has_excerpt() ) : ?>
 				<p class="lede" itemprop="description"><?php echo esc_html( get_the_excerpt() ); ?></p>

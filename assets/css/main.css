@@ -6438,6 +6438,46 @@ textarea {
 	align-self: flex-start !important;
 }
 
+/* Single Hero Metadata Row & Inline Category Pill Style */
+.single-hero__meta-row {
+	display: inline-flex !important;
+	align-items: center !important;
+	flex-wrap: wrap !important;
+	gap: 12px !important;
+	margin-top: 0 !important;
+	margin-bottom: 24px !important;
+}
+
+.single-hero__meta-row > * {
+	margin: 0 !important;
+}
+
+.single-hero__category {
+	font-size: clamp(14px, 0.88rem + 0.05vw, 15px) !important;
+	font-weight: 550 !important;
+	color: var(--langit-muted, #718096) !important;
+	text-transform: none !important;
+	text-decoration: none !important;
+	display: inline-flex !important;
+	align-items: center !important;
+}
+
+.single-hero__category a {
+	color: inherit !important;
+	text-decoration: none !important;
+	transition: color var(--langit-transition-fast, 200ms) !important;
+}
+
+.single-hero__category a:hover {
+	color: var(--langit-primary, #0a64be) !important;
+}
+
+.single-service .single-hero__content .single-hero__meta-row + h1,
+.single-project .single-hero__content .single-hero__meta-row + h1 {
+	margin-top: 0 !important;
+}
+
+
 /* Tablet viewports: content max-width around 720px, description max-width 700px */
 @media (min-width: 768px) {
 	.single-service .single-hero__content > *,
