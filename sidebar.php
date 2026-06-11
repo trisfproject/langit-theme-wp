@@ -10,9 +10,11 @@
 	<?php if ( is_active_sidebar( 'blog-sidebar' ) ) : ?>
 		<?php dynamic_sidebar( 'blog-sidebar' ); ?>
 	<?php else : ?>
-		<section class="blog-widget widget_search">
-			<?php get_search_form(); ?>
-		</section>
+		<?php if ( ! is_search() ) : ?>
+			<section class="blog-widget widget_search">
+				<?php get_search_form(); ?>
+			</section>
+		<?php endif; ?>
 
 		<section class="blog-widget">
 			<h3 class="blog-widget__title"><?php esc_html_e( 'Categories', 'langit' ); ?></h3>

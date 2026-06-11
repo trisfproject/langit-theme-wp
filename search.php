@@ -20,18 +20,20 @@ get_header();
 				);
 				?>
 			</h1>
-			<?php get_search_form(); ?>
+			<div class="search-hero-form-wrapper">
+				<?php get_search_form(); ?>
+			</div>
 		</div>
 	</section>
 
-	<div class="container blog-layout">
+	<div class="container blog-layout blog-layout--listing">
 		<div class="blog-content">
 			<div class="blog-grid">
 				<?php
 				if ( have_posts() ) :
 					while ( have_posts() ) :
 						the_post();
-						get_template_part( 'template-parts/content', get_post_type() );
+						get_template_part( 'template-parts/content' );
 					endwhile;
 				else :
 					get_template_part( 'template-parts/content', 'none' );
@@ -41,8 +43,6 @@ get_header();
 
 			<?php the_posts_navigation(); ?>
 		</div>
-
-		<?php get_sidebar(); ?>
 	</div>
 </main>
 
