@@ -7089,11 +7089,14 @@ textarea {
 .single-post .single-post-title {
 	margin-top: 0 !important;
 	margin-bottom: 12px !important;
-	line-height: 1.08 !important;
+	font-size: 44px !important;
+	line-height: 1.15 !important;
 	font-weight: 800 !important;
 	letter-spacing: -0.03em !important;
 	color: var(--langit-secondary, #0f172a) !important;
-	max-width: 20ch !important;
+	width: 80% !important;
+	max-width: 80% !important;
+	margin-right: auto !important;
 }
 
 /* Meta -> Featured Image (24px) */
@@ -7184,8 +7187,16 @@ textarea {
 	color: var(--langit-text, #334155) !important;
 }
 
-/* Responsive Overrides for Content text sizes */
+/* Responsive Overrides for Title and Content text sizes */
 @media (max-width: 1024px) {
+	.single-post .entry-title,
+	.single-post .blog-post-title,
+	.single-post .single-post-title {
+		font-size: 36px !important;
+		width: 90% !important;
+		max-width: 90% !important;
+	}
+
 	.single-post .single-content p,
 	.single-post .single-content li {
 		font-size: 17px !important;
@@ -7193,6 +7204,14 @@ textarea {
 }
 
 @media (max-width: 768px) {
+	.single-post .entry-title,
+	.single-post .blog-post-title,
+	.single-post .single-post-title {
+		font-size: 28px !important;
+		width: 100% !important;
+		max-width: 100% !important;
+	}
+
 	.single-post .single-content p,
 	.single-post .single-content li {
 		font-size: 16px !important;
