@@ -94,3 +94,23 @@ function langit_body_classes( $classes ) {
 }
 add_filter( 'body_class', 'langit_body_classes' );
 
+/**
+ * Customize search block rendering to remove label and enforce placeholder.
+ */
+function langit_customize_search_block( $block_content, $block ) {
+	if ( 'core/search' === $block['blockName'] ) {
+		// Remove search label element if it exists
+		$block_content = preg_replace( '/<label\b[^>]*>(.*?)<\/label>/is', '', $block_content );
+		
+		// Enforce placeholder in the search input
+		if ( strpos( $block_content, 'placeholder="' ) !== false ) {
+			$block_content = preg_replace( '/placeholder="[^"]*"/', 'placeholder="' . esc_attr__( 'Search articles...', 'langit' ) . '"', $block_content );
+		} else {
+			$block_content = str_replace( '<input ', '<input placeholder="' . esc_attr__( 'Search articles...', 'langit' ) . '" ', $block_content );
+		}
+	}
+	return $block_content;
+}
+add_filter( 'render_block', 'langit_customize_search_block', 10, 2 );
+
+

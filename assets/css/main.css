@@ -7312,24 +7312,49 @@ textarea {
 }
 
 /* 4. Search Widget size and proportion */
+.blog-sidebar .widget_search .blog-widget__title,
+.blog-sidebar .widget_search .widget-title,
+.blog-sidebar .widget_search h1,
+.blog-sidebar .widget_search h2,
+.blog-sidebar .widget_search h3,
+.blog-sidebar .widget_search h4,
+.blog-sidebar .widget_search h5,
+.blog-sidebar .widget_search h6,
+.blog-sidebar .widget_search .wp-block-heading,
+.blog-sidebar .wp-block-search .blog-widget__title,
+.blog-sidebar .wp-block-search .widget-title,
+.blog-sidebar .wp-block-search h1,
+.blog-sidebar .wp-block-search h2,
+.blog-sidebar .wp-block-search h3,
+.blog-sidebar .wp-block-search h4,
+.blog-sidebar .wp-block-search h5,
+.blog-sidebar .wp-block-search h6,
+.blog-sidebar .wp-block-search .wp-block-heading,
+.blog-sidebar .wp-block-search__label {
+	display: none !important;
+}
+
 .blog-sidebar .search-form,
 .blog-sidebar .wp-block-search {
 	display: flex !important;
 	align-items: center !important;
-	gap: 8px !important;
+	gap: 12px !important;
 	max-width: 100% !important;
+	width: 100% !important;
+	flex-wrap: wrap !important;
 }
 
 .blog-sidebar .wp-block-search__inside-wrapper {
 	display: flex !important;
 	width: 100% !important;
-	gap: 8px !important;
+	gap: 12px !important;
+	flex-wrap: wrap !important;
 }
 
-.blog-sidebar .search-form label,
-.blog-sidebar .wp-block-search__label {
+.blog-sidebar .search-form label {
 	margin: 0 !important;
-	flex: 1 !important;
+	flex: 1 1 auto !important;
+	display: block !important;
 }
 
 .blog-sidebar .search-form .search-field,
@@ -7341,9 +7366,11 @@ textarea {
 	border-radius: var(--langit-radius-sm, 6px) !important;
 	border: 1px solid var(--langit-border, #e2e8f0) !important;
 	background: var(--langit-background, #f8fafc) !important;
-	width: 100% !important;
 	box-sizing: border-box !important;
 	color: var(--langit-ink, #0f172a) !important;
+	width: auto !important;
+	flex: 1 1 auto !important;
+	min-width: 0 !important;
 }
 
 .blog-sidebar .search-form .search-submit,
@@ -7360,11 +7387,30 @@ textarea {
 	font-weight: 700 !important;
 	cursor: pointer !important;
 	transition: background-color 150ms ease !important;
+	flex: 0 0 auto !important;
 }
 
 .blog-sidebar .search-form .search-submit:hover,
 .blog-sidebar .wp-block-search__button:hover {
 	background: var(--langit-primary-hover, #0077b3) !important;
+}
+
+@media (max-width: 480px) {
+	.blog-sidebar .search-form,
+	.blog-sidebar .wp-block-search__inside-wrapper {
+		flex-direction: column !important;
+		align-items: stretch !important;
+	}
+	.blog-sidebar .search-form .search-submit,
+	.blog-sidebar .wp-block-search__button {
+		width: 100% !important;
+		flex: 1 1 auto !important;
+	}
+	.blog-sidebar .search-form .search-field,
+	.blog-sidebar .wp-block-search__input {
+		width: 100% !important;
+		flex: 1 1 auto !important;
+	}
 }
 
 
