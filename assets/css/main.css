@@ -7052,10 +7052,10 @@ textarea {
 	padding-right: 0 !important;
 }
 
-/* Single Post Grid Layout: 70-75% article column + 25-30% sidebar with 64px gap */
+/* Single Post Grid Layout: 70% article column + 30% sidebar with 64px gap */
 .single-post .blog-layout--single {
 	display: grid !important;
-	grid-template-columns: minmax(0, 1fr) 320px !important;
+	grid-template-columns: 7fr 3fr !important;
 	gap: 64px !important;
 }
 
@@ -7213,6 +7213,160 @@ textarea {
 .related-posts-section .post-card {
 	height: auto !important;
 }
+
+/* ==========================================================================
+   BLOG SIDEBAR TYPOGRAPHY & STYLE REFINEMENT
+   ========================================================================== */
+
+/* 1. Widget Card Spacing/Padding */
+.blog-sidebar .blog-widget,
+.blog-sidebar .widget {
+	padding: 20px !important;
+	border: 1px solid var(--langit-border, #e2e8f0) !important;
+	border-radius: var(--langit-card-radius, var(--langit-radius, 12px)) !important;
+	background: var(--langit-surface, #ffffff) !important;
+	box-sizing: border-box !important;
+}
+
+/* 2. Widget Titles typography */
+.blog-sidebar .blog-widget__title,
+.blog-sidebar .widget-title,
+.blog-sidebar .widgettitle,
+.blog-sidebar .wp-block-search__label,
+.blog-sidebar h1,
+.blog-sidebar h2,
+.blog-sidebar h3,
+.blog-sidebar h4,
+.blog-sidebar h5,
+.blog-sidebar h6,
+.blog-sidebar .wp-block-heading {
+	font-size: 16px !important;
+	line-height: 1.3 !important;
+	font-weight: 700 !important;
+	margin-top: 0 !important;
+	margin-bottom: 12px !important;
+	color: var(--langit-secondary, #0f172a) !important;
+	letter-spacing: -0.01em !important;
+}
+
+/* 3. Widget Content (Recent Posts, Recent Comments, Categories, etc.) */
+.blog-sidebar .blog-widget ul,
+.blog-sidebar .blog-widget ol,
+.blog-sidebar .widget ul,
+.blog-sidebar .widget ol,
+.blog-sidebar ul,
+.blog-sidebar ol {
+	display: grid !important;
+	gap: 8px !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	list-style: none !important;
+}
+
+.blog-sidebar .blog-widget li,
+.blog-sidebar .blog-widget p,
+.blog-sidebar .blog-widget a,
+.blog-sidebar .widget li,
+.blog-sidebar .widget p,
+.blog-sidebar .widget a,
+.blog-sidebar li,
+.blog-sidebar p,
+.blog-sidebar a {
+	font-size: 14px !important;
+	line-height: 1.7 !important;
+	margin: 0 !important;
+}
+
+.blog-sidebar .blog-widget li a,
+.blog-sidebar .blog-widget li h1,
+.blog-sidebar .blog-widget li h2,
+.blog-sidebar .blog-widget li h3,
+.blog-sidebar .blog-widget li h4,
+.blog-sidebar .blog-widget li h5,
+.blog-sidebar .blog-widget li h6,
+.blog-sidebar .widget li a,
+.blog-sidebar .widget li h1,
+.blog-sidebar .widget li h2,
+.blog-sidebar .widget li h3,
+.blog-sidebar .widget li h4,
+.blog-sidebar .widget li h5,
+.blog-sidebar .widget li h6,
+.blog-sidebar li a,
+.blog-sidebar li h1,
+.blog-sidebar li h2,
+.blog-sidebar li h3,
+.blog-sidebar li h4,
+.blog-sidebar li h5,
+.blog-sidebar li h6 {
+	font-size: 14px !important;
+	line-height: 1.7 !important;
+	font-weight: 600 !important;
+	text-decoration: none !important;
+	color: var(--langit-secondary, #0f172a) !important;
+}
+
+.blog-sidebar .blog-widget li a:hover,
+.blog-sidebar .widget li a:hover,
+.blog-sidebar li a:hover {
+	color: var(--langit-primary, #0088cc) !important;
+}
+
+/* 4. Search Widget size and proportion */
+.blog-sidebar .search-form,
+.blog-sidebar .wp-block-search {
+	display: flex !important;
+	align-items: center !important;
+	gap: 8px !important;
+	max-width: 100% !important;
+}
+
+.blog-sidebar .wp-block-search__inside-wrapper {
+	display: flex !important;
+	width: 100% !important;
+	gap: 8px !important;
+}
+
+.blog-sidebar .search-form label,
+.blog-sidebar .wp-block-search__label {
+	margin: 0 !important;
+	flex: 1 !important;
+}
+
+.blog-sidebar .search-form .search-field,
+.blog-sidebar .wp-block-search__input {
+	height: 44px !important;
+	min-height: 44px !important;
+	padding: 8px 12px !important;
+	font-size: 14px !important;
+	border-radius: var(--langit-radius-sm, 6px) !important;
+	border: 1px solid var(--langit-border, #e2e8f0) !important;
+	background: var(--langit-background, #f8fafc) !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+	color: var(--langit-ink, #0f172a) !important;
+}
+
+.blog-sidebar .search-form .search-submit,
+.blog-sidebar .wp-block-search__button {
+	height: 44px !important;
+	min-height: 44px !important;
+	padding: 8px 16px !important;
+	font-size: 14px !important;
+	border-radius: var(--langit-radius-sm, 6px) !important;
+	margin-top: 0 !important;
+	background: var(--langit-primary, #0088cc) !important;
+	color: #ffffff !important;
+	border: none !important;
+	font-weight: 700 !important;
+	cursor: pointer !important;
+	transition: background-color 150ms ease !important;
+}
+
+.blog-sidebar .search-form .search-submit:hover,
+.blog-sidebar .wp-block-search__button:hover {
+	background: var(--langit-primary-hover, #0077b3) !important;
+}
+
 
 
 
