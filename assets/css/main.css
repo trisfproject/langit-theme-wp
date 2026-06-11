@@ -7083,20 +7083,27 @@ textarea {
 
 /* 2. Visual Hierarchy Spacing */
 
-/* Category -> Meta (12px) */
-.single-post .single-hero .post-card__term {
+/* Title -> Meta (12px) */
+.single-post .entry-title,
+.single-post .blog-post-title,
+.single-post .single-post-title {
 	margin-top: 0 !important;
 	margin-bottom: 12px !important;
-	display: inline-block !important;
+	line-height: 1.08 !important;
+	font-weight: 800 !important;
+	letter-spacing: -0.03em !important;
+	color: var(--langit-secondary, #0f172a) !important;
+	max-width: 20ch !important;
 }
 
-/* Meta -> Title (16px) */
+/* Meta -> Featured Image (24px) */
 .single-post .single-hero .entry-meta {
 	margin-top: 0 !important;
-	margin-bottom: 16px !important;
+	margin-bottom: 24px !important;
 	display: flex !important;
 	align-items: center !important;
-	gap: 12px !important;
+	flex-wrap: wrap !important;
+	gap: 8px !important;
 }
 
 .single-post .single-hero .entry-meta,
@@ -7106,24 +7113,31 @@ textarea {
 	color: var(--langit-muted, #718096) !important;
 }
 
+.single-post .single-hero .entry-meta a {
+	color: inherit !important;
+	text-decoration: none !important;
+	background: none !important;
+	border: none !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	font-weight: 500 !important;
+}
+
+.single-post .single-hero .entry-meta a:hover {
+	color: var(--langit-primary, #0088cc) !important;
+}
+
+.single-post .single-hero .entry-meta .meta-separator {
+	color: var(--langit-border, #e2e8f0) !important;
+	font-weight: 400 !important;
+	margin-inline: 4px !important;
+}
+
 /* Title -> Featured Image (28px) */
 .single-post .single-hero {
 	margin-top: 0 !important;
 	margin-bottom: 28px !important;
 	padding-bottom: 0 !important;
-}
-
-.single-post .entry-title,
-.single-post .blog-post-title,
-.single-post .single-post-title {
-	margin-top: 0 !important;
-	margin-bottom: 0 !important;
-	font-size: 48px !important;
-	line-height: 1.08 !important;
-	font-weight: 800 !important;
-	letter-spacing: -0.03em !important;
-	color: var(--langit-secondary, #0f172a) !important;
-	max-width: 20ch !important;
 }
 
 /* Featured Image styling & size (width follows content area, 32px margin bottom to content) */
@@ -7170,14 +7184,8 @@ textarea {
 	color: var(--langit-text, #334155) !important;
 }
 
-/* Responsive Overrides for Title and Content text sizes */
+/* Responsive Overrides for Content text sizes */
 @media (max-width: 1024px) {
-	.single-post .entry-title,
-	.single-post .blog-post-title,
-	.single-post .single-post-title {
-		font-size: 40px !important;
-	}
-
 	.single-post .single-content p,
 	.single-post .single-content li {
 		font-size: 17px !important;
@@ -7185,12 +7193,6 @@ textarea {
 }
 
 @media (max-width: 768px) {
-	.single-post .entry-title,
-	.single-post .blog-post-title,
-	.single-post .single-post-title {
-		font-size: 32px !important;
-	}
-
 	.single-post .single-content p,
 	.single-post .single-content li {
 		font-size: 16px !important;

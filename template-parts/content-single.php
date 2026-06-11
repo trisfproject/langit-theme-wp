@@ -10,14 +10,16 @@
 	<header class="single-hero article-header blog-post-header">
 		<div class="single-hero__content stack">
 			<?php langit_post_modified_meta(); ?>
-			<div class="post-card__term">
-				<?php the_category( ', ' ); ?>
-			</div>
-			<div class="entry-meta">
-				<?php langit_posted_on(); ?>
-				<?php langit_posted_by(); ?>
-			</div>
 			<?php the_title( '<h1 class="entry-title blog-post-title single-post-title" itemprop="headline">', '</h1>' ); ?>
+			<div class="entry-meta single-post-meta">
+				<?php langit_posted_on(); ?>
+				<span class="meta-separator">•</span>
+				<?php langit_posted_by(); ?>
+				<span class="meta-separator">•</span>
+				<span class="posted-in-categories">
+					<?php the_category( ', ' ); ?>
+				</span>
+			</div>
 		</div>
 	</header>
 
