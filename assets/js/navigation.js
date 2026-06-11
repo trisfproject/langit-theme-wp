@@ -227,6 +227,7 @@
 			sections.forEach(section => observer.observe(section));
 		}
 	}
+
 })();
 
 
