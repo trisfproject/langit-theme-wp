@@ -21,13 +21,14 @@ get_header();
 						'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next', 'langit' ) . '</span><span class="nav-title">%title</span>',
 					)
 				);
-				get_template_part( 'template-parts/related-posts' );
 			endwhile;
 			?>
 		</div>
 
 		<?php get_sidebar(); ?>
 	</div>
+
+	<?php get_template_part( 'template-parts/related-posts' ); ?>
 </main>
 
 <?php

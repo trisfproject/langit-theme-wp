@@ -7197,5 +7197,23 @@ textarea {
 	}
 }
 
+/* ==========================================================================
+   RELATED POSTS SECTION REFINEMENT
+   ========================================================================== */
+
+/* Remove default width constraints for related posts container to allow full width section */
+.related-posts-section {
+	width: 100% !important;
+	max-width: 100% !important;
+	margin: 0 !important;
+	padding-block: var(--langit-space-xl) !important;
+}
+
+/* Ensure Related Posts cards adapt height and avoid fixed tall proportions */
+.related-posts-section .post-card {
+	height: auto !important;
+}
+
+
 
 
